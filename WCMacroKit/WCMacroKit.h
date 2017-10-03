@@ -19,26 +19,36 @@
 // String
 #pragma mark - String
 
+#pragma mark > String conversion
+
+// BOOL to string
 #define STR_OF_BOOL(yesOrNo)     ((yesOrNo) ? @"YES" : @"NO")
+// property name to string
 #define STR_OF_PROP(property)    (NSStringFromSelector(@selector(property)))
+
+#pragma mark > String modidication
+
+// Catenate two strings
 #define STR_CATENATE(str1, str2) ([NSString stringWithFormat:@"%@%@", str1, str2])
 
 #pragma mark > String checking
-// A string and not empty
+// Is a string and not empty
 #define STR_IF_NOT_EMPTY(str)    ([str isKindOfClass:[NSString class]] && str.length)
 
-// A string and empty
+// Is a string and empty
 #define STR_IF_EMPTY(str)        ([str isKindOfClass:[NSString class]] && str.length == 0)
 
-// String Size Calculation (from MBProgressHUD)
-#pragma mark > String Size Calculation
+#pragma mark > String size calculation
 
+// calculate size of single line string
+// @see MBProgressHUD
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
     #define STR_SIZE_OF_SINGLELINE(text, font)  [text length] > 0 ? [text sizeWithAttributes:@{ NSFontAttributeName: font }] : CGSizeZero;
 #else
     #define STR_SIZE_OF_SINGLELINE(text, font)  [text length] > 0 ? [text sizeWithFont:font] : CGSizeZero;
 #endif
 
+// calculate size of multiple lines string
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
     #define STR_SIZE_OF_MULTILINE(text, font, maxSize, mode)                                    \
         [text length] > 0 ? [text boundingRectWithSize:maxSize                                  \
@@ -54,7 +64,8 @@
                           : CGSizeZero;
 #endif
 
-// iOS 7+
+// calculate size of multiple lines string with font parameter
+// @note iOS 7+
 #define XXX_STR_SIZE_OF_MULTILINE(text, font, maxSize)                                      \
     [text length] > 0 ? [text boundingRectWithSize:maxSize                                  \
                                            options:(NSStringDrawingUsesLineFragmentOrigin)  \
@@ -62,6 +73,8 @@
                                            context:nil].size                                \
                       : CGSizeZero;
 
+// calculate size of multiple lines string with attr parameter
+// @note iOS 7+
 #define XXX_STR_SIZE_OF_MULTILINE2(text, maxSize, attr)                                     \
     [text length] > 0 ? [text boundingRectWithSize:maxSize                                  \
                                            options:(NSStringDrawingUsesLineFragmentOrigin)  \
@@ -69,8 +82,9 @@
                                            context:nil].size                                \
                       : CGSizeZero;
 
-#pragma mark - Value
+#pragma mark - Fixed Value
 
+// use for initializing frame/size/point when change it afterward
 #ifndef UNSPECIFIED
 #define UNSPECIFIED 0
 #endif
