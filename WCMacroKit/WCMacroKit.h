@@ -234,6 +234,8 @@ do { \
 #define IS_IPHONE_5         (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
 #define IS_IPHONE_6         (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
 #define IS_IPHONE_6P        (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
+// @see https://stackoverflow.com/questions/46196964/detect-iphone-x-with-a-macro
+#define IS_IPHONE_X         (IS_IPHONE && SCREEN_MAX_LENGTH == 812.0)
 #define IS_IPAD_PRO         (IS_IPAD && SCREEN_MAX_LENGTH == 1366.0)
 
 #pragma mark NSDictionary
