@@ -10,6 +10,7 @@
 
 #import "Test_NSAssertOrXXX.h"
 #import "Test_SYNTHESIZE_ASSOCIATED_XXX.h"
+#import "TestDelegateCallerViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -34,10 +35,12 @@
     _titles = @[
         @"NSAssertOrXXX trigger and continue",
         @"Macro for associated objects",
+        @"safe call delegate methods",
     ];
     _classes = @[
         @"Test_NSAssertOrXXX",
         @"Test_SYNTHESIZE_ASSOCIATED_XXX",
+        @"TestDelegateCallerViewController",
     ];
 }
 

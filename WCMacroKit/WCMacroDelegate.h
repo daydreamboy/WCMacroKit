@@ -50,6 +50,31 @@
     })
 #endif /* DELEGATE_SAFE_CALL2_WITH_RETURN */
 
+// @see https://stackoverflow.com/questions/22018272/nsinvocation-returns-value-but-makes-app-crash-with-exc-bad-access
+#ifndef DELEGATE_SAFE_CALL3_WITH_RETURN
+#define DELEGATE_SAFE_CALL3_WITH_RETURN(delegate, sel, arg1, arg2, arg3) \
+    ({ \
+        id returnValue = nil; \
+        if ([delegate respondsToSelector:sel]) { \
+            id param1 = arg1; \
+            id param2 = arg2; \
+            id param3 = arg3; \
+            void *tempReturnValue = nil; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation setArgument:&param1 atIndex:2]; \
+            [invocation setArgument:&param2 atIndex:3]; \
+            [invocation setArgument:&param3 atIndex:4]; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = (__bridge id)tempReturnValue; \
+        } \
+        returnValue; \
+    })
+#endif /* DELEGATE_SAFE_CALL3_WITH_RETURN */
+
 /// @warning 1. Only apply for delegate methods without return value 2. Only support two arguments at most
 
 #ifndef DELEGATE_SAFE_CALL
@@ -78,6 +103,25 @@
         }                                                                        \
     } while (0)
 #endif /* DELEGATE_SAFE_CALL2 */
+
+#ifndef DELEGATE_SAFE_CALL3
+#define DELEGATE_SAFE_CALL3(delegate, sel, arg1, arg2, arg3) \
+    do { \
+        if ([delegate respondsToSelector:sel]) { \
+            id param1 = arg1; \
+            id param2 = arg2; \
+            id param3 = arg3; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation setArgument:&param1 atIndex:2]; \
+            [invocation setArgument:&param2 atIndex:3]; \
+            [invocation setArgument:&param3 atIndex:4]; \
+            [invocation invoke]; \
+        } \
+    } while (0)
+#endif /* DELEGATE_SAFE_CALL3 */
 
 #pragma mark - Dummy Protocol
 
