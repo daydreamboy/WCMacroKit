@@ -8,6 +8,12 @@
 #import "TestDelegateCallerViewController.h"
 #import "WCMacroKit.h"
 
+typedef NS_ENUM(NSUInteger, SomeState) {
+    SomeStateUnknown,
+    SomeStateSuccess,
+    SomeStateFailed,
+};
+
 @implementation TestDelegateCallerViewController
 
 - (void)viewDidLoad {
@@ -15,6 +21,8 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
 //    [self test_with_original_code];
+//    [self test_with_original_code2];
+//    [self test_with_original_code3];
     [self test_with_macros];
 }
 
@@ -50,20 +58,65 @@
     NSLog(@"return value: %@", returnString);
 }
 
+- (void)test_with_original_code2 {
+    SEL sel = @selector(testNoReturnMethodWithPrimitiveType:);
+    id delegate = self;
+    BOOL arg = YES;
+    
+    typeof(arg) arg1 = arg;
+    
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+    if ([delegate respondsToSelector:sel]) {
+        NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+        invocation.target = delegate;
+        invocation.selector = sel;
+        [invocation setArgument:&arg1 atIndex:2];
+        [invocation invoke];
+    }
+#pragma GCC diagnostic pop
+}
+
+- (void)test_with_original_code3 {
+    SEL sel = @selector(testNoReturnMethodWithEnumType:);
+    id delegate = self;
+    SomeState state = SomeStateSuccess;
+    
+    typeof(state) arg1 = state;
+    
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+    if ([delegate respondsToSelector:sel]) {
+        NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+        invocation.target = delegate;
+        invocation.selector = sel;
+        [invocation setArgument:&arg1 atIndex:2];
+        [invocation invoke];
+    }
+#pragma GCC diagnostic pop
+}
+
 - (void)test_with_macros {
     NSString *returnValue;
     
     returnValue = DELEGATE_SAFE_CALL3_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithArg1:arg2:arg3:"), @"A", @"B", @"C");
     NSLog(@"returnValue: %@", returnValue);
-    
+
     returnValue = DELEGATE_SAFE_CALL3_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithArg1:arg2:arg3:"), @"A", nil, @"C");
     NSLog(@"returnValue: %@", returnValue);
 
     returnValue = DELEGATE_SAFE_CALL3_WITH_RETURN(self, NSSelectorFromString(@"noneExistedMethodWithArg1:arg2:arg3:"), @"A", @"B", @"C");
     NSLog(@"returnValue: %@", returnValue);
+
+    returnValue = DELEGATE_SAFE_CALL4_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithBOOL:integer:cgFloat:enumType:"), YES, 100, 3.14, SomeStateSuccess);
+    NSLog(@"returnValue: %@", returnValue);
     
     DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:"), @"A", @"B", @"C");
-    
+
+    DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:"), nil, nil, nil);
+
     DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:"), nil, nil, nil);
 }
 
@@ -79,10 +132,45 @@
     return [NSString stringWithFormat:@"%@||%@||%@", arg1, arg2, arg3];
 }
 
+- (NSString *)testMethodWithBOOL:(BOOL)yesOrNo integer:(NSInteger)integer cgFloat:(CGFloat)cgFloat enumType:(SomeState)state {
+    
+    NSString *stateString = [self stringFromState:state];
+    return [NSString stringWithFormat:@"BOOL=%@ || NSInteger=%ld || CGFloat=%f || %@", STR_OF_BOOL(yesOrNo), (long)integer, cgFloat, stateString];
+}
+
 #pragma mark > without return values
 
 - (void)testNoReturnMethodWithArg1:(NSString *)arg1 arg2:(NSString *)arg2 arg3:(NSString *)arg3 {
     NSLog(@"%@", [NSString stringWithFormat:@"%@||%@||%@", arg1, arg2, arg3]);
+}
+
+- (void)testNoReturnMethodWithPrimitiveType:(BOOL)yesOrNo  {
+    NSLog(@"%@", [NSString stringWithFormat:@"%@", STR_OF_BOOL(yesOrNo)]);
+}
+
+- (void)testNoReturnMethodWithEnumType:(SomeState)state  {
+    NSLog(@"%@", [NSString stringWithFormat:@"%@", [self stringFromState:state]]);
+}
+
+#pragma mark - Utility
+
+- (NSString *)stringFromState:(SomeState)state {
+    NSString *stateString = nil;
+    switch (state) {
+        case SomeStateUnknown:
+            stateString = @"unknown";
+            break;
+        case SomeStateSuccess:
+            stateString = @"success";
+            break;
+        case SomeStateFailed:
+            stateString = @"failed";
+            break;
+        default:
+            break;
+    }
+    
+    return stateString;
 }
 
 @end
