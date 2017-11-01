@@ -110,9 +110,9 @@
             typeof(arg2) param2 = arg2; \
             typeof(arg3) param3 = arg3; \
             typeof(arg4) param4 = arg4; \
-            typeof(arg5) param4 = arg5; \
-            typeof(arg6) param4 = arg6; \
-            typeof(arg7) param4 = arg7; \
+            typeof(arg5) param5 = arg5; \
+            typeof(arg6) param6 = arg6; \
+            typeof(arg7) param7 = arg7; \
             void *tempReturnValue = nil; \
             NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
@@ -210,9 +210,9 @@
             typeof(arg2) param2 = arg2; \
             typeof(arg3) param3 = arg3; \
             typeof(arg4) param4 = arg4; \
-            typeof(arg5) param4 = arg5; \
-            typeof(arg6) param4 = arg6; \
-            typeof(arg7) param4 = arg7; \
+            typeof(arg5) param5 = arg5; \
+            typeof(arg6) param6 = arg6; \
+            typeof(arg7) param7 = arg7; \
             NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
