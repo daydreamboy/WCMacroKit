@@ -53,6 +53,7 @@
 		2BE400F11D732F6500A48174 /* WCMacroBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroBlock.h; sourceTree = "<group>"; };
 		2BE400F21D732F7300A48174 /* WCMacroDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroDelegate.h; sourceTree = "<group>"; };
 		2BE400F31D7330B500A48174 /* WCMacroAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroAssert.h; sourceTree = "<group>"; };
+		4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroCompatibility.h; sourceTree = "<group>"; };
 		4FB28DBE1FA73D4400B58D2E /* TestDelegateCallerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDelegateCallerViewController.h; sourceTree = "<group>"; };
 		4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDelegateCallerViewController.m; sourceTree = "<group>"; };
 		4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCMacroDelegate.m; sourceTree = "<group>"; };
@@ -152,6 +153,7 @@
 				2BE400F21D732F7300A48174 /* WCMacroDelegate.h */,
 				4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */,
 				2BE400F31D7330B500A48174 /* WCMacroAssert.h */,
+				4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */,
 			);
 			path = WCMacroKit;
 			sourceTree = "<group>";
