@@ -387,6 +387,16 @@ do { \
 #define __FILE_NAME__ ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1)
 #endif
 
+#pragma mark - Breakpoint
+
+#define PauseOnThisLineWhenAddedExceptionBreakpoint(shouldPause) \
+@try { \
+    if (shouldPause) { \
+        [NSException raise:@"Assert Exception" format:@""]; \
+    } \
+} \
+@catch (NSException *exception) {}
+
 #pragma mark - Redefinition of System Macro
 
 // 使 NSAssert 只进入断点，之后可以继续运行，而不会杀死程序
