@@ -20,15 +20,17 @@ typedef NS_ENUM(NSUInteger, SomeState) {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-//    [self test_with_original_code];
+//    [self test_with_original_code1];
 //    [self test_with_original_code2];
 //    [self test_with_original_code3];
+//    [self test_with_original_code4];
+    
     [self test_with_macros];
 }
 
 #pragma mark - Test Methods
 
-- (void)test_with_original_code {
+- (void)test_with_original_code1 {
     SEL sel = @selector(testMethodWithArg:);
     id delegate = self;
     id arg3 = [@"something" copy];
@@ -46,7 +48,7 @@ typedef NS_ENUM(NSUInteger, SomeState) {
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
             invocation.target = delegate;
             invocation.selector = sel;
-            [invocation setArgument:&arg3 atIndex:2];
+            [invocation setArgument:(void *)&arg3 atIndex:2];
             [invocation invoke];
             [invocation getReturnValue:&tempReturnValue];
             returnValue = (__bridge id)tempReturnValue;
@@ -72,7 +74,7 @@ typedef NS_ENUM(NSUInteger, SomeState) {
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
         invocation.target = delegate;
         invocation.selector = sel;
-        [invocation setArgument:&arg1 atIndex:2];
+        [invocation setArgument:(void *)&arg1 atIndex:2];
         [invocation invoke];
     }
 #pragma GCC diagnostic pop
@@ -92,32 +94,58 @@ typedef NS_ENUM(NSUInteger, SomeState) {
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
         invocation.target = delegate;
         invocation.selector = sel;
-        [invocation setArgument:&arg1 atIndex:2];
+        [invocation setArgument:(void *)&arg1 atIndex:2];
         [invocation invoke];
     }
 #pragma GCC diagnostic pop
 }
 
+- (void)test_with_original_code4 {
+    SEL sel = NSSelectorFromString(@"testWeakSelfAsParameter:p2:p3:");
+    id delegate = self;
+    __weak typeof(self) weak_self = self;
+    
+    typeof(weak_self) arg1 = weak_self;
+    
+    if ([delegate respondsToSelector:sel]) {
+        NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel];
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature];
+        invocation.target = delegate;
+        invocation.selector = sel;
+        [invocation setArgument:(void *)&arg1 atIndex:2];
+        [invocation invoke];
+    }
+}
+
 - (void)test_with_macros {
     NSString *returnValue;
     
+    // Case 1: normal
     returnValue = DELEGATE_SAFE_CALL3_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithArg1:arg2:arg3:"), @"A", @"B", @"C");
     NSLog(@"returnValue: %@", returnValue);
 
+    // Case 2: nil as parameter
     returnValue = DELEGATE_SAFE_CALL3_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithArg1:arg2:arg3:"), @"A", nil, @"C");
     NSLog(@"returnValue: %@", returnValue);
 
+    // Case 3: none existed method
     returnValue = DELEGATE_SAFE_CALL3_WITH_RETURN(self, NSSelectorFromString(@"noneExistedMethodWithArg1:arg2:arg3:"), @"A", @"B", @"C");
     NSLog(@"returnValue: %@", returnValue);
 
+    // Case 4: basic type parameter
     returnValue = DELEGATE_SAFE_CALL4_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithBOOL:integer:cgFloat:enumType:"), YES, 100, 3.14, SomeStateSuccess);
     NSLog(@"returnValue: %@", returnValue);
     
+    // Case 5: without return value
     DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:"), @"A", @"B", @"C");
 
     DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:"), nil, nil, nil);
 
     DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:"), nil, nil, nil);
+    
+    // Case 6: weak self as parameter
+    __weak typeof(self) weak_self = self;
+    DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testWeakSelfAsParameter:p2:p3:"), weak_self, nil, nil);
 }
 
 #pragma mark - Callee Methods
@@ -150,6 +178,15 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 
 - (void)testNoReturnMethodWithEnumType:(SomeState)state  {
     NSLog(@"%@", [NSString stringWithFormat:@"%@", [self stringFromState:state]]);
+}
+
+- (void)testWeakSelfAsParameter:(id)weakSelf p2:(id)p2 p3:(id)p3 {
+    typeof(self) caller = weakSelf;
+    [caller log];
+}
+
+- (void)log {
+    NSLog(@"called by testWeakSelfAsParameter");
 }
 
 #pragma mark - Utility
