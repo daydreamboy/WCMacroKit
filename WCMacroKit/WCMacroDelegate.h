@@ -9,44 +9,66 @@
 #ifndef WCMacroDelegate_h
 #define WCMacroDelegate_h
 
-// Delegate caller
+/// Delegate caller
 #pragma mark Delegate caller
-
-/// @warning
-// 1. Only apply for delegate methods with return value
-// 2. Only support two arguments at most
-// 3. parameter only support object
 
 #ifndef DELEGATE_SAFE_CALL_WITH_RETURN
 #define DELEGATE_SAFE_CALL_WITH_RETURN(delegate, selector)   \
-    ({                                                       \
-        id returnVal;                                        \
-        if ([delegate respondsToSelector:selector]) {        \
-            returnVal = [delegate performSelector:selector]; \
-        }                                                    \
-        returnVal;                                           \
+    ({ \
+        id returnValue = nil; \
+        if ([delegate respondsToSelector:sel]) { \
+            void *tempReturnValue = nil; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = (__bridge id)tempReturnValue; \
+        } \
+        returnValue; \
     })
 #endif /* DELEGATE_SAFE_CALL_WITH_RETURN */
 
 #ifndef DELEGATE_SAFE_CALL1_WITH_RETURN
 #define DELEGATE_SAFE_CALL1_WITH_RETURN(delegate, selector, arg1)            \
-    ({                                                                       \
-        id returnVal;                                                        \
-        if ([delegate respondsToSelector:selector]) {                        \
-            returnVal = [delegate performSelector:selector withObject:arg1]; \
-        }                                                                    \
-        returnVal;                                                           \
+    ({ \
+        id returnValue = nil; \
+        if ([delegate respondsToSelector:sel]) { \
+            typeof(arg1) param1 = arg1; \
+            void *tempReturnValue = nil; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = (__bridge id)tempReturnValue; \
+        } \
+        returnValue; \
     })
 #endif /* DELEGATE_SAFE_CALL1_WITH_RETURN */
 
 #ifndef DELEGATE_SAFE_CALL2_WITH_RETURN
 #define DELEGATE_SAFE_CALL2_WITH_RETURN(delegate, selector, arg1, arg2)                      \
-    ({                                                                                       \
-        id returnVal;                                                                        \
-        if ([delegate respondsToSelector:selector]) {                                        \
-            returnVal = [delegate performSelector:selector withObject:arg1 withObject:arg2]; \
-        }                                                                                    \
-        returnVal;                                                                           \
+    ({ \
+        id returnValue = nil; \
+        if ([delegate respondsToSelector:sel]) { \
+            typeof(arg1) param1 = arg1; \
+            typeof(arg2) param2 = arg2; \
+            void *tempReturnValue = nil; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)(void *)&param2 atIndex:3]; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = (__bridge id)tempReturnValue; \
+        } \
+        returnValue; \
     })
 #endif /* DELEGATE_SAFE_CALL2_WITH_RETURN */
 
