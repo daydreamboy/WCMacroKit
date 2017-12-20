@@ -64,9 +64,9 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:&param1 atIndex:2]; \
-            [invocation setArgument:&param2 atIndex:3]; \
-            [invocation setArgument:&param3 atIndex:4]; \
+            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)(void *)&param3 atIndex:4]; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
             returnValue = (__bridge id)tempReturnValue; \
@@ -89,10 +89,10 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:&param1 atIndex:2]; \
-            [invocation setArgument:&param2 atIndex:3]; \
-            [invocation setArgument:&param3 atIndex:4]; \
-            [invocation setArgument:&param4 atIndex:5]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param3 atIndex:4]; \
+            [invocation setArgument:(void *)&param4 atIndex:5]; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
             returnValue = (__bridge id)tempReturnValue; \
@@ -118,13 +118,13 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:&param1 atIndex:2]; \
-            [invocation setArgument:&param2 atIndex:3]; \
-            [invocation setArgument:&param3 atIndex:4]; \
-            [invocation setArgument:&param4 atIndex:5]; \
-            [invocation setArgument:&param5 atIndex:6]; \
-            [invocation setArgument:&param6 atIndex:7]; \
-            [invocation setArgument:&param7 atIndex:8]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param3 atIndex:4]; \
+            [invocation setArgument:(void *)&param4 atIndex:5]; \
+            [invocation setArgument:(void *)&param5 atIndex:6]; \
+            [invocation setArgument:(void *)&param6 atIndex:7]; \
+            [invocation setArgument:(void *)&param7 atIndex:8]; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
             returnValue = (__bridge id)tempReturnValue; \
@@ -173,9 +173,9 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:&param1 atIndex:2]; \
-            [invocation setArgument:&param2 atIndex:3]; \
-            [invocation setArgument:&param3 atIndex:4]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param3 atIndex:4]; \
             [invocation invoke]; \
         } \
     } while (0)
@@ -193,10 +193,10 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:&param1 atIndex:2]; \
-            [invocation setArgument:&param2 atIndex:3]; \
-            [invocation setArgument:&param3 atIndex:4]; \
-            [invocation setArgument:&param4 atIndex:5]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param3 atIndex:4]; \
+            [invocation setArgument:(void *)&param4 atIndex:5]; \
             [invocation invoke]; \
         } \
     } while (0)
@@ -217,13 +217,13 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:&param1 atIndex:2]; \
-            [invocation setArgument:&param2 atIndex:3]; \
-            [invocation setArgument:&param3 atIndex:4]; \
-            [invocation setArgument:&param4 atIndex:5]; \
-            [invocation setArgument:&param5 atIndex:6]; \
-            [invocation setArgument:&param6 atIndex:7]; \
-            [invocation setArgument:&param7 atIndex:8]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param3 atIndex:4]; \
+            [invocation setArgument:(void *)&param4 atIndex:5]; \
+            [invocation setArgument:(void *)&param5 atIndex:6]; \
+            [invocation setArgument:(void *)&param6 atIndex:7]; \
+            [invocation setArgument:(void *)&param7 atIndex:8]; \
             [invocation invoke]; \
         } \
     } while (0)
