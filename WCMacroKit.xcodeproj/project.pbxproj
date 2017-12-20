@@ -15,6 +15,8 @@
 		2BE400D51D73272500A48174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BE400D41D73272500A48174 /* Assets.xcassets */; };
 		2BE400D81D73272500A48174 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE400D61D73272500A48174 /* LaunchScreen.storyboard */; };
 		2BE400E41D73273200A48174 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE400E31D73273200A48174 /* Test.m */; };
+		4F5D928B1FEA4F06005F137D /* WCCallerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928A1FEA4F06005F137D /* WCCallerTool.m */; };
+		4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */; };
 		4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */; };
 		4FB28DC21FA84D1600B58D2E /* WCMacroDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */; };
 /* End PBXBuildFile section */
@@ -54,6 +56,10 @@
 		2BE400F21D732F7300A48174 /* WCMacroDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroDelegate.h; sourceTree = "<group>"; };
 		2BE400F31D7330B500A48174 /* WCMacroAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroAssert.h; sourceTree = "<group>"; };
 		4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroCompatibility.h; sourceTree = "<group>"; };
+		4F5D92891FEA4F06005F137D /* WCCallerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCallerTool.h; sourceTree = "<group>"; };
+		4F5D928A1FEA4F06005F137D /* WCCallerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCCallerTool.m; sourceTree = "<group>"; };
+		4F5D928C1FEA502B005F137D /* Test_WCCallerTool_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_WCCallerTool_ViewController.h; sourceTree = "<group>"; };
+		4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_WCCallerTool_ViewController.m; sourceTree = "<group>"; };
 		4FB28DBE1FA73D4400B58D2E /* TestDelegateCallerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDelegateCallerViewController.h; sourceTree = "<group>"; };
 		4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDelegateCallerViewController.m; sourceTree = "<group>"; };
 		4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCMacroDelegate.m; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 				2BC5661A1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m */,
 				4FB28DBE1FA73D4400B58D2E /* TestDelegateCallerViewController.h */,
 				4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */,
+				4F5D928C1FEA502B005F137D /* Test_WCCallerTool_ViewController.h */,
+				4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -154,6 +162,8 @@
 				4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */,
 				2BE400F31D7330B500A48174 /* WCMacroAssert.h */,
 				4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */,
+				4F5D92891FEA4F06005F137D /* WCCallerTool.h */,
+				4F5D928A1FEA4F06005F137D /* WCCallerTool.m */,
 			);
 			path = WCMacroKit;
 			sourceTree = "<group>";
@@ -264,8 +274,10 @@
 			files = (
 				2BE400CD1D73272500A48174 /* AppDelegate.m in Sources */,
 				2B44B17D1D952C6C00B23550 /* Test_NSAssertOrXXX.m in Sources */,
+				4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */,
 				2BC5661B1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m in Sources */,
 				4FB28DC21FA84D1600B58D2E /* WCMacroDelegate.m in Sources */,
+				4F5D928B1FEA4F06005F137D /* WCCallerTool.m in Sources */,
 				2B44B1791D952BB100B23550 /* RootViewController.m in Sources */,
 				4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */,
 				2BE400CA1D73272500A48174 /* main.m in Sources */,

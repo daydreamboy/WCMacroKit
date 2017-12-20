@@ -8,4 +8,3 @@
 #import <Foundation/Foundation.h>
 #import "WCMacroDelegate.h"
 
-
