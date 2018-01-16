@@ -19,6 +19,8 @@
 		4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */; };
 		4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */; };
 		4FB28DC21FA84D1600B58D2E /* WCMacroDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */; };
+		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
+		4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,10 @@
 		4FB28DBE1FA73D4400B58D2E /* TestDelegateCallerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDelegateCallerViewController.h; sourceTree = "<group>"; };
 		4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDelegateCallerViewController.m; sourceTree = "<group>"; };
 		4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCMacroDelegate.m; sourceTree = "<group>"; };
+		4FB43AD1200CE24500D5D92D /* Test_STR_OF_JSONViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_STR_OF_JSONViewController.h; sourceTree = "<group>"; };
+		4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_STR_OF_JSONViewController.m; sourceTree = "<group>"; };
+		4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestRawStringWithC++11ViewController.h"; sourceTree = "<group>"; };
+		4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "TestRawStringWithC++11ViewController.mm"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,10 @@
 				4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */,
 				4F5D928C1FEA502B005F137D /* Test_WCCallerTool_ViewController.h */,
 				4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */,
+				4FB43AD1200CE24500D5D92D /* Test_STR_OF_JSONViewController.h */,
+				4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */,
+				4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */,
+				4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -275,9 +285,11 @@
 				2BE400CD1D73272500A48174 /* AppDelegate.m in Sources */,
 				2B44B17D1D952C6C00B23550 /* Test_NSAssertOrXXX.m in Sources */,
 				4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */,
+				4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */,
 				2BC5661B1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m in Sources */,
 				4FB28DC21FA84D1600B58D2E /* WCMacroDelegate.m in Sources */,
 				4F5D928B1FEA4F06005F137D /* WCCallerTool.m in Sources */,
+				4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */,
 				2B44B1791D952BB100B23550 /* RootViewController.m in Sources */,
 				4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */,
 				2BE400CA1D73272500A48174 /* main.m in Sources */,

@@ -12,6 +12,8 @@
 #import "Test_SYNTHESIZE_ASSOCIATED_XXX.h"
 #import "TestDelegateCallerViewController.h"
 #import "Test_WCCallerTool_ViewController.h"
+#import "Test_STR_OF_JSONViewController.h"
+#import "TestRawStringWithC++11ViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -38,12 +40,16 @@
         @"Macro for associated objects",
         @"safe call delegate methods",
         @"call methods on runtime",
+        @"use json literal in code",
+        @"use raw literal string in code (C++ 11 feature)",
     ];
     _classes = @[
         @"Test_NSAssertOrXXX",
         @"Test_SYNTHESIZE_ASSOCIATED_XXX",
         @"TestDelegateCallerViewController",
         @"Test_WCCallerTool_ViewController",
+        @"Test_STR_OF_JSONViewController",
+        @"TestRawStringWithC__11ViewController",
     ];
 }
 
