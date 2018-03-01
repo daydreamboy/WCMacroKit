@@ -14,6 +14,7 @@
 #import "Test_WCCallerTool_ViewController.h"
 #import "Test_STR_OF_JSONViewController.h"
 #import "TestRawStringWithC++11ViewController.h"
+#import "Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -42,14 +43,16 @@
         @"call methods on runtime",
         @"use json literal in code",
         @"use raw literal string in code (C++ 11 feature)",
+        @"thread safe lazy getter",
     ];
     _classes = @[
-        @"Test_NSAssertOrXXX",
-        @"Test_SYNTHESIZE_ASSOCIATED_XXX",
-        @"TestDelegateCallerViewController",
-        @"Test_WCCallerTool_ViewController",
-        @"Test_STR_OF_JSONViewController",
-        @"TestRawStringWithC__11ViewController",
+        [Test_NSAssertOrXXX class],
+        [Test_SYNTHESIZE_ASSOCIATED_XXX class],
+        [TestDelegateCallerViewController class],
+        [Test_WCCallerTool_ViewController class],
+        [Test_STR_OF_JSONViewController class],
+        [TestRawStringWithC__11ViewController class],
+        [Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController class],
     ];
 }
 
@@ -78,12 +81,22 @@
     return cell;
 }
 
-- (void)pushViewController:(NSString *)viewControllerClass {
-    NSAssert([viewControllerClass isKindOfClass:[NSString class]], @"%@ is not NSString", viewControllerClass);
+- (void)pushViewController:(id)viewControllerClass {
     
-    Class class = NSClassFromString(viewControllerClass);
-    if (class && [class isSubclassOfClass:[UIViewController class]]) {
-        
+    id class = viewControllerClass;
+    if ([class isKindOfClass:[NSString class]]) {
+        SEL selector = NSSelectorFromString(viewControllerClass);
+        if ([self respondsToSelector:selector]) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warc-performSelector-leaks"
+            [self performSelector:selector];
+#pragma GCC diagnostic pop
+        }
+        else {
+            NSAssert(NO, @"can't handle selector `%@`", viewControllerClass);
+        }
+    }
+    else if (class && [class isSubclassOfClass:[UIViewController class]]) {
         UIViewController *vc = [[class alloc] init];
         vc.title = _titles[[_classes indexOfObject:viewControllerClass]];
         

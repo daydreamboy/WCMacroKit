@@ -17,6 +17,7 @@
 		2BE400E41D73273200A48174 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE400E31D73273200A48174 /* Test.m */; };
 		4F5D928B1FEA4F06005F137D /* WCCallerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928A1FEA4F06005F137D /* WCCallerTool.m */; };
 		4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */; };
+		4F6635872047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6635862047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m */; };
 		4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */; };
 		4FB28DC21FA84D1600B58D2E /* WCMacroDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */; };
 		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
@@ -62,6 +63,8 @@
 		4F5D928A1FEA4F06005F137D /* WCCallerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCCallerTool.m; sourceTree = "<group>"; };
 		4F5D928C1FEA502B005F137D /* Test_WCCallerTool_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_WCCallerTool_ViewController.h; sourceTree = "<group>"; };
 		4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_WCCallerTool_ViewController.m; sourceTree = "<group>"; };
+		4F6635852047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h; sourceTree = "<group>"; };
+		4F6635862047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m; sourceTree = "<group>"; };
 		4FB28DBE1FA73D4400B58D2E /* TestDelegateCallerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDelegateCallerViewController.h; sourceTree = "<group>"; };
 		4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDelegateCallerViewController.m; sourceTree = "<group>"; };
 		4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCMacroDelegate.m; sourceTree = "<group>"; };
@@ -98,12 +101,14 @@
 				2BC5661A1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m */,
 				4FB28DBE1FA73D4400B58D2E /* TestDelegateCallerViewController.h */,
 				4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */,
+				4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */,
+				4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */,
 				4F5D928C1FEA502B005F137D /* Test_WCCallerTool_ViewController.h */,
 				4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */,
 				4FB43AD1200CE24500D5D92D /* Test_STR_OF_JSONViewController.h */,
 				4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */,
-				4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */,
-				4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */,
+				4F6635852047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h */,
+				4F6635862047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 				4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */,
 				2BC5661B1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m in Sources */,
 				4FB28DC21FA84D1600B58D2E /* WCMacroDelegate.m in Sources */,
+				4F6635872047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m in Sources */,
 				4F5D928B1FEA4F06005F137D /* WCCallerTool.m in Sources */,
 				4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */,
 				2B44B1791D952BB100B23550 /* RootViewController.m in Sources */,
