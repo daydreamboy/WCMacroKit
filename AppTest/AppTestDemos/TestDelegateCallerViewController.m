@@ -146,6 +146,10 @@ typedef NS_ENUM(NSUInteger, SomeState) {
     // Case 6: weak self as parameter
     __weak typeof(self) weak_self = self;
     DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testWeakSelfAsParameter:p2:p3:"), weak_self, nil, nil);
+    
+    // Case 7: float as parameter
+    // Note: float type must append `f`, e.g 4.0 should be 4.0f
+    DELEGATE_SAFE_CALL1(self, NSSelectorFromString(@"testFloatWithArg1:"), 4.0f);
 }
 
 #pragma mark - Callee Methods
@@ -187,6 +191,10 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 
 - (void)log {
     NSLog(@"called by testWeakSelfAsParameter");
+}
+
+- (void)testFloatWithArg1:(float)arg1 {
+    NSLog(@"float: %f", arg1);
 }
 
 #pragma mark - Utility

@@ -10,6 +10,7 @@
 #define WCMacroDelegate_h
 
 /// Delegate caller
+// Note: float type must append `f`, e.g 4.0 should be 4.0f
 #pragma mark Delegate caller
 
 #pragma mark > With return value
