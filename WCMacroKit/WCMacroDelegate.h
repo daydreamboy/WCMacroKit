@@ -157,32 +157,32 @@
 
 /// @warning 1. Only apply for delegate methods without return value 2. Only support two arguments at most
 
-#ifndef DELEGATE_SAFE_CALL
-#define DELEGATE_SAFE_CALL(delegate, selector)        \
-    do {                                              \
-        if ([delegate respondsToSelector:selector]) { \
-            [delegate performSelector:selector];      \
-        }                                             \
+#ifndef DELEGATE_SAFE_PERFORM
+#define DELEGATE_SAFE_PERFORM(delegate, sel)        \
+    do {                                            \
+        if ([delegate respondsToSelector:sel]) {    \
+            [delegate performSelector:sel];         \
+        }                                           \
     } while (0)
-#endif /* DELEGATE_SAFE_CALL */
+#endif /* DELEGATE_SAFE_PERFORM */
 
-#ifndef DELEGATE_SAFE_CALL1
-#define DELEGATE_SAFE_CALL1(delegate, selector, arg1)            \
-    do {                                                         \
-        if ([delegate respondsToSelector:selector]) {            \
-            [delegate performSelector:selector withObject:arg1]; \
-        }                                                        \
+#ifndef DELEGATE_SAFE_PERFORM1
+#define DELEGATE_SAFE_PERFORM1(delegate, sel, arg1)         \
+    do {                                                    \
+        if ([delegate respondsToSelector:sel]) {            \
+            [delegate performSelector:sel withObject:arg1]; \
+        }                                                   \
     } while (0)
-#endif /* DELEGATE_SAFE_CALL1 */
+#endif /* DELEGATE_SAFE_PERFORM1 */
 
-#ifndef DELEGATE_SAFE_CALL2
-#define DELEGATE_SAFE_CALL2(delegate, selector, arg1, arg2)                      \
-    do {                                                                         \
-        if ([delegate respondsToSelector:selector]) {                            \
-            [delegate performSelector:selector withObject:arg1 withObject:arg2]; \
-        }                                                                        \
+#ifndef DELEGATE_SAFE_PERFORM2
+#define DELEGATE_SAFE_PERFORM2(delegate, sel, arg1, arg2)                   \
+    do {                                                                    \
+        if ([delegate respondsToSelector:sel]) {                            \
+            [delegate performSelector:sel withObject:arg1 withObject:arg2]; \
+        }                                                                   \
     } while (0)
-#endif /* DELEGATE_SAFE_CALL2 */
+#endif /* DELEGATE_SAFE_PERFORM2 */
 
 #ifndef DELEGATE_SAFE_CALL3
 #define DELEGATE_SAFE_CALL3(delegate, sel, arg1, arg2, arg3) \
