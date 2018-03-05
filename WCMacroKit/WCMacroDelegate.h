@@ -13,7 +13,7 @@
 #pragma mark Delegate caller
 
 #ifndef DELEGATE_SAFE_CALL_WITH_RETURN
-#define DELEGATE_SAFE_CALL_WITH_RETURN(delegate, selector)   \
+#define DELEGATE_SAFE_CALL_WITH_RETURN(delegate, self) \
     ({ \
         id returnValue = nil; \
         if ([delegate respondsToSelector:sel]) { \
@@ -31,7 +31,7 @@
 #endif /* DELEGATE_SAFE_CALL_WITH_RETURN */
 
 #ifndef DELEGATE_SAFE_CALL1_WITH_RETURN
-#define DELEGATE_SAFE_CALL1_WITH_RETURN(delegate, selector, arg1)            \
+#define DELEGATE_SAFE_CALL1_WITH_RETURN(delegate, sel, arg1) \
     ({ \
         id returnValue = nil; \
         if ([delegate respondsToSelector:sel]) { \
@@ -51,7 +51,7 @@
 #endif /* DELEGATE_SAFE_CALL1_WITH_RETURN */
 
 #ifndef DELEGATE_SAFE_CALL2_WITH_RETURN
-#define DELEGATE_SAFE_CALL2_WITH_RETURN(delegate, selector, arg1, arg2)                      \
+#define DELEGATE_SAFE_CALL2_WITH_RETURN(delegate, sel, arg1, arg2) \
     ({ \
         id returnValue = nil; \
         if ([delegate respondsToSelector:sel]) { \
@@ -121,7 +121,7 @@
         } \
         returnValue; \
     })
-#endif /* DELEGATE_SAFE_CALL3_WITH_RETURN */
+#endif /* DELEGATE_SAFE_CALL4_WITH_RETURN */
 
 #ifndef DELEGATE_SAFE_CALL7_WITH_RETURN
 #define DELEGATE_SAFE_CALL7_WITH_RETURN(delegate, sel, arg1, arg2, arg3, arg4, arg5, arg6, arg7) \
