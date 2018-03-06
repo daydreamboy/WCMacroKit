@@ -218,6 +218,19 @@
 
 #pragma mark > No return value
 
+#ifndef DELEGATE_SAFE_CALL
+#define DELEGATE_SAFE_CALL(delegate, sel) \
+    do { \
+        if ([delegate respondsToSelector:sel]) { \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation invoke]; \
+        } \
+    } while (0)
+#endif /* DELEGATE_SAFE_CALL */
+
 #ifndef DELEGATE_SAFE_CALL1
 #define DELEGATE_SAFE_CALL1(delegate, sel, arg1) \
     do { \
