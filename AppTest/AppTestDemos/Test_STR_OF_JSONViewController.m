@@ -34,10 +34,34 @@ static NSString *jsonString = STR_OF_JSON(
 }
 );
 
+static NSString *jsonStringWithFormat = STR_OF_JSON(
+{
+    "glossary": {
+        "title": "%@",
+        "GlossDiv": {
+            "title": "%@",
+        }
+    }
+}
+);
+
 @implementation Test_STR_OF_JSONViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self test1];
+    [self test2];
+}
+
+- (void)test1 {
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+    NSLog(@"dict: %@", dict);
+}
+
+- (void)test2 {
+    NSString *jsonString = [NSString stringWithFormat:jsonStringWithFormat, @"This is first title", @"This is second title"];
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
     NSLog(@"dict: %@", dict);
