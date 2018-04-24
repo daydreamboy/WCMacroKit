@@ -16,7 +16,7 @@
 #pragma mark > With return value
 
 #ifndef DELEGATE_SAFE_CALL_WITH_RETURN
-#define DELEGATE_SAFE_CALL_WITH_RETURN(delegate, self) \
+#define DELEGATE_SAFE_CALL_WITH_RETURN(delegate, sel) \
     ({ \
         id returnValue = nil; \
         if ([delegate respondsToSelector:sel]) { \
@@ -89,9 +89,9 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
-            [invocation setArgument:(void *)(void *)&param2 atIndex:3]; \
-            [invocation setArgument:(void *)(void *)&param3 atIndex:4]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param3 atIndex:4]; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
             returnValue = (__bridge id)tempReturnValue; \
