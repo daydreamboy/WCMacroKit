@@ -13,7 +13,7 @@
 // Note: float type must append `f`, e.g 4.0 should be 4.0f
 #pragma mark Delegate caller
 
-#pragma mark > With return value
+#pragma mark > With return object type
 
 #ifndef DELEGATE_SAFE_CALL_WITH_RETURN
 #define DELEGATE_SAFE_CALL_WITH_RETURN(delegate, sel) \
@@ -215,6 +215,118 @@
         returnValue; \
     })
 #endif /* DELEGATE_SAFE_CALL7_WITH_RETURN */
+
+#pragma mark > With return primitive type
+
+#ifndef DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE
+#define DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE(delegate, sel, ret_type, default_ret_val) \
+    ({ \
+        ret_type returnValue = default_ret_val; \
+        if ([delegate respondsToSelector:sel]) { \
+            ret_type tempReturnValue = default_ret_val; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = tempReturnValue; \
+        } \
+        returnValue; \
+    })
+#endif /* DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE */
+
+#ifndef DELEGATE_SAFE_CALL1_WITH_RETURN_PRIMITIVE
+#define DELEGATE_SAFE_CALL1_WITH_RETURN_PRIMITIVE(delegate, sel, ret_type, default_ret_val, arg1) \
+    ({ \
+        ret_type returnValue = default_ret_val; \
+        if ([delegate respondsToSelector:sel]) { \
+            typeof(arg1) param1 = arg1; \
+            ret_type tempReturnValue = default_ret_val; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = tempReturnValue; \
+        } \
+        returnValue; \
+    })
+#endif /* DELEGATE_SAFE_CALL1_WITH_RETURN_PRIMITIVE */
+
+#ifndef DELEGATE_SAFE_CALL2_WITH_RETURN_PRIMITIVE
+#define DELEGATE_SAFE_CALL2_WITH_RETURN_PRIMITIVE(delegate, sel, ret_type, default_ret_val, arg1, arg2) \
+    ({ \
+        ret_type returnValue = default_ret_val; \
+        if ([delegate respondsToSelector:sel]) { \
+            typeof(arg1) param1 = arg1; \
+            typeof(arg2) param2 = arg2; \
+            ret_type tempReturnValue = default_ret_val; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)(void *)&param2 atIndex:3]; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = tempReturnValue; \
+        } \
+        returnValue; \
+    })
+#endif /* DELEGATE_SAFE_CALL2_WITH_RETURN_PRIMITIVE */
+
+#ifndef DELEGATE_SAFE_CALL3_WITH_RETURN_PRIMITIVE
+#define DELEGATE_SAFE_CALL3_WITH_RETURN_PRIMITIVE(delegate, sel, ret_type, default_ret_val, arg1, arg2, arg3) \
+    ({ \
+        ret_type returnValue = default_ret_val; \
+        if ([delegate respondsToSelector:sel]) { \
+            typeof(arg1) param1 = arg1; \
+            typeof(arg2) param2 = arg2; \
+            typeof(arg3) param3 = arg3; \
+            ret_type tempReturnValue = default_ret_val; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param3 atIndex:4]; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = tempReturnValue; \
+        } \
+        returnValue; \
+    })
+#endif /* DELEGATE_SAFE_CALL3_WITH_RETURN_PRIMITIVE */
+
+#ifndef DELEGATE_SAFE_CALL4_WITH_RETURN_PRIMITIVE
+#define DELEGATE_SAFE_CALL4_WITH_RETURN_PRIMITIVE(delegate, sel, ret_type, default_ret_val, arg1, arg2, arg3, arg4) \
+    ({ \
+        ret_type returnValue = default_ret_val; \
+        if ([delegate respondsToSelector:sel]) { \
+            typeof(arg1) param1 = arg1; \
+            typeof(arg2) param2 = arg2; \
+            typeof(arg3) param3 = arg3; \
+            typeof(arg4) param4 = arg4; \
+            ret_type tempReturnValue = default_ret_val; \
+            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = delegate; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param3 atIndex:4]; \
+            [invocation setArgument:(void *)&param4 atIndex:5]; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = tempReturnValue; \
+        } \
+        returnValue; \
+    })
+#endif /* DELEGATE_SAFE_CALL4_WITH_RETURN_PRIMITIVE */
 
 #pragma mark > No return value
 
