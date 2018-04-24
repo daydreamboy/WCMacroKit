@@ -1,5 +1,5 @@
 //
-//  Test_DelegateCaller.m
+//  Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m
 //  Test
 //
 //  Created by wesley_chen on 2018/4/23.
@@ -8,11 +8,11 @@
 #import <XCTest/XCTest.h>
 #import "WCMacroKit.h"
 
-@interface Test_DelegateCaller : XCTestCase
+@interface Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE : XCTestCase
 
 @end
 
-@implementation Test_DelegateCaller
+@implementation Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE
 
 - (void)setUp {
     [super setUp];
