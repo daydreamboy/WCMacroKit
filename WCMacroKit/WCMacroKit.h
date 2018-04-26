@@ -121,32 +121,26 @@
 // @sa http://stackoverflow.com/questions/11079157/objc-preprocessor-nsstring-macro
 // Synthesize Associated Objects
 #define SYNTHESIZE_ASSOCIATED_OBJ(getterName, setterName, type)                                                 \
-static NSString *WCMacroKit_##getterName = @"WCMacroKit_" #getterName;                                          \
-                                                                                                                \
 - (void)setterName:(type)object {                                                                               \
     if (object) {                                                                                               \
-        objc_setAssociatedObject(self, &WCMacroKit_##getterName, object, OBJC_ASSOCIATION_RETAIN_NONATOMIC);    \
+        objc_setAssociatedObject(self, @selector(getterName), object, OBJC_ASSOCIATION_RETAIN_NONATOMIC);       \
     }                                                                                                           \
 }                                                                                                               \
-                                                                                                                \
 - (type)getterName {                                                                                            \
-    return objc_getAssociatedObject(self, &WCMacroKit_##getterName);                                            \
+    return objc_getAssociatedObject(self, @selector(getterName));                                               \
 }
 
 // Synthesize Associated Primitives
 // @sa https://github.com/itsthejb/ObjcAssociatedObjectHelpers/blob/develop/ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers.h
 #define SYNTHESIZE_ASSOCIATED_PRIMITIVE(getterName, setterName, type)                                           \
-static NSString *WCMacroKit_##getterName = @"WCMacroKit_" #getterName;                                          \
-                                                                                                                \
 - (void)setterName:(type)value {                                                                                \
     NSValue *nsValue = [NSValue value:&value withObjCType:@encode(type)];                                       \
-    objc_setAssociatedObject(self, &WCMacroKit_##getterName, nsValue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);       \
+    objc_setAssociatedObject(self, @selector(getterName), nsValue, OBJC_ASSOCIATION_RETAIN_NONATOMIC);          \
 }                                                                                                               \
-                                                                                                                \
 - (type)getterName {                                                                                            \
     type value;                                                                                                 \
     memset(&value, 0, sizeof(type));                                                                            \
-    NSValue *nsValue = objc_getAssociatedObject(self, &WCMacroKit_##getterName);                                \
+    NSValue *nsValue = objc_getAssociatedObject(self, @selector(getterName));                                   \
     [nsValue getValue:&value];                                                                                  \
     return value;                                                                                               \
 }
