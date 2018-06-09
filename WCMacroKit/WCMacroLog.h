@@ -78,7 +78,8 @@
 
 #pragma mark - Object Dump
 
-#define WCDumpBool(b)   NSLog(@"`%s`: %@", #b, (b) ? @"YES" : @"NO")
-#define WCDumpObject(o) NSLog(@"`%s`: %@", #o, (o))
+#define WCDumpBool(b)   NSLog(@"%@:%@: `%s`= %@", @(__FILE_NAME__), @(__LINE__), #b, (b) ? @"YES" : @"NO")
+//#define WCDumpObject(o) NSLog(@"%@:%@: `%s`= %@", @(__FILE_NAME__), @(__LINE__), #o, (o))
+#define WCDumpObject(o) fprintf(stderr, "%s:%d: `%s`= %s\n", __FILE_NAME__, (int)__LINE__, #o, ([o debugDescription].UTF8String))
 
 #endif /* WCMacroLog_h */

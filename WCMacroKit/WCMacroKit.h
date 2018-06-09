@@ -55,7 +55,7 @@
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
     #define STR_SIZE_OF_MULTILINE(text, font, maxSize, mode)                                    \
         [text length] > 0 ? [text boundingRectWithSize:maxSize                                  \
-                                               options:(NSStringDrawingUsesLineFragmentOrigin)  \
+                                               options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)  \
                                             attributes:@{ NSFontAttributeName: font }           \
                                                context:nil].size                                \
                           : CGSizeZero;
@@ -71,7 +71,7 @@
 // @note iOS 7+
 #define XXX_STR_SIZE_OF_MULTILINE(text, font, maxSize)                                      \
     [text length] > 0 ? [text boundingRectWithSize:maxSize                                  \
-                                           options:(NSStringDrawingUsesLineFragmentOrigin)  \
+                                           options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)  \
                                         attributes:@{ NSFontAttributeName: font }           \
                                            context:nil].size                                \
                       : CGSizeZero;
@@ -179,19 +179,35 @@
 // Get nav bar height
 #define NAV_BAR_H               (CGRectGetHeight(self.navigationController.navigationBar.frame))
 
-/// Alert some tips
-// @warning use only in ViewController context
+//
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
-#define ALERT_TIP(title, msg, cancel) \
+/**
+ Alert some tips
+
+ @param title the title string
+ @param msg the message string
+ @param cancel the title of Cancel button
+ @param dismissCompletion the callback when Cancel button tapped
+ 
+ @code
+ ALERT_TIP(@"下载json文件出错", ([NSString stringWithFormat:@"%@", error]), @"确定", { self.ignoreScanCallback = NO; });
+ ALERT_TIP(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", self.ignoreScanCallback = NO;);
+ ALERT_TIP(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", nil);
+ 
+ @warning use only in UIViewController context
+ */
+#define ALERT_TIP(title, msg, cancel, dismissCompletion) \
 \
 do { \
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:(title) message:(msg) preferredStyle:UIAlertControllerStyleAlert]; \
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:(cancel) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) { \
-        [alert dismissViewControllerAnimated:YES completion:nil]; \
-    }]; \
-    [alert addAction:okAction]; \
-    [self presentViewController:alert animated:YES completion:nil]; \
+    if ([UIAlertController class]) { \
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:(title) message:(msg) preferredStyle:UIAlertControllerStyleAlert]; \
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:(cancel) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) { \
+            dismissCompletion; \
+        }]; \
+        [alert addAction:cancelAction]; \
+        [self presentViewController:alert animated:YES completion:nil]; \
+    } \
 } while (0)
 
 #else // __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
@@ -201,10 +217,10 @@ do { \
 do { \
     if ([UIAlertController class]) { \
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:(title) message:(msg) preferredStyle:UIAlertControllerStyleAlert]; \
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:(cancel) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) { \
-            [alert dismissViewControllerAnimated:YES completion:nil]; \
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:(cancel) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) { \
+            dismissCompletion; \
         }]; \
-        [alert addAction:okAction]; \
+        [alert addAction:cancelAction]; \
         [self presentViewController:alert animated:YES completion:nil]; \
     } \
     else { \
