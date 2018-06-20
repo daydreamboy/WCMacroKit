@@ -25,4 +25,12 @@
 #define UICOLOR_RGB(color)       [UIColor colorWithRed: (((color) >> 16) & 0xFF) / 255.0 green: (((color) >> 8) & 0xFF) / 255.0 blue: ((color) & 0xFF) / 255.0 alpha: 1.0]
 #endif
 
+#ifndef UICOLOR_randomColor
+#define UICOLOR_randomColor [UIColor colorWithRed:(arc4random() % 255 / 255.0f) green:(arc4random() % 255 / 255.0f) blue:(arc4random() % 255 / 255.0f) alpha:1]
+#endif
+
+#ifndef UICOLOR_randomRGBAColor
+#define UICOLOR_randomRGBAColor [UIColor colorWithRed:(arc4random() % 255 / 255.0f) green:(arc4random() % 255 / 255.0f) blue:(arc4random() % 255 / 255.0f) alpha:(arc4random() % 10 / 10.0f)]
+#endif
+
 #endif /* WCMacroColor_h */
