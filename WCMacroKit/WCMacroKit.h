@@ -118,6 +118,15 @@
 // NSIndexPath
 #define NSINDEXPATH(section, row) ([NSIndexPath indexPathForRow:row inSection:section])
 
+/**
+ macro for [UIImage imageNamed:@"xxx"]
+
+ @param imageName the name of image
+ @param resource_bundle the resource bundle containes image. @"" is for main bundle
+ @return the UIImage object
+ */
+#define UIIMAGE_imageNamed(imageName, resource_bundle)  ([UIImage imageNamed:[resource_bundle stringByAppendingPathComponent:imageName]])
+
 // @sa http://stackoverflow.com/questions/11079157/objc-preprocessor-nsstring-macro
 // Synthesize Associated Objects
 #define SYNTHESIZE_ASSOCIATED_OBJ(getterName, setterName, type)                                                 \
