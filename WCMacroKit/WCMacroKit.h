@@ -154,6 +154,18 @@
     return value;                                                                                               \
 }
 
+// Define @property (nonatomic, assign/strong, class) type getterName;
+#define CLASS_PROPERTY_DEFINITION(getterName, setterName, type) \
+@dynamic getterName; \
+static type __static_##getterName; \
++ (void)setterName:(type)object { \
+    __static_##getterName = object; \
+} \
++ (type)getterName { \
+    return __static_##getterName; \
+}
+
+
 // Get parent view controller from UIView
 #define UIViewResideInUIViewController(__view) ({                               \
     UIViewController *parentViewController = nil;                               \
