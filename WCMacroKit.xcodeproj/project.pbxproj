@@ -29,7 +29,7 @@
 		4F7D8E9621086EE300145B00 /* WCMacroAssert.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BE400F31D7330B500A48174 /* WCMacroAssert.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9721086EE300145B00 /* WCMacroCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9821086EE300145B00 /* WCCallerTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F5D92891FEA4F06005F137D /* WCCallerTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4F7D8E9A21087C5500145B00 /* WCMacroUncategoried.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */; };
+		4F7D8E9A21087C5500145B00 /* WCMacroUncategoried.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */; };
 		4FB28DC21FA84D1600B58D2E /* WCMacroDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */; };
 		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
