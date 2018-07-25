@@ -13,6 +13,7 @@ FOUNDATION_EXPORT double WCMacroKitVersionNumber;
 //! Project version string for WCMacroKit.
 FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 
+//#if __has_include("WCMacroKit.h")
 
 #import "WCMacroLog.h"
 #import "WCMacroBlock.h"
@@ -22,3 +23,17 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 #import "WCMacroDelegate.h"
 #import "WCMacroCompatibility.h"
 #import "WCCallerTool.h"
+
+//#elif __has_include(<WCMacroKit/WCMacroKit.h>)
+//
+//#import <WCMacroKit/WCMacroLog.h>
+//#import <WCMacroKit/WCMacroBlock.h>
+//#import <WCMacroKit/WCMacroAssert.h>
+//#import <WCMacroKit/WCMacroColor.h>
+//#import <WCMacroKit/WCMacroVersion.h>
+//#import <WCMacroKit/WCMacroDelegate.h>
+//#import <WCMacroKit/WCMacroCompatibility.h>
+//#import <WCMacroKit/WCCallerTool.h>
+//
+//#endif
+
