@@ -23,6 +23,7 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 #import "WCMacroDelegate.h"
 #import "WCMacroCompatibility.h"
 #import "WCCallerTool.h"
+#import "WCMacroUncategoried.h"
 
 //#elif __has_include(<WCMacroKit/WCMacroKit.h>)
 //

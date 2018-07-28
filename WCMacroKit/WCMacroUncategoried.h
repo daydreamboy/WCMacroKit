@@ -77,6 +77,39 @@
                                            context:nil].size                                \
                       : CGSizeZero;
 
+#pragma mark - String Path
+
+#ifndef PathForResourceInBundle
+/**
+ Get the path of resource file (e.g. plist)
+
+ @param resource_name the resource file name with extension
+ @param resource_bundle the resource bundle name without .bundle. If nil, use main bundle (.app)
+ @return the path. If not exists, return nil
+ */
+#define PathForResourceInBundle(resource_name, resource_bundle) \
+( \
+(resource_bundle != nil) \
+? ([[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:(resource_bundle) ofType:@"bundle"]] pathForResource:[(resource_name) stringByDeletingPathExtension] ofType:[(resource_name) pathExtension]]) \
+: ([[NSBundle mainBundle] pathForResource:[(resource_name) stringByDeletingPathExtension] ofType:[(resource_name) pathExtension]]) \
+)
+#endif
+
+#pragma mark - NSBundle
+
+/**
+ Get a NSBundle of main resource (.app) or resource bundle (.bundle)
+
+ @param resource_bundle the resource bundle name without .bundle. If nil, use main bundle (.app)
+ @return an object of NSBundle
+ */
+#define ResourceBundle(resource_bundle) \
+( \
+(resource_bundle != nil) \
+? ([NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:(resource_bundle) ofType:@"bundle"]]) \
+: [NSBundle mainBundle] \
+)
+
 #pragma mark - Fixed Value
 
 // use for initializing frame/size/point when change it afterward
@@ -111,13 +144,24 @@
 #define NSINDEXPATH(section, row) ([NSIndexPath indexPathForRow:row inSection:section])
 
 /**
+ Judge the equality of two NSIndexPath
+
+ @param indexPath1 the indexPath1, expect it not nil
+ @param indexPath2 the indexPath2, expect it not nil
+ @return YES if indexPath1 is same as indexPath2
+ @warning If indexPath1 or indexPath2 is nil, always return NO
+ */
+#define NSIndexPathEqualToIndexPath(indexPath1, indexPath2) \
+((indexPath1 && indexPath2) && (indexPath1.section == indexPath2.section) && (indexPath1.row == indexPath2.row))
+
+/**
  macro for [UIImage imageNamed:@"xxx"]
 
  @param imageName the name of image
  @param resource_bundle the resource bundle containes image. @"" is for main bundle
  @return the UIImage object
  */
-#define UIIMAGE_imageNamed(imageName, resource_bundle)  ([UIImage imageNamed:[resource_bundle stringByAppendingPathComponent:imageName]])
+#define UIImage_imageNamed(imageName, resource_bundle)  ([UIImage imageNamed:[resource_bundle stringByAppendingPathComponent:imageName]])
 
 // @sa http://stackoverflow.com/questions/11079157/objc-preprocessor-nsstring-macro
 // Synthesize Associated Objects

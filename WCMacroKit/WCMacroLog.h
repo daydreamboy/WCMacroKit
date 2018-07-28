@@ -80,6 +80,9 @@
 
 #define WCDumpBool(b)   NSLog(@"%@:%@: `%s`= %@", @(__FILE_NAME__), @(__LINE__), #b, (b) ? @"YES" : @"NO")
 //#define WCDumpObject(o) NSLog(@"%@:%@: `%s`= %@", @(__FILE_NAME__), @(__LINE__), #o, (o))
+
+#ifndef WCDumpObject
 #define WCDumpObject(o) fprintf(stderr, "%s:%d: `%s`= %s\n", __FILE_NAME__, (int)__LINE__, #o, ([o debugDescription].UTF8String))
+#endif
 
 #endif /* WCMacroLog_h */

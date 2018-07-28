@@ -30,6 +30,7 @@
 		4F7D8E9721086EE300145B00 /* WCMacroCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9821086EE300145B00 /* WCCallerTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F5D92891FEA4F06005F137D /* WCCallerTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9A21087C5500145B00 /* WCMacroUncategoried.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F7D8FBA210C6B4B00145B00 /* Test_PathForResourceInBundle_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D8FB9210C6B4B00145B00 /* Test_PathForResourceInBundle_ViewController.m */; };
 		4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */; };
 		4FB28DC21FA84D1600B58D2E /* WCMacroDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */; };
 		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
@@ -81,6 +82,8 @@
 		4F7D8E8621086D0E00145B00 /* WCMacroKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WCMacroKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7D8E8921086D0E00145B00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroUncategoried.h; sourceTree = "<group>"; };
+		4F7D8FB8210C6B4B00145B00 /* Test_PathForResourceInBundle_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_PathForResourceInBundle_ViewController.h; sourceTree = "<group>"; };
+		4F7D8FB9210C6B4B00145B00 /* Test_PathForResourceInBundle_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_PathForResourceInBundle_ViewController.m; sourceTree = "<group>"; };
 		4FB28DBE1FA73D4400B58D2E /* TestDelegateCallerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDelegateCallerViewController.h; sourceTree = "<group>"; };
 		4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDelegateCallerViewController.m; sourceTree = "<group>"; };
 		4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCMacroDelegate.m; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */,
 				4F6635852047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h */,
 				4F6635862047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m */,
+				4F7D8FB8210C6B4B00145B00 /* Test_PathForResourceInBundle_ViewController.h */,
+				4F7D8FB9210C6B4B00145B00 /* Test_PathForResourceInBundle_ViewController.m */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -372,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F7D8FBA210C6B4B00145B00 /* Test_PathForResourceInBundle_ViewController.m in Sources */,
 				2BE400CD1D73272500A48174 /* AppDelegate.m in Sources */,
 				2B44B17D1D952C6C00B23550 /* Test_NSAssertOrXXX.m in Sources */,
 				4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */,
