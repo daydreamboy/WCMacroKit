@@ -95,6 +95,22 @@
 )
 #endif
 
+#ifndef URLForResourceInBundle
+/**
+ Get the URL of resource file (e.g. plist)
+
+ @param resource_name the resource file name with extension
+ @param resource_bundle the resource bundle name without .bundle. If nil, use main bundle (.app)
+ @return the path. If not exists, return nil
+ */
+#define URLForResourceInBundle(resource_name, resource_bundle) \
+( \
+(resource_bundle != nil) \
+? ([[NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:(resource_bundle) withExtension:@"bundle"]] URLForResource:[(resource_name) stringByDeletingPathExtension] withExtension:[(resource_name) pathExtension]]) \
+: ([[NSBundle mainBundle] URLForResource:[(resource_name) stringByDeletingPathExtension] withExtension:[(resource_name) pathExtension]]) \
+)
+#endif
+
 #pragma mark - NSBundle
 
 /**
@@ -161,7 +177,7 @@
  @param resource_bundle the resource bundle containes image. @"" is for main bundle
  @return the UIImage object
  */
-#define UIImage_imageNamed(imageName, resource_bundle)  ([UIImage imageNamed:[resource_bundle stringByAppendingPathComponent:imageName]])
+#define UIImage_imageNamed(imageName, resource_bundle)  ([UIImage imageNamed:[(resource_bundle) stringByAppendingPathComponent:(imageName)]])
 
 // @sa http://stackoverflow.com/questions/11079157/objc-preprocessor-nsstring-macro
 // Synthesize Associated Objects
@@ -288,6 +304,19 @@ do { \
 
 #endif // __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
+#pragma mark > NSError
+
+#define WCSafeSetErrorPtr(errorPtr, error) \
+do { \
+    if (errorPtr) { \
+        *errorPtr = error; \
+    } \
+} while (0)
+
+#pragma mark > CGSize
+
+#define WCCGSizeScaled(size, scale) (CGSizeMake((size).width * (scale), (size).height * (scale)))
+
 #pragma mark - Check Device Model
 
 // http://stackoverflow.com/a/13156390/4794665
@@ -352,10 +381,10 @@ do { \
 
 #ifndef NSARRAY_M_SAFE_ADD
 #define NSARRAY_M_SAFE_ADD(mutableArray, value) \
-    do {                                        \
-        if (mutableArray && value) {            \
-            [mutableArray addObject:value];     \
-        }                                       \
+    do { \
+        if ([mutableArray isKindOfClass:[NSMutableArray class]] && value) { \
+            [mutableArray addObject:value]; \
+        } \
     } while (0)
 
 #endif /* NSARRAY_M_SAFE_ADD */
