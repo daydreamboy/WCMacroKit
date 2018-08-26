@@ -130,6 +130,16 @@ WCDummyProtocol(UITextFieldDelegate)
     XCTAssertTrue(STR_IF_NOT_EMPTY(notEmptyString));
 }
 
+- (void)test_STR_FORMAT {
+    NSLog(@"%@", STR_FORMAT(@"本地文件不存在, 路径是%@", @"path/to/file"));
+    NSLog(@"%@", STR_FORMAT(@"参数不对, 参数1是%@，参数2是%@", @"a", @"b"));
+    
+    XCTAssertEqualObjects(STR_FORMAT(@"本地文件不存在, 路径是%@", @"path/to/file"), @"本地文件不存在, 路径是path/to/file");
+    XCTAssertEqualObjects(STR_FORMAT(@"参数不对, 参数1是%@，参数2是%@", @"a", @"b"), @"参数不对, 参数1是a，参数2是b");
+}
+
+#pragma mark -
+
 - (void)test_sel {
     //    NSString *selector = NSStringFromSelector(@selector(buttonClicked:));
     //    SEL_SAFE_CALL(self, @selector(buttonClicked));
