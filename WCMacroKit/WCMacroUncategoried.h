@@ -119,7 +119,7 @@
  Get a NSBundle of main resource (.app) or resource bundle (.bundle)
 
  @param resource_bundle the resource bundle name without .bundle. If nil, use main bundle (.app)
- @return an object of NSBundle
+ @return an object of NSBundle. Return nil if not found.
  */
 #define ResourceBundle(resource_bundle) \
 ( \
@@ -318,6 +318,23 @@ do { \
 #pragma mark > CGSize
 
 #define WCCGSizeScaled(size, scale) (CGSizeMake((size).width * (scale), (size).height * (scale)))
+
+#pragma mark > Safe Get Value
+
+/**
+ Safe get integer
+
+ @param number the NSNumber
+ @return the NSInteger. Return NSNotFound if the number is not NSNumber
+ */
+#define numberInteger(number) \
+({ \
+NSInteger integer = NSNotFound; \
+if ([(number) isKindOfClass:[NSNumber class]]) { \
+    integer = [(number) integerValue]; \
+} \
+integer; \
+})
 
 #pragma mark - Check Device Model
 
