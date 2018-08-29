@@ -378,6 +378,18 @@ integer; \
 
 #endif /* NSDICTIONARY_M_SAFE_ADD_ENTRIES */
 
+#define NSDICTIONARY_M_PAIRS_BEGIN(dict) \
+NSMutableDictionary *dict = \
+({ \
+NSMutableDictionary *dictM_internal = [NSMutableDictionary dictionary];
+
+#define NSDICTIONARY_M_PAIRS_END \
+dictM_internal; \
+});
+
+#define NSDICTIONARY_M_PAIRS_SET(key, value) \
+dictM_internal[key] = value;
+
 #pragma mark NSArray
 
 /*!
