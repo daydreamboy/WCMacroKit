@@ -46,6 +46,8 @@
                 NSAssertWithReleaseAction(break, condition, desc, ##__VA_ARGS__)
 #define NSAssertOrContinue(condition, desc, ...) \
                 NSAssertWithReleaseAction(continue, condition, desc, ##__VA_ARGS__)
+#define NSAssertOrDoNothing(condition, desc, ...) \
+                NSAssertWithReleaseAction(nil, condition, desc, ##__VA_ARGS__)
 
 #define NSParameterAssertOrReturn(condition) \
                 NSAssertWithReleaseAction(return, condition, @"Invalid parameter not satisfying: %s", #condition)

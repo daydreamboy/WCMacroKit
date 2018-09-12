@@ -30,10 +30,10 @@
 
 #pragma mark > String checking
 // Is a string and not empty
-#define STR_IF_NOT_EMPTY(str)    ([str isKindOfClass:[NSString class]] && str.length)
+#define STR_IF_NOT_EMPTY(str)    ([(str) isKindOfClass:[NSString class]] && [(NSString *)(str) length])
 
 // Is a string and empty
-#define STR_IF_EMPTY(str)        ([str isKindOfClass:[NSString class]] && str.length == 0)
+#define STR_IF_EMPTY(str)        ([(str) isKindOfClass:[NSString class]] && [(NSString *)(str) length] == 0)
 
 #pragma mark > String size calculation
 
@@ -465,6 +465,16 @@ dictM_internal[key] = value;
         }                                                                       \
     }                                                                           \
     return tempVar;
+
+#pragma mark NSURL
+
+/**
+ Safe to wrap +[NSURL fileURLWithPath:]
+
+ @param path the path, and maybe nil
+ @return the NSURL
+ */
+#define NSURL_fileURLWithPath(path) ((path) ? [NSURL fileURLWithPath:(path) : nil)
 
 #pragma mark - CocoaPod Macro
 
