@@ -476,6 +476,23 @@ dictM_internal[key] = value;
  */
 #define NSURL_fileURLWithPath(path) ((path) ? [NSURL fileURLWithPath:(path) : nil)
 
+#pragma mark NSObject
+/**
+ Safe to convert an object to another propert type object without warning.
+ 
+ @param toObject the declared variable
+ @param fromObejct the object to convert
+ @param toClassName the class type to match, e.g. NSMutableString
+ */
+#define NSOBJECT_TYPE_CONVERT(toObject, fromObject, toClassName) \
+toClassName *toObject = ({ \
+    toClassName *internal_return_value; \
+    if ([(fromObject) isKindOfClass:[toClassName class]]) { \
+        internal_return_value = (toClassName *)(fromObject); \
+    } \
+    internal_return_value; \
+});
+
 #pragma mark - CocoaPod Macro
 
 // Specify Pod (e.g. pod name, pod version)

@@ -12,6 +12,47 @@
 @property (nonatomic, strong) NSString *sharedString;
 @end
 
+@protocol A <NSObject>
+@end
+
+@protocol B <NSObject>
+@end
+
+@interface ModelB : NSObject <B>
+@end
+@implementation ModelB
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%p: This is a object of ModelB", self];
+}
+@end
+
+@interface ModelA : NSObject <A>
+@property (nonatomic, strong) id<B> b;
+@end
+@implementation ModelA
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _b = [ModelB new];
+    }
+    return self;
+}
+@end
+
+@interface SomeModel : NSObject
+@property (nonatomic, strong) id<A> a;
+@end
+
+@implementation SomeModel
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _a = [ModelA new];
+    }
+    return self;
+}
+@end
+
 @implementation Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController
 
 - (void)viewDidLoad {
@@ -28,6 +69,14 @@
     NSDICTIONARY_M_PAIRS_END
     
     NSLog(@"%@", dictM);
+}
+
+- (void)test_NSOBJECT_TYPE_CONVERT {
+    SomeModel *model = [SomeModel new];
+    NSOBJECT_TYPE_CONVERT(varA, model.a, ModelA);
+    NSOBJECT_TYPE_CONVERT(varB, varA.b, ModelB);
+    ModelB *modelB = varB;
+    NSLog(@"%@", modelB);
 }
 
 /*
