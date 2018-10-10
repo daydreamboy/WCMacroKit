@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 
 #import "RootViewController.h"
+#import "WCMacroKit.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) RootViewController *rootViewController;
@@ -26,7 +27,26 @@
     
     [self.window makeKeyAndVisible];
     
+    NSLog(@"%@", NSStringFromCGRect([UIScreen mainScreen].bounds));
+    NSLog(@"%f", [UIScreen mainScreen].scale);
+    [self checkiPhoneModel];
+    
     return YES;
+}
+
+- (void)checkiPhoneModel {
+    if (IS_IPHONE_X_OR_XS) {
+        NSLog(@"is iPhone X or iPhone XS");
+    }
+    else if (IS_IPHONE_XS_MAX) {
+        NSLog(@"is iPhone XS Max");
+    }
+    else if (IS_IPHONE_XR) {
+        NSLog(@"is iPhone XR");
+    }
+    else {
+        NSLog(@"unknown device");
+    }
 }
 
 @end
