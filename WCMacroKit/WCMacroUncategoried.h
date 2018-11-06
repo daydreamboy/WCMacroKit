@@ -336,6 +336,17 @@ if ([(number) isKindOfClass:[NSNumber class]]) { \
 integer; \
 })
 
+#pragma mark - Safe float comparasion
+
+/**
+ Safe compare two float or double equality
+
+ @param f1 the float or double
+ @param f2 the float or double
+ @return YES if the f1 and f2 are equal by float type. Otherwise, NO
+ */
+#define FLOAT_COMPARE_EQUAL(f1, f2) (fabs((float)(f1) - (float)(f2)) < FLT_EPSILON)
+
 #pragma mark - Check Device Model
 
 // http://stackoverflow.com/a/13156390/4794665
