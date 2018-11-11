@@ -269,8 +269,6 @@ static type __static_##getterName; \
  ALERT_TIP(@"下载json文件出错", ([NSString stringWithFormat:@"%@", error]), @"确定", { self.ignoreScanCallback = NO; });
  ALERT_TIP(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", self.ignoreScanCallback = NO;);
  ALERT_TIP(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", nil);
- 
- @warning use only in UIViewController context
  */
 #define ALERT_TIP(title, msg, cancel, dismissCompletion) \
 \
@@ -281,13 +279,13 @@ do { \
             dismissCompletion; \
         }]; \
         [alert addAction:cancelAction]; \
-        [self presentViewController:alert animated:YES completion:nil]; \
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil]; \
     } \
 } while (0)
 
 #else // __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
-#define ALERT_TIP(title, msg, cancel) \
+#define ALERT_TIP(title, msg, cancel, dismissCompletion) \
 \
 do { \
     if ([UIAlertController class]) { \
@@ -296,7 +294,7 @@ do { \
             dismissCompletion; \
         }]; \
         [alert addAction:cancelAction]; \
-        [self presentViewController:alert animated:YES completion:nil]; \
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil]; \
     } \
     else { \
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(title) message:(msg) delegate:nil cancelButtonTitle:(cancel) otherButtonTitles:nil]; \
