@@ -17,8 +17,15 @@
 #define STR_OF_BOOL(yesOrNo)     ((yesOrNo) ? @"YES" : @"NO")
 // property name to string
 #define STR_OF_PROP(property)    (NSStringFromSelector(@selector(property)))
-// literal JSON c string to NSString
-// @see https://stackoverflow.com/a/14293615
+
+/**
+ literal JSON c string to NSString
+
+ @param ... the literal string
+ @return the NSString
+ @see https://stackoverflow.com/a/14293615
+ @warning the `\n` will replaced by ` `
+ */
 #define STR_OF_JSON(...) @#__VA_ARGS__
 
 #pragma mark > String modidication
