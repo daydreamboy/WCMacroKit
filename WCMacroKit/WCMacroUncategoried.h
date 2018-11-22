@@ -34,6 +34,8 @@
 #define STR_CATENATE(str1, str2) ([NSString stringWithFormat:@"%@%@", str1, str2])
 // Short formated string
 #define STR_FORMAT(format, ...) ([NSString stringWithFormat:format, __VA_ARGS__])
+// Trim a string
+#define STR_TRIM(str) ([(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]])
 
 #pragma mark > String checking
 // Is a string and not empty
