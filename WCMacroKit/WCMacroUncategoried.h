@@ -477,11 +477,11 @@ dictM_internal[key] = value;
 #ifndef NSARRAY_SAFE_GET
 #define NSARRAY_SAFE_GET(array, index)                      \
     ({                                                      \
-        id value = nil;                                     \
+        id __value = nil;                                   \
         if (array && 0 <= index && index < [array count]) { \
-            value = [array objectAtIndex:index];            \
+            __value = [array objectAtIndex:index];          \
         }                                                   \
-        value;                                              \
+        __value;                                            \
     })
 
 #endif /* NSARRAY_SAFE_GET */
@@ -532,11 +532,11 @@ dictM_internal[key] = value;
  */
 #define NSOBJECT_TYPE_CONVERT(toObject, fromObject, toClassName) \
 toClassName *toObject = ({ \
-    toClassName *internal_return_value; \
+    toClassName *__internal_return_value; \
     if ([(fromObject) isKindOfClass:[toClassName class]]) { \
-        internal_return_value = (toClassName *)(fromObject); \
+        __internal_return_value = (toClassName *)(fromObject); \
     } \
-    internal_return_value; \
+    __internal_return_value; \
 });
 
 #pragma mark - CocoaPod Macro
