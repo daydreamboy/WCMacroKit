@@ -26,6 +26,7 @@ WCDummyProtocol(UITextFieldDelegate)
 
 - (void)setUp {
     [super setUp];
+    
     NSLog(@"\n");
 }
 
@@ -175,6 +176,7 @@ WCDummyProtocol(UITextFieldDelegate)
 
 - (void)test_NSARRAY_M_SAFE_ADD {
     NSMutableArray *arrM1 = [NSMutableArray array];
+
     NSARRAY_M_SAFE_ADD(arrM1, @"1");
     NSARRAY_M_SAFE_ADD(arrM1, @"2");
     NSARRAY_M_SAFE_ADD(arrM1, @"");
@@ -242,6 +244,49 @@ WCDummyProtocol(UITextFieldDelegate)
     
     NSString *emptyStr= @"";
     WCDumpObject(emptyStr);
+}
+
+#pragma mark -
+
+- (void)test_FrameSetSize {
+    CGSize size;
+    CGRect frame;
+    CGRect output;
+    
+    // Case 1
+    size = CGSizeMake(200, 200);
+    frame = CGRectMake(10, 10, 100, 100);
+    output = FrameSetSize(frame, size.width, size.height);
+    XCTAssertTrue(output.size.width == 200 && output.size.height == 200);
+    
+    // Case 2
+    size = CGSizeMake(200, 200);
+    frame = CGRectMake(10, 10, 100, 100);
+    output = FrameSetSize(frame, size.width, NAN);
+    XCTAssertTrue(output.size.width == 200 && output.size.height == 100);
+}
+
+- (void)test_strongify_weakify {
+    id foo = [[NSObject alloc] init];
+    id bar = [[NSObject alloc] init];
+    
+    weakify(self);
+    weakify(foo);
+    
+    // this block will not keep 'foo' or 'bar' alive
+    BOOL (^matchesFooOrBar)(id) = ^ BOOL (id obj){
+        // but now, upon entry, 'foo' and 'bar' will stay alive until the block has
+        // finished executing
+        strongify(self);
+        strongify(foo);
+        
+        NSLog(@"self: %@", self);
+        NSLog(@"foo: %@", foo);
+        
+        return [foo isEqual:obj] || [bar isEqual:obj];
+    };
+    
+    matchesFooOrBar([NSDate date]);
 }
 
 @end

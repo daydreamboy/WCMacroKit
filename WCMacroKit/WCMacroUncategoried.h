@@ -137,12 +137,46 @@
 : [NSBundle mainBundle] \
 )
 
-#pragma mark - Fixed Value
+#pragma mark - UI
+
+#pragma mark > Fixed Value
 
 // use for initializing frame/size/point when change it afterward
 #ifndef UNSPECIFIED
 #define UNSPECIFIED 0
 #endif
+
+#pragma mark > Frame
+
+/**
+ Set width and height of a frame
+
+ @param frame the original frame
+ @param newWidth the new width. If not change, set it to NAN
+ @param newHeight the new height. If not change, set it to NAN
+ @return the new frame
+ */
+#define FrameSetSize(frame, newWidth, newHeight) ({ \
+CGRect __internal_frame = (frame); \
+if (!isnan((newWidth))) { \
+    __internal_frame.size.width = (newWidth); \
+} \
+if (!isnan((newHeight))) { \
+    __internal_frame.size.height = (newHeight); \
+} \
+__internal_frame; \
+})
+
+#pragma mark > CGSize
+
+/**
+ Get new size with width and height scaled by the same ratio
+
+ @param size the original size
+ @param scale the scale ratio
+ @return the new size
+ */
+#define CGSizeScaled(size, scale) (CGSizeMake((size).width * (scale), (size).height * (scale)))
 
 // Debug
 #pragma mark - Debug
@@ -322,10 +356,6 @@ do { \
     } \
 } while (0)
 
-#pragma mark > CGSize
-
-#define WCCGSizeScaled(size, scale) (CGSizeMake((size).width * (scale), (size).height * (scale)))
-
 #pragma mark > Safe Get Value
 
 /**
@@ -343,7 +373,16 @@ if ([(number) isKindOfClass:[NSNumber class]]) { \
 integer; \
 })
 
-#pragma mark - Safe float comparasion
+#pragma mark > strongify/weakify
+
+// @see https://www.jianshu.com/p/9e18f28bf28d
+#define weakify(...) \
+__weak __typeof__(__VA_ARGS__) __VA_ARGS__##_weak_ = __VA_ARGS__;
+
+#define strongify(...) \
+__typeof__(__VA_ARGS__) __VA_ARGS__ = __VA_ARGS__##_weak_;
+
+#pragma mark - Safe float comparison
 
 /**
  Safe compare two float or double equality
@@ -455,13 +494,16 @@ dictM_internal[key] = value;
 
 #endif /* NSARRAY_M_SAFE_SET */
 
-
+// Note: in macro, use _Pragma("clang diagnostic push") instead of #pragma GCC diagnostic push
 #ifndef NSARRAY_M_SAFE_ADD
 #define NSARRAY_M_SAFE_ADD(mutableArray, value) \
     do { \
-        if ([mutableArray isKindOfClass:[NSMutableArray class]] && value) { \
-            [mutableArray addObject:value]; \
-        } \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
+            if ([mutableArray isKindOfClass:[NSMutableArray class]] && value) { \
+                [mutableArray addObject:value]; \
+            } \
+_Pragma("clang diagnostic pop") \
     } while (0)
 
 #endif /* NSARRAY_M_SAFE_ADD */
