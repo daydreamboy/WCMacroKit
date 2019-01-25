@@ -373,14 +373,63 @@ if ([(number) isKindOfClass:[NSNumber class]]) { \
 integer; \
 })
 
-#pragma mark > strongify/weakify
+#pragma mark > Weak-Strong Dance
 
-// @see https://www.jianshu.com/p/9e18f28bf28d
-#define weakify(...) \
-__weak __typeof__(__VA_ARGS__) __VA_ARGS__##_weak_ = __VA_ARGS__;
+/**
+ Weakify the object variable
 
-#define strongify(...) \
-__typeof__(__VA_ARGS__) __VA_ARGS__ = __VA_ARGS__##_weak_;
+ @param object the original variable
+ @discussion Use weakify/strongify as pair
+ @see https://www.jianshu.com/p/9e18f28bf28d
+ @see https://github.com/ReactiveCocoa/ReactiveObjC/blob/master/ReactiveObjC/extobjc/EXTScope.h#L83
+ @code
+ 
+ id foo = [[NSObject alloc] init];
+ id bar = [[NSObject alloc] init];
+ 
+ weakify(foo);
+ weakify(bar);
+ 
+ // this block will not keep 'foo' or 'bar' alive
+ BOOL (^matchesFooOrBar)(id) = ^ BOOL (id obj){
+    // but now, upon entry, 'foo' and 'bar' will stay alive until the block has
+    // finished executing
+    strongify(foo);
+    strongifyWithReturn(bar, return NO);
+ 
+    return [foo isEqual:obj] || [bar isEqual:obj];
+ };
+ 
+ @endcode
+ */
+#define weakify(object) \
+__weak __typeof__(object) object##_weak_ = object;
+
+/**
+ Strongify the weak object variable which is created by weakify(object)
+
+ @param object the original variable
+ @discussion Use weakify/strongify as pair
+ @see https://www.jianshu.com/p/9e18f28bf28d
+ @note See #weakify for an example of usage.
+ */
+#define strongify(object) \
+__typeof__(object) object = object##_weak_;
+
+/**
+ Strongify the weak object variable which is created by weakify(object).
+ And optional add a return clause
+
+ @param object the original variable
+ @param ... the return clause
+ @discussion strongifyWithReturn works as strongify, except for allowing a return clause
+ @note See #weakify for an example of usage.
+ */
+#define strongifyWithReturn(object, ...) \
+__typeof__(object) object = object##_weak_; \
+if (!object) { \
+    __VA_ARGS__; \
+}
 
 #pragma mark - Safe float comparison
 

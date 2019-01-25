@@ -15,6 +15,7 @@
 #import "Test_STR_OF_JSONViewController.h"
 #import "TestRawStringWithC++11ViewController.h"
 #import "Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h"
+#import "TestWeakifyStrongifyViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -44,6 +45,7 @@
         @"use json literal in code",
         @"use raw literal string in code (C++ 11 feature)",
         @"thread safe lazy getter",
+        @"WeakStrongDanceViewController",
     ];
     _classes = @[
         [Test_NSAssertOrXXX class],
@@ -53,6 +55,7 @@
         [Test_STR_OF_JSONViewController class],
         [TestRawStringWithC__11ViewController class],
         [Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController class],
+        [TestWeakifyStrongifyViewController class],
     ];
 }
 
