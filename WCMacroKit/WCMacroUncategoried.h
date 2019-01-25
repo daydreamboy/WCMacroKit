@@ -155,6 +155,7 @@
  @param newWidth the new width. If not change, set it to NAN
  @param newHeight the new height. If not change, set it to NAN
  @return the new frame
+ @discussion Use FrameSet macro in WCViewTool instead.
  */
 #define FrameSetSize(frame, newWidth, newHeight) ({ \
 CGRect __internal_frame = (frame); \
