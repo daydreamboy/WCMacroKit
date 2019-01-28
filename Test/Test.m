@@ -289,4 +289,13 @@ WCDummyProtocol(UITextFieldDelegate)
     matchesFooOrBar([NSDate date]);
 }
 
+- (void)test_BLOCK_SAFE_RUN_ON_MAIN_THREAD {
+    void (^block)(NSString *) = ^(NSString *string) {
+        NSLog(@"%@", string);
+        XCTAssertTrue([NSThread isMainThread]);
+    };
+    
+    BLOCK_SAFE_RUN_ON_MAIN_THREAD(block, @"123");
+}
+
 @end
