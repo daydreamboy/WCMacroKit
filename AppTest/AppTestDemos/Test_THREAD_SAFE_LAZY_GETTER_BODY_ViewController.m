@@ -73,8 +73,8 @@
 
 - (void)test_NSOBJECT_TYPE_CONVERT {
     SomeModel *model = [SomeModel new];
-    NSOBJECT_TYPE_CONVERT(varA, model.a, ModelA);
-    NSOBJECT_TYPE_CONVERT(varB, varA.b, ModelB);
+    NSOBJECT_TYPE_CONVERT(model.a, varA, ModelA);
+    NSOBJECT_TYPE_CONVERT(varA.b, varB, ModelB);
     ModelB *modelB = varB;
     NSLog(@"%@", modelB);
 }

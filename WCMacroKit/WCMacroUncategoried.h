@@ -384,7 +384,6 @@ integer; \
 #define ValueOfArrayM(object) ValueOfClassType(object, NSMutableArray)
 
 
-
 #pragma mark > Weak-Strong Dance
 
 /**
@@ -629,11 +628,15 @@ _Pragma("clang diagnostic pop") \
 /**
  Safe to convert an object to another propert type object without warning.
  
- @param toObject the declared variable
  @param fromObejct the object to convert
+ @param toObject the declared variable
  @param toClassName the class type to match, e.g. NSMutableString
+ @textblock
+ SomeModel *model = [SomeModel new];
+ NSOBJECT_TYPE_CONVERT(model.a, varA, ModelA);
+ @textblock
  */
-#define NSOBJECT_TYPE_CONVERT(toObject, fromObject, toClassName) \
+#define NSOBJECT_TYPE_CONVERT(fromObject, toObject, toClassName) \
 toClassName *toObject = ({ \
     toClassName *__internal_return_value; \
     if ([(fromObject) isKindOfClass:[toClassName class]]) { \
