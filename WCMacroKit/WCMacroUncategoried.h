@@ -298,7 +298,8 @@ static type __static_##getterName; \
 // Get nav bar height
 #define NAV_BAR_H               (CGRectGetHeight(self.navigationController.navigationBar.frame))
 
-//
+#pragma mark > Show Alert
+// show alert
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
 /**
@@ -310,11 +311,11 @@ static type __static_##getterName; \
  @param dismissCompletion the callback when Cancel button tapped
  
  @code
- ALERT_TIP(@"下载json文件出错", ([NSString stringWithFormat:@"%@", error]), @"确定", { self.ignoreScanCallback = NO; });
- ALERT_TIP(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", self.ignoreScanCallback = NO;);
- ALERT_TIP(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", nil);
+ SHOW_ALERT(@"下载json文件出错", ([NSString stringWithFormat:@"%@", error]), @"确定", { self.ignoreScanCallback = NO; });
+ SHOW_ALERT(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", self.ignoreScanCallback = NO;);
+ SHOW_ALERT(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", nil);
  */
-#define ALERT_TIP(title, msg, cancel, dismissCompletion) \
+#define SHOW_ALERT(title, msg, cancel, dismissCompletion) \
 \
 do { \
     if ([UIAlertController class]) { \
@@ -329,7 +330,7 @@ do { \
 
 #else // __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
-#define ALERT_TIP(title, msg, cancel, dismissCompletion) \
+#define SHOW_ALERT(title, msg, cancel, dismissCompletion) \
 \
 do { \
     if ([UIAlertController class]) { \
@@ -373,6 +374,16 @@ if ([(number) isKindOfClass:[NSNumber class]]) { \
 } \
 integer; \
 })
+
+#define ValueOfClassType(object, classType) ([(object) isKindOfClass:[(classType) class]] ? (object) : nil)
+
+#define ValueOfDict(object) ValueOfClassType(object, NSDictionary)
+#define ValueOfDictM(object) ValueOfClassType(object, NSMutableDictionary)
+
+#define ValueOfArray(object) ValueOfClassType(object, NSArray)
+#define ValueOfArrayM(object) ValueOfClassType(object, NSMutableArray)
+
+
 
 #pragma mark > Weak-Strong Dance
 
