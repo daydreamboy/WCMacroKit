@@ -425,7 +425,7 @@ __weak __typeof__(object) object##_weak_ = object;
  @note See #weakify for an example of usage.
  */
 #define strongify(object) \
-__typeof__(object) object = object##_weak_;
+__strong __typeof__(object) object = object##_weak_;
 
 /**
  Strongify the weak object variable which is created by weakify(object).
@@ -437,7 +437,7 @@ __typeof__(object) object = object##_weak_;
  @note See #weakify for an example of usage.
  */
 #define strongifyWithReturn(object, ...) \
-__typeof__(object) object = object##_weak_; \
+__strong __typeof__(object) object = object##_weak_; \
 if (!object) { \
     __VA_ARGS__; \
 }
