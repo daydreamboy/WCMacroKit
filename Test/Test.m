@@ -139,6 +139,13 @@ WCDummyProtocol(UITextFieldDelegate)
     XCTAssertEqualObjects(STR_FORMAT(@"参数不对, 参数1是%@，参数2是%@", @"a", @"b"), @"参数不对, 参数1是a，参数2是b");
 }
 
+- (void)test_ValueOfXXX {
+    NSDictionary *layoutJson = @{};
+    NSString *name = ValueOfString(layoutJson[@"name"]);
+    
+    name = ([(layoutJson[@"name"]) isKindOfClass:[NSString class]] ? (layoutJson[@"name"]) : nil);
+}
+
 #pragma mark -
 
 - (void)test_sel {

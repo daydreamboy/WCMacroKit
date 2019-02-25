@@ -375,13 +375,15 @@ if ([(number) isKindOfClass:[NSNumber class]]) { \
 integer; \
 })
 
-#define ValueOfClassType(object, classType) ([(object) isKindOfClass:[(classType) class]] ? (object) : nil)
+#define ValueOfClassType(object, classType) ([(object) isKindOfClass:[classType class]] ? (object) : nil)
 
 #define ValueOfDict(object) ValueOfClassType(object, NSDictionary)
 #define ValueOfDictM(object) ValueOfClassType(object, NSMutableDictionary)
 
 #define ValueOfArray(object) ValueOfClassType(object, NSArray)
 #define ValueOfArrayM(object) ValueOfClassType(object, NSMutableArray)
+
+#define ValueOfString(object) ValueOfClassType(object, NSString)
 
 
 #pragma mark > Weak-Strong Dance
