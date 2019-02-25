@@ -139,11 +139,48 @@ WCDummyProtocol(UITextFieldDelegate)
     XCTAssertEqualObjects(STR_FORMAT(@"参数不对, 参数1是%@，参数2是%@", @"a", @"b"), @"参数不对, 参数1是a，参数2是b");
 }
 
+#pragma mark > Safe Get Value
+
 - (void)test_ValueOfXXX {
     NSDictionary *layoutJson = @{};
     NSString *name = ValueOfString(layoutJson[@"name"]);
     
     name = ([(layoutJson[@"name"]) isKindOfClass:[NSString class]] ? (layoutJson[@"name"]) : nil);
+}
+
+#pragma mark > Key Value Pair Suite
+
+- (void)test_Key_Value_Pair_Suite {
+    NSArray<KeyValuePairType> *pairs;
+    
+    pairs = @[
+              KeyValuePair(@"cancel", nil),
+              KeyValuePair(@"event", @"module"),
+              @[@1, @2, @3]
+              ];
+    
+    for (NSInteger i = 0; i < pairs.count; i++) {
+        KeyValuePairType pair = pairs[i];
+        
+        if (i == 0) {
+            NSString *key = KeyOfPair(pair);
+            NSString *value = ValueOfPair(pair);
+            
+            XCTAssertEqualObjects(key, @"cancel");
+            XCTAssertNil(value);
+        }
+        else if (i == 1) {
+            NSString *key = KeyOfPair(pair);
+            NSString *value = ValueOfPair(pair);
+            
+            XCTAssertEqualObjects(key, @"event");
+            XCTAssertEqualObjects(value, @"module");
+        }
+        else if (i == 2) {
+            BOOL isPair = KeyValuePairValidate(pair);
+            XCTAssertFalse(isPair);
+        }
+    }
 }
 
 #pragma mark -

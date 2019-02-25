@@ -444,6 +444,43 @@ if (!object) { \
     __VA_ARGS__; \
 }
 
+#pragma mark > Key Value Pair Suite
+
+/**
+ Make a pair of key value
+
+ @param key the key object
+ @param value the value object
+ @return the a pair of key value
+ @see https://stackoverflow.com/a/33525373
+ */
+#define KeyValuePair(key, value)    @[((key) ?: [NSNull null]), ((value) ?: [NSNull null])]
+/**
+ The type of key value pair
+ */
+#define KeyValuePairType            NSArray *
+/**
+ Check object if a key value pair
+
+ @param object the object
+ @return YES if the object is a key value pair, or return NO if not
+ */
+#define KeyValuePairValidate(object)  ([(object) isKindOfClass:[NSArray class]] && [(object) count] == 2)
+/**
+ Get the key object of pair
+
+ @param pair the pair object
+ @return the key object
+ */
+#define KeyOfPair(pair)             (KeyValuePairValidate(pair) ? ([pair firstObject] ==  [NSNull null] ? nil : [pair firstObject]) : nil)
+/**
+ Get the value object of pair
+
+ @param pair the pair object
+ @return the value object
+ */
+#define ValueOfPair(pair)           (KeyValuePairValidate(pair) ? ([pair lastObject] ==  [NSNull null] ? nil : [pair lastObject]) : nil)
+
 #pragma mark - Safe float comparison
 
 /**
