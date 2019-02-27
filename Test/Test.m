@@ -150,7 +150,7 @@ WCDummyProtocol(UITextFieldDelegate)
 
 #pragma mark > Key Value Pair Suite
 
-- (void)test_Key_Value_Pair_Suite {
+- (void)test_key_value_pair_suite {
     NSArray<KeyValuePairType> *pairs;
     
     pairs = @[
@@ -181,6 +181,52 @@ WCDummyProtocol(UITextFieldDelegate)
             XCTAssertFalse(isPair);
         }
     }
+}
+
+#pragma mark - NSDictionary
+
+- (void)test_NSDICTIONARY_M_PAIRS_BEGIN {
+    // Case 1
+    NSDICTIONARY_M_PAIRS_BEGIN(dictM)
+    NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
+    NSDICTIONARY_M_PAIRS_SET(@"key1", @YES)
+    NSDICTIONARY_M_PAIRS_SET(@"key1", @1)
+    NSDICTIONARY_M_PAIRS_END
+    
+    XCTAssertTrue(dictM.count == 1);
+    
+    // Case 2
+    NSDICTIONARY_M_PAIRS_BEGIN(dictM2)
+    NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
+    NSDICTIONARY_M_PAIRS_SET(@"key2", @YES)
+    NSDICTIONARY_M_PAIRS_SET(@"key3", @1)
+    NSDICTIONARY_M_PAIRS_END
+    
+    XCTAssertTrue(dictM2.count == 3);
+    
+    // Case 3
+    NSDICTIONARY_M_PAIRS_BEGIN(dictM3)
+    NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
+    NSDICTIONARY_M_PAIRS_SET(@"key2", nil)
+    NSDICTIONARY_M_PAIRS_SET(nil, @1)
+    NSDICTIONARY_M_PAIRS_END
+    
+    XCTAssertTrue(dictM3.count == 1);
+}
+
+- (void)test_NSDICTIONARY_M_PAIRS_BEGIN_WITH_RETURN {
+
+    NSMutableDictionary *data = NSDICTIONARY_M_PAIRS_RETURN(
+        NSDICTIONARY_M_PAIRS_SET(@"a", @"A");
+        NSDICTIONARY_M_PAIRS_SET(@"b", @"B");
+        NSDICTIONARY_M_PAIRS_SET(@"c", nil);
+        NSDICTIONARY_M_PAIRS_SET(nil, @"D");
+    );
+    
+    XCTAssertTrue(data.count == 2);
+    XCTAssertEqualObjects(data[@"a"], @"A");
+    XCTAssertEqualObjects(data[@"a"], @"A");
+    XCTAssertNil(data[@"c"]);
 }
 
 #pragma mark -

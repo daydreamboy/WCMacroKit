@@ -61,14 +61,6 @@
     [NSThread detachNewThreadSelector:@selector(printSharedString) toTarget:self withObject:nil];
     [NSThread detachNewThreadSelector:@selector(printSharedString) toTarget:self withObject:nil];
     [NSThread detachNewThreadSelector:@selector(printSharedString) toTarget:self withObject:nil];
-    
-    NSDICTIONARY_M_PAIRS_BEGIN(dictM)
-    NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-    NSDICTIONARY_M_PAIRS_SET(@"key1", @YES)
-    NSDICTIONARY_M_PAIRS_SET(@"key1", @1)
-    NSDICTIONARY_M_PAIRS_END
-    
-    NSLog(@"%@", dictM);
 }
 
 - (void)test_NSOBJECT_TYPE_CONVERT {

@@ -545,7 +545,7 @@ if (!object) { \
 #ifndef NSDICTIONARY_M_SAFE_SET
 #define NSDICTIONARY_M_SAFE_SET(mutableDictionary, key, value) \
     do {                                                       \
-        if (mutableDictionary && key && value) {               \
+        if ([mutableDictionary isKindOfClass:[NSMutableDictionary]] && key && value) { \
             [mutableDictionary setObject:value forKey:key];    \
         }                                                      \
     } while (0)
@@ -555,24 +555,81 @@ if (!object) { \
 #ifndef NSDICTIONARY_M_SAFE_ADD_ENTRIES
 #define NSDICTIONARY_M_SAFE_ADD_ENTRIES(mutableDictionary, dictionary) \
     do {                                                               \
-        if (mutableDictionary && dictionary) {                         \
+        if ([mutableDictionary isKindOfClass:[NSMutableDictionary]] && dictionary) { \
             [mutableDictionary addEntriesFromDictionary:dictionary];   \
         }                                                              \
     } while (0)
 
 #endif /* NSDICTIONARY_M_SAFE_ADD_ENTRIES */
 
+#pragma mark > NSDictionary pair suite
+
+/**
+ Safe to define a dictionary and begin code block
+ 
+ @param dict the dictionary to define
+ @code
+ 
+ NSDICTIONARY_M_PAIRS_BEGIN(dictM)
+ NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
+ NSDICTIONARY_M_PAIRS_SET(@"key2", nil)
+ NSDICTIONARY_M_PAIRS_SET(nil, @1)
+ NSDICTIONARY_M_PAIRS_END
+ // dictM3 will get @{ @"key1": @"string" }
+ 
+ @endcode
+ */
 #define NSDICTIONARY_M_PAIRS_BEGIN(dict) \
 NSMutableDictionary *dict = \
 ({ \
-NSMutableDictionary *dictM_internal = [NSMutableDictionary dictionary];
+NSMutableDictionary *dictM_internal__ = [NSMutableDictionary dictionary];
 
+/**
+ Safe to define a dictionary and end code block
+ 
+ @discussion This macro used in company with NSDICTIONARY_M_PAIRS_BEGIN.
+ See NSDICTIONARY_M_PAIRS_BEGIN for more detail
+ */
 #define NSDICTIONARY_M_PAIRS_END \
-dictM_internal; \
+dictM_internal__; \
 });
 
+/**
+ Safe to set key-value
+
+ @param key the key
+ @param value the value
+ @discussion This macro used in company with NSDICTIONARY_M_PAIRS_BEGIN/NSDICTIONARY_M_PAIRS_END
+ or NSDICTIONARY_M_PAIRS_RETURN
+ */
 #define NSDICTIONARY_M_PAIRS_SET(key, value) \
-dictM_internal[key] = value;
+if (key != nil) { \
+    dictM_internal__[key] = value; \
+} \
+
+/**
+ Return a safe mutable dictionary
+
+ @param ... the key-value pairs by using NSDICTIONARY_M_PAIRS_SET macro
+ @return the mutable dictionary
+ @code
+ 
+ NSMutableDictionary *data = NSDICTIONARY_M_PAIRS_RETURN(
+     NSDICTIONARY_M_PAIRS_SET(@"a", @"A");
+     NSDICTIONARY_M_PAIRS_SET(@"b", @"B");
+     NSDICTIONARY_M_PAIRS_SET(@"c", nil);
+     NSDICTIONARY_M_PAIRS_SET(nil, @"D");
+ );
+ // data will get @{ @"a": @"A", @"b": @"B" }
+ 
+ @endcode
+ */
+#define NSDICTIONARY_M_PAIRS_RETURN(...) \
+({ \
+NSMutableDictionary *dictM_internal__ = [NSMutableDictionary dictionary]; \
+__VA_ARGS__ \
+dictM_internal__; \
+});
 
 #pragma mark NSArray
 
