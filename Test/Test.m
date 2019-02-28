@@ -185,31 +185,31 @@ WCDummyProtocol(UITextFieldDelegate)
 
 #pragma mark - NSDictionary
 
-- (void)test_NSDICTIONARY_M_PAIRS_BEGIN {
+- (void)test_NSDICTIONARY_M_PAIRS_DEFINE {
     // Case 1
-    NSDICTIONARY_M_PAIRS_BEGIN(dictM)
-    NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-    NSDICTIONARY_M_PAIRS_SET(@"key1", @YES)
-    NSDICTIONARY_M_PAIRS_SET(@"key1", @1)
-    NSDICTIONARY_M_PAIRS_END
+    NSDICTIONARY_M_PAIRS_DEFINE(dictM,
+        NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
+        NSDICTIONARY_M_PAIRS_SET(@"key1", @YES)
+        NSDICTIONARY_M_PAIRS_SET(@"key1", @1)
+    );
     
     XCTAssertTrue(dictM.count == 1);
     
     // Case 2
-    NSDICTIONARY_M_PAIRS_BEGIN(dictM2)
-    NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-    NSDICTIONARY_M_PAIRS_SET(@"key2", @YES)
-    NSDICTIONARY_M_PAIRS_SET(@"key3", @1)
-    NSDICTIONARY_M_PAIRS_END
+    NSDICTIONARY_M_PAIRS_DEFINE(dictM2,
+        NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
+        NSDICTIONARY_M_PAIRS_SET(@"key2", @YES)
+        NSDICTIONARY_M_PAIRS_SET(@"key3", @1)
+    );
     
     XCTAssertTrue(dictM2.count == 3);
     
     // Case 3
-    NSDICTIONARY_M_PAIRS_BEGIN(dictM3)
-    NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-    NSDICTIONARY_M_PAIRS_SET(@"key2", nil)
-    NSDICTIONARY_M_PAIRS_SET(nil, @1)
-    NSDICTIONARY_M_PAIRS_END
+    NSDICTIONARY_M_PAIRS_DEFINE(dictM3,
+        NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
+        NSDICTIONARY_M_PAIRS_SET(@"key2", nil)
+        NSDICTIONARY_M_PAIRS_SET(nil, @1)
+    );
     
     XCTAssertTrue(dictM3.count == 1);
 }

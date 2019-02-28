@@ -562,50 +562,31 @@ if (!object) { \
 
 #endif /* NSDICTIONARY_M_SAFE_ADD_ENTRIES */
 
-#pragma mark > NSDictionary pair suite
+#pragma mark > NSDictionary pairs
 
 /**
- Safe to define a dictionary and begin code block
- 
- @param dict the dictionary to define
+ Safe to define a mutable dictionary
+
+ @param dict the dict to define
+ @param ... the key-value pairs by using NSDICTIONARY_M_PAIRS_SET macro
  @code
  
- NSDICTIONARY_M_PAIRS_BEGIN(dictM)
- NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
- NSDICTIONARY_M_PAIRS_SET(@"key2", nil)
- NSDICTIONARY_M_PAIRS_SET(nil, @1)
- NSDICTIONARY_M_PAIRS_END
+ NSDICTIONARY_M_PAIRS_DEFINE(dictM3,
+    NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
+    NSDICTIONARY_M_PAIRS_SET(@"key2", nil)
+    NSDICTIONARY_M_PAIRS_SET(nil, @1)
+ );
  // dictM3 will get @{ @"key1": @"string" }
  
  @endcode
  */
-#define NSDICTIONARY_M_PAIRS_BEGIN(dict) \
+#define NSDICTIONARY_M_PAIRS_DEFINE(dict, ...) \
 NSMutableDictionary *dict = \
 ({ \
-NSMutableDictionary *dictM_internal__ = [NSMutableDictionary dictionary];
-
-/**
- Safe to define a dictionary and end code block
- 
- @discussion This macro used in company with NSDICTIONARY_M_PAIRS_BEGIN.
- See NSDICTIONARY_M_PAIRS_BEGIN for more detail
- */
-#define NSDICTIONARY_M_PAIRS_END \
+NSMutableDictionary *dictM_internal__ = [NSMutableDictionary dictionary]; \
+__VA_ARGS__; \
 dictM_internal__; \
 });
-
-/**
- Safe to set key-value
-
- @param key the key
- @param value the value
- @discussion This macro used in company with NSDICTIONARY_M_PAIRS_BEGIN/NSDICTIONARY_M_PAIRS_END
- or NSDICTIONARY_M_PAIRS_RETURN
- */
-#define NSDICTIONARY_M_PAIRS_SET(key, value) \
-if (key != nil) { \
-    dictM_internal__[key] = value; \
-} \
 
 /**
  Return a safe mutable dictionary
@@ -630,6 +611,19 @@ NSMutableDictionary *dictM_internal__ = [NSMutableDictionary dictionary]; \
 __VA_ARGS__ \
 dictM_internal__; \
 });
+
+/**
+ Safe to set key-value
+
+ @param key the key
+ @param value the value
+ @discussion This macro used in company with NSDICTIONARY_M_PAIRS_DEFINE or NSDICTIONARY_M_PAIRS_RETURN
+ */
+#define NSDICTIONARY_M_PAIRS_SET(key, value) \
+if (key != nil) { \
+    dictM_internal__[key] = value; \
+} \
+
 
 #pragma mark NSArray
 
