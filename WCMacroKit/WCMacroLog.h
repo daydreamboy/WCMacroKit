@@ -85,4 +85,11 @@
 #define WCDumpObject(o) fprintf(stderr, "%s:%d: `%s`= %s\n", __FILE_NAME__, (int)__LINE__, #o, ([o debugDescription].UTF8String))
 #endif
 
+// WCLog
+#if DEBUG_LOG
+#   define WCLog(fmt, ...) { NSLog((@"[ApolloSDK] " fmt), ## __VA_ARGS__); }
+#else
+#   define WCLog(fmt, ...)
+#endif
+
 #endif /* WCMacroLog_h */

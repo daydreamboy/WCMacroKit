@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "WCMacroKit.h"
+#import <WCMacroKit/WCMacroKit.h>
 
 #define UITextFieldDelegateEnabled 0
 

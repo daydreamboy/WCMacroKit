@@ -7,7 +7,7 @@
 //
 
 #import "Test_SYNTHESIZE_ASSOCIATED_XXX.h"
-#import "WCMacroKit.h"
+#import <WCMacroKit/WCMacroKit.h>
 #import <objc/runtime.h>
 
 typedef void(^WCNavigatorCompletionBlock)(void);

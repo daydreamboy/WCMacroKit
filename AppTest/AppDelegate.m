@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "RootViewController.h"
-#import "WCMacroKit.h"
+#import <WCMacroKit/WCMacroKit.h>
 
 @interface AppDelegate ()
 @property (nonatomic, strong) RootViewController *rootViewController;

@@ -6,7 +6,7 @@
 //
 
 #import "TestDelegateCallerViewController.h"
-#import "WCMacroKit.h"
+#import <WCMacroKit/WCMacroKit.h>
 
 typedef NS_ENUM(NSUInteger, SomeState) {
     SomeStateUnknown,

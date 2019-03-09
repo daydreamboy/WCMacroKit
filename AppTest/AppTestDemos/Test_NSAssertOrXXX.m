@@ -7,7 +7,7 @@
 //
 
 #import "Test_NSAssertOrXXX.h"
-#import "WCMacroKit.h"
+#import <WCMacroKit/WCMacroKit.h>
 
 @interface Test_NSAssertOrXXX ()
 @end

@@ -6,7 +6,7 @@
 //
 
 #import "Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h"
-#import "WCMacroKit.h"
+#import <WCMacroKit/WCMacroKit.h>
 
 @interface Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController ()
 @property (nonatomic, strong) NSString *sharedString;

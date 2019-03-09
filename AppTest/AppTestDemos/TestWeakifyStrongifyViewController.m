@@ -7,7 +7,7 @@
 //
 
 #import "TestWeakifyStrongifyViewController.h"
-#import "WCMacroKit.h"
+#import <WCMacroKit/WCMacroKit.h>
 
 @interface MyObject : NSObject
 @property (nonatomic, copy) void (^block)(void);
