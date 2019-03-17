@@ -241,8 +241,10 @@ _Pragma("clang diagnostic pop") \
  @param toObject the declared variable
  @param toClassName the class type to match, e.g. NSMutableString
  @textblock
+ 
  SomeModel *model = [SomeModel new];
  NSOBJECT_TYPE_CONVERT(model.a, varA, ModelA);
+ 
  @textblock
  */
 #define NSOBJECT_TYPE_CONVERT(fromObject, toObject, toClassName) \
@@ -254,12 +256,24 @@ toClassName *toObject = ({ \
     __internal_return_value; \
 });
 
-#pragma mark - NSError
+#pragma mark - NSData
 
-#define NSERROR_SAFE_SET_PTR(errorPtr, error) \
+#pragma mark > Data checking
+// Is a NSData and not empty
+#define DATA_IF_NOT_EMPTY(data)    ([(data) isKindOfClass:[NSData class]] && [(NSData *)(str) length])
+
+#pragma mark - Safe Pointer
+
+/**
+ Safe set pointer's value
+ 
+ @param ptr the pointer
+ @param value the value which ptr points to
+ */
+#define PTR_SAFE_SET(ptr, value) \
 do { \
-    if (errorPtr) { \
-        *errorPtr = error; \
+    if (ptr) { \
+        *ptr = value; \
     } \
 } while (0)
 
