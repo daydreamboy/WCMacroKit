@@ -259,8 +259,23 @@ toClassName *toObject = ({ \
 #pragma mark - NSData
 
 #pragma mark > Data checking
-// Is a NSData and not empty
-#define DATA_IF_NOT_EMPTY(data)    ([(data) isKindOfClass:[NSData class]] && [(NSData *)(str) length])
+
+/**
+ Check is a NSData and not empty
+
+ @param data NSData to expected
+ */
+#define NSDATA_IF_NOT_EMPTY(data)    ([(data) isKindOfClass:[NSData class]] && [(NSData *)(str) length])
+
+#pragma mark - NSURL
+
+/**
+ Safe get a NSURL from NSString
+
+ @param url NSString to expected
+ @discussion If the url is a not string or empty will get a nil
+ */
+#define NSURL_SAFE_NEW(url) (([(url) isKindOfClass:[NSString class]] && (url).length) ? [NSURL URLWithString:(url)] : nil)
 
 #pragma mark - Safe Pointer
 
