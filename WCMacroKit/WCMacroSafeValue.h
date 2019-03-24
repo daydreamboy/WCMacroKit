@@ -57,7 +57,7 @@ integer; \
 /**
  The type of key value pair
  */
-#define KeyValuePairType            NSArray *
+typedef NSArray * KeyValuePairType;
 /**
  Check object if a key value pair
 
@@ -71,14 +71,14 @@ integer; \
  @param pair the pair object
  @return the key object
  */
-#define KeyOfPair(pair)             (KeyValuePairValidate(pair) ? ([pair firstObject] ==  [NSNull null] ? nil : [pair firstObject]) : nil)
+#define KeyOfPair(pair)             (KeyValuePairValidate(pair) ? ([pair firstObject] == [NSNull null] ? nil : [pair firstObject]) : nil)
 /**
  Get the value object of pair
 
  @param pair the pair object
  @return the value object
  */
-#define ValueOfPair(pair)           (KeyValuePairValidate(pair) ? ([pair lastObject] ==  [NSNull null] ? nil : [pair lastObject]) : nil)
+#define ValueOfPair(pair)           (KeyValuePairValidate(pair) ? ([pair lastObject] == [NSNull null] ? nil : [pair lastObject]) : nil)
 
 #pragma mark - Safe float comparison
 
