@@ -111,6 +111,23 @@ __internal_frame; \
 #pragma mark - Short Code (Others)
 
 // NSPredicate
+
+/**
+ Create a NSPredicate objec with regular expression
+
+ @param expression the regular expression
+ @return the NSPredicate object
+ 
+ @code
+ NSString *object = ....
+ if ([NSPREDICATE(@"0|[1-9]\\d*") evaluateWithObject:object]) {
+    // match
+ }
+ else {
+    // not match
+ }
+ @endcode
+ */
 #define NSPREDICATE(expression)   ([NSPredicate predicateWithFormat:@"SELF MATCHES %@", expression])
 
 // NSIndexPath
