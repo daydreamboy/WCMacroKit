@@ -178,6 +178,21 @@ if (key != nil) { \
     dictM_internal__[key] = value; \
 } \
 
+#pragma mark > NSDictionary checking
+
+/**
+ Is a dict and not empty
+
+ @param dict the NSDictionary object to expected
+ @return Return YES if is a dict and not empty. Return NO if not.
+ 
+ @code
+ if (DICT_IF_NOT_EMPTY(dict)) {
+    // do something
+ }
+ @endcode
+ */
+#define DICT_IF_NOT_EMPTY(dict)    ([(dict) isKindOfClass:[NSDictionary class]] && [(NSDictionary *)(dict) count])
 
 #pragma mark - NSArray
 
@@ -232,6 +247,22 @@ _Pragma("clang diagnostic pop") \
 
 #endif /* NSARRAY_SAFE_GET */
 
+#pragma mark > NSArray checking
+
+/**
+ Is an array and not empty
+
+ @param arr the NSArray object to expected
+ @return Return YES if is an array and not empty. Return NO if not.
+ 
+ @code
+ if (ARR_IF_NOT_EMPTY(arr)) {
+    // do something
+ }
+ @endcode
+ */
+#define ARR_IF_NOT_EMPTY(arr)    ([(arr) isKindOfClass:[NSArray class]] && [(NSArray *)(arr) count])
+
 #pragma mark - NSObject
 
 /**
@@ -243,7 +274,7 @@ _Pragma("clang diagnostic pop") \
  @textblock
  
  SomeModel *model = [SomeModel new];
- NSOBJECT_TYPE_CONVERT(model.a, varA, ModelA);
+ NSOBJECT_TYPE_CONVERT(model.a, declared_var, NSString);
  
  @textblock
  */
@@ -265,7 +296,7 @@ toClassName *toObject = ({ \
 
  @param data NSData to expected
  */
-#define NSDATA_IF_NOT_EMPTY(data)    ([(data) isKindOfClass:[NSData class]] && [(NSData *)(str) length])
+#define DATA_IF_NOT_EMPTY(data)    ([(data) isKindOfClass:[NSData class]] && [(NSData *)(data) length])
 
 #pragma mark - NSURL
 
