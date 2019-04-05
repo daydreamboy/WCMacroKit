@@ -175,7 +175,10 @@ dictM_internal__; \
  */
 #define NSDICTIONARY_M_PAIRS_SET(key, value) \
 if (key != nil) { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wnonnull\"") \
     dictM_internal__[key] = value; \
+_Pragma("clang diagnostic pop") \
 } \
 
 #pragma mark > NSDictionary checking
