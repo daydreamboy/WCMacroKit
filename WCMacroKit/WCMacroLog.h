@@ -76,14 +76,27 @@
 
 #endif /* if DEBUG_LOG */
 
-#pragma mark - Object Dump
+#pragma mark - WCDump
 
-#define WCDumpBool(b)   NSLog(@"%@:%@: `%s`= %@", @(__FILE_NAME__), @(__LINE__), #b, (b) ? @"YES" : @"NO")
-//#define WCDumpObject(o) NSLog(@"%@:%@: `%s`= %@", @(__FILE_NAME__), @(__LINE__), #o, (o))
+/**
+ Dump YES or NO using fprintf
 
-#ifndef WCDumpObject
-#define WCDumpObject(o) fprintf(stderr, "%s:%d: `%s`= %s\n", __FILE_NAME__, (int)__LINE__, #o, ([o debugDescription].UTF8String))
-#endif
+ @param o the boolean.
+ */
+#define WCDumpBool(o) fprintf(stderr, "%s:%d: `%s`=`%s`\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, #o, (o) ? "YES" : "NO")
+
+/**
+ Dump object using fprintf
+
+ @param o the object
+ */
+#define WCDumpObject(o) fprintf(stderr, "%s:%d: `%s`=`%s`\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, #o, ([o debugDescription].UTF8String))
+
+#pragma mark - WCLog
+
+#define WCLogObject(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__FILE_NAME__), @(__LINE__), #o, (o))
+#define WCLogBool(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__FILE_NAME__), @(__LINE__), #o, (o) ? @"YES" : @"NO")
+
 
 // WCLog
 #if DEBUG_LOG
