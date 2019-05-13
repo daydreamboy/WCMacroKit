@@ -229,6 +229,44 @@ WCDummyProtocol(UITextFieldDelegate)
     XCTAssertNil(data[@"c"]);
 }
 
+- (void)test_NSDICTIONARY_SAFE_GET {
+    NSDictionary *dict;
+    id value;
+    
+    // Case 1
+    value = NSDICTIONARY_SAFE_GET(dict, @"keyNotExists", nil);
+    XCTAssertNil(value);
+    
+    // Case 2
+    dict = @{
+             @"key": @"value"
+             };
+    value = NSDICTIONARY_SAFE_GET(dict, @"keyNotExists", nil);
+    XCTAssertNil(value);
+
+    // Case 3
+    dict = @{
+             @"key": [NSDate date]
+             };
+    value = NSDICTIONARY_SAFE_GET(dict, @"key", NSString);
+    XCTAssertNil(value);
+    
+    value = NSDICTIONARY_SAFE_GET(dict, @"key", nil);
+    XCTAssertNotNil(value);
+    XCTAssertTrue([value isKindOfClass:[NSDate class]]);
+    
+    value = NSDICTIONARY_SAFE_GET(dict, @"key", @"");
+    XCTAssertNotNil(value);
+    XCTAssertTrue([value isKindOfClass:[NSDate class]]);
+    
+    // Case 4
+    dict = @{
+             @"key": @"date"
+             };
+    value = NSDICTIONARY_SAFE_GET(dict, @"key", NSString);
+    XCTAssertEqualObjects(value, @"date");
+}
+
 #pragma mark -
 
 - (void)test_sel {

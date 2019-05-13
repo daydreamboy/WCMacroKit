@@ -94,12 +94,44 @@ typedef NSArray * KeyValuePairType;
 #pragma mark - NSDictionary
 
 /**
+ NSDictionary safe get value
+
+ @param dictionary the NSDictionary object
+ @param key the key
+ @param valueClassType the value class to check. If nil or @"", not check the value class
+ @return the value if (1) dictionary is NSDictionary, (2) key not nil, (3) dictionary[key] exists, (4) value matches valueClassType when valueClassType not nil.
+ Otherwise, return nil
+ @code
+ 
+ dict = @{
+    @"key": @"date"
+ };
+ value = NSDICTIONARY_SAFE_GET(dict, @"key", NSString);
+ value = NSDICTIONARY_SAFE_GET(dict, @"key", nil);
+ value = NSDICTIONARY_SAFE_GET(dict, @"key", @"");
+ 
+ @endcode
+ */
+#ifndef NSDICTIONARY_SAFE_GET
+#define NSDICTIONARY_SAFE_GET(dictionary, key, valueClassType) \
+({ \
+    _Pragma("clang diagnostic push") \
+    _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
+    NSClassFromString(@#valueClassType) ? \
+    (([(dictionary) isKindOfClass:[NSDictionary class]] && (key) && dictionary[(key)] && [dictionary[(key)] isKindOfClass:NSClassFromString(@#valueClassType)]) ? dictionary[(key)] : nil) : \
+    (([(dictionary) isKindOfClass:[NSDictionary class]] && (key) && dictionary[(key)]) ? dictionary[(key)] : nil); \
+    _Pragma("clang diagnostic pop") \
+})
+
+#endif /* NSDICTIONARY_SAFE_GET */
+
+/**
  *  NSMutableDictionary calls setObject:forKey: method more safely
  */
 #ifndef NSDICTIONARY_M_SAFE_SET
 #define NSDICTIONARY_M_SAFE_SET(mutableDictionary, key, value) \
     do {                                                       \
-        if ([mutableDictionary isKindOfClass:[NSMutableDictionary]] && key && value) { \
+        if ([mutableDictionary isKindOfClass:[NSMutableDictionary class]] && key && value) { \
             [mutableDictionary setObject:value forKey:key];    \
         }                                                      \
     } while (0)
@@ -109,7 +141,7 @@ typedef NSArray * KeyValuePairType;
 #ifndef NSDICTIONARY_M_SAFE_ADD_ENTRIES
 #define NSDICTIONARY_M_SAFE_ADD_ENTRIES(mutableDictionary, dictionary) \
     do {                                                               \
-        if ([mutableDictionary isKindOfClass:[NSMutableDictionary]] && dictionary) { \
+        if ([mutableDictionary isKindOfClass:[NSMutableDictionary class]] && dictionary) { \
             [mutableDictionary addEntriesFromDictionary:dictionary];   \
         }                                                              \
     } while (0)

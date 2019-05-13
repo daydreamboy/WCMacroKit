@@ -343,7 +343,7 @@
 		2BE400BB1D73271A00A48174 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 1020;
 				TargetAttributes = {
 					2BE400C41D73272500A48174 = {
 						CreatedOnToolsVersion = 8.0;
@@ -366,7 +366,7 @@
 			};
 			buildConfigurationList = 2BE400BE1D73271A00A48174 /* Build configuration list for PBXProject "WCMacroKit" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -478,6 +478,7 @@
 		2BE400BF1D73271A00A48174 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
@@ -512,6 +513,7 @@
 		2BE400C01D73271A00A48174 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
