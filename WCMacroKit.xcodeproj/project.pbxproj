@@ -16,6 +16,8 @@
 		2BE400D81D73272500A48174 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE400D61D73272500A48174 /* LaunchScreen.storyboard */; };
 		2BE400E41D73273200A48174 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE400E31D73273200A48174 /* Test.m */; };
 		4F03AEBB208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F03AEBA208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m */; };
+		4F4F055B229550E8002BD87A /* WCMacroSynthesize.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F4F055A22955091002BD87A /* WCMacroSynthesize.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F4F055D229566CF002BD87A /* Test_MacroSynthesize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F055C229566CF002BD87A /* Test_MacroSynthesize.m */; };
 		4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */; };
 		4F6635872047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6635862047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m */; };
 		4F6D7DA92233A49F006639A1 /* WCMacroToolBackend.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F6D7DA72233A49F006639A1 /* WCMacroToolBackend.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -85,6 +87,8 @@
 		2BE400F31D7330B500A48174 /* WCMacroAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroAssert.h; sourceTree = "<group>"; };
 		4F03AEBA208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m; sourceTree = "<group>"; };
 		4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroCompatibility.h; sourceTree = "<group>"; };
+		4F4F055A22955091002BD87A /* WCMacroSynthesize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroSynthesize.h; sourceTree = "<group>"; };
+		4F4F055C229566CF002BD87A /* Test_MacroSynthesize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroSynthesize.m; sourceTree = "<group>"; };
 		4F5D92891FEA4F06005F137D /* WCCallerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCallerTool.h; sourceTree = "<group>"; };
 		4F5D928A1FEA4F06005F137D /* WCCallerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCCallerTool.m; sourceTree = "<group>"; };
 		4F5D928C1FEA502B005F137D /* Test_WCCallerTool_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_WCCallerTool_ViewController.h; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 			children = (
 				2BE400E31D73273200A48174 /* Test.m */,
 				4F6D7DB52233B389006639A1 /* Test_MacroTool.m */,
+				4F4F055C229566CF002BD87A /* Test_MacroSynthesize.m */,
 				4F03AEBA208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m */,
 				2BE400E51D73273200A48174 /* Info.plist */,
 			);
@@ -230,6 +235,7 @@
 				2BE400F01D732E4B00A48174 /* WCMacroLog.h */,
 				4F6D7DB12233ACC2006639A1 /* WCMacroSafeValue.h */,
 				4F6D7DAF2233A877006639A1 /* WCMacroString.h */,
+				4F4F055A22955091002BD87A /* WCMacroSynthesize.h */,
 				4F6D7DB32233B1D7006639A1 /* WCMacroTool.h */,
 				4F6D7DA72233A49F006639A1 /* WCMacroToolBackend.h */,
 				4F6D7DA82233A49F006639A1 /* WCMacroToolBackend.m */,
@@ -268,6 +274,7 @@
 				4F6D7DB22233ACC2006639A1 /* WCMacroSafeValue.h in Headers */,
 				4F7D8E9221086EE300145B00 /* WCMacroVersion.h in Headers */,
 				4F7D8E9321086EE300145B00 /* WCMacroLog.h in Headers */,
+				4F4F055B229550E8002BD87A /* WCMacroSynthesize.h in Headers */,
 				4F7D8E9421086EE300145B00 /* WCMacroBlock.h in Headers */,
 				4F7D8E9521086EE300145B00 /* WCMacroDelegate.h in Headers */,
 				4F6D7DA92233A49F006639A1 /* WCMacroToolBackend.h in Headers */,
@@ -433,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F4F055D229566CF002BD87A /* Test_MacroSynthesize.m in Sources */,
 				2BE400E41D73273200A48174 /* Test.m in Sources */,
 				4F03AEBB208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m in Sources */,
 				4F6D7DB62233B389006639A1 /* Test_MacroTool.m in Sources */,

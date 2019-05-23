@@ -83,8 +83,11 @@ SYNTHESIZE_ASSOCIATED_PRIMITIVE(insets_uninitialized, setInsets_uninitialized, U
     [self printUninitializedData];
     NSLog(@"\n\n");
     
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wuninitialized"
     CGRect rect;
     NSLog(@"rect: %@", NSStringFromCGRect(rect)); // CAUTION! rect is not CGRectZero
+#pragma GCC diagnostic pop
 }
 
 #pragma mark
