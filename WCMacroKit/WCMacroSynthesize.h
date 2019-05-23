@@ -281,6 +281,7 @@
  Synthesize ivars
 
  @param ... the property list
+ @see https://stackoverflow.com/a/8814003
  @code
  
  @protocol SomeProtocol <NSObject>
