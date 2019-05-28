@@ -204,7 +204,7 @@ static type __static_##getterName; \
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
 /**
- Alert some tips
+ Show a simple alert with tips
 
  @param title the title string
  @param msg the message string
@@ -212,9 +212,15 @@ static type __static_##getterName; \
  @param dismissCompletion the callback when Cancel button tapped
  
  @code
+ 
  SHOW_ALERT(@"下载json文件出错", ([NSString stringWithFormat:@"%@", error]), @"确定", { self.ignoreScanCallback = NO; });
  SHOW_ALERT(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", self.ignoreScanCallback = NO;);
  SHOW_ALERT(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", nil);
+ 
+ @endcode
+ 
+ @discussion This macro not always works (e.g. navController present vc A, and A show alert will not show)
+ and only for debugging. Use WCAlertTool instead.
  */
 #define SHOW_ALERT(title, msg, cancel, dismissCompletion) \
 \
