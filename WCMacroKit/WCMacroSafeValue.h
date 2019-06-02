@@ -43,6 +43,68 @@ integer; \
 #define ValueOfString(object)   ValueOfClassType(object, NSString)
 #define ValueOfNumber(object)   ValueOfClassType(object, NSNumber)
 
+#pragma mark - Safe Get JSON Value
+
+/**
+ Get value from JSON value
+
+ @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
+ @param valueType the value type expected
+ @param defaultValue the default value
+ @return the value
+ */
+#define valueOfJSONValue(JSONValue, valueType, defaultValue) (([(JSONValue) isKindOfClass:[NSString class]] || [(JSONValue) isKindOfClass:[NSNumber class]]) ? [(JSONValue) valueType##Value] : (defaultValue))
+
+/**
+ Get double value from JSON value
+
+ @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
+ @return the value
+ */
+#define doubleValueOfJSONValue(JSONValue)   valueOfJSONValue(JSONValue, double, 0.0)
+/**
+ Get float value from JSON value
+ 
+ @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
+ @return the value
+ */
+#define floatValueOfJSONValue(JSONValue)    valueOfJSONValue(JSONValue, float, 0.0f)
+/**
+ Get int value from JSON value
+ 
+ @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
+ @return the value
+ */
+#define intValueOfJSONValue(JSONValue)      valueOfJSONValue(JSONValue, int, 0)
+/**
+ Get NSInteger value from JSON value
+ 
+ @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
+ @return the value
+ */
+#define integerValueOfJSONValue(JSONValue)  valueOfJSONValue(JSONValue, integer, 0)
+/**
+ Get long long value from JSON value
+ 
+ @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
+ @return the value
+ */
+#define longLongValueOfJSONValue(JSONValue) valueOfJSONValue(JSONValue, longLong, 0LL)
+/**
+ Get BOOL value from JSON value
+ 
+ @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
+ @return the value
+ */
+#define boolValueOfJSONValue(JSONValue)     valueOfJSONValue(JSONValue, bool, NO)
+/**
+ Get NSString value from JSON value
+ 
+ @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
+ @return the value
+ */
+#define stringValueOfJSONValue(JSONValue)   ([(JSONValue) isKindOfClass:[NSString class]] ? (JSONValue) : ([(JSONValue) isKindOfClass:[NSNumber class]]) ? [(JSONValue) stringValue] : nil)
+
 #pragma mark - Key Value Pair Suite
 
 /**
