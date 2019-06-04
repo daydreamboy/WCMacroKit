@@ -43,7 +43,9 @@ integer; \
 #define ValueOfString(object)   ValueOfClassType(object, NSString)
 #define ValueOfNumber(object)   ValueOfClassType(object, NSNumber)
 
-#pragma mark - Safe Get JSON Value
+#pragma mark - JSON Value
+
+#pragma mark > Safe Get JSON Value
 
 /**
  Get value from JSON value
@@ -104,6 +106,41 @@ integer; \
  @return the value
  */
 #define stringValueOfJSONValue(JSONValue)   ([(JSONValue) isKindOfClass:[NSString class]] ? (JSONValue) : ([(JSONValue) isKindOfClass:[NSNumber class]]) ? [(JSONValue) stringValue] : nil)
+
+/**
+ Get JSON object from JSON string
+
+ @param ... the JSON string
+ @return the JSON object. Return nil if the JSON string is invalid.
+ */
+#define JSONObjectFromJSONString(...) \
+({ \
+    id JSONObject__; \
+    @try { \
+        JSONObject__ = [NSJSONSerialization JSONObjectWithData:[@#__VA_ARGS__ dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:nil]; \
+    } \
+    @catch (NSException *exception) { \
+    } \
+    JSONObject__; \
+});
+
+/**
+ Get mutable JSON object from JSON string
+ 
+ @param ... the JSON string
+ @return the JSON object. Return nil if the JSON string is invalid.
+ @discussion Return the JSON object with both mutable containers and leaves
+ */
+#define JSONMutableObjectFromJSONString(...) \
+({ \
+    id JSONObject__; \
+    @try { \
+        JSONObject__ = [NSJSONSerialization JSONObjectWithData:[@#__VA_ARGS__ dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments | NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil]; \
+    } \
+    @catch (NSException *exception) { \
+    } \
+    JSONObject__; \
+});
 
 #pragma mark - Key Value Pair Suite
 

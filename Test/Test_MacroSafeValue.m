@@ -195,4 +195,54 @@
     XCTAssertNil(output);
 }
 
+- (void)test_JSONObjectFromJSONString {
+    id output;
+    
+    // Case 1
+    output = JSONObjectFromJSONString(
+    {
+        "attr" : {
+            "viewValue" : [
+                           {
+                               "style" : {
+                                   "width" : 12,
+                                   "height" : 11
+                               },
+                               "attr" : {
+                                   "viewValue" : "https:\/\/img.alicdn.com\/tfs\/TB1G9HKX6rguuRjy0FeXXXcbFXa-120-110.png",
+                                   "viewType" : "webImage",
+                                   "imageType" : "url",
+                                   "image" : "https:\/\/img.alicdn.com\/tfs\/TB1G9HKX6rguuRjy0FeXXXcbFXa-120-110.png"
+                               }
+                           },
+                           {
+                               "style" : {
+                                   "fontColor" : "#878787",
+                                   "fontSize" : 10
+                               },
+                               "attr" : {
+                                   "textType" : "text",
+                                   "viewValue" : "收起",
+                                   "viewType" : "text",
+                                   "text" : "收起"
+                               }
+                           }
+                           ],
+            "viewType" : "horizontal"
+        },
+        "action" : {
+            "actionType" : "custom",
+            "actionValue" : "event.header.subTitle.click"
+        }
+    }
+    );
+    
+    XCTAssertNotNil(output);
+    XCTAssertTrue([output isKindOfClass:[NSDictionary class]]);
+    
+    // Case 2
+    output = JSONObjectFromJSONString({"a":b});
+    XCTAssertNil(output);
+}
+
 @end
