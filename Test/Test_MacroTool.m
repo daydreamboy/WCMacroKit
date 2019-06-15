@@ -43,6 +43,41 @@
     XCTAssertTrue(output.count == 0);
 }
 
+- (void)test_NSDICTIONARY_MERGE {
+    NSDictionary *dict1;
+    NSDictionary *dict2;
+    NSDictionary *output;
+    
+    // Case 1
+    output = NSDICTIONARY_MERGE(dict1, dict2);
+    XCTAssertNotNil(output);
+    XCTAssertTrue(output.count == 0);
+    
+    // Case 2
+    dict1 = @{ @"1": @1, @"2": @2 };
+    dict2 = @{ @"3": @3 };
+    output = NSDICTIONARY_MERGE(dict1, dict2);
+    XCTAssertTrue(output.count == 3);
+}
+
+- (void)test_NSDICTIONARY_MERGE_M {
+    NSDictionary *dict1;
+    NSDictionary *dict2;
+    NSMutableDictionary *output;
+    
+    // Case 1
+    output = NSDICTIONARY_MERGE_M(dict1, dict2);
+    XCTAssertNotNil(output);
+    XCTAssertTrue(output.count == 0);
+    
+    // Case 2
+    dict1 = @{ @"1": @1, @"2": @2 };
+    dict2 = @{ @"3": @3 };
+    output = NSDICTIONARY_MERGE_M(dict1, dict2);
+    [output addEntriesFromDictionary:@{ @"4": @4 }];
+    XCTAssertTrue(output.count == 4);
+}
+
 #pragma mark - Dummy Methods
 
 - (NSArray *)showAlertWithTitle:(NSString *)title message:(NSString *)message, ... NS_REQUIRES_NIL_TERMINATION {

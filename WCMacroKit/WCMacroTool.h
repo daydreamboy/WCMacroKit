@@ -34,4 +34,11 @@
     __args; \
 })
 
+#pragma mark - NSDictionary Operation
+
+#pragma mark > Merge
+
+#define NSDICTIONARY_MERGE(dict1, dict2)    [WCMacroToolBackend mergedDictionaryWithDictionary1:(dict1) dictionary2:(dict2) allowMutable:NO]
+#define NSDICTIONARY_MERGE_M(dict1, dict2)  (NSMutableDictionary *)[WCMacroToolBackend mergedDictionaryWithDictionary1:(dict1) dictionary2:(dict2) allowMutable:YES]
+
 #endif /* WCMacroTool_h */
