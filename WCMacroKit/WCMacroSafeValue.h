@@ -32,7 +32,7 @@ integer; \
  @param classType the class type
  @return the safe object
  */
-#define ValueOfClassType(object, classType) ([(object) isKindOfClass:[classType class]] ? (object) : nil)
+#define ValueOfClassType(object, classType) (classType *)([(object) isKindOfClass:[classType class]] ? (object) : nil)
 
 #define ValueOfDict(object)     ValueOfClassType(object, NSDictionary)
 #define ValueOfDictM(object)    ValueOfClassType(object, NSMutableDictionary)
