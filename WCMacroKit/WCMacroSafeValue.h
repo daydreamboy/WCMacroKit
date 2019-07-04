@@ -54,6 +54,7 @@ integer; \
  @param valueType the value type expected
  @param defaultValue the default value
  @return the value
+ @discussion This method gets value from NSString or NSNumber unstrictly. Otherwise, get the defaultValue
  */
 #define valueOfJSONValue(JSONValue, valueType, defaultValue) (([(JSONValue) isKindOfClass:[NSString class]] || [(JSONValue) isKindOfClass:[NSNumber class]]) ? [(JSONValue) valueType##Value] : (defaultValue))
 
@@ -61,49 +62,49 @@ integer; \
  Get double value from JSON value
 
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
- @return the value
+ @return the value. Unexpected JSONValue will return 0.0
  */
 #define doubleValueOfJSONValue(JSONValue)   valueOfJSONValue(JSONValue, double, 0.0)
 /**
  Get float value from JSON value
  
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
- @return the value
+ @return the value. Unexpected JSONValue will return 0.0f
  */
 #define floatValueOfJSONValue(JSONValue)    valueOfJSONValue(JSONValue, float, 0.0f)
 /**
  Get int value from JSON value
  
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
- @return the value
+ @return the value. Unexpected JSONValue will return 0
  */
 #define intValueOfJSONValue(JSONValue)      valueOfJSONValue(JSONValue, int, 0)
 /**
  Get NSInteger value from JSON value
  
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
- @return the value
+ @return the value. Unexpected JSONValue will return 0
  */
 #define integerValueOfJSONValue(JSONValue)  valueOfJSONValue(JSONValue, integer, 0)
 /**
  Get long long value from JSON value
  
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
- @return the value
+ @return the value. Unexpected JSONValue will return 0
  */
 #define longLongValueOfJSONValue(JSONValue) valueOfJSONValue(JSONValue, longLong, 0LL)
 /**
  Get BOOL value from JSON value
  
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
- @return the value
+ @return the value. Unexpected JSONValue will return NO
  */
 #define boolValueOfJSONValue(JSONValue)     valueOfJSONValue(JSONValue, bool, NO)
 /**
  Get NSString value from JSON value
  
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
- @return the value
+ @return the value. Unexpected JSONValue will return nil
  */
 #define stringValueOfJSONValue(JSONValue)   ([(JSONValue) isKindOfClass:[NSString class]] ? (JSONValue) : ([(JSONValue) isKindOfClass:[NSNumber class]]) ? [(JSONValue) stringValue] : nil)
 
