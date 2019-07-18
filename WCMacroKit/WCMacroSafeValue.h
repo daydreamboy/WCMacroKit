@@ -436,12 +436,20 @@ toClassName *toObject = ({ \
 #pragma mark - NSURL
 
 /**
- Safe get a NSURL from NSString
+ Safe get a URL from NSString
 
  @param url NSString to expected
  @discussion If the url is a not string or empty will get a nil
  */
 #define NSURL_SAFE_NEW(url) (([(url) isKindOfClass:[NSString class]] && (url).length) ? [NSURL URLWithString:(url)] : nil)
+
+/**
+ Safe get a file path URL from NSString
+
+ @param url NSString to expected
+ @return If the url is a not string or empty will get a nil
+ */
+#define NSURL_PATH_SAFE_NEW(path) (([(path) isKindOfClass:[NSString class]] && (path).length) ? [NSURL fileURLWithPath:(path)] : nil)
 
 #pragma mark - Safe Pointer
 
