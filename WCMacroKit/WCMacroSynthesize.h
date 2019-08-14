@@ -10,9 +10,22 @@
 
 #pragma mark - Synthesize Setters/Getters
 
-// @sa http://stackoverflow.com/questions/11079157/objc-preprocessor-nsstring-macro
-// Synthesize Associated Objects
-#define SYNTHESIZE_ASSOCIATED_OBJ(getterName, setterName, type)                                                 \
+/**
+ Synthesize Associated Objects
+
+ @param getterName the getter method name
+ @param setterName the setter method name without colon
+ @param type the object type
+ @see http://stackoverflow.com/questions/11079157/objc-preprocessor-nsstring-macro
+ @header #import <objc/runtime.h>
+ @code
+ 
+ SYNTHESIZE_ASSOCIATED_OBJECT(associatedString, setAssociatedString, NSString *);
+ SYNTHESIZE_ASSOCIATED_OBJECT(associatedBlock, setAssociatedBlock, WCNavigatorCompletionBlock);
+
+ @endcode
+ */
+#define SYNTHESIZE_ASSOCIATED_OBJECT(getterName, setterName, type)                                              \
 - (void)setterName:(type)object {                                                                               \
     if (object) {                                                                                               \
         objc_setAssociatedObject(self, @selector(getterName), object, OBJC_ASSOCIATION_RETAIN_NONATOMIC);       \
@@ -22,8 +35,21 @@
     return objc_getAssociatedObject(self, @selector(getterName));                                               \
 }
 
-// Synthesize Associated Primitives
-// @sa https://github.com/itsthejb/ObjcAssociatedObjectHelpers/blob/develop/ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers.h
+/**
+ Synthesize Associated PrimitivesSynthesize Associated Objects
+
+ @param getterName the getter method name
+ @param setterName the setter method name without colon
+ @param type the object type
+ @see https://github.com/itsthejb/ObjcAssociatedObjectHelpers/blob/develop/ObjcAssociatedObjectHelpers/ObjcAssociatedObjectHelpers.h
+ @header #import <objc/runtime.h>
+ @code
+ 
+ SYNTHESIZE_ASSOCIATED_PRIMITIVE(cgFloatNum, setCgFloatNum, CGFloat);
+ SYNTHESIZE_ASSOCIATED_PRIMITIVE(intNum, setIntNum, int);
+
+ @endcode
+ */
 #define SYNTHESIZE_ASSOCIATED_PRIMITIVE(getterName, setterName, type)                                           \
 - (void)setterName:(type)value {                                                                                \
     NSValue *nsValue = [NSValue value:&value withObjCType:@encode(type)];                                       \

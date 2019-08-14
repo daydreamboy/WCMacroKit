@@ -43,8 +43,8 @@ typedef void(^WCNavigatorCompletionBlock)(void);
 @implementation Test_SYNTHESIZE_ASSOCIATED_XXX
 
 // Objects
-SYNTHESIZE_ASSOCIATED_OBJ(associatedString, setAssociatedString, NSString *);
-SYNTHESIZE_ASSOCIATED_OBJ(associatedBlock, setAssociatedBlock, WCNavigatorCompletionBlock);
+SYNTHESIZE_ASSOCIATED_OBJECT(associatedString, setAssociatedString, NSString *);
+SYNTHESIZE_ASSOCIATED_OBJECT(associatedBlock, setAssociatedBlock, WCNavigatorCompletionBlock);
 
 // Primitives
 SYNTHESIZE_ASSOCIATED_PRIMITIVE(nsIntegerNum, setNsIntegerNum, NSInteger);
