@@ -451,6 +451,24 @@ toClassName *toObject = ({ \
  */
 #define NSURL_PATH_SAFE_NEW(path) (([(path) isKindOfClass:[NSString class]] && (path).length) ? [NSURL fileURLWithPath:(path)] : nil)
 
+#pragma mark - File Path
+
+/**
+ Create a temp file path located in NSTemporaryDirectory()
+
+ @param ext the file extension, e.g. @"txt". If nil, for without file extension.
+ @return the file path
+ @discussion the file name format is `tmp_<unix timestamp in ms>_<random number>`.
+ 
+ @code
+ 
+ NSString *filePath = TEMP_FILE_PATH_NEW(@"txt");
+ BOOL success = [JEPGData writeToFile:filePath atomically:YES];
+ 
+ @endcode
+ */
+#define TEMP_FILE_PATH_NEW(ext)  ([[NSTemporaryDirectory() stringByAppendingPathComponent:[NSString stringWithFormat:@"tmp_%ld_%u", (long)([[NSDate date] timeIntervalSince1970] * 1000), arc4random()]] stringByAppendingPathExtension:[(id)(ext) isKindOfClass:[NSString class]] ? (ext) : @""])
+
 #pragma mark - Safe Pointer
 
 /**

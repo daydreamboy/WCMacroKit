@@ -245,4 +245,12 @@
     XCTAssertNil(output);
 }
 
+- (void)test_TEMP_FILE_PATH_NEW {
+    NSString *filePath1 = TEMP_FILE_PATH_NEW(nil);
+    NSString *filePath2 = TEMP_FILE_PATH_NEW(@"txt");
+    
+    NSLog(@"%@", filePath1);
+    NSLog(@"%@", filePath2);
+}
+
 @end

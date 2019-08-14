@@ -283,16 +283,6 @@ do { \
     }                                                                           \
     return tempVar;
 
-#pragma mark NSURL
-
-/**
- Safe to wrap +[NSURL fileURLWithPath:]
-
- @param path the path, and maybe nil
- @return the NSURL
- */
-#define NSURL_fileURLWithPath(path) ((path) ? [NSURL fileURLWithPath:(path) : nil)
-
 
 #pragma mark - CocoaPod Macro
 
