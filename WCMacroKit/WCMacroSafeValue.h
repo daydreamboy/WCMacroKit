@@ -248,6 +248,33 @@ typedef NSArray * KeyValuePairType;
 
 #endif /* NSDICTIONARY_M_SAFE_ADD_ENTRIES */
 
+/**
+ Safe to wrap the literal dictionary
+
+ @param ... the literal dictionary
+ @return the literal dictionary if no nil keys or values. Return nil if key or value is nil
+ 
+ @code
+ 
+ dict = NSDICTIONARY_SAFE_WRAP(@{
+     keyMaybeNil: @"value",
+     @"key": valueMaybeNil
+ });
+ 
+ @endcode
+ */
+#ifndef NSDICTIONARY_SAFE_WRAP
+#define NSDICTIONARY_SAFE_WRAP(...) ({ \
+    NSDictionary *internalDict_; \
+    @try { \
+        internalDict_ = __VA_ARGS__; \
+    } \
+    @catch (NSException *e) {} \
+    internalDict_; \
+    });
+
+#endif /* NSDICTIONARY_SAFE_WRAP */
+
 #pragma mark > NSDictionary pairs
 
 /**
@@ -381,6 +408,19 @@ _Pragma("clang diagnostic pop") \
     })
 
 #endif /* NSARRAY_SAFE_GET */
+
+
+#ifndef NSARRAY_SAFE_WRAP
+#define NSARRAY_SAFE_WRAP(...) ({ \
+    NSArray *internalArr_; \
+    @try { \
+        internalArr_ = __VA_ARGS__; \
+    } \
+    @catch (NSException *e) {} \
+    internalArr_; \
+    });
+
+#endif /* NSARRAY_SAFE_WRAP */
 
 #pragma mark > NSArray checking
 

@@ -20,6 +20,7 @@
 		4F17240A231BD16F00483D53 /* WCMacroAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F172407231BD03500483D53 /* WCMacroAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F4F055B229550E8002BD87A /* WCMacroSynthesize.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F4F055A22955091002BD87A /* WCMacroSynthesize.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F4F055D229566CF002BD87A /* Test_MacroSynthesize.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F055C229566CF002BD87A /* Test_MacroSynthesize.m */; };
+		4F51372A231D444F00A17F9A /* WCMacroDollarSign.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F513729231D444F00A17F9A /* WCMacroDollarSign.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F5CA92222A009A100F55313 /* Test_MacroSafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA92122A009A100F55313 /* Test_MacroSafeValue.m */; };
 		4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */; };
 		4F6635872047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6635862047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m */; };
@@ -94,6 +95,7 @@
 		4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroCompatibility.h; sourceTree = "<group>"; };
 		4F4F055A22955091002BD87A /* WCMacroSynthesize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroSynthesize.h; sourceTree = "<group>"; };
 		4F4F055C229566CF002BD87A /* Test_MacroSynthesize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroSynthesize.m; sourceTree = "<group>"; };
+		4F513729231D444F00A17F9A /* WCMacroDollarSign.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroDollarSign.h; sourceTree = "<group>"; };
 		4F5CA92122A009A100F55313 /* Test_MacroSafeValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroSafeValue.m; sourceTree = "<group>"; };
 		4F5D92891FEA4F06005F137D /* WCCallerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCallerTool.h; sourceTree = "<group>"; };
 		4F5D928A1FEA4F06005F137D /* WCCallerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCCallerTool.m; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */,
 				2BE400F21D732F7300A48174 /* WCMacroDelegate.h */,
 				4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */,
+				4F513729231D444F00A17F9A /* WCMacroDollarSign.h */,
 				2BE400F01D732E4B00A48174 /* WCMacroLog.h */,
 				4F6D7DB12233ACC2006639A1 /* WCMacroSafeValue.h */,
 				4F6D7DAF2233A877006639A1 /* WCMacroString.h */,
@@ -294,6 +297,7 @@
 				4F7D8E9721086EE300145B00 /* WCMacroCompatibility.h in Headers */,
 				4F7D8E9821086EE300145B00 /* WCCallerTool.h in Headers */,
 				4F7D8E9A21087C5500145B00 /* WCMacroUncategoried.h in Headers */,
+				4F51372A231D444F00A17F9A /* WCMacroDollarSign.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

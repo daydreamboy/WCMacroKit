@@ -253,4 +253,102 @@
     NSLog(@"%@", filePath2);
 }
 
+- (void)test_NSDICTIONARY_SAFE_WRAP {
+    NSDictionary *dict;
+    id keyMaybeNil = nil;
+    id valueMaybeNil = nil;
+    
+    // Case 1
+    dict = NSDICTIONARY_SAFE_WRAP(@{
+                                    keyMaybeNil: @"value"
+                                    });
+    XCTAssertNil(dict);
+    
+    // Case 2
+    dict = NSDICTIONARY_SAFE_WRAP(@{
+                                    @"key": valueMaybeNil
+                                    });
+    XCTAssertNil(dict);
+    
+    // Case 3
+    dict = NSDICTIONARY_SAFE_WRAP(@{
+                                    keyMaybeNil: @"value",
+                                    @"key": valueMaybeNil
+                                    });
+    XCTAssertNil(dict);
+    
+    
+    // Case 4
+    dict = NSDICTIONARY_SAFE_WRAP(@{
+                                    @"key1": @"value1",
+                                    @"key2": @"value2"
+                                    });
+    XCTAssertTrue(dict.count == 2);
+    XCTAssertNotNil(dict);
+}
+
+- (void)test_NSARRAY_SAFE_WRAP {
+    NSArray *arr;
+    id objectMaybeNil = nil;
+    
+    // Case 1
+    arr = NSARRAY_SAFE_WRAP(@[ @"1", @"2", objectMaybeNil ]);
+    XCTAssertNil(arr);
+    
+    // Case 2
+    arr = NSARRAY_SAFE_WRAP(@[ @"1", @"2", @"3" ]);
+    XCTAssertTrue(arr.count == 3);
+    XCTAssertNotNil(arr);
+}
+
+#pragma mark - Dollor Sign
+
+- (void)test_$dict {
+    NSDictionary *dict;
+    id keyMaybeNil = nil;
+    id valueMaybeNil = nil;
+    
+    // Case 1
+    dict = $dict(@{
+                   keyMaybeNil: @"value"
+                   });
+    XCTAssertNil(dict);
+    
+    // Case 2
+    dict = $dict(@{
+                   @"key": valueMaybeNil
+                   });
+    XCTAssertNil(dict);
+    
+    // Case 3
+    dict = $dict(@{
+                   keyMaybeNil: @"value",
+                   @"key": valueMaybeNil
+                   });
+    XCTAssertNil(dict);
+    
+    
+    // Case 4
+    dict = $dict(@{
+                   @"key1": @"value1",
+                   @"key2": @"value2"
+                   });
+    XCTAssertTrue(dict.count == 2);
+    XCTAssertNotNil(dict);
+}
+
+- (void)test_$arr {
+    NSArray *arr;
+    id objectMaybeNil = nil;
+    
+    // Case 1
+    arr = $arr(@[ @"1", @"2", objectMaybeNil ]);
+    XCTAssertNil(arr);
+    
+    // Case 2
+    arr = $arr(@[ @"1", @"2", @"3" ]);
+    XCTAssertTrue(arr.count == 3);
+    XCTAssertNotNil(arr);
+}
+
 @end

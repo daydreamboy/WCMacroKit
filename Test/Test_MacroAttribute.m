@@ -15,11 +15,13 @@ WC_RESTRICT_SUBCLASSING
 @implementation SuperClassNotSupportClassing
 @end
 
+/*
 @interface ChildClass : SuperClassNotSupportClassing
 @end
 
 @implementation ChildClass
 @end
+ */
 
 
 @interface Test_MacroAttribute : XCTestCase

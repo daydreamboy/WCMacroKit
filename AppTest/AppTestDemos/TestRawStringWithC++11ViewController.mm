@@ -6,6 +6,7 @@
 //
 
 #import "TestRawStringWithC++11ViewController.h"
+#import <WCMacroKit/WCMacroKit.h>
 
 // @see https://stackoverflow.com/questions/9025004/string-literals-without-having-to-escape-special-characters
 // json from http://json.org/example.html
@@ -40,6 +41,10 @@ static NSString *jsonString = @R"JSON(
     [super viewDidLoad];
     NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:nil];
+    NSLog(@"dict: %@", dict);
+    
+    // Note: check $ macro identifer if allowed in .mm
+    dict = $dict(@{@"k":@"v"});
     NSLog(@"dict: %@", dict);
 }
 

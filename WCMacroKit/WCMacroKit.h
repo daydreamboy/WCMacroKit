@@ -21,6 +21,7 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 #import "WCMacroColor.h"
 #import "WCMacroCompatibility.h"
 #import "WCMacroDelegate.h"
+#import "WCMacroDollarSign.h"
 #import "WCMacroLog.h"
 #import "WCMacroSafeValue.h"
 #import "WCMacroString.h"
@@ -38,6 +39,7 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 #import <WCMacroKit/WCMacroColor.h>
 #import <WCMacroKit/WCMacroCompatibility.h>
 #import <WCMacroKit/WCMacroDelegate.h>
+#import <WCMacroKit/WCMacroDollarSign.h>
 #import <WCMacroKit/WCMacroLog.h>
 #import <WCMacroKit/WCMacroSafeValue.h>
 #import <WCMacroKit/WCMacroString.h>
