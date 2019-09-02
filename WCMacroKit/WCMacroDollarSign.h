@@ -10,6 +10,8 @@
 
 #import "WCMacroSafeValue.h"
 
+// $ allowed in macro identifier in some compiler like llvm
+// @see https://stackoverflow.com/questions/369495/what-are-the-valid-characters-for-macro-names
 #pragma mark - $xxx as alias
 
 /**
