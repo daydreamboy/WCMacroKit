@@ -35,7 +35,7 @@
 // Short formated string
 #define STR_FORMAT(format, ...) ([NSString stringWithFormat:format, __VA_ARGS__])
 // Trim a string
-#define STR_TRIM(str) ([(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]])
+#define STR_TRIM(str) ([(str) isKindOfClass:[NSString class]] ? [(NSString *)(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] : nil)
 
 #pragma mark > String checking
 // Is a string and not empty
@@ -43,6 +43,12 @@
 
 // Is a string and empty
 #define STR_IF_EMPTY(str)        ([(str) isKindOfClass:[NSString class]] && [(NSString *)(str) length] == 0)
+
+// Is a string and empty after trim
+#define STR_TRIM_IF_EMPTY(str)   ([(str) isKindOfClass:[NSString class]] && [[(NSString *)(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0)
+
+// Is a string and not empty after trim
+#define STR_TRIM_IF_EMPTY(str)   ([(str) isKindOfClass:[NSString class]] && [[(NSString *)(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length])
 
 #pragma mark > String size calculation
 
