@@ -379,10 +379,11 @@ _Pragma("clang diagnostic pop") \
 #ifndef NSARRAY_M_SAFE_ADD
 #define NSARRAY_M_SAFE_ADD(mutableArray, value) \
     do { \
+            id __value__ = value; \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
-            if ([mutableArray isKindOfClass:[NSMutableArray class]] && value) { \
-                [mutableArray addObject:value]; \
+            if ([mutableArray isKindOfClass:[NSMutableArray class]] && __value__) { \
+                [mutableArray addObject:__value__]; \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
