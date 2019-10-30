@@ -40,7 +40,7 @@ do { \
             }); \
         } \
     } \
-} while (0)
+} while (0);
 
 /**
  *  Invoke block more safely, and can used in .mm file
@@ -50,7 +50,7 @@ do { \
     if (block) { \
         block(__VA_ARGS__); \
     } \
-} while (0)
+} while (0);
 
 
 #pragma mark - Weak-Strong Dance
