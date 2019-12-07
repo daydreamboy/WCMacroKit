@@ -480,9 +480,10 @@ toClassName *toObject = ({ \
  Safe get a URL from NSString
 
  @param url NSString to expected
- @discussion If the url is a not string or empty will get a nil
+ @return the NSURL instance. If the url is a not string or empty will get a nil
+ @discussion This method will trim the url at head and at trail.
  */
-#define NSURL_SAFE_NEW(url) (([(url) isKindOfClass:[NSString class]] && (url).length) ? [NSURL URLWithString:(url)] : nil)
+#define NSURL_SAFE_NEW(url) (([(url) isKindOfClass:[NSString class]] && (url).length) ? [NSURL URLWithString:[(url) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]] : nil)
 
 /**
  Safe get a file path URL from NSString
