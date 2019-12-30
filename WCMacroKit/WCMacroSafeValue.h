@@ -402,7 +402,7 @@ _Pragma("clang diagnostic pop") \
 #define NSARRAY_SAFE_GET(array, index)                      \
     ({                                                      \
         id __value = nil;                                   \
-        if (array && 0 <= index && index < [array count]) { \
+        if ([array isKindOfClass:[NSArray class]] && 0 <= index && index < [array count]) { \
             __value = [array objectAtIndex:index];          \
         }                                                   \
         __value;                                            \
@@ -418,7 +418,7 @@ _Pragma("clang diagnostic pop") \
         internalArr_ = __VA_ARGS__; \
     } \
     @catch (NSException *e) {} \
-    internalArr_; \
+        internalArr_; \
     });
 
 #endif /* NSARRAY_SAFE_WRAP */
