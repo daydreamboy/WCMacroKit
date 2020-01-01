@@ -402,8 +402,8 @@ _Pragma("clang diagnostic pop") \
 #define NSARRAY_SAFE_GET(array, index)                      \
     ({                                                      \
         id __value = nil;                                   \
-        if ([array isKindOfClass:[NSArray class]] && 0 <= index && index < [array count]) { \
-            __value = [array objectAtIndex:index];          \
+        if ([array isKindOfClass:[NSArray class]] && 0 <= index && index < [(NSArray *)array count]) { \
+            __value = [(NSArray *)array objectAtIndex:index];          \
         }                                                   \
         __value;                                            \
     })
