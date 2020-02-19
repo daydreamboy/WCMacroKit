@@ -52,6 +52,11 @@
 #define IOS8_OR_LATER          ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending)
 #endif
 
+// >= `8.3`
+#ifndef IOS8_3_OR_LATER
+#define IOS8_3_OR_LATER        ([[[UIDevice currentDevice] systemVersion] compare:@"8.3" options:NSNumericSearch] != NSOrderedAscending)
+#endif
+
 // >= `9.0`
 #ifndef IOS9_OR_LATER
 #define IOS9_OR_LATER          ([[[UIDevice currentDevice] systemVersion] compare:@"9.0" options:NSNumericSearch] != NSOrderedAscending)
@@ -65,6 +70,16 @@
 // >= `11.0`
 #ifndef IOS11_OR_LATER
 #define IOS11_OR_LATER          ([[[UIDevice currentDevice] systemVersion] compare:@"11.0" options:NSNumericSearch] != NSOrderedAscending)
+#endif
+
+// >= `12.0`
+#ifndef IOS12_OR_LATER
+#define IOS12_OR_LATER          ([[[UIDevice currentDevice] systemVersion] compare:@"12.0" options:NSNumericSearch] != NSOrderedAscending)
+#endif
+
+// >= `13.0`
+#ifndef IOS13_OR_LATER
+#define IOS13_OR_LATER          ([[[UIDevice currentDevice] systemVersion] compare:@"13.0" options:NSNumericSearch] != NSOrderedAscending)
 #endif
 
 // == `6.0`

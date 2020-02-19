@@ -8,6 +8,8 @@
 #ifndef WCMacroCompatibility_h
 #define WCMacroCompatibility_h
 
+#import "WCMacroVersion.h"
+
 #pragma mark - Compatible with lower compiler iOS SDK
 
 // NSAttributedStringKey available on iOS 11+
@@ -18,8 +20,9 @@
 #pragma mark - Check Device Model
 
 // http://stackoverflow.com/a/13156390/4794665
-#define IS_IPAD             (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-#define IS_IPHONE           (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+// UI_USER_INTERFACE_IDIOM() deprecated in iOS 13+, @see https://stackoverflow.com/questions/24059327/detect-current-device-with-ui-user-interface-idiom-in-swift
+#define IS_IPAD             ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+#define IS_IPHONE           ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
 #define IS_RETINA           ([[UIScreen mainScreen] scale] >= 2.0)
 #define SCREEN_WIDTH        ([[UIScreen mainScreen] bounds].size.width)
 #define SCREEN_HEIGHT       ([[UIScreen mainScreen] bounds].size.height)
@@ -60,5 +63,18 @@
 
 // iPad Pro
 #define IS_IPAD_PRO         (IS_IPAD && SCREEN_MAX_LENGTH == 1366.0)
+
+#pragma mark - Check Device Orientation
+
+/**
+ Check device current orientation if portrait
+ @sa UIDeviceOrientationIsPortrait() which available on iOS 8.3+
+*/
+#define IS_ORIENTATION_PORTRAIT (([[UIDevice currentDevice] orientation]) == UIDeviceOrientationPortrait || ([[UIDevice currentDevice] orientation]) == UIDeviceOrientationPortraitUpsideDown)
+/**
+ Check device current orientation if landscape
+ @sa UIDeviceOrientationIsLandscape() which available on iOS 8.3+
+ */
+#define IS_ORIENTATION_LANDSCAPE (([[UIDevice currentDevice] orientation]) == UIDeviceOrientationLandscapeLeft || ([[UIDevice currentDevice] orientation]) == UIDeviceOrientationLandscapeRight)
 
 #endif /* WCMacroCompatibility_h */

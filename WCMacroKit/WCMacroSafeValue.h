@@ -356,6 +356,20 @@ _Pragma("clang diagnostic pop") \
  */
 #define DICT_IF_NOT_EMPTY(dict)    ([(dict) isKindOfClass:[NSDictionary class]] && [(NSDictionary *)(dict) count])
 
+/**
+ Is a dict and empty
+
+ @param dict the NSDictionary object to expected
+ @return Return YES if is a dict and empty. Return NO if not.
+ 
+ @code
+ if (DICT_IF_EMPTY(dict)) {
+    // do something
+ }
+ @endcode
+ */
+#define DICT_IF_EMPTY(dict)    ([(dict) isKindOfClass:[NSDictionary class]] && [(NSDictionary *)(dict) count] == 0)
+
 #pragma mark - NSArray
 
 /*!
@@ -368,8 +382,8 @@ _Pragma("clang diagnostic pop") \
 #ifndef NSARRAY_M_SAFE_SET
 #define NSARRAY_M_SAFE_SET(mutableArray, index, value)                    \
     do {                                                                  \
-        if (mutableArray && 0 <= index && index < [mutableArray count]) { \
-            mutableArray[index] = value;                                  \
+        if ([mutableArray isKindOfClass:[NSMutableArray class]] && 0 <= index && index < [(NSMutableArray *)mutableArray count]) { \
+            ((NSMutableArray *)mutableArray)[index] = value;                                  \
         }                                                                 \
     } while (0)
 
@@ -383,7 +397,7 @@ _Pragma("clang diagnostic pop") \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
             if ([mutableArray isKindOfClass:[NSMutableArray class]] && __value__) { \
-                [mutableArray addObject:__value__]; \
+                [(NSMutableArray *)mutableArray addObject:__value__]; \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
