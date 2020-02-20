@@ -16,6 +16,7 @@
 @property (nonatomic, copy) NSString *property5;
 @property (nonatomic, copy) NSString *property6;
 @property (nonatomic, copy) NSString *property7;
+@property (nonatomic, assign) CGFloat globalWidth;
 @end
 
 @interface Test_MacroSynthesize : XCTestCase <DummyProtocol>
@@ -23,6 +24,7 @@
 
 @implementation Test_MacroSynthesize
 SYNTHESIZE_IVARS(property1, property2, property3, property4, property5, property6, property7);
+SYNTHESIZE_CLASS_PROPERTY_PRIMITIVE(globalWidth, setGlobalWidth, CGFloat);
 
 - (void)setUp {
     NSLog(@"\n");

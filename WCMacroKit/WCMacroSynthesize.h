@@ -36,7 +36,7 @@
 }
 
 /**
- Synthesize Associated PrimitivesSynthesize Associated Objects
+ Synthesize Associated Primitives
 
  @param getterName the getter method name
  @param setterName the setter method name without colon
@@ -61,6 +61,28 @@
     NSValue *nsValue = objc_getAssociatedObject(self, @selector(getterName));                                   \
     [nsValue getValue:&value];                                                                                  \
     return value;                                                                                               \
+}
+
+/**
+ Synthesize class property primitives
+
+ @param getterName the getter method name
+ @param setterName the setter method name without colon
+ @param type the primitive type
+ @code
+ 
+ SYNTHESIZE_CLASS_PROPERTY_PRIMITIVE(cgFloatNum, setCgFloatNum, CGFloat);
+ SYNTHESIZE_CLASS_PROPERTY_PRIMITIVE(intNum, setIntNum, int);
+
+ @endcode
+ */
+#define SYNTHESIZE_CLASS_PROPERTY_PRIMITIVE(getterName, setterName, type)                                       \
+static type s_##getterName;                                                                                     \
+- (void)setterName:(type)value {                                                                                \
+    s_##getterName = value;                                                                                     \
+}                                                                                                               \
+- (type)getterName {                                                                                            \
+    return s_##getterName;                                                                                      \
 }
 
 #pragma mark - Synthesize Ivars

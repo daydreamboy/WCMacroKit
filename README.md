@@ -64,6 +64,18 @@ __attribute__((XXX))
 
 
 
+### （3）NSAssert
+
+
+
+
+
+
+
+
+
+
+
 ## References
 
 [^1]:https://useyourloaf.com/blog/xcode-6-objective-c-modernization/
