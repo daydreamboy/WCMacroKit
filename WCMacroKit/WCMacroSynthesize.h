@@ -69,6 +69,7 @@
  @param getterName the getter method name
  @param setterName the setter method name without colon
  @param type the primitive type
+ @see https://useyourloaf.com/blog/objective-c-class-properties/
  @code
  
  SYNTHESIZE_CLASS_PROPERTY_PRIMITIVE(cgFloatNum, setCgFloatNum, CGFloat);
