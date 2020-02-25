@@ -46,6 +46,7 @@
 		4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */; };
 		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
 		4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */; };
+		4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_STR_OF_JSONViewController.m; sourceTree = "<group>"; };
 		4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestRawStringWithC++11ViewController.h"; sourceTree = "<group>"; };
 		4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "TestRawStringWithC++11ViewController.mm"; sourceTree = "<group>"; };
+		4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroCompatibility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 				4F4F055C229566CF002BD87A /* Test_MacroSynthesize.m */,
 				4F6D7DB52233B389006639A1 /* Test_MacroTool.m */,
 				4F03AEBA208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m */,
+				4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */,
 				2BE400E51D73273200A48174 /* Info.plist */,
 			);
 			path = Test;
@@ -455,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F5CA92222A009A100F55313 /* Test_MacroSafeValue.m in Sources */,
+				4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */,
 				4F4F055D229566CF002BD87A /* Test_MacroSynthesize.m in Sources */,
 				2BE400E41D73273200A48174 /* Test.m in Sources */,
 				4F03AEBB208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m in Sources */,

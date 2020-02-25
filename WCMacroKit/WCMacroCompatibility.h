@@ -77,4 +77,51 @@
  */
 #define IS_ORIENTATION_LANDSCAPE (([[UIDevice currentDevice] orientation]) == UIDeviceOrientationLandscapeLeft || ([[UIDevice currentDevice] orientation]) == UIDeviceOrientationLandscapeRight)
 
+#pragma mark - Counterpart of Swift clause
+
+/**
+ iflet macro which counterpart with Swift if-let clause
+ 
+ @param var_decl declare a variable
+ @param value a value or a clause which must not contain comma ','
+ 
+ @code
+ Swift:
+ if let result = computeResult() {
+     // do something with result
+ }
+ 
+ Objective-C:
+ iflet(NSString *value, [self returnNil]) {
+     NSString *newValue = [NSString stringWithFormat:@"%@", value];
+     NSLog(@"%@", newValue);
+ }
+ else {
+     NSLog(@"value is nil");
+ }
+ @endcode
+ 
+ @discussion if value is nil, the body block will not execute
+ @note see ifletwhere for more details
+ */
+#define iflet(var_decl, value) \
+    ifletwhere(var_decl, value, YES)
+
+/**
+ iflet strengthened macro which counterpart with Swift if-let clause
+ 
+ @param var_decl declare a variable
+ @param value a value or a clause which must not contain comma ','
+ @param where the condition clause which also determine body block if will be executed
+ 
+ @discussion if value is nil, the body block will not execute
+ @see simple version: http://blog.cristik.com/2016/01/if-let-statement-in-objective-c/
+ @see https://gist.github.com/CraigSiemens/bcdefff3880c508ad2b1
+ */
+#define ifletwhere(var_decl, value, where) \
+    for (BOOL b_ = YES; b_ != NO; b_ = NO) \
+        for (id obj_ = (value); b_ != NO; b_ = NO) \
+            for (var_decl = obj_; b_ != NO; b_ = NO) \
+                if (obj_ != nil && (where))
+
 #endif /* WCMacroCompatibility_h */
