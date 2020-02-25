@@ -114,6 +114,17 @@
  @param value a value or a clause which must not contain comma ','
  @param where the condition clause which also determine body block if will be executed
  
+ @code
+ Objective-C:
+ ifletwhere(NSString *value, [self maybeReturnNil], [value isKindOfClass:[NSString class]]) {
+     NSString *newValue = [NSString stringWithFormat:@"%@", value];
+     NSLog(@"%@", newValue);
+ }
+ else {
+     NSLog(@"value is nil");
+ }
+ @endcode
+ 
  @discussion if value is nil, the body block will not execute
  @see simple version: http://blog.cristik.com/2016/01/if-let-statement-in-objective-c/
  @see https://gist.github.com/CraigSiemens/bcdefff3880c508ad2b1

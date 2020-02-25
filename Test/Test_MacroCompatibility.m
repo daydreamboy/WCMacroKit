@@ -58,7 +58,7 @@
 }
 
 - (void)test_ifletwhere {
-    ifletwhere(NSString *value, [self returnNil], [value hasPrefix:@"I"]) {
+    ifletwhere(NSString *value, [self returnNil], [value isKindOfClass:[NSString class]] && [value hasPrefix:@"I"]) {
         NSString *newValue = [NSString stringWithFormat:@"%@", value];
         NSLog(@"%@", newValue);
     }
@@ -66,7 +66,7 @@
         NSLog(@"value is nil or not have a prefix 'I'");
     }
     
-    ifletwhere(NSString *value, [self notReturnNil], [value hasPrefix:@"I"]) {
+    ifletwhere(NSString *value, [self notReturnNil], [value isKindOfClass:[NSString class]] && [value hasPrefix:@"I"]) {
         NSString *newValue = [NSString stringWithFormat:@"%@", value];
         NSLog(@"`%@` have a prefix 'I'", newValue);
     }
