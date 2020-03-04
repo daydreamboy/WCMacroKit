@@ -79,10 +79,19 @@
  */
 #define SYNTHESIZE_CLASS_PROPERTY_PRIMITIVE(getterName, setterName, type)                                       \
 static type s_##getterName;                                                                                     \
-- (void)setterName:(type)value {                                                                                \
++ (void)setterName:(type)value {                                                                                \
     s_##getterName = value;                                                                                     \
 }                                                                                                               \
-- (type)getterName {                                                                                            \
++ (type)getterName {                                                                                            \
+    return s_##getterName;                                                                                      \
+}
+
+#define SYNTHESIZE_CLASS_PROPERTY_OBJECT(getterName, setterName, type)                                          \
+static type s_##getterName;                                                                                     \
++ (void)setterName:(type)value {                                                                                \
+    s_##getterName = value;                                                                                     \
+}                                                                                                               \
++ (type)getterName {                                                                                            \
     return s_##getterName;                                                                                      \
 }
 
