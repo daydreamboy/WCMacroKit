@@ -33,6 +33,8 @@
 		4F6D7DB42233B1D7006639A1 /* WCMacroTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F6D7DB32233B1D7006639A1 /* WCMacroTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F6D7DB62233B389006639A1 /* Test_MacroTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D7DB52233B389006639A1 /* Test_MacroTool.m */; };
 		4F74C2B821FAAFA300A87393 /* TestWeakifyStrongifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F74C2B721FAAFA300A87393 /* TestWeakifyStrongifyViewController.m */; };
+		4F77D9E22411330500BC2BA2 /* WCMacroCode.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F77D9E12411330500BC2BA2 /* WCMacroCode.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F77D9E42411347500BC2BA2 /* Test_MacroCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F77D9E32411347500BC2BA2 /* Test_MacroCode.m */; };
 		4F7D8E8E21086D2000145B00 /* WCCallerTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928A1FEA4F06005F137D /* WCCallerTool.m */; };
 		4F7D8E9021086EE300145B00 /* WCMacroKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BE400EC1D73276A00A48174 /* WCMacroKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9121086EE300145B00 /* WCMacroColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2BE400EE1D732D2D00A48174 /* WCMacroColor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -114,6 +116,8 @@
 		4F6D7DB52233B389006639A1 /* Test_MacroTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroTool.m; sourceTree = "<group>"; };
 		4F74C2B621FAAFA300A87393 /* TestWeakifyStrongifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWeakifyStrongifyViewController.h; sourceTree = "<group>"; };
 		4F74C2B721FAAFA300A87393 /* TestWeakifyStrongifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestWeakifyStrongifyViewController.m; sourceTree = "<group>"; };
+		4F77D9E12411330500BC2BA2 /* WCMacroCode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroCode.h; sourceTree = "<group>"; };
+		4F77D9E32411347500BC2BA2 /* Test_MacroCode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroCode.m; sourceTree = "<group>"; };
 		4F7D8E8621086D0E00145B00 /* WCMacroKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WCMacroKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7D8E8921086D0E00145B00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroUncategoried.h; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				2BE400E31D73273200A48174 /* Test.m */,
 				4F172408231BD10E00483D53 /* Test_MacroAttribute.m */,
 				4F50AE30240E9CDE00FB7FE8 /* Test_MacroBlock.m */,
+				4F77D9E32411347500BC2BA2 /* Test_MacroCode.m */,
 				4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */,
 				4F5CA92122A009A100F55313 /* Test_MacroSafeValue.m */,
 				4F4F055C229566CF002BD87A /* Test_MacroSynthesize.m */,
@@ -245,6 +250,7 @@
 				2BE400F31D7330B500A48174 /* WCMacroAssert.h */,
 				4F172407231BD03500483D53 /* WCMacroAttribute.h */,
 				2BE400F11D732F6500A48174 /* WCMacroBlock.h */,
+				4F77D9E12411330500BC2BA2 /* WCMacroCode.h */,
 				2BE400EE1D732D2D00A48174 /* WCMacroColor.h */,
 				4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */,
 				2BE400F21D732F7300A48174 /* WCMacroDelegate.h */,
@@ -287,6 +293,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F77D9E22411330500BC2BA2 /* WCMacroCode.h in Headers */,
 				4F7D8E9021086EE300145B00 /* WCMacroKit.h in Headers */,
 				4F7D8E9121086EE300145B00 /* WCMacroColor.h in Headers */,
 				4F6D7DB22233ACC2006639A1 /* WCMacroSafeValue.h in Headers */,
@@ -461,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F50AE31240E9CDE00FB7FE8 /* Test_MacroBlock.m in Sources */,
+				4F77D9E42411347500BC2BA2 /* Test_MacroCode.m in Sources */,
 				4F5CA92222A009A100F55313 /* Test_MacroSafeValue.m in Sources */,
 				4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */,
 				4F4F055D229566CF002BD87A /* Test_MacroSynthesize.m in Sources */,
