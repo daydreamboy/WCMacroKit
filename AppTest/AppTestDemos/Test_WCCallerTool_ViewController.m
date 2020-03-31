@@ -31,8 +31,10 @@ typedef NS_ENUM(NSUInteger, SomeState) {
     
     returnValue = [WCCallerTool call3AndReturn:self selector:NSSelectorFromString(@"testMethodWithArg1:arg2:arg3:") param1:@"A" param2:@"B" param3:@"C"];
     NSLog(@"returnValue: %@", returnValue);
-    
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wnonnull"
     returnValue = [WCCallerTool call3AndReturn:self selector:NSSelectorFromString(@"testMethodWithArg1:arg2:arg3:") param1:@"A" param2:nil param3:@"C"];
+#pragma GCC diagnostic pop
     NSLog(@"returnValue: %@", returnValue);
     
     returnValue = [WCCallerTool call3AndReturn:self selector:NSSelectorFromString(@"noneExistedMethodWithArg1:arg2:arg3:") param1:@"A" param2:@"B" param3:@"C"];
@@ -45,8 +47,11 @@ typedef NS_ENUM(NSUInteger, SomeState) {
      */
     
     [WCCallerTool call3:self selector:NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:") param1:@"A" param2:@"B" param3:@"C"];
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wnonnull"
     [WCCallerTool call3:self selector:NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:") param1:nil param2:nil param3:nil];
     [WCCallerTool call3:self selector:NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:") param1:nil param2:nil param3:nil];
+#pragma GCC diagnostic pop
 }
 
 #pragma mark - Callee Methods
