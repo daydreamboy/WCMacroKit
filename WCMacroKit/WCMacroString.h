@@ -15,6 +15,8 @@
 
 // BOOL to string
 #define STR_OF_BOOL(yesOrNo)     ((yesOrNo) ? @"YES" : @"NO")
+// NSInteger/int/long
+#define STR_OF_INTEGER(integer)     ([NSString stringWithFormat:@"%ld", (long)(integer)])
 // property name to string
 #define STR_OF_PROP(property)    (NSStringFromSelector(@selector(property)))
 
@@ -27,6 +29,14 @@
  @warning the `\n` will replaced by ` `
  */
 #define STR_OF_JSON(...) @#__VA_ARGS__
+
+/**
+ Get string from file
+ 
+ @param filePath the file path relative to [[NSBundle mainBundle] bundlePath]
+ @return the content string of the file path
+ */
+#define STR_OF_FILE(filePath)   ([NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:(filePath)] encoding:NSUTF8StringEncoding error:nil])
 
 #pragma mark > String modidication
 
