@@ -284,6 +284,20 @@ do { \
     return tempVar;
 
 
+#pragma mark - Toll-free Bridge
+
+#if __has_feature(objc_arc)
+
+#define toCF (__bridge CFTypeRef)
+#define fromCF (__bridge id)
+
+#else
+
+#define toCF (CFTypeRef)
+#define fromCF (id)
+
+#endif
+
 #pragma mark - CocoaPod Macro
 
 // Specify Pod (e.g. pod name, pod version)
