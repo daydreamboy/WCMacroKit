@@ -283,6 +283,41 @@ do { \
     }                                                                           \
     return tempVar;
 
+/**
+ Create a semaphore as a lock
+ */
+#define SEMA_LOCK_INIT \
+static dispatch_semaphore_t sLock; \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+    sLock = dispatch_semaphore_create(1); \
+});
+
+/**
+ Use the semaphore lock
+ 
+ @param ... the code to protect
+ @discussion This macro must be used in company with SEMA_LOCK_INIT
+ @code
+ + (nullable NSString *)appExecutableUUID {
+    static NSString *sUUID;
+    SEMA_LOCK_INIT
+    
+    if (!sUUID) {
+        SMEA_LOCK(
+            sUUID = <Get your UUID>;
+        );
+    }
+
+    return sUUID;
+ }
+ @endcode
+ */
+#define SEMA_LOCK(...) \
+dispatch_semaphore_wait(sLock, DISPATCH_TIME_FOREVER); \
+__VA_ARGS__ \
+dispatch_semaphore_signal(sLock);
+
 
 #pragma mark - Toll-free Bridge
 
