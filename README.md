@@ -64,15 +64,41 @@ __attribute__((XXX))
 
 
 
-### （3）NSAssert
+### （2）NSAssert
 
 
 
+### （3）__IPHONE_OS_VERSION_MIN_REQUIRED
+
+`__IPHONE_OS_VERSION_MIN_REQUIRED`宏对应iOS Deployment Target的版本号。
+
+举个例子，如果iOS Deployment Target设置8.0，则在满足该版本及以上才编译某些代码，可以使用下面方式
+
+```objective-c
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
+...
+#endif
+```
 
 
 
+### （4）__IPHONE_XX_Y
 
+​        `__IPHONE_XX_Y`定义在Availability.h中，主版本号不同的iOS系统版本，该文件定义的宏不同，例如在iOS 11 SDK中定义了`__IPHONE_11_0`等，而iOS 10 SDK没有定义该宏。如果代码需要向下编译兼容，则需要使用`__IPHONE_11_0`。
 
+​        为什么代码需要向下编译兼容，例如UIScrollView的adjustedContentInset属性在iOS 11才有，而在老的Xcode版本中支持不了iOS 11，但是又需要编译代码（一般是测代码在低版本模拟器上）。这时iOS SDK中UIScrollView没有adjustedContentInset属性，则编译报错。为了解决这类问题，采用`__IPHONE_XX_Y`做条件编译，如下
+
+```objective-c
+#ifdef __IPHONE_11_0
+<Code use UIScrollView @adjustedContentInset>
+#else
+<Code should not use UIScrollView @adjustedContentInset>
+#endif
+```
+
+注意
+
+> 宏只是让代码编译通过，还需要运行时判断该API是否可否，否则高版本API在低版本iOS上运行会报找不到方法的异常
 
 
 
