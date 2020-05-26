@@ -57,6 +57,18 @@
 : [NSBundle mainBundle] \
 )
 
+#pragma mark > Variable Definition
+
+// private
+#define __VARIABLE_CONCAT_IMPL(x, y) x##y
+/**
+ Concatenate `a` and `b` into a variable name `ab`
+ 
+ @param a the first part
+ @param b the second part
+ */
+#define VARIABLE_CONCAT(a, b) __VARIABLE_CONCAT_IMPL(a, b)
+
 #pragma mark - UI
 
 #pragma mark > Fixed Value
