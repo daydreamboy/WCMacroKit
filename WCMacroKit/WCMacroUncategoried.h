@@ -100,6 +100,26 @@ if (!isnan((newHeight))) { \
 __internal_frame; \
 })
 
+/**
+Set x and y of a frame
+
+@param frame the original frame
+@param newX the new x. If not change, set it to NAN
+@param newY the new y. If not change, set it to NAN
+@return the new frame
+@discussion Use FrameSet macro in WCViewTool instead.
+*/
+#define FrameSetOrigin(frame, newX, newY) ({ \
+CGRect __internal_frame = (frame); \
+if (!isnan((newX))) { \
+    __internal_frame.origin.x = (newX); \
+} \
+if (!isnan((newY))) { \
+    __internal_frame.origin.y = (newY); \
+} \
+__internal_frame; \
+})
+
 #pragma mark > CGSize
 
 /**
