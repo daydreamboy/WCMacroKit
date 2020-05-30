@@ -9,16 +9,7 @@
 #import <XCTest/XCTest.h>
 #import <WCMacroKit/WCMacroKit.h>
 
-#define UITextFieldDelegateEnabled 0
-
-#if UITextFieldDelegateEnabled
-#define UITextFieldDelegateProtocol UITextFieldDelegate
-#else
-WCDummyProtocol(UITextFieldDelegate)
-#define UITextFieldDelegateProtocol WCDummyProtocol_UITextFieldDelegate
-#endif
-
-@interface Test : XCTestCase <UITextFieldDelegateProtocol>
+@interface Test : XCTestCase
 
 @end
 
@@ -34,236 +25,38 @@ WCDummyProtocol(UITextFieldDelegate)
     [super tearDown];
 }
 
-- (void)test_NILABLE {
-    NSString *nilString;
-    NSArray *arr = @[@"aString"];
-    
-    // @warning Only use NILABLE wrap/re-wrap values of literal NSDictionary
-    NSDictionary *dict = @{
-                           @"maybe nil": NILABLE(nilString), // Ok, value is nil
-                           @"arr": NILABLE(arr),
-                           @"dict": @{ @"key": @"value"},
-                           };
-    
-    XCTAssertEqualObjects(dict[@"maybe nil"], @"(null)");
-    XCTAssertNotNil(dict[@"arr"]);
-    XCTAssertEqual(dict[@"arr"], arr);
-    XCTAssertEqual(NILABLE(dict[@"arr"]), arr);
-    NSDictionary *dictValue = NILABLE(dict[@"dict"]);
-    XCTAssertTrue([dictValue isKindOfClass:[NSDictionary class]]);
+#pragma mark - __TIME__
+
+- (void)test___TIME__ {
+    __TIME__;
+    NSLog(@"%s", __TIME__);
 }
 
-- (void)test_WCLog {
-    NSString *message = @"message"      @", a.k.a msg";
-    
-    NSLog(@"[ApolloSDK] " @"log: %@", message);
-    WCLog(@"log: %@", message);
+#pragma mark - __TIMESTAMP__
+
+- (void)test___TIMESTAMP__ {
+    __TIMESTAMP__;
+    NSLog(@"%s", __TIMESTAMP__);
 }
 
-- (void)test_XLog {
-    
-    NSLog(@"Hello");
-    
-    NSLog((@"[ONEVoIP] %s [Line %d] " @"%@"), __PRETTY_FUNCTION__, __LINE__, @"var");
-    
-    ALog(@"%@", @"test Alert");
-    CLog(@"%@", @"test Critial");
-    ELog(@"%@", @"test Error");
-    WLog(@"%@", @"test Warning");
-    NLog(@"%@", @"test Notice");
-    ILog(@"%@", @"test Info");
-    DLog(@"%@", @"test Debug");
-    
-    __unused NSError *errorNil;
-    LogError(errorNil); // Will not print
-    
-    __unused NSError *error = [NSError errorWithDomain:@"domain" code:-1 userInfo:@{ NSLocalizedDescriptionKey: @"CAUTION! An error occurred." }];
-    LogError(error); // Will print
+#pragma mark - __COUNTER__
+
+- (void)test___COUNTER__ {
+    NSLog(@"%d", __COUNTER__); // 0
+    NSLog(@"%d", __COUNTER__); // 1
+    NSLog(@"%d", __COUNTER__); // 2
 }
 
-- (void)test_example {
-    ALog(@"%@", @"test Alert");
+#pragma mark - __BASE_FILE__
+
+- (void)test___BASE_FILE__ {
+    NSLog(@"%s", __BASE_FILE__);
 }
 
-- (void)test_STR_IF_EMPTY {
-    
-    NSString *nilString;
-    XCTAssertFalse(STR_IF_EMPTY(nilString));
-    
-    NSString *emptyString = @"";
-    XCTAssertTrue(STR_IF_EMPTY(emptyString));
-    
-    if (!STR_IF_EMPTY(emptyString)) {
-        NSLog(@"%@ is not an empty string", nilString);
-    }
-    else {
-        NSLog(@"an empty string");
-    }
-    
-    NSString *notEmptyString = @"not empty";
-    XCTAssertFalse(STR_IF_EMPTY(notEmptyString));
-}
+#pragma mark - __FILE_NAME__
 
-- (void)test_STR_IF_NOT_EMPTY {
-    NSString *nilString;
-    XCTAssertFalse(STR_IF_NOT_EMPTY(nilString));
-    
-    if (STR_IF_NOT_EMPTY(nilString)) {
-        NSLog(@"%@ is not an nil string", nilString);
-    }
-    else {
-        NSLog(@"a nil string");
-    }
-    
-    NSString *emptyString = @"";
-    XCTAssertFalse(STR_IF_NOT_EMPTY(emptyString));
-    
-    // A string and not empty
-    if (STR_IF_NOT_EMPTY(emptyString)) {
-        NSLog(@"%@ is not an empty string", nilString);
-    }
-    else {
-        NSLog(@"an empty string");
-    }
-    
-    NSString *notEmptyString = @"not empty";
-    XCTAssertTrue(STR_IF_NOT_EMPTY(notEmptyString));
-}
-
-- (void)test_STR_FORMAT {
-    NSLog(@"%@", STR_FORMAT(@"本地文件不存在, 路径是%@", @"path/to/file"));
-    NSLog(@"%@", STR_FORMAT(@"参数不对, 参数1是%@，参数2是%@", @"a", @"b"));
-    
-    XCTAssertEqualObjects(STR_FORMAT(@"本地文件不存在, 路径是%@", @"path/to/file"), @"本地文件不存在, 路径是path/to/file");
-    XCTAssertEqualObjects(STR_FORMAT(@"参数不对, 参数1是%@，参数2是%@", @"a", @"b"), @"参数不对, 参数1是a，参数2是b");
-}
-
-#pragma mark > Safe Get Value
-
-- (void)test_ValueOfXXX {
-    NSDictionary *layoutJson = @{};
-    NSString *name = ValueOfString(layoutJson[@"name"]);
-    
-    name = ([(layoutJson[@"name"]) isKindOfClass:[NSString class]] ? (layoutJson[@"name"]) : nil);
-}
-
-#pragma mark > Key Value Pair Suite
-
-- (void)test_key_value_pair_suite {
-    NSArray<KeyValuePairType> *pairs;
-    
-    pairs = @[
-              KeyValuePair(@"cancel", nil),
-              KeyValuePair(@"event", @"module"),
-              @[@1, @2, @3]
-              ];
-    
-    for (NSInteger i = 0; i < pairs.count; i++) {
-        KeyValuePairType pair = pairs[i];
-        
-        if (i == 0) {
-            NSString *key = KeyOfPair(pair);
-            NSString *value = ValueOfPair(pair);
-            
-            XCTAssertEqualObjects(key, @"cancel");
-            XCTAssertNil(value);
-        }
-        else if (i == 1) {
-            NSString *key = KeyOfPair(pair);
-            NSString *value = ValueOfPair(pair);
-            
-            XCTAssertEqualObjects(key, @"event");
-            XCTAssertEqualObjects(value, @"module");
-        }
-        else if (i == 2) {
-            BOOL isPair = KeyValuePairValidate(pair);
-            XCTAssertFalse(isPair);
-        }
-    }
-}
-
-#pragma mark - NSDictionary
-
-- (void)test_NSDICTIONARY_M_PAIRS_DEFINE {
-    // Case 1
-    NSDICTIONARY_M_PAIRS_DEFINE(dictM,
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @YES)
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @1)
-    );
-    
-    XCTAssertTrue(dictM.count == 1);
-    
-    // Case 2
-    NSDICTIONARY_M_PAIRS_DEFINE(dictM2,
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-        NSDICTIONARY_M_PAIRS_SET(@"key2", @YES)
-        NSDICTIONARY_M_PAIRS_SET(@"key3", @1)
-    );
-    
-    XCTAssertTrue(dictM2.count == 3);
-    
-    // Case 3
-    NSDICTIONARY_M_PAIRS_DEFINE(dictM3,
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-        NSDICTIONARY_M_PAIRS_SET(@"key2", nil)
-        NSDICTIONARY_M_PAIRS_SET(nil, @1)
-    );
-    
-    XCTAssertTrue(dictM3.count == 1);
-}
-
-- (void)test_NSDICTIONARY_M_PAIRS_BEGIN_WITH_RETURN {
-
-    NSMutableDictionary *data = NSDICTIONARY_M_PAIRS_RETURN(
-        NSDICTIONARY_M_PAIRS_SET(@"a", @"A");
-        NSDICTIONARY_M_PAIRS_SET(@"b", @"B");
-        NSDICTIONARY_M_PAIRS_SET(@"c", nil);
-        NSDICTIONARY_M_PAIRS_SET(nil, @"D");
-    );
-    
-    XCTAssertTrue(data.count == 2);
-    XCTAssertEqualObjects(data[@"a"], @"A");
-    XCTAssertEqualObjects(data[@"a"], @"A");
-    XCTAssertNil(data[@"c"]);
-}
-
-- (void)test_NSDICTIONARY_SAFE_GET {
-    NSDictionary *dict;
-    id value;
-    
-    // Case 1
-    value = NSDICTIONARY_SAFE_GET(dict, @"keyNotExists", nil);
-    XCTAssertNil(value);
-    
-    // Case 2
-    dict = @{
-             @"key": @"value"
-             };
-    value = NSDICTIONARY_SAFE_GET(dict, @"keyNotExists", nil);
-    XCTAssertNil(value);
-
-    // Case 3
-    dict = @{
-             @"key": [NSDate date]
-             };
-    value = NSDICTIONARY_SAFE_GET(dict, @"key", NSString);
-    XCTAssertNil(value);
-    
-    value = NSDICTIONARY_SAFE_GET(dict, @"key", nil);
-    XCTAssertNotNil(value);
-    XCTAssertTrue([value isKindOfClass:[NSDate class]]);
-    
-    value = NSDICTIONARY_SAFE_GET(dict, @"key", @"");
-    XCTAssertNotNil(value);
-    XCTAssertTrue([value isKindOfClass:[NSDate class]]);
-    
-    // Case 4
-    dict = @{
-             @"key": @"date"
-             };
-    value = NSDICTIONARY_SAFE_GET(dict, @"key", NSString);
-    XCTAssertEqualObjects(value, @"date");
+- (void)test___FILE_NAME__ {
+    NSLog(@"%s", __FILE_NAME__);
 }
 
 #pragma mark -
@@ -287,90 +80,6 @@ WCDummyProtocol(UITextFieldDelegate)
 
 - (void)buttonClicked {
     NSLog(@"_cmd: %@", NSStringFromSelector(_cmd));
-}
-
-#pragma mark - Delegate caller
-
-- (void)test_DELEGATE_SAFE_CALL2 {
-    DELEGATE_SAFE_CALL2(self, @selector(delegateMethodWithSender:YESBoolValue:), self, @(YES));
-}
-
-#pragma mark > Sample methods
-
-- (void)delegateMethodWithSender:(id)sender YESBoolValue:(NSNumber *)yesOrNo {
-    XCTAssert(sender == self);
-    XCTAssert([yesOrNo boolValue] == YES);
-}
-
-#pragma mark - WCDumpXXX
-
-- (void)test_WCDumpBool {
-    WCDumpBool(YES);
-    WCDumpBool(NO);
-    
-    BOOL boolValue = YES;
-    WCDumpBool(boolValue);
-    boolValue = NO;
-    WCDumpBool(boolValue);
-    
-    WCDumpBool([self class] == [super class]);
-}
-
-- (void)test_WCDumpObject {
-    WCDumpObject([self class]);
-    WCDumpObject([super class]);
-    WCDumpObject([self superclass]);
-    
-    WCDumpObject(@"");
-    
-    id nilValue = nil;
-    WCDumpObject(nilValue);
-    
-    NSString *emptyStr= @"";
-    WCDumpObject(emptyStr);
-}
-
-#pragma mark -
-
-- (void)test_FrameSetSize {
-    CGSize size;
-    CGRect frame;
-    CGRect output;
-    
-    // Case 1
-    size = CGSizeMake(200, 200);
-    frame = CGRectMake(10, 10, 100, 100);
-    output = FrameSetSize(frame, size.width, size.height);
-    XCTAssertTrue(output.size.width == 200 && output.size.height == 200);
-    
-    // Case 2
-    size = CGSizeMake(200, 200);
-    frame = CGRectMake(10, 10, 100, 100);
-    output = FrameSetSize(frame, size.width, NAN);
-    XCTAssertTrue(output.size.width == 200 && output.size.height == 100);
-}
-
-- (void)test_strongify_weakify {
-    id foo = [[NSObject alloc] init];
-    id bar = [[NSObject alloc] init];
-    
-    weakify(self);
-    weakify(foo);
-    
-    // this block will not keep 'foo' or 'bar' alive
-    BOOL (^matchesFooOrBar)(id) = ^ BOOL (id obj){
-        // but now, upon entry, 'foo' and 'bar' will stay alive until the block has
-        // finished executing
-        strongify(self);
-        strongify(foo);
-        
-        NSLog(@"self: %@", self);
-        NSLog(@"foo: %@", foo);
-        
-        return [foo isEqual:obj] || [bar isEqual:obj];
-    };
-    
-    matchesFooOrBar([NSDate date]);
 }
 
 @end

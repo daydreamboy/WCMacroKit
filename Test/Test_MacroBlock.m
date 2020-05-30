@@ -48,4 +48,27 @@
     BLOCK_SAFE_RUN_ON_MAIN_THREAD(block, @"123");
 }
 
+- (void)test_strongify_weakify {
+    id foo = [[NSObject alloc] init];
+    id bar = [[NSObject alloc] init];
+    
+    weakify(self);
+    weakify(foo);
+    
+    // this block will not keep 'foo' or 'bar' alive
+    BOOL (^matchesFooOrBar)(id) = ^ BOOL (id obj){
+        // but now, upon entry, 'foo' and 'bar' will stay alive until the block has
+        // finished executing
+        strongify(self);
+        strongify(foo);
+        
+        NSLog(@"self: %@", self);
+        NSLog(@"foo: %@", foo);
+        
+        return [foo isEqual:obj] || [bar isEqual:obj];
+    };
+    
+    matchesFooOrBar([NSDate date]);
+}
+
 @end
