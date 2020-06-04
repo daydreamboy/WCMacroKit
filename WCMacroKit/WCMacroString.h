@@ -15,10 +15,12 @@
 
 // BOOL to string
 #define STR_OF_BOOL(yesOrNo)     ((yesOrNo) ? @"YES" : @"NO")
-// NSInteger/int/long
+// NSInteger/int/long to string
 #define STR_OF_INTEGER(integer)     ([NSString stringWithFormat:@"%ld", (long)(integer)])
 // property name to string
 #define STR_OF_PROP(property)    (NSStringFromSelector(@selector(property)))
+// NSRange to string
+#define STR_OF_RANGE(range) (NSStringFromRange(range))
 
 /**
  literal JSON c string to NSString
