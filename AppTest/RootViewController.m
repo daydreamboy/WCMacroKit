@@ -10,7 +10,6 @@
 
 #import "Test_NSAssertOrXXX.h"
 #import "Test_SYNTHESIZE_ASSOCIATED_XXX.h"
-#import "TestDelegateCallerViewController.h"
 #import "Test_WCCallerTool_ViewController.h"
 #import "Test_STR_OF_JSONViewController.h"
 #import "TestRawStringWithC++11ViewController.h"
@@ -40,7 +39,6 @@
     _titles = @[
         @"NSAssertOrXXX trigger and continue",
         @"Macro for associated objects",
-        @"safe call delegate methods",
         @"call methods on runtime",
         @"use json literal in code",
         @"use raw literal string in code (C++ 11 feature)",
@@ -50,7 +48,6 @@
     _classes = @[
         [Test_NSAssertOrXXX class],
         [Test_SYNTHESIZE_ASSOCIATED_XXX class],
-        [TestDelegateCallerViewController class],
         [Test_WCCallerTool_ViewController class],
         [Test_STR_OF_JSONViewController class],
         [TestRawStringWithC__11ViewController class],

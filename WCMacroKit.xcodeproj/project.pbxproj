@@ -51,7 +51,6 @@
 		4F7D8E9721086EE300145B00 /* WCMacroCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9821086EE300145B00 /* WCCallerTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F5D92891FEA4F06005F137D /* WCCallerTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9A21087C5500145B00 /* WCMacroUncategoried.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */; };
 		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
 		4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */; };
 		4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */; };
@@ -131,8 +130,6 @@
 		4F7D8E8621086D0E00145B00 /* WCMacroKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WCMacroKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7D8E8921086D0E00145B00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroUncategoried.h; sourceTree = "<group>"; };
-		4FB28DBE1FA73D4400B58D2E /* TestDelegateCallerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestDelegateCallerViewController.h; sourceTree = "<group>"; };
-		4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestDelegateCallerViewController.m; sourceTree = "<group>"; };
 		4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCMacroDelegate.m; sourceTree = "<group>"; };
 		4FB43AD1200CE24500D5D92D /* Test_STR_OF_JSONViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_STR_OF_JSONViewController.h; sourceTree = "<group>"; };
 		4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_STR_OF_JSONViewController.m; sourceTree = "<group>"; };
@@ -176,8 +173,6 @@
 				2B44B17C1D952C6C00B23550 /* Test_NSAssertOrXXX.m */,
 				2BC566191D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.h */,
 				2BC5661A1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m */,
-				4FB28DBE1FA73D4400B58D2E /* TestDelegateCallerViewController.h */,
-				4FB28DBF1FA73D4400B58D2E /* TestDelegateCallerViewController.m */,
 				4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */,
 				4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */,
 				4F5D928C1FEA502B005F137D /* Test_WCCallerTool_ViewController.h */,
@@ -474,7 +469,6 @@
 				4F6635872047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m in Sources */,
 				4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */,
 				2B44B1791D952BB100B23550 /* RootViewController.m in Sources */,
-				4FB28DC01FA73D4400B58D2E /* TestDelegateCallerViewController.m in Sources */,
 				2BE400CA1D73272500A48174 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
