@@ -106,4 +106,22 @@
                                            context:nil].size                                \
                       : CGSizeZero;
 
+#pragma mark - Pretty String
+
+/**
+ Get pretty size for memory bytes, which 1024 byte = 1 KB
+ 
+ @param memoryBytes__ the bytes for memory
+ @return the pretty size string
+ */
+#define STR_PRETTY_SIZE_M(memoryBytes__) ([NSByteCountFormatter stringFromByteCount:(long long)(memoryBytes__) countStyle:NSByteCountFormatterCountStyleBinary])
+
+/**
+ Get pretty size for memory bytes, which 1000 byte = 1 KB
+ 
+ @param fileBytes__ the bytes for file
+ @return the pretty size string
+ */
+#define STR_PRETTY_SIZE_F(fileBytes__) ([NSByteCountFormatter stringFromByteCount:(long long)(fileBytes__) countStyle:NSByteCountFormatterCountStyleDecimal];)
+
 #endif /* WCMacroString_h */
