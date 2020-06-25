@@ -288,7 +288,9 @@ do { \
 
 #endif // __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
-#pragma mark - Toll-free Bridge
+#pragma mark - CoreFoundation
+
+#pragma mark > Toll-free Bridge
 
 #if __has_feature(objc_arc)
 
@@ -301,6 +303,15 @@ do { \
 #define fromCF (id)
 
 #endif
+
+#pragma mark > Safe Wrapper
+
+/**
+ Safe call CFRelease
+ 
+ @param ref the CFTypeRef
+ */
+#define CF_SAFE_RELEASE(ref) if ((ref) != NULL) { CFRelease((ref)); }
 
 #pragma mark - CocoaPod Macro
 
