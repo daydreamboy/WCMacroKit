@@ -40,6 +40,16 @@
  */
 #define STR_OF_FILE(filePath)   ([NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:(filePath)] encoding:NSUTF8StringEncoding error:nil])
 
+/// Private: for STR_OF_LITERAL macro
+#define __STRINGFY(a) @#a
+/**
+ Get a literal string from literal text
+ 
+ @param literal_ the literal text or a macro
+ @return the literal string
+ */
+#define STR_OF_LITERAL(literal_) __STRINGFY(literal_)
+
 #pragma mark > String modidication
 
 // Catenate two strings
