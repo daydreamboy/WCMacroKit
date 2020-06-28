@@ -118,6 +118,12 @@ __attribute__((XXX))
 
 
 
+## 4、宏的identifier
+
+宏的identifier可以有特殊字符前缀，`$`、`_`等
+
+
+
 
 
 ## References
