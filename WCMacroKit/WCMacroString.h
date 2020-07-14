@@ -50,6 +50,8 @@
  */
 #define STR_OF_LITERAL(literal_) __STRINGFY(literal_)
 
+#define STR_SAFE(str) ([(str) isKindOfClass:[NSString class]] ? (str) : @"")
+
 #pragma mark > String modidication
 
 // Catenate two strings
