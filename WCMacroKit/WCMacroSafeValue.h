@@ -404,6 +404,19 @@ _Pragma("clang diagnostic pop") \
 
 #endif /* NSARRAY_M_SAFE_ADD */
 
+#ifndef NSARRAY_M_SAFE_REMOVE
+#define NSARRAY_M_SAFE_REMOVE(mutableArray, index) \
+    do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
+            if ([mutableArray isKindOfClass:[NSMutableArray class]] && 0 <= index && index < [(NSMutableArray *)mutableArray count]) { \
+                [(NSMutableArray *)mutableArray removeObjectAtIndex:index]; \
+            } \
+_Pragma("clang diagnostic pop") \
+    } while (0)
+
+#endif /* NSARRAY_M_SAFE_REMOVE */
+
 /*!
  *  Get value at index of NSArray
  *
