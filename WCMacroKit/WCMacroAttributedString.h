@@ -44,7 +44,7 @@
  @param the attributes dictionary
  @return the attributed string
  */
-#define ASTR2_M(str, attrs) ([[NSMutableAttributedString alloc] initWithString:[(id)(str) isKindOfClass:[NSString class]] ? (id)(str) : @""] attributes:[(id)(attrs) isKindOfClass:[NSDictionary class]] ? (id)(attrs) : @{}]])
+#define ASTR2_M(str, attrs) ([[NSMutableAttributedString alloc] initWithString:([(id)(str) isKindOfClass:[NSString class]] ? (id)(str) : @"") attributes:([(id)(attrs) isKindOfClass:[NSDictionary class]] ? (id)(attrs) : @{})])
 
 /**
  Create a new attributed string which catenat str1 and str2
@@ -55,8 +55,8 @@
  */
 #define ASTR_M_CATENATE(str1, str2) \
 ({ \
-    NSMutableAttributedString *__return_attrString = [[NSMutableAttributedString alloc] initWithAttributedString:[(id)(str1) isKindOfClass:[NSAttributedString class]] ? (id)(str1) : ASTR_M(@"")]]; \
-    [__return_attrString appendAttributedString:[(id)(str2) isKindOfClass:[NSAttributedString class]] ? (id)(str2) : ASTR_M(@"")]]; \
+    NSMutableAttributedString *__return_attrString = [[NSMutableAttributedString alloc] initWithAttributedString:[(id)(str1) isKindOfClass:[NSAttributedString class]] ? (id)(str1) : ASTR_M(@"")]; \
+    [__return_attrString appendAttributedString:[(id)(str2) isKindOfClass:[NSAttributedString class]] ? (id)(str2) : ASTR_M(@"")]; \
     __return_attrString; \
 })
 

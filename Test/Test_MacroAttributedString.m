@@ -53,4 +53,56 @@
     XCTAssertTrue(output.length == 3);
 }
 
+- (void)test_ASTR_M {
+    NSMutableAttributedString *output;
+    
+    output = ASTR_M(@"123");
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    
+    output = ASTR_M(nil);
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    XCTAssertTrue(output.length == 0);
+    
+    output = ASTR_M(@10);
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    XCTAssertTrue(output.length == 0);
+}
+
+- (void)test_ASTR2_M {
+    NSMutableAttributedString *output;
+    NSDictionary *attrs;
+    
+    output = ASTR2_M(@"123", attrs);
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    
+    output = ASTR2_M(nil, attrs);
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    XCTAssertTrue(output.length == 0);
+    
+    output = ASTR2_M(@"123", nil);
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    XCTAssertTrue(output.length == 3);
+}
+
+- (void)test_ASTR_M_CATENATE {
+    NSMutableAttributedString *output;
+    NSAttributedString *str1;
+    NSAttributedString *str2;
+
+    output = ASTR_M_CATENATE(str1, str2);
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    XCTAssertTrue(output.length == 0);
+    
+    str1 = ASTR(@"12");
+    output = ASTR_M_CATENATE(str1, nil);
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    XCTAssertTrue(output.length == 2);
+    
+    str1 = ASTR(@"12");
+    str2 = ASTR(@"34");
+    output = ASTR_M_CATENATE(str1, str2);
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    XCTAssertTrue(output.length == 4);
+}
+
 @end
