@@ -103,6 +103,12 @@
     output = ASTR_M_CATENATE(str1, str2);
     XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
     XCTAssertTrue(output.length == 4);
+    XCTAssertEqualObjects(output.string, @"1234");
+
+    output = ASTR_M_CATENATE(ASTR(@"12"), ASTR(@"34"));
+    XCTAssertTrue([output isKindOfClass:[NSMutableAttributedString class]]);
+    XCTAssertTrue(output.length == 4);
+    XCTAssertEqualObjects(output.string, @"1234");
 }
 
 @end
