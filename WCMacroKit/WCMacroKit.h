@@ -17,6 +17,7 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 
 #import "WCMacroAssert.h"
 #import "WCMacroAttribute.h"
+#import "WCMacroAttributedString.h"
 #import "WCMacroBlock.h"
 #import "WCMacroCode.h"
 #import "WCMacroColor.h"
@@ -37,6 +38,7 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 
 #import <WCMacroKit/WCMacroAssert.h>
 #import <WCMacroKit/WCMacroAttribute.h>
+#import <WCMacroKit/WCMacroAttributedString.h>
 #import <WCMacroKit/WCMacroBlock.h>
 #import <WCMacroKit/WCMacroCode.h>
 #import <WCMacroKit/WCMacroColor.h>
