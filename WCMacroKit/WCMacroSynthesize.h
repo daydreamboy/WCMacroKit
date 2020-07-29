@@ -384,4 +384,7 @@ SYNTHESIZE_IVARS_1(__VA_ARGS__),\
 SYNTHESIZE_IVARS_0(__VA_ARGS__)\
 )
 
+#define SYNTHESIZE_IVAR(property) \
+@synthesize property = _##property;
+
 #endif /* WCMacroSynthesize_h */
