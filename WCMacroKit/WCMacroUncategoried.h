@@ -288,6 +288,35 @@ do { \
 
 #endif // __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
+#define SHOW_ALERT3(title, msg, option1, option2, option3, cancel, option1Completion, option2Completion, option3Completion, cancelCompletion) \
+\
+do { \
+    if ([UIAlertController class]) { \
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:(title) message:(msg) preferredStyle:UIAlertControllerStyleAlert]; \
+        \
+        UIAlertAction *option1Action = [UIAlertAction actionWithTitle:(option1) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) { \
+            option1Completion; \
+        }]; \
+        [alert addAction:option1Action]; \
+        \
+        UIAlertAction *option2Action = [UIAlertAction actionWithTitle:(option2) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) { \
+            option2Completion; \
+        }]; \
+        [alert addAction:option2Action]; \
+        \
+        UIAlertAction *option3Action = [UIAlertAction actionWithTitle:(option3) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) { \
+            option3Completion; \
+        }]; \
+        [alert addAction:option3Action]; \
+        \
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:(cancel) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) { \
+            cancelCompletion; \
+        }]; \
+        [alert addAction:cancelAction]; \
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil]; \
+    } \
+} while (0)
+
 #pragma mark - CoreFoundation
 
 #pragma mark > Toll-free Bridge
