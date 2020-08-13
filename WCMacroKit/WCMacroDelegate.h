@@ -21,7 +21,7 @@
         id returnValue = nil; \
         if ([delegate respondsToSelector:sel]) { \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -40,7 +40,7 @@
         if ([delegate respondsToSelector:sel]) { \
             typeof(arg1) param1 = arg1; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -61,7 +61,7 @@
             typeof(arg1) param1 = arg1; \
             typeof(arg2) param2 = arg2; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -85,7 +85,7 @@
             typeof(arg2) param2 = arg2; \
             typeof(arg3) param3 = arg3; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -110,7 +110,7 @@
             typeof(arg3) param3 = arg3; \
             typeof(arg4) param4 = arg4; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -137,7 +137,7 @@
             typeof(arg4) param4 = arg4; \
             typeof(arg5) param5 = arg5; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -166,7 +166,7 @@
             typeof(arg5) param5 = arg5; \
             typeof(arg6) param6 = arg6; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -197,7 +197,7 @@
             typeof(arg6) param6 = arg6; \
             typeof(arg7) param7 = arg7; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -224,7 +224,7 @@
         ret_type returnValue = default_ret_val; \
         if ([delegate respondsToSelector:sel]) { \
             ret_type tempReturnValue = default_ret_val; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -243,7 +243,7 @@
         if ([delegate respondsToSelector:sel]) { \
             typeof(arg1) param1 = arg1; \
             ret_type tempReturnValue = default_ret_val; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -264,7 +264,7 @@
             typeof(arg1) param1 = arg1; \
             typeof(arg2) param2 = arg2; \
             ret_type tempReturnValue = default_ret_val; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -287,7 +287,7 @@
             typeof(arg2) param2 = arg2; \
             typeof(arg3) param3 = arg3; \
             ret_type tempReturnValue = default_ret_val; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -312,7 +312,7 @@
             typeof(arg3) param3 = arg3; \
             typeof(arg4) param4 = arg4; \
             ret_type tempReturnValue = default_ret_val; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -334,7 +334,7 @@
 #define DELEGATE_SAFE_CALL(delegate, sel) \
     do { \
         if ([delegate respondsToSelector:sel]) { \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -348,7 +348,7 @@
     do { \
         if ([delegate respondsToSelector:sel]) { \
             typeof(arg1) param1 = arg1; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -364,7 +364,7 @@
         if ([delegate respondsToSelector:sel]) { \
             typeof(arg1) param1 = arg1; \
             typeof(arg2) param2 = arg2; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -382,7 +382,7 @@
             typeof(arg1) param1 = arg1; \
             typeof(arg2) param2 = arg2; \
             typeof(arg3) param3 = arg3; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -402,7 +402,7 @@
             typeof(arg2) param2 = arg2; \
             typeof(arg3) param3 = arg3; \
             typeof(arg4) param4 = arg4; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -424,7 +424,7 @@
             typeof(arg3) param3 = arg3; \
             typeof(arg4) param4 = arg4; \
             typeof(arg5) param5 = arg5; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -448,7 +448,7 @@
             typeof(arg4) param4 = arg4; \
             typeof(arg5) param5 = arg5; \
             typeof(arg6) param6 = arg6; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
@@ -474,7 +474,7 @@
             typeof(arg5) param5 = arg5; \
             typeof(arg6) param6 = arg6; \
             typeof(arg7) param7 = arg7; \
-            NSMethodSignature *methodSignature = [delegate methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [(NSObject *)delegate methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
