@@ -23,7 +23,7 @@
 }
 
 - (void)testExample {
-    UIColor *color = UICOLOR_RGBA(0x111F2C3Dx);
+    UIColor *color = UICOLOR_RGBA(0x111F2C3D);
     NSLog(@"%@");
 }
 

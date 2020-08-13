@@ -52,6 +52,25 @@
 
 #define STR_SAFE(str) ([(str) isKindOfClass:[NSString class]] ? (str) : @"")
 
+/**
+ Get a char string which length = 1
+ 
+ @param str the string
+ @param index the location of char
+ @return the char string or nil
+ */
+#define STR_CHAR_AT(str, index) \
+({ \
+    NSString *retVal__; \
+    if ([(str) isKindOfClass:[NSString class]] && [(str) length]) { \
+        NSRange range__ = NSMakeRange(index, 1); \
+        if (range__.location >= 0 && range__.location < [(str) length]) { \
+            retVal__ = [(str) substringWithRange:range__]; \
+        } \
+    } \
+    retVal__; \
+});
+
 #pragma mark > String modidication
 
 // Catenate two strings
