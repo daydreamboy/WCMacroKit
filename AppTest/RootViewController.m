@@ -8,7 +8,6 @@
 
 #import "RootViewController.h"
 
-#import "Test_NSAssertOrXXX.h"
 #import "Test_SYNTHESIZE_ASSOCIATED_XXX.h"
 #import "Test_WCCallerTool_ViewController.h"
 #import "Test_STR_OF_JSONViewController.h"
@@ -37,7 +36,6 @@
 
     // MARK: Configure titles and classes for table view
     _titles = @[
-        @"NSAssertOrXXX trigger and continue",
         @"Macro for associated objects",
         @"call methods on runtime",
         @"use json literal in code",
@@ -46,7 +44,6 @@
         @"WeakStrongDanceViewController",
     ];
     _classes = @[
-        [Test_NSAssertOrXXX class],
         [Test_SYNTHESIZE_ASSOCIATED_XXX class],
         [Test_WCCallerTool_ViewController class],
         [Test_STR_OF_JSONViewController class],

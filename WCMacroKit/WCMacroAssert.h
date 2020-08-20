@@ -12,6 +12,7 @@
 
 #import <Foundation/NSException.h>
 
+/// Use NS_ASSERT_SUPRESS_BACKING_ACTION_LOGGING to disable console log
 #if !defined(NSReleaseAssertionLog)
     #if !defined(NS_ASSERT_SUPRESS_BACKING_ACTION_LOGGING)
         #define NSReleaseAssertionLog(desc, ...)    NSLog(desc, ##__VA_ARGS__)

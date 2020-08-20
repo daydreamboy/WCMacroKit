@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2B44B1791D952BB100B23550 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44B1781D952BB100B23550 /* RootViewController.m */; };
-		2B44B17D1D952C6C00B23550 /* Test_NSAssertOrXXX.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44B17C1D952C6C00B23550 /* Test_NSAssertOrXXX.m */; };
 		2BC5661B1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5661A1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m */; };
 		2BE400CA1D73272500A48174 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE400C91D73272500A48174 /* main.m */; };
 		2BE400CD1D73272500A48174 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE400CC1D73272500A48174 /* AppDelegate.m */; };
@@ -56,6 +55,7 @@
 		4F7D8E9A21087C5500145B00 /* WCMacroUncategoried.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
 		4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */; };
+		4FC4E03524EE329A0011EE1F /* Test_MacroAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */; };
 		4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */; };
 /* End PBXBuildFile section */
 
@@ -79,8 +79,6 @@
 /* Begin PBXFileReference section */
 		2B44B1771D952BB100B23550 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		2B44B1781D952BB100B23550 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		2B44B17B1D952C6C00B23550 /* Test_NSAssertOrXXX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_NSAssertOrXXX.h; sourceTree = "<group>"; };
-		2B44B17C1D952C6C00B23550 /* Test_NSAssertOrXXX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_NSAssertOrXXX.m; sourceTree = "<group>"; };
 		2BC566191D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_SYNTHESIZE_ASSOCIATED_XXX.h; sourceTree = "<group>"; };
 		2BC5661A1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Test_SYNTHESIZE_ASSOCIATED_XXX.m; sourceTree = "<group>"; };
 		2BE400C51D73272500A48174 /* AppTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,6 +139,7 @@
 		4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_STR_OF_JSONViewController.m; sourceTree = "<group>"; };
 		4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestRawStringWithC++11ViewController.h"; sourceTree = "<group>"; };
 		4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "TestRawStringWithC++11ViewController.mm"; sourceTree = "<group>"; };
+		4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroAssert.m; sourceTree = "<group>"; };
 		4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroCompatibility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,8 +174,6 @@
 			children = (
 				4F74C2B621FAAFA300A87393 /* TestWeakifyStrongifyViewController.h */,
 				4F74C2B721FAAFA300A87393 /* TestWeakifyStrongifyViewController.m */,
-				2B44B17B1D952C6C00B23550 /* Test_NSAssertOrXXX.h */,
-				2B44B17C1D952C6C00B23550 /* Test_NSAssertOrXXX.m */,
 				2BC566191D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.h */,
 				2BC5661A1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m */,
 				4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */,
@@ -240,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				2BE400E31D73273200A48174 /* Test.m */,
+				4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */,
 				4F172408231BD10E00483D53 /* Test_MacroAttribute.m */,
 				4F19C23F24C0471D00A9F1C0 /* Test_MacroAttributedString.m */,
 				4F50AE30240E9CDE00FB7FE8 /* Test_MacroBlock.m */,
@@ -471,7 +469,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BE400CD1D73272500A48174 /* AppDelegate.m in Sources */,
-				2B44B17D1D952C6C00B23550 /* Test_NSAssertOrXXX.m in Sources */,
 				4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */,
 				4F74C2B821FAAFA300A87393 /* TestWeakifyStrongifyViewController.m in Sources */,
 				4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */,
@@ -487,6 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FC4E03524EE329A0011EE1F /* Test_MacroAssert.m in Sources */,
 				4F50AE31240E9CDE00FB7FE8 /* Test_MacroBlock.m in Sources */,
 				4F19C24024C0471D00A9F1C0 /* Test_MacroAttributedString.m in Sources */,
 				4F77D9E42411347500BC2BA2 /* Test_MacroCode.m in Sources */,
