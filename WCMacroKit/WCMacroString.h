@@ -17,6 +17,10 @@
 #define STR_OF_BOOL(yesOrNo)     ((yesOrNo) ? @"YES" : @"NO")
 // NSInteger/int/long to string
 #define STR_OF_INTEGER(integer)     ([NSString stringWithFormat:@"%ld", (long)(integer)])
+// float/double to string
+#define STR_OF_FLOAT(f)     ([NSString stringWithFormat:@"%f", (double)(f)])
+
+
 // property name to string
 #define STR_OF_PROP(property)    (NSStringFromSelector(@selector(property)))
 // NSRange to string
