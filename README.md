@@ -28,6 +28,15 @@ __attribute__((XXX))
 
 
 
+| 宏                | 作用                              |
+| ----------------- | --------------------------------- |
+|                   |                                   |
+| NS_REQUIRES_SUPER | 标记某个方法需要调用super方法[^4] |
+
+
+
+
+
 ### （1）NS_DESIGNATED_INITIALIZER
 
 ​       `NS_DESIGNATED_INITIALIZER`宏用于标记初始化方法为designated initializer方法。定义和使用designated initializer方法，需要满足下面三个规则[^1]
@@ -134,6 +143,8 @@ __attribute__((XXX))
 [^2]:https://reviews.llvm.org/D17741
 
 [^3]:https://roadfiresoftware.com/2013/12/logging-class-and-method-names-in-objective-c/
+
+[^4]:https://stackoverflow.com/a/22945846
 
 
 
