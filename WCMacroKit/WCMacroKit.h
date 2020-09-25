@@ -30,6 +30,7 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 #import "WCMacroSynthesize.h"
 #import "WCMacroThread.h"
 #import "WCMacroTool.h"
+#import "WCMacroUILayout.h"
 #import "WCMacroUncategoried.h"
 #import "WCMacroVersion.h"
 #import "WCCallerTool.h"
@@ -51,6 +52,7 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 #import <WCMacroKit/WCMacroSynthesize.h>
 #import <WCMacroKit/WCMacroThread.h>
 #import <WCMacroKit/WCMacroTool.h>
+#import <WCMacroKit/WCMacroUILayout.h>
 #import <WCMacroKit/WCMacroUncategoried.h>
 #import <WCMacroKit/WCMacroVersion.h>
 #import <WCMacroKit/WCCallerTool.h>

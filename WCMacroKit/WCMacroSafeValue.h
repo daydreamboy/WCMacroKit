@@ -553,4 +553,20 @@ do { \
     } \
 } while (0)
 
+#pragma mark - Safe Compare
+
+#define DOUBLE_SAFE_MAX(a, b) \
+({ \
+double __returnValue; \
+double __v1 = (a); \
+double __v2 = (b); \
+if (__v1 >= __v2) { \
+    __returnValue = __v1; \
+} \
+else { \
+    __returnValue = __v2; \
+} \
+__returnValue; \
+});
+
 #endif /* WCMacroSafeValue_h */

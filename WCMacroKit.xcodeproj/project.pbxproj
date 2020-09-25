@@ -53,6 +53,7 @@
 		4F7D8E9721086EE300145B00 /* WCMacroCompatibility.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9821086EE300145B00 /* WCCallerTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F5D92891FEA4F06005F137D /* WCCallerTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9A21087C5500145B00 /* WCMacroUncategoried.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F9A2E6B251DED4000349719 /* WCMacroUILayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F9A2E6A251DED4000349719 /* WCMacroUILayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
 		4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */; };
 		4FC4E03524EE329A0011EE1F /* Test_MacroAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */; };
@@ -134,6 +135,7 @@
 		4F7D8E8621086D0E00145B00 /* WCMacroKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WCMacroKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F7D8E8921086D0E00145B00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroUncategoried.h; sourceTree = "<group>"; };
+		4F9A2E6A251DED4000349719 /* WCMacroUILayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroUILayout.h; sourceTree = "<group>"; };
 		4FB28DC11FA84D1600B58D2E /* WCMacroDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCMacroDelegate.m; sourceTree = "<group>"; };
 		4FB43AD1200CE24500D5D92D /* Test_STR_OF_JSONViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_STR_OF_JSONViewController.h; sourceTree = "<group>"; };
 		4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_STR_OF_JSONViewController.m; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				4F6D7DB32233B1D7006639A1 /* WCMacroTool.h */,
 				4F6D7DA72233A49F006639A1 /* WCMacroToolBackend.h */,
 				4F6D7DA82233A49F006639A1 /* WCMacroToolBackend.m */,
+				4F9A2E6A251DED4000349719 /* WCMacroUILayout.h */,
 				4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */,
 				2BE400EF1D732DF500A48174 /* WCMacroVersion.h */,
 				4F5D92891FEA4F06005F137D /* WCCallerTool.h */,
@@ -318,6 +321,7 @@
 				4F7D8E9321086EE300145B00 /* WCMacroLog.h in Headers */,
 				4F4F055B229550E8002BD87A /* WCMacroSynthesize.h in Headers */,
 				4F7D8E9421086EE300145B00 /* WCMacroBlock.h in Headers */,
+				4F9A2E6B251DED4000349719 /* WCMacroUILayout.h in Headers */,
 				4F7D8E9521086EE300145B00 /* WCMacroDelegate.h in Headers */,
 				4F17240A231BD16F00483D53 /* WCMacroAttribute.h in Headers */,
 				4F1A055D24BF2A7700DBE662 /* WCMacroAttributedString.h in Headers */,
