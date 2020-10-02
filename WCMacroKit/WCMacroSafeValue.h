@@ -553,7 +553,7 @@ do { \
     } \
 } while (0)
 
-#pragma mark - Safe Compare
+#pragma mark - Safe Comparison
 
 #define DOUBLE_SAFE_MAX(a, b) \
 ({ \
