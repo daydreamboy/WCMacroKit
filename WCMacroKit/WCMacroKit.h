@@ -13,29 +13,7 @@ FOUNDATION_EXPORT double WCMacroKitVersionNumber;
 //! Project version string for WCMacroKit.
 FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 
-#if __has_include("WCMacroKit.h")
-
-#import "WCMacroAssert.h"
-#import "WCMacroAttribute.h"
-#import "WCMacroAttributedString.h"
-#import "WCMacroBlock.h"
-#import "WCMacroCode.h"
-#import "WCMacroColor.h"
-#import "WCMacroCompatibility.h"
-#import "WCMacroDelegate.h"
-#import "WCMacroDollarSign.h"
-#import "WCMacroLog.h"
-#import "WCMacroSafeValue.h"
-#import "WCMacroString.h"
-#import "WCMacroSynthesize.h"
-#import "WCMacroThread.h"
-#import "WCMacroTool.h"
-#import "WCMacroUILayout.h"
-#import "WCMacroUncategoried.h"
-#import "WCMacroVersion.h"
-#import "WCCallerTool.h"
-
-#elif __has_include(<WCMacroKit/WCMacroKit.h>)
+#if __has_include(<WCMacroKit/WCMacroKit.h>)
 
 #import <WCMacroKit/WCMacroAssert.h>
 #import <WCMacroKit/WCMacroAttribute.h>
@@ -56,6 +34,28 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 #import <WCMacroKit/WCMacroUncategoried.h>
 #import <WCMacroKit/WCMacroVersion.h>
 #import <WCMacroKit/WCCallerTool.h>
+
+#elif __has_include("WCMacroKit.h")
+
+#import "WCMacroAssert.h"
+#import "WCMacroAttribute.h"
+#import "WCMacroAttributedString.h"
+#import "WCMacroBlock.h"
+#import "WCMacroCode.h"
+#import "WCMacroColor.h"
+#import "WCMacroCompatibility.h"
+#import "WCMacroDelegate.h"
+#import "WCMacroDollarSign.h"
+#import "WCMacroLog.h"
+#import "WCMacroSafeValue.h"
+#import "WCMacroString.h"
+#import "WCMacroSynthesize.h"
+#import "WCMacroThread.h"
+#import "WCMacroTool.h"
+#import "WCMacroUILayout.h"
+#import "WCMacroUncategoried.h"
+#import "WCMacroVersion.h"
+#import "WCCallerTool.h"
 
 #endif
 
