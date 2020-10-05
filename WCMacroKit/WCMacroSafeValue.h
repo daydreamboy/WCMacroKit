@@ -231,9 +231,12 @@ typedef NSArray * KeyValuePairType;
 #ifndef NSDICTIONARY_M_SAFE_SET
 #define NSDICTIONARY_M_SAFE_SET(mutableDictionary, key, value) \
     do {                                                       \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
         if ([mutableDictionary isKindOfClass:[NSMutableDictionary class]] && key && value) { \
             [mutableDictionary setObject:value forKey:key];    \
         }                                                      \
+_Pragma("clang diagnostic pop") \
     } while (0)
 
 #endif /* NSDICTIONARY_M_SAFE_SET */
@@ -241,9 +244,12 @@ typedef NSArray * KeyValuePairType;
 #ifndef NSDICTIONARY_M_SAFE_ADD_ENTRIES
 #define NSDICTIONARY_M_SAFE_ADD_ENTRIES(mutableDictionary, dictionary) \
     do {                                                               \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
         if ([mutableDictionary isKindOfClass:[NSMutableDictionary class]] && dictionary) { \
             [mutableDictionary addEntriesFromDictionary:dictionary];   \
         }                                                              \
+_Pragma("clang diagnostic pop") \
     } while (0)
 
 #endif /* NSDICTIONARY_M_SAFE_ADD_ENTRIES */
