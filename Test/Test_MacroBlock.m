@@ -40,12 +40,19 @@
 }
 
 - (void)test_BLOCK_SAFE_RUN_ON_MAIN_THREAD {
+    // Case 1
     void (^block)(NSString *) = ^(NSString *string) {
         NSLog(@"%@", string);
         XCTAssertTrue([NSThread isMainThread]);
     };
     
     BLOCK_SAFE_RUN_ON_MAIN_THREAD(block, @"123");
+    
+    // Case 2
+    BLOCK_SAFE_RUN_ON_MAIN_THREAD(^{
+        NSLog(@"%@", @"456");
+        XCTAssertTrue([NSThread isMainThread]);
+    });
 }
 
 - (void)test_strongify_weakify {
