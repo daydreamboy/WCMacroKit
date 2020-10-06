@@ -23,6 +23,19 @@ typedef NS_ENUM(NSUInteger, SomeState) {
     SomeStateFailed,
 };
 
+@protocol SomeServiceInterface <NSObject>
+- (void)hello;
+@end
+
+@interface SomeServiceImp : NSObject <SomeServiceInterface>
+@end
+
+@implementation SomeServiceImp
+- (void)hello {
+    NSLog(@"%@: %@", self, @"hello");
+}
+@end
+
 @interface Test_MacroDelegate : XCTestCase <UITextFieldDelegateProtocol>
 
 @end
@@ -38,6 +51,17 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 }
 
 #pragma mark > With Return
+
+- (void)test_DELEGATE_SAFE_CALL1_WITH_RETURN {
+    id returnValue;
+    
+    // Case 1: normal
+    returnValue = DELEGATE_SAFE_CALL1_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithProtocol:"), @protocol(SomeServiceInterface));
+    if ([returnValue isKindOfClass:[SomeServiceImp class]]) {
+        SomeServiceImp *imp = (SomeServiceImp *)returnValue;
+        [imp hello];
+    }
+}
 
 - (void)test_DELEGATE_SAFE_CALL3_WITH_RETURN {
     NSString *returnValue;
@@ -183,6 +207,15 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 #pragma mark - Callee Methods
 
 #pragma mark > with return values
+
+- (id)testMethodWithProtocol:(Protocol *)protocol {
+    if ([NSStringFromProtocol(protocol) isEqualToString:NSStringFromProtocol(@protocol(SomeServiceInterface))]) {
+        return [SomeServiceImp new];
+    }
+    else {
+        return nil;
+    }
+}
 
 - (NSString *)testMethodWithArg:(NSString *)string {
     return [NSString stringWithFormat:@"#%@", string];
