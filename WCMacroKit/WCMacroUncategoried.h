@@ -310,6 +310,10 @@ do { \
  */
 #define CF_SAFE_RELEASE(ref) if ((ref) != NULL) { CFRelease((ref)); }
 
+#pragma mark - Time
+
+#define TIME_UNIX_TIMESTAMP ([NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]])
+
 #pragma mark - CocoaPod Macro
 
 // Specify Pod (e.g. pod name, pod version)
