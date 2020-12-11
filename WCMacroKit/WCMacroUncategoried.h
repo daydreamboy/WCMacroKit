@@ -314,6 +314,10 @@ do { \
 
 #define TIME_UNIX_TIMESTAMP ([NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]])
 
+#pragma mark - Dispatch Time
+
+#define DISPATCH_TIME_IN_SEC(seconds) (dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * NSEC_PER_SEC)))
+
 #pragma mark - CocoaPod Macro
 
 // Specify Pod (e.g. pod name, pod version)
