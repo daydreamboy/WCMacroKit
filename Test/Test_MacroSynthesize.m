@@ -24,7 +24,7 @@
 @end
 
 @implementation Test_MacroSynthesize
-SYNTHESIZE_IVARS(property1, property2, property3, property4, property5, property6, property7);
+SYNTHESIZE_PROPERTYS(property1, property2, property3, property4, property5, property6, property7);
 SYNTHESIZE_CLASS_PROPERTY_PRIMITIVE(globalWidth, setGlobalWidth, CGFloat);
 SYNTHESIZE_CLASS_PROPERTY_OBJECT(globalName, setGlobalName, NSString *);
 
