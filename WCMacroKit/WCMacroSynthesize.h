@@ -81,22 +81,34 @@
 
  @endcode
  */
-#define SYNTHESIZE_CLASS_PROPERTY_PRIMITIVE(getterName, setterName, type)                                       \
-static type s_##getterName;                                                                                     \
-+ (void)setterName:(type)value {                                                                                \
-    s_##getterName = value;                                                                                     \
-}                                                                                                               \
-+ (type)getterName {                                                                                            \
-    return s_##getterName;                                                                                      \
+#define SYNTHESIZE_CLASS_PROPERTY_PRIMITIVE(getterName, setterName, type) \
+static type s_##getterName; \
++ (void)setterName:(type)value { \
+    s_##getterName = value; \
+} \
++ (type)getterName { \
+    return s_##getterName; \
 }
 
-#define SYNTHESIZE_CLASS_PROPERTY_OBJECT(getterName, setterName, type)                                          \
-static type s_##getterName;                                                                                     \
-+ (void)setterName:(type)value {                                                                                \
-    s_##getterName = value;                                                                                     \
-}                                                                                                               \
-+ (type)getterName {                                                                                            \
-    return s_##getterName;                                                                                      \
+#define SYNTHESIZE_CLASS_PROPERTY_OBJECT(getterName, setterName, type) \
+static type s_##getterName; \
++ (void)setterName:(type)value { \
+    s_##getterName = value; \
+} \
++ (type)getterName { \
+    return s_##getterName; \
+}
+
+#define SYNTHESIZE_CLASS_LAZY_PROPERTY_OBJECT(getterName, setterName, type, initializer_code) \
+static type s_##getterName; \
++ (void)setterName:(type)value { \
+    s_##getterName = value; \
+} \
++ (type)getterName { \
+    if (!s_##getterName) { \
+        s_##getterName = initializer_code; \
+    } \
+    return s_##getterName; \
 }
 
 #pragma mark - Synthesize Ivars
