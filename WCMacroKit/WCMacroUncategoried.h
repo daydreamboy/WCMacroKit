@@ -314,8 +314,30 @@ do { \
 
 #define TIME_UNIX_TIMESTAMP ([NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]])
 
+#pragma mark - Dispatch Time
+
+#define DISPATCH_TIME_IN_SEC(seconds) (dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * NSEC_PER_SEC)))
+
 #pragma mark - Swizzle
 
+/**
+ Macro wrapper for declare the class to swizzle
+ 
+ For example
+ @code
+ SWIZZLE_CLASS_BEGIN(DDLog)
+ - (void)my_addLogger:(id)logger withLevel:(int)level {
+     [self my_addLogger:logger withLevel:level];
+ }
+ SWIZZLE_CLASS_END
+ 
+ @implementation Swizzle
+ + (void)load {
+   // do swizzling
+ }
+ @end
+ @endcode
+ */
 #define SWIZZLE_CLASS_BEGIN(clz) \
 @interface clz : NSObject \
 @end \
@@ -323,10 +345,6 @@ do { \
 
 #define SWIZZLE_CLASS_END \
 @end
-
-#pragma mark - Dispatch Time
-
-#define DISPATCH_TIME_IN_SEC(seconds) (dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * NSEC_PER_SEC)))
 
 #pragma mark - CocoaPod Macro
 
