@@ -314,6 +314,16 @@ do { \
 
 #define TIME_UNIX_TIMESTAMP ([NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]])
 
+#pragma mark - Swizzle
+
+#define SWIZZLE_CLASS_BEGIN(clz) \
+@interface clz : NSObject \
+@end \
+@implementation clz (Swizzle)
+
+#define SWIZZLE_CLASS_END \
+@end
+
 #pragma mark - Dispatch Time
 
 #define DISPATCH_TIME_IN_SEC(seconds) (dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * NSEC_PER_SEC)))
