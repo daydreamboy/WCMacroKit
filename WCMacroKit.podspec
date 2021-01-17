@@ -20,5 +20,5 @@ Pod::Spec.new do |s|
   s.author       = { "daydreamboy" => "wesley4chen@gmail.com" }
   s.source       = { :git => "https://github.com/daydreamboy/WCMacroKit.git", :tag => "#{s.version}" }
   s.vendored_frameworks = "Build/Product/WCMacroKit.framework"
-  s.prepare_command = '/bin/bash prepare_command_build.sh'
+  #s.prepare_command = '/bin/bash prepare_command_build.sh'
 end
