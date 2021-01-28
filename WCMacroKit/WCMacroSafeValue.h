@@ -25,6 +25,8 @@ if ([(number) isKindOfClass:[NSNumber class]]) { \
 integer; \
 })
 
+#pragma mark - Check Type
+
 /**
  Safe get instance which is kind of class type
 
@@ -32,16 +34,29 @@ integer; \
  @param classType the class type
  @return the safe object
  */
-#define ValueOfClassType(object, classType) (classType *)([(object) isKindOfClass:[classType class]] ? (object) : nil)
+#define ValueOfClassType(object_, classType_, default_) (classType_ *)([(object_) isKindOfClass:[classType_ class]] ? (object_) : (default_))
 
-#define ValueOfDict(object)     ValueOfClassType(object, NSDictionary)
-#define ValueOfDictM(object)    ValueOfClassType(object, NSMutableDictionary)
+#pragma mark > Check Type (Return nil)
 
-#define ValueOfArray(object)    ValueOfClassType(object, NSArray)
-#define ValueOfArrayM(object)   ValueOfClassType(object, NSMutableArray)
+#define ValueOfDict(object_)     ValueOfClassType(object_, NSDictionary, nil)
+#define ValueOfDictM(object_)    ValueOfClassType(object_, NSMutableDictionary, nil)
 
-#define ValueOfString(object)   ValueOfClassType(object, NSString)
-#define ValueOfNumber(object)   ValueOfClassType(object, NSNumber)
+#define ValueOfArray(object_)    ValueOfClassType(object_, NSArray, nil)
+#define ValueOfArrayM(object_)   ValueOfClassType(object_, NSMutableArray, nil)
+
+#define ValueOfString(object_)   ValueOfClassType(object_, NSString, nil)
+#define ValueOfNumber(object_)   ValueOfClassType(object_, NSNumber, nil)
+
+#pragma mark > Check Type (Return default)
+
+#define ValueOfDict2(object_, default_)     ValueOfClassType(object_, NSDictionary, default_)
+#define ValueOfDictM2(object_, default_)    ValueOfClassType(object_, NSMutableDictionary, default_)
+
+#define ValueOfArray2(object_, default_)    ValueOfClassType(object_, NSArray, default_)
+#define ValueOfArrayM2(object_, default_)   ValueOfClassType(object_, NSMutableArray, default_)
+
+#define ValueOfString2(object_, default_)   ValueOfClassType(object_, NSString, default_)
+#define ValueOfNumber2(object_, default_)   ValueOfClassType(object_, NSNumber, default_)
 
 #pragma mark - JSON Value
 
