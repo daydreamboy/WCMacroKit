@@ -10,7 +10,7 @@
 #define WCMacroVersion_h
 
 // Version
-#pragma mark - Version
+#pragma mark - Version Comparison
 
 // == `version`
 #ifndef SYSTEM_VERSION_EQUAL_TO
@@ -97,5 +97,13 @@
 #define IOS8_ONLY              ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedSame)
 #endif
 
+
+#pragma mark - Version Compatibility
+
+#define AVAILABLE_MAC_APP_VERSION(_version) __attribute__((availability(macosx,introduced=_version)))
+#define AVAILABLE_MAC_APP_VERSION_RANGE(_start, _end) __attribute__((availability(macosx,introduced=_start)))
+
+#define AVAILABLE_IOS_APP_VERSION(_version) __attribute__((availability(macosx,unavailable)))
+#define AVAILABLE_IOS_APP_VERSION_RANGE(_start, _end) __attribute__((availability(macosx,unavailable)))
 
 #endif /* WCMacroVersion_h */

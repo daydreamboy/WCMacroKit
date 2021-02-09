@@ -13,7 +13,7 @@
 
 @interface AppDelegate ()
 @property (nonatomic, strong) RootViewController *rootViewController;
-@property (nonatomic, strong) UINavigationController *navController;
+@property (nonatomic, strong) UINavigationController *navController AVAILABLE_IOS_APP_VERSION(2_1_10); // available on iOS app 2.1.10+
 @end
 
 @implementation AppDelegate
