@@ -136,6 +136,12 @@ __attribute__((XXX))
 
 
 
+// TODO
+
+https://stackoverflow.com/questions/17281901/ignoring-an-undefined-symbol-in-a-dynamic-library-from-xcode
+
+
+
 ## References
 
 [^1]:https://useyourloaf.com/blog/xcode-6-objective-c-modernization/

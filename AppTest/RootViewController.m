@@ -14,6 +14,7 @@
 #import "TestRawStringWithC++11ViewController.h"
 #import "Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h"
 #import "TestWeakifyStrongifyViewController.h"
+#import "Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.h"
 
 @interface RootViewController ()
 @property (nonatomic, strong) NSArray *titles;
@@ -42,6 +43,7 @@
         @"use raw literal string in code (C++ 11 feature)",
         @"thread safe lazy getter",
         @"WeakStrongDanceViewController",
+        @"Trigger breakpoint in code",
     ];
     _classes = @[
         [Test_SYNTHESIZE_ASSOCIATED_XXX class],
@@ -50,6 +52,7 @@
         [TestRawStringWithC__11ViewController class],
         [Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController class],
         [TestWeakifyStrongifyViewController class],
+        [Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController class],
     ];
 }
 

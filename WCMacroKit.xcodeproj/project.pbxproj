@@ -31,6 +31,10 @@
 		4F51372A231D444F00A17F9A /* WCMacroDollarSign.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F513729231D444F00A17F9A /* WCMacroDollarSign.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F5CA92222A009A100F55313 /* Test_MacroSafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA92122A009A100F55313 /* Test_MacroSafeValue.m */; };
 		4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */; };
+		4F61540325E7EFC40033E082 /* WCMacroBreakpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F61540225E7EFB30033E082 /* WCMacroBreakpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F61540B25E7F0170033E082 /* Test_MacroBreakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61540A25E7F0160033E082 /* Test_MacroBreakpoint.m */; };
+		4F61541425E7F2830033E082 /* Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61541325E7F2830033E082 /* Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.m */; };
+		4F61542F25E7F5B80033E082 /* WCMacroKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4F7D8E8621086D0E00145B00 /* WCMacroKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4F6635872047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6635862047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m */; };
 		4F6D7DA92233A49F006639A1 /* WCMacroToolBackend.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F6D7DA72233A49F006639A1 /* WCMacroToolBackend.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F6D7DAA2233A49F006639A1 /* WCMacroToolBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6D7DA82233A49F006639A1 /* WCMacroToolBackend.m */; };
@@ -77,6 +81,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		4F61542E25E7F5AC0033E082 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4F61542F25E7F5B80033E082 /* WCMacroKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2B44B1771D952BB100B23550 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		2B44B1781D952BB100B23550 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -120,6 +137,10 @@
 		4F5D928A1FEA4F06005F137D /* WCCallerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCCallerTool.m; sourceTree = "<group>"; };
 		4F5D928C1FEA502B005F137D /* Test_WCCallerTool_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_WCCallerTool_ViewController.h; sourceTree = "<group>"; };
 		4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_WCCallerTool_ViewController.m; sourceTree = "<group>"; };
+		4F61540225E7EFB30033E082 /* WCMacroBreakpoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroBreakpoint.h; sourceTree = "<group>"; };
+		4F61540A25E7F0160033E082 /* Test_MacroBreakpoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroBreakpoint.m; sourceTree = "<group>"; };
+		4F61541225E7F2830033E082 /* Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.h; sourceTree = "<group>"; };
+		4F61541325E7F2830033E082 /* Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.m; sourceTree = "<group>"; };
 		4F6635852047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h; sourceTree = "<group>"; };
 		4F6635862047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m; sourceTree = "<group>"; };
 		4F6D7DA72233A49F006639A1 /* WCMacroToolBackend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroToolBackend.h; sourceTree = "<group>"; };
@@ -185,6 +206,8 @@
 				4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */,
 				4F6635852047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.h */,
 				4F6635862047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m */,
+				4F61541225E7F2830033E082 /* Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.h */,
+				4F61541325E7F2830033E082 /* Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.m */,
 			);
 			path = AppTestDemos;
 			sourceTree = "<group>";
@@ -213,11 +236,11 @@
 		2BE400C71D73272500A48174 /* AppTest */ = {
 			isa = PBXGroup;
 			children = (
+				2B44B17A1D952C6C00B23550 /* AppTestDemos */,
 				2BE400CB1D73272500A48174 /* AppDelegate.h */,
 				2BE400CC1D73272500A48174 /* AppDelegate.m */,
 				2B44B1771D952BB100B23550 /* RootViewController.h */,
 				2B44B1781D952BB100B23550 /* RootViewController.m */,
-				2B44B17A1D952C6C00B23550 /* AppTestDemos */,
 				2BE400D41D73272500A48174 /* Assets.xcassets */,
 				2BE400D61D73272500A48174 /* LaunchScreen.storyboard */,
 				2BE400D91D73272500A48174 /* Info.plist */,
@@ -242,6 +265,7 @@
 				4F172408231BD10E00483D53 /* Test_MacroAttribute.m */,
 				4F19C23F24C0471D00A9F1C0 /* Test_MacroAttributedString.m */,
 				4F50AE30240E9CDE00FB7FE8 /* Test_MacroBlock.m */,
+				4F61540A25E7F0160033E082 /* Test_MacroBreakpoint.m */,
 				4F77D9E32411347500BC2BA2 /* Test_MacroCode.m */,
 				4F13DCF624C9948C00CD5DE9 /* Test_MacroColor.m */,
 				4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */,
@@ -267,6 +291,7 @@
 				4F172407231BD03500483D53 /* WCMacroAttribute.h */,
 				4F1A055C24BF2A4E00DBE662 /* WCMacroAttributedString.h */,
 				2BE400F11D732F6500A48174 /* WCMacroBlock.h */,
+				4F61540225E7EFB30033E082 /* WCMacroBreakpoint.h */,
 				4F77D9E12411330500BC2BA2 /* WCMacroCode.h */,
 				2BE400EE1D732D2D00A48174 /* WCMacroColor.h */,
 				4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */,
@@ -315,6 +340,7 @@
 				4F7D8E9021086EE300145B00 /* WCMacroKit.h in Headers */,
 				4F7D8E9121086EE300145B00 /* WCMacroColor.h in Headers */,
 				4F6D7DB22233ACC2006639A1 /* WCMacroSafeValue.h in Headers */,
+				4F61540325E7EFC40033E082 /* WCMacroBreakpoint.h in Headers */,
 				4F7D8E9221086EE300145B00 /* WCMacroVersion.h in Headers */,
 				4F7D8E9321086EE300145B00 /* WCMacroLog.h in Headers */,
 				4F4F055B229550E8002BD87A /* WCMacroSynthesize.h in Headers */,
@@ -345,6 +371,7 @@
 				2BE400C11D73272500A48174 /* Sources */,
 				2BE400C21D73272500A48174 /* Frameworks */,
 				2BE400C31D73272500A48174 /* Resources */,
+				4F61542E25E7F5AC0033E082 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -402,7 +429,7 @@
 				TargetAttributes = {
 					2BE400C41D73272500A48174 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QVRKK2EEDF;
+						DevelopmentTeam = U7337LU6F2;
 						DevelopmentTeamName = "陈 亮 (Personal Team)";
 						ProvisioningStyle = Automatic;
 					};
@@ -474,6 +501,7 @@
 				4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */,
 				4F74C2B821FAAFA300A87393 /* TestWeakifyStrongifyViewController.m in Sources */,
 				4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */,
+				4F61541425E7F2830033E082 /* Test_BREAKPOINT_MAKE_ON_DEBUG_ViewController.m in Sources */,
 				2BC5661B1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m in Sources */,
 				4F6635872047A7AB009842DC /* Test_THREAD_SAFE_LAZY_GETTER_BODY_ViewController.m in Sources */,
 				4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */,
@@ -502,6 +530,7 @@
 				4F6D7DB62233B389006639A1 /* Test_MacroTool.m in Sources */,
 				4F172409231BD10E00483D53 /* Test_MacroAttribute.m in Sources */,
 				4F2BC6B5248253F900175CEE /* Test_MacroString.m in Sources */,
+				4F61540B25E7F0170033E082 /* Test_MacroBreakpoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,7 +601,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
@@ -607,7 +636,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -634,6 +663,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = U7337LU6F2;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -654,7 +685,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest;
+				OTHER_LDFLAGS = "-Wl,-U,_OBJC_CLASS_$_WCCallerTool";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 			};
@@ -683,6 +715,8 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = U7337LU6F2;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -696,7 +730,8 @@
 				INFOPLIST_FILE = AppTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest;
+				OTHER_LDFLAGS = "-Wl,-U,_OBJC_CLASS_$_WCCallerTool";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wc.AppTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
