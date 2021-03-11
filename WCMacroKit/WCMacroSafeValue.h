@@ -407,7 +407,6 @@ _Pragma("clang diagnostic pop") \
             ((NSMutableArray *)mutableArray)[index] = value;                                  \
         }                                                                 \
     } while (0)
-
 #endif /* NSARRAY_M_SAFE_SET */
 
 // Note: in macro, use _Pragma("clang diagnostic push") instead of #pragma GCC diagnostic push
@@ -422,8 +421,20 @@ _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
-
 #endif /* NSARRAY_M_SAFE_ADD */
+
+#ifndef NSARRAY_M_SAFE_ADD_ENTRIES
+#define NSARRAY_M_SAFE_ADD_ENTRIES(mutableArray_, array_) \
+    do { \
+            id __value__ = array_; \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
+            if ([mutableArray_ isKindOfClass:[NSMutableArray class]] && __value__) { \
+                [(NSMutableArray *)mutableArray_ addObjectsFromArray:__value__]; \
+            } \
+_Pragma("clang diagnostic pop") \
+    } while (0)
+#endif /* NSARRAY_M_SAFE_ADD_ENTRIES */
 
 #ifndef NSARRAY_M_SAFE_REMOVE
 #define NSARRAY_M_SAFE_REMOVE(mutableArray, index) \
@@ -435,7 +446,6 @@ _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
-
 #endif /* NSARRAY_M_SAFE_REMOVE */
 
 /*!
@@ -455,7 +465,6 @@ _Pragma("clang diagnostic pop") \
         }                                                   \
         __value;                                            \
     })
-
 #endif /* NSARRAY_SAFE_GET */
 
 
@@ -468,7 +477,6 @@ _Pragma("clang diagnostic pop") \
     @catch (NSException *e) {} \
         internalArr_; \
     });
-
 #endif /* NSARRAY_SAFE_WRAP */
 
 #pragma mark > NSArray checking
