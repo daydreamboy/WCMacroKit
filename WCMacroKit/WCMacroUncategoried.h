@@ -346,6 +346,10 @@ do { \
 #define SWIZZLE_CLASS_END \
 @end
 
+#pragma mark - NSError
+
+#define ERROR_MAKE(domain_, code_, reason_) ([NSError errorWithDomain:[(domain_) isKindOfClass:[NSString class]] ? (domain_) : @"<empty domain>" code:(code_) userInfo:@{ NSLocalizedFailureReasonErrorKey: [(reason_) isKindOfClass:[NSString class]] ? (reason_) : @"<empty reason>" }])
+
 #pragma mark - CocoaPod Macro
 
 // Specify Pod (e.g. pod name, pod version)
