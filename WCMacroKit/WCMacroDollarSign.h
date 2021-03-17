@@ -20,8 +20,8 @@
 #define $dict(...) DICT_SAFE_WRAP(__VA_ARGS__)
 
 /**
- Alias for NSARRAY_SAFE_WRAP
+ Alias for ARR_SAFE_WRAP
  */
-#define $arr(...) NSARRAY_SAFE_WRAP(__VA_ARGS__)
+#define $arr(...) ARR_SAFE_WRAP(__VA_ARGS__)
 
 #endif /* WCMacroDollarSign_h */

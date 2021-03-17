@@ -400,18 +400,18 @@ _Pragma("clang diagnostic pop") \
  *  @param index        the index
  *  @param value        the value
  */
-#ifndef NSARRAY_M_SAFE_SET
-#define NSARRAY_M_SAFE_SET(mutableArray, index, value)                    \
+#ifndef ARR_M_SAFE_SET
+#define ARR_M_SAFE_SET(mutableArray, index, value)                    \
     do {                                                                  \
         if ([mutableArray isKindOfClass:[NSMutableArray class]] && 0 <= index && index < [(NSMutableArray *)mutableArray count]) { \
             ((NSMutableArray *)mutableArray)[index] = value;                                  \
         }                                                                 \
     } while (0)
-#endif /* NSARRAY_M_SAFE_SET */
+#endif /* ARR_M_SAFE_SET */
 
 // Note: in macro, use _Pragma("clang diagnostic push") instead of #pragma GCC diagnostic push
-#ifndef NSARRAY_M_SAFE_ADD
-#define NSARRAY_M_SAFE_ADD(mutableArray, value) \
+#ifndef ARR_M_SAFE_ADD
+#define ARR_M_SAFE_ADD(mutableArray, value) \
     do { \
             id __value__ = value; \
 _Pragma("clang diagnostic push") \
@@ -421,10 +421,10 @@ _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
-#endif /* NSARRAY_M_SAFE_ADD */
+#endif /* ARR_M_SAFE_ADD */
 
-#ifndef NSARRAY_M_SAFE_ADD_ENTRIES
-#define NSARRAY_M_SAFE_ADD_ENTRIES(mutableArray_, array_) \
+#ifndef ARR_M_SAFE_ADD_ENTRIES
+#define ARR_M_SAFE_ADD_ENTRIES(mutableArray_, array_) \
     do { \
             id __value__ = array_; \
 _Pragma("clang diagnostic push") \
@@ -434,10 +434,10 @@ _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
-#endif /* NSARRAY_M_SAFE_ADD_ENTRIES */
+#endif /* ARR_M_SAFE_ADD_ENTRIES */
 
-#ifndef NSARRAY_M_SAFE_REMOVE
-#define NSARRAY_M_SAFE_REMOVE(mutableArray, index) \
+#ifndef ARR_M_SAFE_REMOVE
+#define ARR_M_SAFE_REMOVE(mutableArray, index) \
     do { \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
@@ -446,7 +446,7 @@ _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
-#endif /* NSARRAY_M_SAFE_REMOVE */
+#endif /* ARR_M_SAFE_REMOVE */
 
 /*!
  *  Get value at index of NSArray
@@ -456,8 +456,8 @@ _Pragma("clang diagnostic pop") \
  *
  *  @return the value at index. If nil, when index out of bound
  */
-#ifndef NSARRAY_SAFE_GET
-#define NSARRAY_SAFE_GET(array, index)                      \
+#ifndef ARR_SAFE_GET
+#define ARR_SAFE_GET(array, index)                      \
     ({                                                      \
         id __value = nil;                                   \
         if ([array isKindOfClass:[NSArray class]] && 0 <= index && index < [(NSArray *)array count]) { \
@@ -465,19 +465,19 @@ _Pragma("clang diagnostic pop") \
         }                                                   \
         __value;                                            \
     })
-#endif /* NSARRAY_SAFE_GET */
+#endif /* ARR_SAFE_GET */
 
 
-#ifndef NSARRAY_SAFE_WRAP
-#define NSARRAY_SAFE_WRAP(...) ({ \
+#ifndef ARR_SAFE_WRAP
+#define ARR_SAFE_WRAP(...) ({ \
     NSArray *internalArr_; \
     @try { \
         internalArr_ = __VA_ARGS__; \
     } \
     @catch (NSException *e) {} \
-        internalArr_; \
+    internalArr_; \
     });
-#endif /* NSARRAY_SAFE_WRAP */
+#endif /* ARR_SAFE_WRAP */
 
 #pragma mark > NSArray checking
 

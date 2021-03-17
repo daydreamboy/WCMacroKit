@@ -287,16 +287,16 @@
     XCTAssertNotNil(dict);
 }
 
-- (void)test_NSARRAY_SAFE_WRAP {
+- (void)test_ARR_SAFE_WRAP {
     NSArray *arr;
     id objectMaybeNil = nil;
     
     // Case 1
-    arr = NSARRAY_SAFE_WRAP(@[ @"1", @"2", objectMaybeNil ]);
+    arr = ARR_SAFE_WRAP(@[ @"1", @"2", objectMaybeNil ]);
     XCTAssertNil(arr);
     
     // Case 2
-    arr = NSARRAY_SAFE_WRAP(@[ @"1", @"2", @"3" ]);
+    arr = ARR_SAFE_WRAP(@[ @"1", @"2", @"3" ]);
     XCTAssertTrue(arr.count == 3);
     XCTAssertNotNil(arr);
 }
@@ -353,46 +353,46 @@
 
 #pragma mark - NSArray
 
-- (void)test_NSARRAY_M_SAFE_SET {
+- (void)test_ARR_M_SAFE_SET {
     NSMutableArray *arrM1 = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", nil];
-    NSARRAY_M_SAFE_SET(arrM1, 0, @"6");
+    ARR_M_SAFE_SET(arrM1, 0, @"6");
     XCTAssertEqualObjects(arrM1[0], @"6");
     
     NSMutableArray *arrM2 = [NSMutableArray array];
-    NSARRAY_M_SAFE_SET(arrM1, 0, @"7");
+    ARR_M_SAFE_SET(arrM1, 0, @"7");
     XCTAssertTrue(arrM2.count == 0);
 }
 
-- (void)test_NSARRAY_M_SAFE_ADD {
+- (void)test_ARR_M_SAFE_ADD {
     NSMutableArray *arrM1 = [NSMutableArray array];
 
-    NSARRAY_M_SAFE_ADD(arrM1, @"1");
-    NSARRAY_M_SAFE_ADD(arrM1, @"2");
-    NSARRAY_M_SAFE_ADD(arrM1, @"");
+    ARR_M_SAFE_ADD(arrM1, @"1");
+    ARR_M_SAFE_ADD(arrM1, @"2");
+    ARR_M_SAFE_ADD(arrM1, @"");
     id nilValue = nil;
-    NSARRAY_M_SAFE_ADD(arrM1, nilValue);
+    ARR_M_SAFE_ADD(arrM1, nilValue);
     XCTAssertTrue(arrM1.count == 3);
     
     NSMutableArray *arrM2 = [NSMutableArray arrayWithObjects:@"1", @"2", @"3", nil];
-    NSARRAY_M_SAFE_ADD(arrM2, @"4");
-    NSARRAY_M_SAFE_ADD(arrM2, @"5");
-    NSARRAY_M_SAFE_ADD(arrM2, nil);
+    ARR_M_SAFE_ADD(arrM2, @"4");
+    ARR_M_SAFE_ADD(arrM2, @"5");
+    ARR_M_SAFE_ADD(arrM2, nil);
     XCTAssertTrue(arrM2.count == 5);
 }
 
-- (void)test_NSARRAY_SAFE_GET {
+- (void)test_ARR_SAFE_GET {
     NSArray *arr1 = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", @"5", nil];
-    NSString *firstObject = NSARRAY_SAFE_GET(arr1, 0);
+    NSString *firstObject = ARR_SAFE_GET(arr1, 0);
     NSLog(@"%@", firstObject);
     
-    XCTAssertEqualObjects(NSARRAY_SAFE_GET(arr1, 0), @"1");
-    XCTAssertNil(NSARRAY_SAFE_GET(arr1, 5));
+    XCTAssertEqualObjects(ARR_SAFE_GET(arr1, 0), @"1");
+    XCTAssertNil(ARR_SAFE_GET(arr1, 5));
     
     NSArray *arr2 = nil;
-    XCTAssertNil(NSARRAY_SAFE_GET(arr2, 0));
+    XCTAssertNil(ARR_SAFE_GET(arr2, 0));
     
     NSArray *arr3 = [NSArray array];
-    XCTAssertNil(NSARRAY_SAFE_GET(arr3, 0));
+    XCTAssertNil(ARR_SAFE_GET(arr3, 0));
 }
 
 #pragma mark - NSDictionary
