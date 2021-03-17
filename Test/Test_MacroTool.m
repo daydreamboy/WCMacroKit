@@ -43,37 +43,37 @@
     XCTAssertTrue(output.count == 0);
 }
 
-- (void)test_NSDICTIONARY_MERGE {
+- (void)test_DICT_MERGE {
     NSDictionary *dict1;
     NSDictionary *dict2;
     NSDictionary *output;
     
     // Case 1
-    output = NSDICTIONARY_MERGE(dict1, dict2);
+    output = DICT_MERGE(dict1, dict2);
     XCTAssertNotNil(output);
     XCTAssertTrue(output.count == 0);
     
     // Case 2
     dict1 = @{ @"1": @1, @"2": @2 };
     dict2 = @{ @"3": @3 };
-    output = NSDICTIONARY_MERGE(dict1, dict2);
+    output = DICT_MERGE(dict1, dict2);
     XCTAssertTrue(output.count == 3);
 }
 
-- (void)test_NSDICTIONARY_MERGE_M {
+- (void)test_DICT_MERGE_M {
     NSDictionary *dict1;
     NSDictionary *dict2;
     NSMutableDictionary *output;
     
     // Case 1
-    output = NSDICTIONARY_MERGE_M(dict1, dict2);
+    output = DICT_MERGE_M(dict1, dict2);
     XCTAssertNotNil(output);
     XCTAssertTrue(output.count == 0);
     
     // Case 2
     dict1 = @{ @"1": @1, @"2": @2 };
     dict2 = @{ @"3": @3 };
-    output = NSDICTIONARY_MERGE_M(dict1, dict2);
+    output = DICT_MERGE_M(dict1, dict2);
     [output addEntriesFromDictionary:@{ @"4": @4 }];
     XCTAssertTrue(output.count == 4);
 }

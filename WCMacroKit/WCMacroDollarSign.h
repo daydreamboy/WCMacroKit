@@ -15,9 +15,9 @@
 #pragma mark - $xxx as alias
 
 /**
- Alias for NSDICTIONARY_SAFE_WRAP
+ Alias for DICT_SAFE_WRAP
  */
-#define $dict(...) NSDICTIONARY_SAFE_WRAP(__VA_ARGS__)
+#define $dict(...) DICT_SAFE_WRAP(__VA_ARGS__)
 
 /**
  Alias for NSARRAY_SAFE_WRAP

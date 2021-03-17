@@ -221,14 +221,14 @@ typedef NSArray * KeyValuePairType;
  dict = @{
     @"key": @"date"
  };
- value = NSDICTIONARY_SAFE_GET(dict, @"key", NSString);
- value = NSDICTIONARY_SAFE_GET(dict, @"key", nil);
- value = NSDICTIONARY_SAFE_GET(dict, @"key", @"");
+ value = DICT_SAFE_GET(dict, @"key", NSString);
+ value = DICT_SAFE_GET(dict, @"key", nil);
+ value = DICT_SAFE_GET(dict, @"key", @"");
  
  @endcode
  */
-#ifndef NSDICTIONARY_SAFE_GET
-#define NSDICTIONARY_SAFE_GET(dictionary, key, valueClassType) \
+#ifndef DICT_SAFE_GET
+#define DICT_SAFE_GET(dictionary, key, valueClassType) \
 ({ \
     _Pragma("clang diagnostic push") \
     _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
@@ -238,13 +238,13 @@ typedef NSArray * KeyValuePairType;
     _Pragma("clang diagnostic pop") \
 })
 
-#endif /* NSDICTIONARY_SAFE_GET */
+#endif /* DICT_SAFE_GET */
 
 /**
  *  NSMutableDictionary calls setObject:forKey: method more safely
  */
-#ifndef NSDICTIONARY_M_SAFE_SET
-#define NSDICTIONARY_M_SAFE_SET(mutableDictionary, key, value) \
+#ifndef DICT_M_SAFE_SET
+#define DICT_M_SAFE_SET(mutableDictionary, key, value) \
     do {                                                       \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
@@ -254,10 +254,10 @@ _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
 _Pragma("clang diagnostic pop") \
     } while (0)
 
-#endif /* NSDICTIONARY_M_SAFE_SET */
+#endif /* DICT_M_SAFE_SET */
 
-#ifndef NSDICTIONARY_M_SAFE_ADD_ENTRIES
-#define NSDICTIONARY_M_SAFE_ADD_ENTRIES(mutableDictionary, dictionary) \
+#ifndef DICT_M_SAFE_ADD_ENTRIES
+#define DICT_M_SAFE_ADD_ENTRIES(mutableDictionary, dictionary) \
     do {                                                               \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
@@ -267,7 +267,7 @@ _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
 _Pragma("clang diagnostic pop") \
     } while (0)
 
-#endif /* NSDICTIONARY_M_SAFE_ADD_ENTRIES */
+#endif /* DICT_M_SAFE_ADD_ENTRIES */
 
 /**
  Safe to wrap the literal dictionary
@@ -277,15 +277,15 @@ _Pragma("clang diagnostic pop") \
  
  @code
  
- dict = NSDICTIONARY_SAFE_WRAP(@{
+ dict = DICT_SAFE_WRAP(@{
      keyMaybeNil: @"value",
      @"key": valueMaybeNil
  });
  
  @endcode
  */
-#ifndef NSDICTIONARY_SAFE_WRAP
-#define NSDICTIONARY_SAFE_WRAP(...) ({ \
+#ifndef DICT_SAFE_WRAP
+#define DICT_SAFE_WRAP(...) ({ \
     NSDictionary *internalDict_; \
     @try { \
         internalDict_ = __VA_ARGS__; \
@@ -294,7 +294,7 @@ _Pragma("clang diagnostic pop") \
     internalDict_; \
     });
 
-#endif /* NSDICTIONARY_SAFE_WRAP */
+#endif /* DICT_SAFE_WRAP */
 
 #pragma mark > NSDictionary pairs
 
@@ -302,19 +302,19 @@ _Pragma("clang diagnostic pop") \
  Safe to define a mutable dictionary
 
  @param dict the dict to define
- @param ... the key-value pairs by using NSDICTIONARY_M_PAIRS_SET macro
+ @param ... the key-value pairs by using DICT_M_PAIRS_SET macro
  @code
  
- NSDICTIONARY_M_PAIRS_DEFINE(dictM3,
-    NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-    NSDICTIONARY_M_PAIRS_SET(@"key2", nil)
-    NSDICTIONARY_M_PAIRS_SET(nil, @1)
+ DICT_M_PAIRS_DEFINE(dictM3,
+    DICT_M_PAIRS_SET(@"key1", @"string")
+    DICT_M_PAIRS_SET(@"key2", nil)
+    DICT_M_PAIRS_SET(nil, @1)
  );
  // dictM3 will get @{ @"key1": @"string" }
  
  @endcode
  */
-#define NSDICTIONARY_M_PAIRS_DEFINE(dict, ...) \
+#define DICT_M_PAIRS_DEFINE(dict, ...) \
 NSMutableDictionary *dict = \
 ({ \
 NSMutableDictionary *dictM_internal__ = [NSMutableDictionary dictionary]; \
@@ -325,21 +325,21 @@ dictM_internal__; \
 /**
  Return a safe mutable dictionary
 
- @param ... the key-value pairs by using NSDICTIONARY_M_PAIRS_SET macro
+ @param ... the key-value pairs by using DICT_M_PAIRS_SET macro
  @return the mutable dictionary
  @code
  
- NSMutableDictionary *data = NSDICTIONARY_M_PAIRS_RETURN(
-     NSDICTIONARY_M_PAIRS_SET(@"a", @"A");
-     NSDICTIONARY_M_PAIRS_SET(@"b", @"B");
-     NSDICTIONARY_M_PAIRS_SET(@"c", nil);
-     NSDICTIONARY_M_PAIRS_SET(nil, @"D");
+ NSMutableDictionary *data = DICT_M_PAIRS_RETURN(
+     DICT_M_PAIRS_SET(@"a", @"A");
+     DICT_M_PAIRS_SET(@"b", @"B");
+     DICT_M_PAIRS_SET(@"c", nil);
+     DICT_M_PAIRS_SET(nil, @"D");
  );
  // data will get @{ @"a": @"A", @"b": @"B" }
  
  @endcode
  */
-#define NSDICTIONARY_M_PAIRS_RETURN(...) \
+#define DICT_M_PAIRS_RETURN(...) \
 ({ \
 NSMutableDictionary *dictM_internal__ = [NSMutableDictionary dictionary]; \
 __VA_ARGS__ \
@@ -351,9 +351,9 @@ dictM_internal__; \
 
  @param key the key
  @param value the value
- @discussion This macro used in company with NSDICTIONARY_M_PAIRS_DEFINE or NSDICTIONARY_M_PAIRS_RETURN
+ @discussion This macro used in company with DICT_M_PAIRS_DEFINE or DICT_M_PAIRS_RETURN
  */
-#define NSDICTIONARY_M_PAIRS_SET(key, value) \
+#define DICT_M_PAIRS_SET(key, value) \
 if (key != nil) { \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wnonnull\"") \

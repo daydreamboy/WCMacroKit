@@ -253,25 +253,25 @@
     NSLog(@"%@", filePath2);
 }
 
-- (void)test_NSDICTIONARY_SAFE_WRAP {
+- (void)test_DICT_SAFE_WRAP {
     NSDictionary *dict;
     id keyMaybeNil = nil;
     id valueMaybeNil = nil;
     
     // Case 1
-    dict = NSDICTIONARY_SAFE_WRAP(@{
+    dict = DICT_SAFE_WRAP(@{
                                     keyMaybeNil: @"value"
                                     });
     XCTAssertNil(dict);
     
     // Case 2
-    dict = NSDICTIONARY_SAFE_WRAP(@{
+    dict = DICT_SAFE_WRAP(@{
                                     @"key": valueMaybeNil
                                     });
     XCTAssertNil(dict);
     
     // Case 3
-    dict = NSDICTIONARY_SAFE_WRAP(@{
+    dict = DICT_SAFE_WRAP(@{
                                     keyMaybeNil: @"value",
                                     @"key": valueMaybeNil
                                     });
@@ -279,7 +279,7 @@
     
     
     // Case 4
-    dict = NSDICTIONARY_SAFE_WRAP(@{
+    dict = DICT_SAFE_WRAP(@{
                                     @"key1": @"value1",
                                     @"key2": @"value2"
                                     });
@@ -397,42 +397,42 @@
 
 #pragma mark - NSDictionary
 
-- (void)test_NSDICTIONARY_M_PAIRS_DEFINE {
+- (void)test_DICT_M_PAIRS_DEFINE {
     // Case 1
-    NSDICTIONARY_M_PAIRS_DEFINE(dictM,
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @YES)
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @1)
+    DICT_M_PAIRS_DEFINE(dictM,
+        DICT_M_PAIRS_SET(@"key1", @"string")
+        DICT_M_PAIRS_SET(@"key1", @YES)
+        DICT_M_PAIRS_SET(@"key1", @1)
     );
     
     XCTAssertTrue(dictM.count == 1);
     
     // Case 2
-    NSDICTIONARY_M_PAIRS_DEFINE(dictM2,
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-        NSDICTIONARY_M_PAIRS_SET(@"key2", @YES)
-        NSDICTIONARY_M_PAIRS_SET(@"key3", @1)
+    DICT_M_PAIRS_DEFINE(dictM2,
+        DICT_M_PAIRS_SET(@"key1", @"string")
+        DICT_M_PAIRS_SET(@"key2", @YES)
+        DICT_M_PAIRS_SET(@"key3", @1)
     );
     
     XCTAssertTrue(dictM2.count == 3);
     
     // Case 3
-    NSDICTIONARY_M_PAIRS_DEFINE(dictM3,
-        NSDICTIONARY_M_PAIRS_SET(@"key1", @"string")
-        NSDICTIONARY_M_PAIRS_SET(@"key2", nil)
-        NSDICTIONARY_M_PAIRS_SET(nil, @1)
+    DICT_M_PAIRS_DEFINE(dictM3,
+        DICT_M_PAIRS_SET(@"key1", @"string")
+        DICT_M_PAIRS_SET(@"key2", nil)
+        DICT_M_PAIRS_SET(nil, @1)
     );
     
     XCTAssertTrue(dictM3.count == 1);
 }
 
-- (void)test_NSDICTIONARY_M_PAIRS_BEGIN_WITH_RETURN {
+- (void)test_DICT_M_PAIRS_RETURN {
 
-    NSMutableDictionary *data = NSDICTIONARY_M_PAIRS_RETURN(
-        NSDICTIONARY_M_PAIRS_SET(@"a", @"A");
-        NSDICTIONARY_M_PAIRS_SET(@"b", @"B");
-        NSDICTIONARY_M_PAIRS_SET(@"c", nil);
-        NSDICTIONARY_M_PAIRS_SET(nil, @"D");
+    NSMutableDictionary *data = DICT_M_PAIRS_RETURN(
+        DICT_M_PAIRS_SET(@"a", @"A");
+        DICT_M_PAIRS_SET(@"b", @"B");
+        DICT_M_PAIRS_SET(@"c", nil);
+        DICT_M_PAIRS_SET(nil, @"D");
     );
     
     XCTAssertTrue(data.count == 2);
@@ -441,33 +441,33 @@
     XCTAssertNil(data[@"c"]);
 }
 
-- (void)test_NSDICTIONARY_SAFE_GET {
+- (void)test_DICT_SAFE_GET {
     NSDictionary *dict;
     id value;
     
     // Case 1
-    value = NSDICTIONARY_SAFE_GET(dict, @"keyNotExists", nil);
+    value = DICT_SAFE_GET(dict, @"keyNotExists", nil);
     XCTAssertNil(value);
     
     // Case 2
     dict = @{
              @"key": @"value"
              };
-    value = NSDICTIONARY_SAFE_GET(dict, @"keyNotExists", nil);
+    value = DICT_SAFE_GET(dict, @"keyNotExists", nil);
     XCTAssertNil(value);
 
     // Case 3
     dict = @{
              @"key": [NSDate date]
              };
-    value = NSDICTIONARY_SAFE_GET(dict, @"key", NSString);
+    value = DICT_SAFE_GET(dict, @"key", NSString);
     XCTAssertNil(value);
     
-    value = NSDICTIONARY_SAFE_GET(dict, @"key", nil);
+    value = DICT_SAFE_GET(dict, @"key", nil);
     XCTAssertNotNil(value);
     XCTAssertTrue([value isKindOfClass:[NSDate class]]);
     
-    value = NSDICTIONARY_SAFE_GET(dict, @"key", @"");
+    value = DICT_SAFE_GET(dict, @"key", @"");
     XCTAssertNotNil(value);
     XCTAssertTrue([value isKindOfClass:[NSDate class]]);
     
@@ -475,7 +475,7 @@
     dict = @{
              @"key": @"date"
              };
-    value = NSDICTIONARY_SAFE_GET(dict, @"key", NSString);
+    value = DICT_SAFE_GET(dict, @"key", NSString);
     XCTAssertEqualObjects(value, @"date");
 }
 
