@@ -100,10 +100,11 @@
 
 #pragma mark - Version Compatibility
 
-#define AVAILABLE_MAC_APP_VERSION(_version) __attribute__((availability(macosx,introduced=_version)))
-#define AVAILABLE_MAC_APP_VERSION_RANGE(_start, _end) __attribute__((availability(macosx,introduced=_start)))
+// @see Availability.h
+#define AVAILABLE_MAC_APP_VERSION(_start, _msg) __attribute__((availability(macosx,introduced=_start,message=_msg)))
+#define AVAILABLE_MAC_APP_VERSION_RANGE(_start, _end, _msg) __attribute__((availability(macosx,introduced=_start,deprecated=_end,message=_msg)))
 
-#define AVAILABLE_IOS_APP_VERSION(_version) __attribute__((availability(macosx,unavailable)))
-#define AVAILABLE_IOS_APP_VERSION_RANGE(_start, _end) __attribute__((availability(macosx,unavailable)))
+#define AVAILABLE_IOS_APP_VERSION(_start, _msg) __attribute__((availability(app,introduced=_start,message=_msg)))
+#define AVAILABLE_IOS_APP_VERSION_RANGE(_start, _end, _msg) __attribute__((availability(ios,introduced=_start,deprecated=_end,message=_msg)))
 
 #endif /* WCMacroVersion_h */
