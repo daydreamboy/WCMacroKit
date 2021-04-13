@@ -98,13 +98,38 @@
 #endif
 
 
-#pragma mark - Version Compatibility
+#pragma mark - Platform Version Compatibility
 
 // @see Availability.h
-#define AVAILABLE_MAC_APP_VERSION(_start, _msg) __attribute__((availability(macosx,introduced=_start,message=_msg)))
-#define AVAILABLE_MAC_APP_VERSION_RANGE(_start, _end, _msg) __attribute__((availability(macosx,introduced=_start,deprecated=_end,message=_msg)))
+#define AVAILABLE_MACOS_VERSION(_start, _msg) __attribute__((availability(macosx,introduced=_start,message=_msg)))
+#define AVAILABLE_MACOS_VERSION_RANGE(_start, _end, _msg) __attribute__((availability(macosx,introduced=_start,deprecated=_end,message=_msg)))
 
-#define AVAILABLE_IOS_APP_VERSION(_start, _msg) __attribute__((availability(app,introduced=_start,message=_msg)))
-#define AVAILABLE_IOS_APP_VERSION_RANGE(_start, _end, _msg) __attribute__((availability(ios,introduced=_start,deprecated=_end,message=_msg)))
+#define AVAILABLE_IOS_VERSION(_start, _msg) __attribute__((availability(ios,introduced=_start,message=_msg)))
+#define AVAILABLE_IOS_VERSION_RANGE(_start, _end, _msg) __attribute__((availability(ios,introduced=_start,deprecated=_end,message=_msg)))
+
+#pragma mark - App Version Compatibility
+
+/**
+ Tag property or method available on app version
+ 
+ @param _start the start version
+ @param _msg the messsage to prompt
+ 
+ @example
+ AVAILABLE_IOS_APP_VERSION(2_1_10, "");
+ */
+#define AVAILABLE_IOS_APP_VERSION(_start, _msg) __attribute__((annotate("app_version")))
+
+/**
+ Tag property or method available on app version range
+ 
+ @param _start the start version
+ @param _end the deprected version
+ @param _msg the messsage to prompt
+ 
+ @example
+ AVAILABLE_IOS_APP_VERSION_RANGE(2_1_10, 2_2_0, "Use xxx instead");
+ */
+#define AVAILABLE_IOS_APP_VERSION_RANGE(_start, _end, _msg) __attribute__((annotate("app_version_range")))
 
 #endif /* WCMacroVersion_h */

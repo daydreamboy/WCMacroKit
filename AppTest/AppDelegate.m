@@ -34,7 +34,7 @@
     return YES;
 }
 
-- (void)checkiPhoneModel {
+- (void)checkiPhoneModel AVAILABLE_IOS_APP_VERSION(1_0, "") {
     if (IS_IPHONE_X_OR_XS) {
         NSLog(@"is iPhone X or iPhone XS");
     }
