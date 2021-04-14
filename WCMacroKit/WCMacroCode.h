@@ -30,4 +30,31 @@ do { \
     } \
 } while (0);
 
+#pragma mark - Debug
+
+#if DEBUG
+static inline void s_debug_function(void (^block)(void)) {
+    if (block) {
+        block();
+    }
+}
+#else
+#endif
+
+#if DEBUG
+#define CODE_RUN_IN_DEBUG \
+s_debug_function
+#else
+
+#define CODE_RUN_IN_DEBUG_EXPANDED_1(counter_) \
+__unused void (^block_internal_##counter_)(void) =
+
+// @see https://stackoverflow.com/questions/12690639/counter-in-variable-name
+#define CODE_RUN_IN_DEBUG_1(x) \
+CODE_RUN_IN_DEBUG_EXPANDED_1(x)
+
+#define CODE_RUN_IN_DEBUG \
+CODE_RUN_IN_DEBUG_1(__COUNTER__)
+#endif
+
 #endif /* WCMacroCode_h */
