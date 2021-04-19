@@ -495,6 +495,20 @@ _Pragma("clang diagnostic pop") \
  */
 #define ARR_IF_NOT_EMPTY(arr)    ([(arr) isKindOfClass:[NSArray class]] && [(NSArray *)(arr) count])
 
+/**
+ Is an array and empty
+
+ @param arr the NSArray object to expected
+ @return Return YES if is an array and empty. Return NO if not.
+ 
+ @code
+ if (ARR_IF_EMPTY(arr)) {
+    // do something
+ }
+ @endcode
+ */
+#define ARR_IF_EMPTY(arr)    ([(arr) isKindOfClass:[NSArray class]] && [(NSArray *)(arr) count] == 0)
+
 #pragma mark - NSObject
 
 /**
