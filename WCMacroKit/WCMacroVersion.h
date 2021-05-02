@@ -97,6 +97,16 @@
 #define IOS8_ONLY              ([[[UIDevice currentDevice] systemVersion] compare:@"8.0" options:NSNumericSearch] == NSOrderedSame)
 #endif
 
+// == `9.0`
+#ifndef IOS9_ONLY
+#define IOS9_ONLY              ([[[UIDevice currentDevice] systemVersion] compare:@"9.0" options:NSNumericSearch] == NSOrderedAscending)
+#endif
+
+// == `10.0`
+#ifndef IOS10_ONLY
+#define IOS10_ONLY             ([[[UIDevice currentDevice] systemVersion] compare:@"10.0" options:NSNumericSearch] == NSOrderedAscending)
+#endif
+
 
 #pragma mark - Platform Version Compatibility
 
