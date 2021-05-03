@@ -141,6 +141,493 @@
                                            context:nil].size                                \
                       : CGSizeZero;
 
+#pragma mark - String enum
+
+/**
+ Declare the enum type and enum values
+ 
+ @param ... the first param is enum type, and others are enum values
+ 
+ @see https://stackoverflow.com/a/34629960
+ */
+#define STR_ENUM_DECLARE(...) \
+STR_ENUM_DECLARE_SHIFT(,##__VA_ARGS__,\
+STR_ENUM_DECLARE_15(__VA_ARGS__),\
+STR_ENUM_DECLARE_14(__VA_ARGS__),\
+STR_ENUM_DECLARE_13(__VA_ARGS__),\
+STR_ENUM_DECLARE_12(__VA_ARGS__),\
+STR_ENUM_DECLARE_11(__VA_ARGS__),\
+STR_ENUM_DECLARE_10(__VA_ARGS__),\
+STR_ENUM_DECLARE_9(__VA_ARGS__),\
+STR_ENUM_DECLARE_8(__VA_ARGS__),\
+STR_ENUM_DECLARE_7(__VA_ARGS__),\
+STR_ENUM_DECLARE_6(__VA_ARGS__),\
+STR_ENUM_DECLARE_5(__VA_ARGS__),\
+STR_ENUM_DECLARE_4(__VA_ARGS__),\
+STR_ENUM_DECLARE_3(__VA_ARGS__),\
+STR_ENUM_DECLARE_2(__VA_ARGS__),\
+STR_ENUM_DECLARE_1(__VA_ARGS__),\
+)
+
+/**
+ Define the enum type and enum values
+ 
+ @param ... the first param is enum type, and others are enum values
+ 
+ @see https://stackoverflow.com/a/34629960
+ */
+#define STR_ENUM_DEFINE(...) \
+STR_ENUM_DEFINE_SHIFT(,##__VA_ARGS__,\
+STR_ENUM_DEFINE_15(__VA_ARGS__),\
+STR_ENUM_DEFINE_14(__VA_ARGS__),\
+STR_ENUM_DEFINE_13(__VA_ARGS__),\
+STR_ENUM_DEFINE_12(__VA_ARGS__),\
+STR_ENUM_DEFINE_11(__VA_ARGS__),\
+STR_ENUM_DEFINE_10(__VA_ARGS__),\
+STR_ENUM_DEFINE_9(__VA_ARGS__),\
+STR_ENUM_DEFINE_8(__VA_ARGS__),\
+STR_ENUM_DEFINE_7(__VA_ARGS__),\
+STR_ENUM_DEFINE_6(__VA_ARGS__),\
+STR_ENUM_DEFINE_5(__VA_ARGS__),\
+STR_ENUM_DEFINE_4(__VA_ARGS__),\
+STR_ENUM_DEFINE_3(__VA_ARGS__),\
+STR_ENUM_DEFINE_2(__VA_ARGS__),\
+STR_ENUM_DEFINE_1(__VA_ARGS__),\
+)
+
+#pragma mark > String enum internal
+
+// CONFIGURE: add p15 before FUNC
+#define STR_ENUM_DECLARE_SHIFT(x,y,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,FUNC, ...) FUNC
+
+// CONFIGURE: add p15 before FUNC
+#define STR_ENUM_DEFINE_SHIFT(x,y,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,FUNC, ...) FUNC
+
+// number of enums: 1
+#define STR_ENUM_DECLARE_1(enumType_, e1_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_1(enumType_, e1_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+};
+
+// number of enums: 2
+#define STR_ENUM_DECLARE_2(enumType_, e1_, e2_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_2(enumType_, e1_, e2_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+};
+
+// number of enums: 3
+#define STR_ENUM_DECLARE_3(enumType_, e1_, e2_, e3_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_3(enumType_, e1_, e2_, e3_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+};
+
+// number of enums: 4
+#define STR_ENUM_DECLARE_4(enumType_, e1_, e2_, e3_, e4_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_4(enumType_, e1_, e2_, e3_, e4_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+};
+
+// number of enums: 5
+#define STR_ENUM_DECLARE_5(enumType_, e1_, e2_, e3_, e4_, e5_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_5(enumType_, e1_, e2_, e3_, e4_, e5_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+};
+
+// number of enums: 6
+#define STR_ENUM_DECLARE_6(enumType_, e1_, e2_, e3_, e4_, e5_, e6_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_6(enumType_, e1_, e2_, e3_, e4_, e5_, e6_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+};
+
+// number of enums: 7
+#define STR_ENUM_DECLARE_7(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+    __unsafe_unretained NSString *e7_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_7(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+    .e7_ = @#e7_, \
+};
+
+// number of enums: 8
+#define STR_ENUM_DECLARE_8(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+    __unsafe_unretained NSString *e7_; \
+    __unsafe_unretained NSString *e8_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_8(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+    .e7_ = @#e7_, \
+    .e8_ = @#e8_, \
+};
+
+// number of enums: 9
+#define STR_ENUM_DECLARE_9(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+    __unsafe_unretained NSString *e7_; \
+    __unsafe_unretained NSString *e8_; \
+    __unsafe_unretained NSString *e9_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_9(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+    .e7_ = @#e7_, \
+    .e8_ = @#e8_, \
+    .e9_ = @#e9_, \
+};
+
+// number of enums: 10
+#define STR_ENUM_DECLARE_10(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+    __unsafe_unretained NSString *e7_; \
+    __unsafe_unretained NSString *e8_; \
+    __unsafe_unretained NSString *e9_; \
+    __unsafe_unretained NSString *e10_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_10(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+    .e7_ = @#e7_, \
+    .e8_ = @#e8_, \
+    .e9_ = @#e9_, \
+    .e10_ = @#e10_, \
+};
+
+// number of enums: 11
+#define STR_ENUM_DECLARE_11(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+    __unsafe_unretained NSString *e7_; \
+    __unsafe_unretained NSString *e8_; \
+    __unsafe_unretained NSString *e9_; \
+    __unsafe_unretained NSString *e10_; \
+    __unsafe_unretained NSString *e11_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_11(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+    .e7_ = @#e7_, \
+    .e8_ = @#e8_, \
+    .e9_ = @#e9_, \
+    .e10_ = @#e10_, \
+    .e11_ = @#e11_, \
+};
+
+// number of enums: 12
+#define STR_ENUM_DECLARE_12(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_, e12_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+    __unsafe_unretained NSString *e7_; \
+    __unsafe_unretained NSString *e8_; \
+    __unsafe_unretained NSString *e9_; \
+    __unsafe_unretained NSString *e10_; \
+    __unsafe_unretained NSString *e11_; \
+    __unsafe_unretained NSString *e12_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_12(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_, e12_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+    .e7_ = @#e7_, \
+    .e8_ = @#e8_, \
+    .e9_ = @#e9_, \
+    .e10_ = @#e10_, \
+    .e11_ = @#e11_, \
+    .e12_ = @#e12_, \
+};
+
+// number of enums: 13
+#define STR_ENUM_DECLARE_13(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_, e12_, e13_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+    __unsafe_unretained NSString *e7_; \
+    __unsafe_unretained NSString *e8_; \
+    __unsafe_unretained NSString *e9_; \
+    __unsafe_unretained NSString *e10_; \
+    __unsafe_unretained NSString *e11_; \
+    __unsafe_unretained NSString *e12_; \
+    __unsafe_unretained NSString *e13_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_13(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_, e12_, e13_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+    .e7_ = @#e7_, \
+    .e8_ = @#e8_, \
+    .e9_ = @#e9_, \
+    .e10_ = @#e10_, \
+    .e11_ = @#e11_, \
+    .e12_ = @#e12_, \
+    .e13_ = @#e13_, \
+};
+
+// number of enums: 14
+#define STR_ENUM_DECLARE_14(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_, e12_, e13_, e14_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+    __unsafe_unretained NSString *e7_; \
+    __unsafe_unretained NSString *e8_; \
+    __unsafe_unretained NSString *e9_; \
+    __unsafe_unretained NSString *e10_; \
+    __unsafe_unretained NSString *e11_; \
+    __unsafe_unretained NSString *e12_; \
+    __unsafe_unretained NSString *e13_; \
+    __unsafe_unretained NSString *e14_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_14(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_, e12_, e13_, e14_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+    .e7_ = @#e7_, \
+    .e8_ = @#e8_, \
+    .e9_ = @#e9_, \
+    .e10_ = @#e10_, \
+    .e11_ = @#e11_, \
+    .e12_ = @#e12_, \
+    .e13_ = @#e13_, \
+    .e14_ = @#e14_, \
+};
+
+// number of enums: 15
+#define STR_ENUM_DECLARE_15(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_, e12_, e13_, e14_, e15_) \
+extern const struct enumType_##Struct_ \
+{ \
+    __unsafe_unretained NSString *e1_; \
+    __unsafe_unretained NSString *e2_; \
+    __unsafe_unretained NSString *e3_; \
+    __unsafe_unretained NSString *e4_; \
+    __unsafe_unretained NSString *e5_; \
+    __unsafe_unretained NSString *e6_; \
+    __unsafe_unretained NSString *e7_; \
+    __unsafe_unretained NSString *e8_; \
+    __unsafe_unretained NSString *e9_; \
+    __unsafe_unretained NSString *e10_; \
+    __unsafe_unretained NSString *e11_; \
+    __unsafe_unretained NSString *e12_; \
+    __unsafe_unretained NSString *e13_; \
+    __unsafe_unretained NSString *e14_; \
+    __unsafe_unretained NSString *e15_; \
+} enumType_;
+
+#define STR_ENUM_DEFINE_15(enumType_, e1_, e2_, e3_, e4_, e5_, e6_, e7_, e8_, e9_, e10_, e11_, e12_, e13_, e14_, e15_) \
+const struct enumType_##Struct_ enumType_ = \
+{ \
+    .e1_ = @#e1_, \
+    .e2_ = @#e2_, \
+    .e3_ = @#e3_, \
+    .e4_ = @#e4_, \
+    .e5_ = @#e5_, \
+    .e6_ = @#e6_, \
+    .e7_ = @#e7_, \
+    .e8_ = @#e8_, \
+    .e9_ = @#e9_, \
+    .e10_ = @#e10_, \
+    .e11_ = @#e11_, \
+    .e12_ = @#e12_, \
+    .e13_ = @#e13_, \
+    .e14_ = @#e14_, \
+    .e15_ = @#e15_, \
+};
+
+
+//extern const struct AMPlayerStateReadable
+//{
+//    __unsafe_unretained NSString *ready;
+//    __unsafe_unretained NSString *completed;
+//    __unsafe_unretained NSString *playing;
+//    __unsafe_unretained NSString *paused;
+//    __unsafe_unretained NSString *broken;
+//} AMPlayerState;
+//
+//const struct AMPlayerStateReadable AMPlayerState =
+//{
+//    .ready = @"READY",
+//    .completed = @"COMPLETE",
+//    .playing = @"PLAYING",
+//    .paused = @"PAUSED",
+//    .broken = @"BROKEN"
+//};
+
+
 #pragma mark - Pretty String
 
 /**

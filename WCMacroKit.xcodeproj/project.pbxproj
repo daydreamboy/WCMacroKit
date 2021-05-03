@@ -60,6 +60,7 @@
 		4F9A2E6B251DED4000349719 /* WCMacroUILayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F9A2E6A251DED4000349719 /* WCMacroUILayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
 		4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */; };
+		4FB51DF9263FFBA400EF75CF /* StringEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB51DF8263FFBA400EF75CF /* StringEnum.m */; };
 		4FC4E03524EE329A0011EE1F /* Test_MacroAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */; };
 		4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */; };
 /* End PBXBuildFile section */
@@ -161,6 +162,8 @@
 		4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_STR_OF_JSONViewController.m; sourceTree = "<group>"; };
 		4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestRawStringWithC++11ViewController.h"; sourceTree = "<group>"; };
 		4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "TestRawStringWithC++11ViewController.mm"; sourceTree = "<group>"; };
+		4FB51DF7263FFBA400EF75CF /* StringEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringEnum.h; sourceTree = "<group>"; };
+		4FB51DF8263FFBA400EF75CF /* StringEnum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringEnum.m; sourceTree = "<group>"; };
 		4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroAssert.m; sourceTree = "<group>"; };
 		4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroCompatibility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -260,6 +263,7 @@
 		2BE400E21D73273200A48174 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				4FB51DF6263FFB8C00EF75CF /* Dummy */,
 				2BE400E31D73273200A48174 /* Test.m */,
 				4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */,
 				4F172408231BD10E00483D53 /* Test_MacroAttribute.m */,
@@ -328,6 +332,15 @@
 			);
 			path = "WCMacroKit-SupportFiles";
 			sourceTree = SOURCE_ROOT;
+		};
+		4FB51DF6263FFB8C00EF75CF /* Dummy */ = {
+			isa = PBXGroup;
+			children = (
+				4FB51DF7263FFBA400EF75CF /* StringEnum.h */,
+				4FB51DF8263FFBA400EF75CF /* StringEnum.m */,
+			);
+			path = Dummy;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -525,6 +538,7 @@
 				2BE400E41D73273200A48174 /* Test.m in Sources */,
 				4F2BC6B72482548900175CEE /* Test_MacroDelegate.m in Sources */,
 				4F03AEBB208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m in Sources */,
+				4FB51DF9263FFBA400EF75CF /* StringEnum.m in Sources */,
 				4F2BC6B92482556000175CEE /* Test_MacroUncategoried.m in Sources */,
 				4F13DCF724C9948C00CD5DE9 /* Test_MacroColor.m in Sources */,
 				4F6D7DB62233B389006639A1 /* Test_MacroTool.m in Sources */,

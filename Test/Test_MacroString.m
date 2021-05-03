@@ -7,6 +7,7 @@
 
 #import <XCTest/XCTest.h>
 #import <WCMacroKit/WCMacroKit.h>
+#import "StringEnum.h"
 
 @interface Test_MacroString : XCTestCase
 
@@ -73,6 +74,12 @@
     
     XCTAssertEqualObjects(STR_FORMAT(@"本地文件不存在, 路径是%@", @"path/to/file"), @"本地文件不存在, 路径是path/to/file");
     XCTAssertEqualObjects(STR_FORMAT(@"参数不对, 参数1是%@，参数2是%@", @"a", @"b"), @"参数不对, 参数1是a，参数2是b");
+}
+
+- (void)test_STR_ENUM {
+    NSLog(@"enum type: %@", AMPlayerStateReadable.ready);
+    NSLog(@"enum type: %@", Localization.ginger);
+    NSLog(@"enum type: %@", Localization.daffodil);
 }
 
 @end
