@@ -77,6 +77,57 @@
  */
 #define IS_ORIENTATION_LANDSCAPE (([[UIDevice currentDevice] orientation]) == UIDeviceOrientationLandscapeLeft || ([[UIDevice currentDevice] orientation]) == UIDeviceOrientationLandscapeRight)
 
+#pragma mark - Complie with lower Base SDK
+
+// >= `14.0` Base SDK
+#if defined(__IPHONE_14_0)
+#define IOS14_SDK_OR_LATER_AVAILABLE 1
+#else
+#define IOS14_SDK_OR_LATER_AVAILABLE 0
+#endif
+
+// >= `13.0` Base SDK
+#if defined(__IPHONE_13_0)
+#define IOS13_SDK_OR_LATER_AVAILABLE 1
+#else
+#define IOS13_SDK_OR_LATER_AVAILABLE 0
+#endif
+
+// >= `12.0` Base SDK
+#if defined(__IPHONE_12_0)
+#define IOS12_SDK_OR_LATER_AVAILABLE 1
+#else
+#define IOS12_SDK_OR_LATER_AVAILABLE 0
+#endif
+
+// >= `11.0` Base SDK
+#if defined(__IPHONE_11_0)
+#define IOS11_SDK_OR_LATER_AVAILABLE 1
+#else
+#define IOS11_SDK_OR_LATER_AVAILABLE 0
+#endif
+
+// >= `10.0` Base SDK
+#if defined(__IPHONE_10_0)
+#define IOS10_SDK_OR_LATER_AVAILABLE 1
+#else
+#define IOS10_SDK_OR_LATER_AVAILABLE 0
+#endif
+
+// >= `9.0` Base SDK
+#if defined(__IPHONE_9_0)
+#define IOS9_SDK_OR_LATER_AVAILABLE 1
+#else
+#define IOS9_SDK_OR_LATER_AVAILABLE 0
+#endif
+
+// >= `8.0` Base SDK
+#if defined(__IPHONE_8_0)
+#define IOS8_SDK_OR_LATER_AVAILABLE 1
+#else
+#define IOS8_SDK_OR_LATER_AVAILABLE 0
+#endif
+
 #pragma mark - Counterpart of Swift clause
 
 /**
