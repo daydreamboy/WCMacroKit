@@ -111,4 +111,23 @@ if (!object) { \
     __VA_ARGS__; \
 }
 
+#pragma mark - Delay Release
+
+/**
+ Delay release object after the time
+ 
+ @param object_ the object to delayed release
+ @param seconds_ the after time to release
+ @param queue_ the queue for releasing. If nil, use dispatch_get_main_queue()
+ 
+ @see https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/
+ */
+#define DELAY_RELEASE_AFTER(object_, seconds_, queue_) \
+typeof(object_) tempObject__ = object_; \
+object_ = nil; \
+dispatch_queue_t release_queue__ = (queue_) == nil ? dispatch_get_main_queue() : (queue_); \
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds_ * NSEC_PER_SEC)), release_queue__, ^{ \
+    [tempObject__ class]; \
+});
+
 #endif /* WCMacroBlock_h */
