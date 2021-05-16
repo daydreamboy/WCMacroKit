@@ -158,6 +158,30 @@ integer; \
     JSONObject__; \
 });
 
+#pragma mark - NSValue
+
+/**
+ Get primitive value from NSValue
+ 
+ @param nsValue_ the NSValue object
+ @param primitiveType_ the primitive type, e.g. int, double, ...
+ 
+ @return the primitive value
+ */
+#define primitiveValueFromNSValue(nsValue_, primitiveType_) \
+({ \
+primitiveType_ outValue__; \
+if (([[[UIDevice currentDevice] systemVersion] compare:@"11.0" options:NSNumericSearch] != NSOrderedAscending)) { \
+    [nsValue_ getValue:&outValue__]; \
+} \
+else { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wunguarded-availability\"") \
+    [nsValue_ getValue:&outValue__ size:sizeof(primitiveType_)]; \
+_Pragma("clang diagnostic pop") \
+} \
+outValue__; \
+});
 #pragma mark - Key Value Pair Suite
 
 /**
