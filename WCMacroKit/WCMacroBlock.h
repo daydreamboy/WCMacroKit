@@ -9,6 +9,8 @@
 #ifndef WCMacroBlock_h
 #define WCMacroBlock_h
 
+#import "WCMacroUncategoried.h"
+
 // Block caller
 #pragma mark Block caller
 
@@ -129,5 +131,25 @@ dispatch_queue_t release_queue__ = (queue_) == nil ? dispatch_get_main_queue() :
 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds_ * NSEC_PER_SEC)), release_queue__, ^{ \
     [tempObject__ class]; \
 });
+
+#pragma mark - Block Scope
+
+typedef void (^wc_cleanupBlock_t)(void);
+
+static inline void wc_executeCleanupBlock (__strong wc_cleanupBlock_t *block) {
+    (*block)();
+}
+
+/**
+ Call block when out of the scope
+ 
+ @discussion This macro same as @onExit
+ @example
+ SCOPE_ON_EXIT{
+     NSLog(@"on exit 1");
+ };
+ */
+#define SCOPE_ON_EXIT \
+__strong wc_cleanupBlock_t VARIABLE_CONCAT(wc_SCOPE_ON_EXIT_Block_, __LINE__) __attribute__((cleanup(wc_executeCleanupBlock), unused)) = ^
 
 #endif /* WCMacroBlock_h */

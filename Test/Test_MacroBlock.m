@@ -78,4 +78,20 @@
     matchesFooOrBar([NSDate date]);
 }
 
+- (void)test_SCOPE_ON_EXIT {
+    {
+        SCOPE_ON_EXIT{
+            NSLog(@"on exit 1");
+        };
+        
+        SCOPE_ON_EXIT{
+            NSLog(@"on exit 2");
+        };
+        
+        SCOPE_ON_EXIT{
+            NSLog(@"on exit 3");
+        };
+    }
+}
+
 @end
