@@ -23,6 +23,8 @@ WC_RESTRICT_SUBCLASSING
 @end
  */
 
+WC_DECLARE_EXTERNAL_FUNC(NSString *, someLog(NSString *message));
+WC_DECLARE_EXTERNAL_FUNC(void, someLogWithoutReturn(NSString *message));
 
 @interface Test_MacroAttribute : XCTestCase
 
@@ -30,12 +32,15 @@ WC_RESTRICT_SUBCLASSING
 
 @implementation Test_MacroAttribute
 
-- (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-}
-
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)test_WC_DECLARE_EXTERNAL_FUNC {
+    NSString *output;
+    output = someLog(@"1");
+    XCTAssertEqualObjects(output, @"1");
+    
+    output = someLog(@"2");
+    XCTAssertEqualObjects(output, @"2");
+    
+    someLogWithoutReturn(@"3");
 }
 
 @end

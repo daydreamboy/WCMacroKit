@@ -25,6 +25,7 @@
 }
 
 - (void)test_BLOCK_SAFE_RUN {
+    // Case 1
     void (^block1)(NSString *) = ^(NSString *string) {
         NSLog(@"%@", string);
         XCTAssertEqualObjects(string, @"123");
@@ -32,6 +33,7 @@
     
     BLOCK_SAFE_RUN(block1, @"123");
     
+    // Case 2
     void (^block2)(void) = ^{
         NSLog(@"block2 called");
     };
