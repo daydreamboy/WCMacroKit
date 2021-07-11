@@ -383,7 +383,208 @@ _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wnonnull\"") \
     dictM_internal__[key] = value; \
 _Pragma("clang diagnostic pop") \
-} \
+}
+
+#pragma mark > NSDictionary pairs (new style)
+
+#define DICT_M_PAIRS_1(dict_, pair1_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:1]; \
+dict_ pair1_;
+
+#define DICT_M_PAIRS_2(dict_, pair1_, pair2_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:2]; \
+dict_ pair1_; \
+dict_ pair2_;
+
+#define DICT_M_PAIRS_3(dict_, pair1_, pair2_, pair3_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:3]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_;
+
+#define DICT_M_PAIRS_4(dict_, pair1_, pair2_, pair3_, pair4_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:4]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_;
+
+#define DICT_M_PAIRS_5(dict_, pair1_, pair2_, pair3_, pair4_, pair5_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:5]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_;
+
+#define DICT_M_PAIRS_6(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:6]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_;
+
+#define DICT_M_PAIRS_7(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_, pair7_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:7]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_; \
+dict_ pair7_;
+
+#define DICT_M_PAIRS_8(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_, pair7_, pair8_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:8]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_; \
+dict_ pair7_; \
+dict_ pair8_;
+
+#define DICT_M_PAIRS_9(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_, pair7_, pair8_, pair9_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:9]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_; \
+dict_ pair7_; \
+dict_ pair8_; \
+dict_ pair9_;
+
+#define DICT_M_PAIRS_10(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_, pair7_, pair8_, pair9_, pair10_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:10]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_; \
+dict_ pair7_; \
+dict_ pair8_; \
+dict_ pair9_; \
+dict_ pair10_;
+
+#define DICT_M_PAIRS_11(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_, pair7_, pair8_, pair9_, pair10_, pair11_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:11]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_; \
+dict_ pair7_; \
+dict_ pair8_; \
+dict_ pair9_; \
+dict_ pair10_; \
+dict_ pair11_;
+
+#define DICT_M_PAIRS_12(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_, pair7_, pair8_, pair9_, pair10_, pair11_, pair12_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:12]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_; \
+dict_ pair7_; \
+dict_ pair8_; \
+dict_ pair9_; \
+dict_ pair10_; \
+dict_ pair11_; \
+dict_ pair12_;
+
+#define DICT_M_PAIRS_13(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_, pair7_, pair8_, pair9_, pair10_, pair11_, pair12_, pair13_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:13]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_; \
+dict_ pair7_; \
+dict_ pair8_; \
+dict_ pair9_; \
+dict_ pair10_; \
+dict_ pair11_; \
+dict_ pair12_; \
+dict_ pair13_;
+
+#define DICT_M_PAIRS_14(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_, pair7_, pair8_, pair9_, pair10_, pair11_, pair12_, pair13_, pair14_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:14]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_; \
+dict_ pair7_; \
+dict_ pair8_; \
+dict_ pair9_; \
+dict_ pair10_; \
+dict_ pair11_; \
+dict_ pair12_; \
+dict_ pair13_; \
+dict_ pair14_;
+
+#define DICT_M_PAIRS_15(dict_, pair1_, pair2_, pair3_, pair4_, pair5_, pair6_, pair7_, pair8_, pair9_, pair10_, pair11_, pair12_, pair13_, pair14_, pair15_) \
+NSMutableDictionary *dict_ = [NSMutableDictionary dictionaryWithCapacity:15]; \
+dict_ pair1_; \
+dict_ pair2_; \
+dict_ pair3_; \
+dict_ pair4_; \
+dict_ pair5_; \
+dict_ pair6_; \
+dict_ pair7_; \
+dict_ pair8_; \
+dict_ pair9_; \
+dict_ pair10_; \
+dict_ pair11_; \
+dict_ pair12_; \
+dict_ pair13_; \
+dict_ pair14_; \
+dict_ pair15_;
+
+#define DICT_M_PAIRS_SHIFT(x,y,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14,p15,FUNC, ...) FUNC
+
+/**
+ Shorthand for creating a mutable dictionary
+ 
+ @param dict_ the variable name
+ @param ... the key/value pairs
+ 
+ @example
+ DICT_M_PAIRS(dict2,
+  [@"1"] = @1,
+  [@"2"] = @2
+ )
+ // use dict2 afterward here...
+ */
+#define DICT_M_PAIRS(dict_, ...) \
+DICT_M_PAIRS_SHIFT(,dict_,##__VA_ARGS__, \
+DICT_M_PAIRS_15(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_14(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_13(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_12(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_11(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_10(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_9(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_8(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_7(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_6(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_5(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_4(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_3(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_2(dict_, __VA_ARGS__), \
+DICT_M_PAIRS_1(dict_, __VA_ARGS__), \
+)
 
 #pragma mark > NSDictionary checking
 

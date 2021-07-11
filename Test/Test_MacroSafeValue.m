@@ -523,4 +523,58 @@
     }
 }
 
+- (void)test_DICT_M_PAIRS {
+    NSDictionary *dict;
+    
+    // Case 1
+    DICT_M_PAIRS(dict0,
+    )
+    dict = dict0;
+    XCTAssertTrue(dict.count == 0);
+    
+    // Case 2
+    DICT_M_PAIRS(dict1,
+     [@"1"] = @1
+    )
+    dict = dict1;
+    XCTAssertTrue(dict.count == 1);
+    
+    // Case 3
+    DICT_M_PAIRS(dict2,
+     [@"1"] = @1,
+     [@"2"] = @2
+    )
+    dict = dict2;
+    XCTAssertTrue(dict.count == 2);
+    
+    // Case 4
+    DICT_M_PAIRS(dict3,
+     [@"1"] = @1,
+     [@"2"] = @2
+    )
+    dict = dict3;
+    XCTAssertTrue(dict.count == 2);
+    
+    // Case 5
+    DICT_M_PAIRS(dict4,
+     [@"1"] = @1,
+     [@"2"] = @2,
+     [@"3"] = @2,
+     [@"4"] = @2,
+     [@"5"] = @2,
+     [@"6"] = @2,
+     [@"7"] = @2,
+     [@"8"] = @2,
+     [@"9"] = @2,
+     [@"10"] = @2,
+     [@"11"] = @2,
+     [@"12"] = @2,
+     [@"13"] = @2,
+     [@"14"] = @2,
+     [@"15"] = @2
+    )
+    dict = dict4;
+    XCTAssertTrue(dict.count == 15);
+}
+
 @end
