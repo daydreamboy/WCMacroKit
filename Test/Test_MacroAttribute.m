@@ -25,6 +25,7 @@ WC_RESTRICT_SUBCLASSING
 
 WC_DECLARE_EXTERNAL_FUNC(NSString *, someLog(NSString *message));
 WC_DECLARE_EXTERNAL_FUNC(void, someLogWithoutReturn(NSString *message));
+WC_DECLARE_EXTERNAL_CONST(NSString *, global_const);
 
 @interface Test_MacroAttribute : XCTestCase
 
@@ -41,6 +42,11 @@ WC_DECLARE_EXTERNAL_FUNC(void, someLogWithoutReturn(NSString *message));
     XCTAssertEqualObjects(output, @"2");
     
     someLogWithoutReturn(@"3");
+}
+
+- (void)test_WC_DECLARE_EXTERNAL_CONST {
+    NSLog(@"%@", global_const);
+    XCTAssertEqualObjects(global_const, @"global_const");
 }
 
 @end

@@ -62,6 +62,7 @@
 		4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */; };
 		4FB51DF9263FFBA400EF75CF /* StringEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB51DF8263FFBA400EF75CF /* StringEnum.m */; };
 		4FC4E03524EE329A0011EE1F /* Test_MacroAssert.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */; };
+		4FC7823D269C73F0001A8A3D /* ExternalConstantImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7823C269C73F0001A8A3D /* ExternalConstantImplementation.m */; };
 		4FF35E58269805380050F3A0 /* ExternalFunctionImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF35E57269805380050F3A0 /* ExternalFunctionImplementation.m */; };
 		4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */; };
 /* End PBXBuildFile section */
@@ -166,6 +167,8 @@
 		4FB51DF7263FFBA400EF75CF /* StringEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringEnum.h; sourceTree = "<group>"; };
 		4FB51DF8263FFBA400EF75CF /* StringEnum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StringEnum.m; sourceTree = "<group>"; };
 		4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroAssert.m; sourceTree = "<group>"; };
+		4FC7823B269C73F0001A8A3D /* ExternalConstantImplementation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternalConstantImplementation.h; sourceTree = "<group>"; };
+		4FC7823C269C73F0001A8A3D /* ExternalConstantImplementation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExternalConstantImplementation.m; sourceTree = "<group>"; };
 		4FF35E56269805380050F3A0 /* ExternalFunctionImplementation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternalFunctionImplementation.h; sourceTree = "<group>"; };
 		4FF35E57269805380050F3A0 /* ExternalFunctionImplementation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExternalFunctionImplementation.m; sourceTree = "<group>"; };
 		4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroCompatibility.m; sourceTree = "<group>"; };
@@ -343,6 +346,8 @@
 				4FB51DF8263FFBA400EF75CF /* StringEnum.m */,
 				4FF35E56269805380050F3A0 /* ExternalFunctionImplementation.h */,
 				4FF35E57269805380050F3A0 /* ExternalFunctionImplementation.m */,
+				4FC7823B269C73F0001A8A3D /* ExternalConstantImplementation.h */,
+				4FC7823C269C73F0001A8A3D /* ExternalConstantImplementation.m */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -548,6 +553,7 @@
 				4F13DCF724C9948C00CD5DE9 /* Test_MacroColor.m in Sources */,
 				4F6D7DB62233B389006639A1 /* Test_MacroTool.m in Sources */,
 				4F172409231BD10E00483D53 /* Test_MacroAttribute.m in Sources */,
+				4FC7823D269C73F0001A8A3D /* ExternalConstantImplementation.m in Sources */,
 				4F2BC6B5248253F900175CEE /* Test_MacroString.m in Sources */,
 				4F61540B25E7F0170033E082 /* Test_MacroBreakpoint.m in Sources */,
 				4FF35E58269805380050F3A0 /* ExternalFunctionImplementation.m in Sources */,
