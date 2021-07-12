@@ -13,9 +13,9 @@ NSString * __attribute__((used)) someLog(NSString *message)
     return message;
 }
 
-void __attribute__((used)) someLogWithoutReturn(NSString *message)
+void __attribute__((used)) someLogWithoutReturn(NSString *message, NSString *type)
 {
-    NSLog(@"someLogWithoutReturn: %@", message);
+    NSLog(@"someLogWithoutReturn: %@, %@", message, type);
 }
 
 @implementation ExternalFunctionImplementation
