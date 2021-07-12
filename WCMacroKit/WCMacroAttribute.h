@@ -48,4 +48,27 @@ return (returnType_)0; \
 
 #endif // #if defined(__has_attribute) && __has_attribute(weak)
 
+#pragma mark > const
+
+#if defined(__has_attribute) && __has_attribute(weak)
+
+/**
+ Declare an external global constant which maybe implemented in other static library binary
+ 
+ @param type_ the type
+ @param global_ the variable
+ 
+ @example
+ WC_DECLARE_EXTERNAL_CONST(NSString *, global_const)
+ */
+#define WC_DECLARE_EXTERNAL_CONST(type_, global_) \
+extern type_ global_; \
+type_ __attribute__((weak)) global_ = (type_)0;
+
+#else // #if defined(__has_attribute) && __has_attribute(weak)
+
+#define WC_DECLARE_EXTERNAL_CONST(type_, global_)
+
+#endif // #if defined(__has_attribute) && __has_attribute(weak)
+
 #endif /* WCMacroAttribute_h */
