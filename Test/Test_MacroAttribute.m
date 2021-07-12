@@ -23,9 +23,9 @@ WC_RESTRICT_SUBCLASSING
 @end
  */
 
-WC_DECLARE_EXTERNAL_FUNC(NSString *, someLog(NSString *message));
-WC_DECLARE_EXTERNAL_FUNC(void, someLogWithoutReturn(NSString *message, NSString *type));
-WC_DECLARE_EXTERNAL_CONST(NSString *, global_const);
+WC_DECLARE_EXTERNAL_FUNC(NSString *, someLog(NSString *message), nil);
+WC_DECLARE_EXTERNAL_FUNC(void, someLogWithoutReturn(NSString *message, NSString *type), 0);
+WC_DECLARE_EXTERNAL_CONST(NSString *, global_const, @"");
 
 @interface Test_MacroAttribute : XCTestCase
 

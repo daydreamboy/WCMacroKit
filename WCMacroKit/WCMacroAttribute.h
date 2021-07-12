@@ -23,6 +23,8 @@
 
 #pragma mark - Weak
 
+#pragma mark > func
+
 #if defined(__has_attribute) && __has_attribute(weak)
 
 /**
@@ -30,21 +32,22 @@
  
  @param returnType_ the return type
  @param otherSignature_ the function signature exclude return type
+ @param default_ the default value
  
  @discussion This maco implements a weak function which body is empty, so it's safe to call the function directly.
  If any strong function has not linked, the function of the macro will do nothing.
  
  @note use (void)0 as return value, see https://stackoverflow.com/a/25172483
  */
-#define WC_DECLARE_EXTERNAL_FUNC(returnType_, otherSignature_) \
+#define WC_DECLARE_EXTERNAL_FUNC(returnType_, otherSignature_, default_) \
 extern returnType_ otherSignature_; \
 returnType_ __attribute__((weak)) otherSignature_ { \
-return (returnType_)0; \
+return (returnType_)(default_); \
 }
 
 #else  // #if defined(__has_attribute) && __has_attribute(weak)
 
-#define WC_DECLARE_EXTERNAL_FUNC(returnType_, otherSignature_)
+#define WC_DECLARE_EXTERNAL_FUNC(returnType_, otherSignature_, default_)
 
 #endif // #if defined(__has_attribute) && __has_attribute(weak)
 
@@ -57,17 +60,18 @@ return (returnType_)0; \
  
  @param type_ the type
  @param global_ the variable
+ @param default_ the default value
  
  @example
  WC_DECLARE_EXTERNAL_CONST(NSString *, global_const)
  */
-#define WC_DECLARE_EXTERNAL_CONST(type_, global_) \
+#define WC_DECLARE_EXTERNAL_CONST(type_, global_, default_) \
 extern type_ global_; \
-type_ __attribute__((weak)) global_ = (type_)0;
+type_ __attribute__((weak)) global_ = (type_)(default_);
 
 #else // #if defined(__has_attribute) && __has_attribute(weak)
 
-#define WC_DECLARE_EXTERNAL_CONST(type_, global_)
+#define WC_DECLARE_EXTERNAL_CONST(type_, global_, default_)
 
 #endif // #if defined(__has_attribute) && __has_attribute(weak)
 
