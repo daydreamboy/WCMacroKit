@@ -31,53 +31,55 @@
  @return the new frame
  @discussion Use FrameSet macro in WCViewTool instead.
  */
-#define FrameSetSize(frame, newWidth, newHeight) ({ \
-CGRect __internal_frame = (frame); \
-if (!isnan((newWidth))) { \
-    __internal_frame.size.width = (newWidth); \
-} \
-if (!isnan((newHeight))) { \
-    __internal_frame.size.height = (newHeight); \
-} \
-__internal_frame; \
-})
+#define FrameSetSize(frame_, newWidth_, newHeight_) \
+frame_ = ({ \
+    CGRect __internal_frame = (frame_); \
+    if (!isnan((newWidth_))) { \
+        __internal_frame.size.width = (newWidth_); \
+    } \
+    if (!isnan((newHeight_))) { \
+        __internal_frame.size.height = (newHeight_); \
+    } \
+    __internal_frame; \
+});
 
 /**
-Set x and y of a frame
+ Set x and y of a frame
 
-@param frame the original frame
-@param newX the new x. If not change, set it to NAN
-@param newY the new y. If not change, set it to NAN
-@return the new frame
-@discussion Use FrameSet macro in WCViewTool instead.
+ @param frame the original frame
+ @param newX the new x. If not change, set it to NAN
+ @param newY the new y. If not change, set it to NAN
+ @return the new frame
+ @discussion Use FrameSet macro in WCViewTool instead.
 */
-#define FrameSetOrigin(frame, newX, newY) ({ \
-CGRect __internal_frame = (frame); \
-if (!isnan((newX))) { \
-    __internal_frame.origin.x = (newX); \
-} \
-if (!isnan((newY))) { \
-    __internal_frame.origin.y = (newY); \
-} \
-__internal_frame; \
-})
+#define FrameSetOrigin(frame_, newX_, newY_) \
+frame_ = ({ \
+    CGRect __internal_frame = (frame_); \
+    if (!isnan((newX_))) { \
+        __internal_frame.origin.x = (newX_); \
+    } \
+    if (!isnan((newY_))) { \
+        __internal_frame.origin.y = (newY_); \
+    } \
+    __internal_frame; \
+});
 
 #pragma mark > UIEdgeInsets
 
-#define UIEdgeInsetsSet(insets, newTop, newLeft, newBottom, newRight) \
-({ \
-UIEdgeInsets __insets = insets; \
-if (!isnan((newTop))) { \
-    __insets = UIEdgeInsetsMake(newTop, __insets.left, __insets.bottom, __insets.right); \
+#define UIEdgeInsetsSet(insets_, newTop_, newLeft_, newBottom_, newRight_) \
+insets_ = ({ \
+UIEdgeInsets __insets = insets_; \
+if (!isnan((newTop_))) { \
+    __insets = UIEdgeInsetsMake(newTop_, __insets.left, __insets.bottom, __insets.right); \
 } \
-if (!isnan((newLeft))) { \
-    __insets = UIEdgeInsetsMake(__insets.top, newLeft, __insets.bottom, __insets.right); \
+if (!isnan((newLeft_))) { \
+    __insets = UIEdgeInsetsMake(__insets.top, newLeft_, __insets.bottom, __insets.right); \
 } \
-if (!isnan((newBottom))) { \
-    __insets = UIEdgeInsetsMake(__insets.top, __insets.left, newBottom, __insets.right); \
+if (!isnan((newBottom_))) { \
+    __insets = UIEdgeInsetsMake(__insets.top, __insets.left, newBottom_, __insets.right); \
 } \
-if (!isnan((newRight))) { \
-    __insets = UIEdgeInsetsMake(__insets.top, __insets.left, __insets.bottom, newRight); \
+if (!isnan((newRight_))) { \
+    __insets = UIEdgeInsetsMake(__insets.top, __insets.left, __insets.bottom, newRight_); \
 } \
 \
 __insets; \

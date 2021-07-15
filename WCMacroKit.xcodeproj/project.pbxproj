@@ -58,6 +58,7 @@
 		4F7D8E9821086EE300145B00 /* WCCallerTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F5D92891FEA4F06005F137D /* WCCallerTool.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F7D8E9A21087C5500145B00 /* WCMacroUncategoried.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F9A2E6B251DED4000349719 /* WCMacroUILayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F9A2E6A251DED4000349719 /* WCMacroUILayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4FAEBCF2269FCB6B00050229 /* Test_MacroUILayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAEBCF1269FCB6B00050229 /* Test_MacroUILayout.m */; };
 		4FB43AD3200CE24500D5D92D /* Test_STR_OF_JSONViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */; };
 		4FB43AD6200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4FB43AD5200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.mm */; };
 		4FB51DF9263FFBA400EF75CF /* StringEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FB51DF8263FFBA400EF75CF /* StringEnum.m */; };
@@ -160,6 +161,7 @@
 		4F7D8E8921086D0E00145B00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroUncategoried.h; sourceTree = "<group>"; };
 		4F9A2E6A251DED4000349719 /* WCMacroUILayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroUILayout.h; sourceTree = "<group>"; };
+		4FAEBCF1269FCB6B00050229 /* Test_MacroUILayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroUILayout.m; sourceTree = "<group>"; };
 		4FB43AD1200CE24500D5D92D /* Test_STR_OF_JSONViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_STR_OF_JSONViewController.h; sourceTree = "<group>"; };
 		4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_STR_OF_JSONViewController.m; sourceTree = "<group>"; };
 		4FB43AD4200CE2EE00D5D92D /* TestRawStringWithC++11ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestRawStringWithC++11ViewController.h"; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				4F4F055C229566CF002BD87A /* Test_MacroSynthesize.m */,
 				4F6D7DB52233B389006639A1 /* Test_MacroTool.m */,
 				4F2BC6B82482556000175CEE /* Test_MacroUncategoried.m */,
+				4FAEBCF1269FCB6B00050229 /* Test_MacroUILayout.m */,
 				4F03AEBA208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m */,
 				2BE400E51D73273200A48174 /* Info.plist */,
 			);
@@ -541,6 +544,7 @@
 				4F50AE31240E9CDE00FB7FE8 /* Test_MacroBlock.m in Sources */,
 				4F19C24024C0471D00A9F1C0 /* Test_MacroAttributedString.m in Sources */,
 				4F77D9E42411347500BC2BA2 /* Test_MacroCode.m in Sources */,
+				4FAEBCF2269FCB6B00050229 /* Test_MacroUILayout.m in Sources */,
 				4F5CA92222A009A100F55313 /* Test_MacroSafeValue.m in Sources */,
 				4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */,
 				4F4F055D229566CF002BD87A /* Test_MacroSynthesize.m in Sources */,
