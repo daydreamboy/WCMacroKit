@@ -64,6 +64,26 @@ frame_ = ({ \
     __internal_frame; \
 });
 
+/**
+ Set cx and cy of the center
+
+ @param center_ the original center
+ @param newCx_ the new cx. If not change, set it to NAN
+ @param newCy_ the new cy. If not change, set it to NAN
+ @return the new frame
+*/
+#define FrameSetCenter(center_, newCx_, newCy_) \
+center_ = ({ \
+    CGPoint __internal_center = (center_); \
+    if (!isnan((newCx_))) { \
+        __internal_center.x = (newCx_); \
+    } \
+    if (!isnan((newCy_))) { \
+        __internal_center.y = (newCy_); \
+    } \
+    __internal_center; \
+});
+
 #pragma mark > UIEdgeInsets
 
 #define UIEdgeInsetsSet(insets_, newTop_, newLeft_, newBottom_, newRight_) \

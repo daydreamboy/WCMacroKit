@@ -37,6 +37,28 @@
     XCTAssertTrue(view.frame.origin.y == 2);
 }
 
+- (void)test_FrameSetCenter {
+    UIView *view;
+    
+    // Case 1
+    view = [[UIView alloc] initWithFrame:CGRectMake(1, 2, 4, 4)];
+    FrameSetCenter(view.center, 7, 8);
+    XCTAssertTrue(view.center.x == 7);
+    XCTAssertTrue(view.center.y == 8);
+    
+    // Case 2
+    view = [[UIView alloc] initWithFrame:CGRectMake(1, 2, 4, 4)];
+    FrameSetCenter(view.center, 7, NAN);
+    XCTAssertTrue(view.center.x == 7);
+    XCTAssertTrue(view.center.y == 4);
+    
+    // Case 3
+    view = [[UIView alloc] initWithFrame:CGRectMake(1, 2, 4, 4)];
+    FrameSetCenter(view.center, NAN, NAN);
+    XCTAssertTrue(view.center.x == 3);
+    XCTAssertTrue(view.center.y == 4);
+}
+
 - (void)test_FrameSetSize {
     UIView *view;
     
