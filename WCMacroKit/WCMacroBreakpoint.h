@@ -5,6 +5,8 @@
 //  Created by wesley_chen on 2021/2/25.
 //
 
+#import "WCMacroAttribute.h"
+
 #ifndef WCMacroBreakpoint_h
 #define WCMacroBreakpoint_h
 
@@ -44,6 +46,18 @@
 #endif // #if defined(__APPLE__) && defined(__aarch64__)
 
 #if DEBUG
+
+/**
+ The toggle for disable the BREAKPOINT_MAKE_ON_DEBUG globally
+ 
+ @note Set sDisableGlobalBreakpointMakeOnDebug to YES at any .m file only once.
+ Default value is NO
+ 
+ @example
+ BOOL sDisableGlobalBreakpointMakeOnDebug = YES;
+ */
+extern BOOL sDisableGlobalBreakpointMakeOnDebug;
+
 /**
  Make a breakpoint in code and can resume by LLDB's continue command
  
@@ -54,7 +68,7 @@
  */
 #define BREAKPOINT_MAKE_ON_DEBUG(condition_, comment_) \
 do { \
-    if (!(condition_)) { \
+    if (sDisableGlobalBreakpointMakeOnDebug == NO && !(condition_)) { \
         NSLog(@"[WCMacroKit] %@", comment_); \
         MAKE_TRAP(); \
     } \

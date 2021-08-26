@@ -27,6 +27,9 @@ WC_DECLARE_EXTERNAL_FUNC(NSString *, someLog(NSString *message), nil);
 WC_DECLARE_EXTERNAL_FUNC(void, someLogWithoutReturn(NSString *message, NSString *type), 0);
 WC_DECLARE_EXTERNAL_CONST(NSString *, global_const, @"");
 
+// Error: should not declare the global constant again
+//NSString *global_const = @"bbbbb";
+
 @interface Test_MacroAttribute : XCTestCase
 
 @end
