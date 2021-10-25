@@ -50,13 +50,16 @@
 /**
  The toggle for disable the BREAKPOINT_MAKE_ON_DEBUG globally
  
- @note Set sDisableGlobalBreakpointMakeOnDebug to YES at any .m file only once.
+ @note Define sDisableGlobalBreakpointMakeOnDebug to YES at any .m file only once.
  Default value is NO
  
  @example
- BOOL sDisableGlobalBreakpointMakeOnDebug = YES;
+ BOOL sDisableGlobalBreakpointMakeOnDebug = YES; at other files
+ or
+ sDisableGlobalBreakpointMakeOnDebug = YES; at include this global variable
  */
 extern BOOL sDisableGlobalBreakpointMakeOnDebug;
+BOOL __attribute__((weak)) sDisableGlobalBreakpointMakeOnDebug = NO;
 
 /**
  Make a breakpoint in code and can resume by LLDB's continue command

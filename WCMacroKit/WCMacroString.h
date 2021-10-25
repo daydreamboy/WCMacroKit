@@ -78,9 +78,9 @@
 #pragma mark > String modidication
 
 // Catenate two strings
-#define STR_CATENATE(str1, str2) ([NSString stringWithFormat:@"%@%@", str1, str2])
+#define STR_CATENATE(str1, str2) ([[NSString alloc] initWithFormat:@"%@%@", str1, str2])
 // Short formated string
-#define STR_FORMAT(format, ...) ([NSString stringWithFormat:format, __VA_ARGS__])
+#define STR_FORMAT(format, ...) ([[NSString alloc] initWithFormat:format, __VA_ARGS__])
 // Trim a string
 #define STR_TRIM(str) ([(str) isKindOfClass:[NSString class]] ? [(NSString *)(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] : nil)
 
