@@ -29,6 +29,9 @@
 
  @param block the block to call
  @param ... the parameters of the block
+ 
+ @discussion This maco is deprecated, because can't debug code in the block if the block code inline the macro.
+ Use WCBlockSafeRunMainThread c funtion instead.
  */
 #define BLOCK_SAFE_RUN_ON_MAIN_THREAD(block, ...) \
 do { \
