@@ -14,44 +14,36 @@
 
 @implementation Test_MacroAssert
 
-- (void)setUp {
-    NSLog(@"\n");
-}
-
-- (void)tearDown {
-    NSLog(@"\n");
-}
-
-- (void)test_NSAssertOrReturnNil {
-    NSString *nilValue = [self callee_NSAssertOrReturnNil];
+- (void)test_NSAssertThenReturnNil {
+    NSString *nilValue = [self callee_NSAssertThenReturnNil];
     NSAssert(nilValue == nil, @"should be nil");
     
     // TODO:
-    // NSAssertOrBreak
-    // NSAssertOrContinue
+    // NSAssertThenBreak
+    // NSAssertThenContinue
 }
 
-- (void)test_NSAssertOrReturnNO {
-    BOOL noValue = [self callee_NSAssertOrReturnNO];
+- (void)test_NSAssertThenReturnNO {
+    BOOL noValue = [self callee_NSAssertThenReturnNO];
     NSAssert(noValue == NO, @"should be NO");
 }
 
-- (void)test_NSAssertOrReturn {
-    NSAssertOrReturn(NO, @"test NSAssertOrReturn");
+- (void)test_NSAssertThenReturn {
+    NSAssertThenReturn(NO, @"test NSAssertThenReturn");
     
     NSLog(@"will never output");
 }
 
 #pragma mark - Callee
 
-- (NSString *)callee_NSAssertOrReturnNil {
-    NSAssertOrReturnNil(NO, @"test NSAssertOrReturnNil");
+- (NSString *)callee_NSAssertThenReturnNil {
+    NSAssertThenReturnNil(NO, @"test NSAssertThenReturnNil");
     
     return @"a string";
 }
 
-- (BOOL)callee_NSAssertOrReturnNO {
-    NSAssertOrReturnNO(NO, @"test NSAssertOrReturnNO");
+- (BOOL)callee_NSAssertThenReturnNO {
+    NSAssertThenReturnNO(NO, @"test NSAssertThenReturnNO");
     
     return YES;
 }
