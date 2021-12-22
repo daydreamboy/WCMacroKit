@@ -28,7 +28,7 @@
             NSReleaseAssertionLog(@"*** Assertion failure in %@, %s:%d. Reason: %@", \
                 NSStringFromSelector(_cmd), __FILE__, __LINE__, \
                 [NSString stringWithFormat:desc, ##__VA_ARGS__]); \
-            [NSException raise:@"Assert Exception" format:@""]; \
+            [NSException raise:@"Assert Exception" format:desc, ##__VA_ARGS__]; \
         } \
     } \
     @catch (NSException *exception) { \
@@ -60,7 +60,7 @@
 #define NSAssertThenContinue(condition, desc, ...) \
         NSAssertWithReleaseAction(continue, condition, desc, ##__VA_ARGS__)
 
-#pragma mark - 
+#pragma mark - Deprecated
 
 #define NSParameterAssertOrReturn(condition) \
                 NSAssertWithReleaseAction(return, condition, @"Invalid parameter not satisfying: %s", #condition)

@@ -14,13 +14,64 @@
 
 @implementation Test_MacroAssert
 
+- (void)test_NSAssertThenDoNothing {
+    NSAssertThenDoNothing(NO, @"result is NO will trigger this exception breakpoint");
+}
+
 - (void)test_NSAssertThenReturnNil {
     NSString *nilValue = [self callee_NSAssertThenReturnNil];
     NSAssert(nilValue == nil, @"should be nil");
+}
+
+- (void)test_NSAssertThenBreak {
+    BOOL result = NO;
     
-    // TODO:
-    // NSAssertThenBreak
-    // NSAssertThenContinue
+    // Case 1
+    do {
+        NSAssertThenBreak(NO, @"use this macro in loop%@", @(1));
+        
+        result = YES;
+    } while (NO);
+    
+    XCTAssertFalse(result);
+    
+    // Case 2
+    do {
+        @try {
+            [NSException raise:@"test" format:@"use this macro in loop%@", @(2)];
+        }
+        @catch (NSException *exception) {
+            break;
+        }
+        
+        result = YES;
+    } while (NO);
+    
+    XCTAssertFalse(result);
+    
+    // Case 3
+    NSInteger i = 0;
+    for (; i < 10; ++i) {
+        NSAssertThenBreak(NO, @"use this macro in loop%@", @(3));
+        
+        result = YES;
+    }
+    XCTAssertFalse(result);
+    XCTAssertTrue(i == 0);
+}
+
+- (void)test_NSAssertThenContinue {
+    BOOL result = NO;
+    NSInteger i = 0;
+    
+    // Case 1
+    for (; i < 10; ++i) {
+        NSAssertThenContinue(NO, @"use this macro in loop%@", @(1));
+        
+        result = YES;
+    }
+    XCTAssertFalse(result);
+    XCTAssertTrue(i == 10);
 }
 
 - (void)test_NSAssertThenReturnNO {
