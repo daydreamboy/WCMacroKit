@@ -92,6 +92,11 @@
 #define IOS15_OR_LATER          ([[[UIDevice currentDevice] systemVersion] compare:@"15.0" options:NSNumericSearch] != NSOrderedAscending)
 #endif
 
+// >= `X`, e.g. >= `15.4`
+#ifndef IOS_X_OR_LATER(X)
+#define IOS_X_OR_LATER(X)          ([[[UIDevice currentDevice] systemVersion] compare:(X) options:NSNumericSearch] != NSOrderedAscending)
+#endif
+
 // < `13.0`
 #ifndef IOS13_BEFORE
 #define IOS13_BEFORE         ([[[UIDevice currentDevice] systemVersion] compare:@"13.0" options:NSNumericSearch] == NSOrderedAscending)
