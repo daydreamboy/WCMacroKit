@@ -57,4 +57,34 @@ CODE_RUN_IN_DEBUG_EXPANDED_1(x)
 CODE_RUN_IN_DEBUG_1(__COUNTER__)
 #endif
 
+#pragma mark - Custom Method Prefix
+
+#pragma mark > OC Category Method Prefix
+
+#ifndef WCMethodPrefixed
+/**
+ Create a prefixed OC method
+ 
+ @param prefix_ the prefix
+ @param ... the method signature
+ 
+ @discussion This macro use the format `<prefix>_<method signature>` to create a prefixed OC method
+ */
+#define WCMethodPrefixed(prefix_, ...) prefix_##_##__VA_ARGS__
+#endif
+
+#pragma mark > OC Selector Prefix
+
+#ifndef WCSelectorPrefixed
+/**
+ Create a prefixed OC selector
+ 
+ @param prefix_ the prefix
+ @param ... the selector
+ 
+ @discussion This macro use the format `@selector(<prefix>_<selector>)` to create a prefixed OC selector
+ */
+#define WCSelectorPrefixed(prefix_, ...) @selector(prefix_##_##__VA_ARGS__)
+#endif
+
 #endif /* WCMacroCode_h */

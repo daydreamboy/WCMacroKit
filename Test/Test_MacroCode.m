@@ -8,16 +8,45 @@
 #import <XCTest/XCTest.h>
 #import <WCMacroKit/WCMacroKit.h>
 
+// Note: define a shorthand for the custom prefix
+#define MyMethodPrefixed(...) WCMethodPrefixed(test, __VA_ARGS__)
+#define MySelectorPrefixed(...) WCSelectorPrefixed(test, __VA_ARGS__)
+
+@interface NSObject (MyCategory)
+- (BOOL)WCMethodPrefixed(weiwo, is:(NSString *)className;);
+- (BOOL)WCMethodPrefixed(weiwo, checkSomeThing:(NSDictionary<NSString *, NSString *> *)someThing);
+- (BOOL)MyMethodPrefixed(checkSomeThing:(NSDictionary<NSString *, NSString *> *)someThing andAnotherThing:(NSArray<NSString *> *)anotherThing);
+@end
+
+@implementation NSObject (MyCategory)
+- (BOOL)WCMethodPrefixed(weiwo, is:(NSString *)className) {
+    return [self isKindOfClass:NSClassFromString(className)];
+}
+
+- (BOOL)WCMethodPrefixed(weiwo, checkSomeThing:(NSDictionary<NSString *, NSString *> *)someThing) {
+    return YES;
+}
+
+- (BOOL)MyMethodPrefixed(checkSomeThing:(NSDictionary<NSString *, NSString *> *)someThing andAnotherThing:(NSArray<NSString *> *)anotherThing) {
+    return YES;
+}
+
+@end
+
 @interface Test_MacroCode : XCTestCase
 @property (nonatomic, strong) NSMutableDictionary *dictM;
 @end
 
 @implementation Test_MacroCode
 
-- (void)setUp {
-}
-
-- (void)tearDown {
+- (void)test_WCMethodPrefixed {
+    if ([self respondsToSelector:@selector(test_checkSomeThing:andAnotherThing:)]) {
+        
+    }
+    
+    if ([self respondsToSelector:MySelectorPrefixed(checkSomeThing:andAnotherThing:)]) {
+        
+    }
 }
 
 - (void)test_CODE_SAFE_RUN_ON_MAIN_THREAD {
