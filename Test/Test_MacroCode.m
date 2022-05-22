@@ -9,8 +9,12 @@
 #import <WCMacroKit/WCMacroKit.h>
 
 // Note: define a shorthand for the custom prefix
-#define MyMethodPrefixed(...) WCMethodPrefixed(test, __VA_ARGS__)
-#define MySelectorPrefixed(...) WCSelectorPrefixed(test, __VA_ARGS__)
+#define CustomPrefix test
+
+#define MyMethodPrefixed(...) WCMethodPrefixed(CustomPrefix, __VA_ARGS__)
+#define MySelectorPrefixed(...) WCSelectorPrefixed(CustomPrefix, __VA_ARGS__)
+#define MyMethodCallPrefixed(...) WCMethodCallPrefixed(CustomPrefix, __VA_ARGS__)
+
 
 @interface NSObject (MyCategory)
 - (BOOL)WCMethodPrefixed(weiwo, is:(NSString *)className;);
@@ -40,13 +44,13 @@
 @implementation Test_MacroCode
 
 - (void)test_WCMethodPrefixed {
-    if ([self respondsToSelector:@selector(test_checkSomeThing:andAnotherThing:)]) {
-        
-    }
+    XCTAssertTrue([self respondsToSelector:@selector(test_checkSomeThing:andAnotherThing:)]);
+    XCTAssertTrue([self respondsToSelector:MySelectorPrefixed(checkSomeThing:andAnotherThing:)]);
     
-    if ([self respondsToSelector:MySelectorPrefixed(checkSomeThing:andAnotherThing:)]) {
-        
-    }
+    Test_MacroCode *object = [Test_MacroCode new];
+    XCTAssertTrue([object test_checkSomeThing:@{} andAnotherThing:@[]]);
+    
+    XCTAssertTrue([object MyMethodCallPrefixed(checkSomeThing:@{} andAnotherThing:@[]]));
 }
 
 - (void)test_CODE_SAFE_RUN_ON_MAIN_THREAD {

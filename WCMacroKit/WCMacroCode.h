@@ -62,6 +62,8 @@ CODE_RUN_IN_DEBUG_1(__COUNTER__)
 #pragma mark > OC Category Method Prefix
 
 #ifndef WCMethodPrefixed
+// @see https://stackoverflow.com/questions/23021074/macro-as-a-parameter-to-another-macro
+#define _WCMethodPrefixed(prefix_, ...) prefix_##_##__VA_ARGS__
 /**
  Create a prefixed OC method
  
@@ -70,12 +72,31 @@ CODE_RUN_IN_DEBUG_1(__COUNTER__)
  
  @discussion This macro use the format `<prefix>_<method signature>` to create a prefixed OC method
  */
-#define WCMethodPrefixed(prefix_, ...) prefix_##_##__VA_ARGS__
+#define WCMethodPrefixed(prefix_, ...) _WCMethodPrefixed(prefix_, __VA_ARGS__)
 #endif
+
+#pragma mark > OC Category Method Call Prefix
+
+#ifndef WCMethodCallPrefixed
+
+#define _WCMethodCallPrefixed(prefix_, ...) prefix_##_##__VA_ARGS__
+/**
+ Create a prefixed OC method call
+ 
+ @param prefix_ the prefix
+ @param ... the method signature
+ 
+ @discussion This macro use the format `<prefix>_<method signature>` to create a prefixed OC method
+ */
+#define WCMethodCallPrefixed(prefix_, ...) _WCMethodCallPrefixed(prefix_, __VA_ARGS__)
+#endif
+
 
 #pragma mark > OC Selector Prefix
 
 #ifndef WCSelectorPrefixed
+
+#define _WCSelectorPrefixed(prefix_, ...) @selector(prefix_##_##__VA_ARGS__)
 /**
  Create a prefixed OC selector
  
@@ -84,7 +105,7 @@ CODE_RUN_IN_DEBUG_1(__COUNTER__)
  
  @discussion This macro use the format `@selector(<prefix>_<selector>)` to create a prefixed OC selector
  */
-#define WCSelectorPrefixed(prefix_, ...) @selector(prefix_##_##__VA_ARGS__)
+#define WCSelectorPrefixed(prefix_, ...) _WCSelectorPrefixed(prefix_, __VA_ARGS__)
 #endif
 
 #endif /* WCMacroCode_h */

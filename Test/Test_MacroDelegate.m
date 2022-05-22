@@ -92,10 +92,17 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 - (void)test_DELEGATE_SAFE_CALL1 {
     // Case 7: float as parameter
     // Note: float type must append `f`, e.g 4.0 should be 4.0f
-    DELEGATE_SAFE_CALL1(self, NSSelectorFromString(@"testFloatWithArg1:"), 4.0f);
-    
-    CGSize size = CGSizeMake(100, 200);
-    DELEGATE_SAFE_CALL1(self, NSSelectorFromString(@"setSize:"), size);
+//    DELEGATE_SAFE_CALL1(self, NSSelectorFromString(@"testFloatWithArg1:"), 4.0f);
+//
+//    CGSize size = CGSizeMake(100, 200);
+//    DELEGATE_SAFE_CALL1(self, NSSelectorFromString(@"setSize:"), size);
+//
+//    BOOL a = YES;
+    DELEGATE_SAFE_CALL1(self, NSSelectorFromString(@"setFloat:"), 0);
+}
+
+- (void)setFloat:(CGFloat)f {
+    NSLog(@"%@", @(f));
 }
 
 - (void)test_DELEGATE_SAFE_CALL2 {
