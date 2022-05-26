@@ -54,6 +54,13 @@ void PrintString(const char* message, int size, int style)
 
 #pragma mark - __TIME__
 
+- (void)test___DATE__ {
+    __DATE__;
+    NSLog(@"%s", __DATE__);
+}
+
+#pragma mark - __TIME__
+
 - (void)test___TIME__ {
     __TIME__;
     NSLog(@"%s", __TIME__);

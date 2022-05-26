@@ -93,7 +93,7 @@
 #endif
 
 // >= `X`, e.g. >= `15.4`
-#ifndef IOS_X_OR_LATER(X)
+#ifndef IOS_X_OR_LATER
 #define IOS_X_OR_LATER(X)          ([[[UIDevice currentDevice] systemVersion] compare:(X) options:NSNumericSearch] != NSOrderedAscending)
 #endif
 
