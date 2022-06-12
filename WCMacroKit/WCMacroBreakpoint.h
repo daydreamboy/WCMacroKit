@@ -13,6 +13,7 @@
 #pragma mark - Breakpoint
 
 // Note: Don't use MAKE_TRAP() macro directly
+// @see https://stackoverflow.com/a/44142833
 // for arm64 device
 #if defined(__APPLE__) && defined(__aarch64__)
 

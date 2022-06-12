@@ -18,7 +18,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
-    sDisableGlobalBreakpointMakeOnDebug = YES;
+    sDisableGlobalBreakpointMakeOnDebug = NO;
     
     [self test_BREAKPOINT_MAKE_ON_DEBUG];
 }
