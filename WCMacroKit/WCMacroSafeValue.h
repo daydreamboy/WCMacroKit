@@ -63,7 +63,7 @@ integer; \
 #pragma mark > Safe Get JSON Value
 
 /**
- Get value from JSON value (NSString/NSNumber)
+ Get value from JSON value
 
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
  @param valueType the value type expected
@@ -72,6 +72,16 @@ integer; \
  @discussion This method gets value from NSString or NSNumber unstrictly. Otherwise, get the defaultValue
  */
 #define valueOfJSONValue(JSONValue, valueType, defaultValue) (([(JSONValue) isKindOfClass:[NSString class]] || [(JSONValue) isKindOfClass:[NSNumber class]]) ? [(NSString *)(JSONValue) valueType##Value] : (defaultValue))
+
+/**
+ Get string value from JSON value (NSString/NSNumber)
+ 
+ @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
+ @param defaultValue the default value
+ @return the value
+ @discussion
+ */
+#define stringValueOfJSONValueWithDefault(JSONValue, defaultValue)   ([(JSONValue) isKindOfClass:[NSString class]] ? (JSONValue) : ([(JSONValue) isKindOfClass:[NSNumber class]]) ? [(NSNumber *)(JSONValue) stringValue] : (defaultValue))
 
 /**
  Get double value from JSON value (NSString/NSNumber)
@@ -121,7 +131,7 @@ integer; \
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
  @return the value. Unexpected JSONValue will return nil
  */
-#define stringValueOfJSONValue(JSONValue)   ([(JSONValue) isKindOfClass:[NSString class]] ? (JSONValue) : ([(JSONValue) isKindOfClass:[NSNumber class]]) ? [(NSNumber *)(JSONValue) stringValue] : nil)
+#define stringValueOfJSONValue(JSONValue)   stringValueOfJSONValueWithDefault(JSONValue, nil)
 
 /**
  Get JSON object from JSON string

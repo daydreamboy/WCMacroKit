@@ -195,6 +195,28 @@
     XCTAssertNil(output);
 }
 
+- (void)test_stringValueOfJSONValueWithDefault {
+    id JSONValue;
+    NSString *output;
+    
+    // Case 1
+    JSONValue = @(3.14);
+    output = stringValueOfJSONValueWithDefault(JSONValue, nil);
+    XCTAssertEqualObjects(output, @"3.14");
+    
+    JSONValue = @"3.14";
+    output = stringValueOfJSONValueWithDefault(JSONValue, @"");
+    XCTAssertEqualObjects(output, @"3.14");
+    
+    JSONValue = nil;
+    output = stringValueOfJSONValueWithDefault(JSONValue, @"");
+    XCTAssertEqualObjects(output, @"");
+    
+    JSONValue = [NSDictionary dictionary];
+    output = stringValueOfJSONValueWithDefault(JSONValue, @"<null>");
+    XCTAssertEqualObjects(output, @"<null>");
+}
+
 - (void)test_JSONObjectFromJSONString {
     id output;
     
