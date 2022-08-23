@@ -79,7 +79,8 @@ integer; \
  @param JSONValue the JSON value (NSString, NSNumber, NSArray, NSDictionary, or NSNull) or others
  @param defaultValue the default value
  @return the value
- @discussion
+ 
+ @discussion This method gets value from NSString or NSNumber unstrictly. Otherwise, get the defaultValue
  */
 #define stringValueOfJSONValueWithDefault(JSONValue, defaultValue)   ([(JSONValue) isKindOfClass:[NSString class]] ? (JSONValue) : ([(JSONValue) isKindOfClass:[NSNumber class]]) ? [(NSNumber *)(JSONValue) stringValue] : (defaultValue))
 
