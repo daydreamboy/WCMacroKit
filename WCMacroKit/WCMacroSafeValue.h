@@ -91,6 +91,8 @@ integer; \
  @return the value. Unexpected JSONValue will return 0.0
  */
 #define doubleValueOfJSONValue(JSONValue)   valueOfJSONValue(JSONValue, double, 0.0)
+#define doubleValueOfJSONValueWithDefault(JSONValue, defaultValue)  valueOfJSONValue(JSONValue, double, defaultValue)
+
 /**
  Get float value from JSON value (NSString/NSNumber)
  
@@ -98,6 +100,8 @@ integer; \
  @return the value. Unexpected JSONValue will return 0.0f
  */
 #define floatValueOfJSONValue(JSONValue)    valueOfJSONValue(JSONValue, float, 0.0f)
+#define floatValueOfJSONValueWithDefault(JSONValue, defaultValue)    valueOfJSONValue(JSONValue, float, defaultValue)
+
 /**
  Get int value from JSON value (NSString/NSNumber)
  
@@ -105,6 +109,8 @@ integer; \
  @return the value. Unexpected JSONValue will return 0
  */
 #define intValueOfJSONValue(JSONValue)      valueOfJSONValue(JSONValue, int, 0)
+#define intValueOfJSONValueWithDefault(JSONValue, defaultValue)      valueOfJSONValue(JSONValue, int, defaultValue)
+
 /**
  Get NSInteger value from JSON value (NSString/NSNumber)
  
@@ -112,6 +118,8 @@ integer; \
  @return the value. Unexpected JSONValue will return 0
  */
 #define integerValueOfJSONValue(JSONValue)  valueOfJSONValue(JSONValue, integer, 0)
+#define integerValueOfJSONValueWithDefault(JSONValue, defaultValue)  valueOfJSONValue(JSONValue, integer, defaultValue)
+
 /**
  Get long long value from JSON value (NSString/NSNumber)
  
@@ -119,6 +127,8 @@ integer; \
  @return the value. Unexpected JSONValue will return 0
  */
 #define longLongValueOfJSONValue(JSONValue) valueOfJSONValue(JSONValue, longLong, 0LL)
+#define longLongValueOfJSONValueWithDefault(JSONValue, defaultValue) valueOfJSONValue(JSONValue, longLong, defaultValue)
+
 /**
  Get BOOL value from JSON value (NSString/NSNumber)
  
@@ -126,6 +136,8 @@ integer; \
  @return the value. Unexpected JSONValue will return NO
  */
 #define boolValueOfJSONValue(JSONValue)     valueOfJSONValue(JSONValue, bool, NO)
+#define boolValueOfJSONValueWithDefault(JSONValue, defaultValue)     valueOfJSONValue(JSONValue, bool, defaultValue)
+
 /**
  Get NSString value from JSON value (NSString/NSNumber)
  
