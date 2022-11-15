@@ -125,6 +125,8 @@ if (!object) { \
  @param seconds_ the after time to release
  @param queue_ the queue for releasing. If nil, use dispatch_get_main_queue()
  
+ @note suggest to use this macro only in dealloc method or the other methods called by dealloc
+ 
  @see https://blog.ibireme.com/2015/11/12/smooth_user_interfaces_for_ios/
  */
 #define DELAY_RELEASE_AFTER(object_, seconds_, queue_) \
