@@ -19,7 +19,7 @@
 #if DEBUG_LOG
 
 // TODO: Configure module name here...
-#define MODULE_NAME        @"ApolloSDK"
+#define MODULE_NAME        @""
 
 #ifdef MODULE_NAME
 #   define MODULE_NAME_STR [NSString stringWithFormat:@"[%@]", MODULE_NAME]
@@ -100,9 +100,25 @@
 
 // WCLog
 #if DEBUG_LOG
-#   define WCLog(fmt, ...) { NSLog((@"[ApolloSDK] " fmt), ## __VA_ARGS__); }
+#   define WCLog(fmt, ...) { NSLog((fmt), ## __VA_ARGS__); }
 #else
 #   define WCLog(fmt, ...)
 #endif
+
+/**
+ The log macro with prefix
+ 
+ @discussion This macro must work with another macro WCLogModule.
+ Usually you should not use it directly.
+ 
+ @example
+ #import <WCMacroKit/WCMacroKit.h>
+ #define WCLogModule @"[YourModuleName] "
+ #undef WCLog
+ #define WCLog WCLogPrefix
+ 
+ WCLog(@"log something");
+ */
+#define WCLogPrefix(fmt, ...) { NSLog((WCLogModule fmt), ## __VA_ARGS__); }
 
 #endif /* WCMacroLog_h */

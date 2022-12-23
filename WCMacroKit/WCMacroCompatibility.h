@@ -8,7 +8,11 @@
 #ifndef WCMacroCompatibility_h
 #define WCMacroCompatibility_h
 
+#if __has_include(<WCMacroKit/WCMacroVersion.h>)
+#import <WCMacroKit/WCMacroVersion.h>
+#else
 #import "WCMacroVersion.h"
+#endif
 
 #pragma mark - Compatible with lower compiler iOS SDK
 

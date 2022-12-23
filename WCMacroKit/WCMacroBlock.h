@@ -9,7 +9,11 @@
 #ifndef WCMacroBlock_h
 #define WCMacroBlock_h
 
+#if __has_include(<WCMacroKit/WCMacroUncategoried.h>)
+#import <WCMacroKit/WCMacroUncategoried.h>
+#else
 #import "WCMacroUncategoried.h"
+#endif
 
 // Block caller
 #pragma mark Block caller

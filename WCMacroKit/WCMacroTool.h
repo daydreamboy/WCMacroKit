@@ -8,7 +8,11 @@
 #ifndef WCMacroTool_h
 #define WCMacroTool_h
 
+#if __has_include(<WCMacroKit/WCMacroToolBackend.h>)
+#import <WCMacroKit/WCMacroToolBackend.h>
+#else
 #import "WCMacroToolBackend.h"
+#endif
 
 #pragma mark - va_list to NSArray
 

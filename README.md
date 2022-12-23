@@ -153,6 +153,98 @@ https://stackoverflow.com/questions/17281901/ignoring-an-undefined-symbol-in-a-d
 
 
 
+## 5、Clang Module导致头文件条件编译无效的问题
+
+当编译的target开启Clang Module（CLANG_ENABLE_MODULES=YES），可能会导致依赖库的头文件中条件编译无效。
+
+举个例子，如下
+
+zzz.m
+
+```objective-c
+#define InternalToggle 1
+#import <SomeFramework/xxx.h>
+
+void test()
+{
+  ConditionalMacroWillUseInternalToggle(@"arg1");
+}
+```
+
+
+
+xxx.h
+
+```objective-c
+#ifdef InternalToggle
+#define ConditionalMacroWillUseInternalToggle doSomething1
+#else
+#define ConditionalMacroWillUseInternalToggle doSomething2
+#endif
+```
+
+如果开启Clang Module，上面的头文件，会提前编译，而不是导入代码在zzz.m再编译，因此在`#import <SomeFramework/xxx.h>`之前定义的宏InternalToggle，没有起到作用。xxx.h中的条件编译，总是走到else分支。
+
+如果关闭Clang Module，上面的头文件，导入代码在zzz.m再编译，因此是预期的条件编译，xxx.h中的条件编译，总是走到if分支。
+
+
+
+解决方案：
+
+* 关闭Clang Module，这个方法不是最好的，而且关闭后会影响编译性能
+
+* 采用重定义宏的方式来做“条件”切换。举个例子，如下
+
+  ```objective-c
+  // .h
+  #define WCLog(fmt, ...) { NSLog((fmt), ## __VA_ARGS__); }
+  #define WCLogPrefix(fmt, ...) { NSLog((WCLogModule fmt), ## __VA_ARGS__); }
+  
+  // .m
+  #import <WCMacroKit/WCMacroKit.h>
+  
+  #define WCLogModule @"[Test_MacroLog] "
+  #undef WCLog
+  #define WCLog WCLogPrefix
+  
+  - (void)test_WCLog {
+      NSString *message = @"message"      @", a.k.a msg";
+      WCLog(@"log: %@", message);
+      WCLog(@"This is a log");
+  }
+  ```
+
+  如果用到WCLog宏的源文件很多，可以做一个wrapper header文件，将上面重定义宏的代码，放到这个wrapper heade。例如
+
+  ```objective-c
+  // wrapper.h
+  #import <WCMacroKit/WCMacroKit.h>
+  
+  #define WCLogModule @"[TestTarget] "
+  #undef WCLog
+  #define WCLog WCLogPrefix
+  
+  // .m
+  #import "wrapper.h"
+  - (void)test_WCLog {
+      NSString *message = @"message"      @", a.k.a msg";
+      WCLog(@"log: %@", message);
+      WCLog(@"This is a log");
+  }
+  ```
+
+  
+
+
+
+
+
+
+
+
+
+
+
 ## References
 
 [^1]:https://useyourloaf.com/blog/xcode-6-objective-c-modernization/

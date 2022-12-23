@@ -8,7 +8,11 @@
 #ifndef WCMacroDollarSign_h
 #define WCMacroDollarSign_h
 
+#if __has_include(<WCMacroKit/WCMacroSafeValue.h>)
+#import <WCMacroKit/WCMacroSafeValue.h>
+#else
 #import "WCMacroSafeValue.h"
+#endif
 
 // $ allowed in macro identifier in some compiler like llvm
 // @see https://stackoverflow.com/questions/369495/what-are-the-valid-characters-for-macro-names

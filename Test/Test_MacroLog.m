@@ -8,6 +8,10 @@
 #import <XCTest/XCTest.h>
 #import <WCMacroKit/WCMacroKit.h>
 
+#define WCLogModule @"[Test_MacroLog] "
+#undef WCLog
+#define WCLog WCLogPrefix
+
 @interface Test_MacroLog : XCTestCase
 
 @end
@@ -55,6 +59,7 @@
     
     NSLog(@"[ApolloSDK] " @"log: %@", message);
     WCLog(@"log: %@", message);
+    WCLog(@"This is a log");
 }
 
 - (void)test_XLog {

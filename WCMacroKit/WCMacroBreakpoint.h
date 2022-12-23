@@ -5,7 +5,11 @@
 //  Created by wesley_chen on 2021/2/25.
 //
 
+#if __has_include(<WCMacroKit/WCMacroAttribute.h>)
+#import <WCMacroKit/WCMacroAttribute.h>
+#else
 #import "WCMacroAttribute.h"
+#endif
 
 #ifndef WCMacroBreakpoint_h
 #define WCMacroBreakpoint_h
