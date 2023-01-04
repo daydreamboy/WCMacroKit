@@ -6,13 +6,30 @@
 
 宏在预处理器阶段中做展开，进行代码替换。
 
+### (1) 宏的来源
+
 宏有下面几个来源
 
-* 编译器内置的宏，例如`__GNUC__`
+* 编译器(GCC、Clang等)内置的宏，例如`__GNUC__`
 * 用户指定编译选项定义的宏，例如Xcode中在Debug scheme下面，默认配置了DEBUG宏
 * 语言标准定义的宏，例如C99、C++11定义一些标准的宏
 * 系统库定义的宏
 * 用户代码定义的宏
+
+
+
+### (2) 宏的作用
+
+宏有下面几个作用
+
+* 简化代码
+* 编写适配多个编译平台的代码
+
+
+
+### (3) 宏的identifier
+
+宏的identifier可以有特殊字符前缀，`$`、`_`等
 
 
 
@@ -119,7 +136,9 @@
 
 ## 3、常用宏
 
-### (1) C语言定义的宏
+### (1) C标准定义的宏
+
+C标准定义了下面一些宏[^6]，如下
 
 | 宏         | 作用                                    | 说明 |
 | ---------- | --------------------------------------- | ---- |
@@ -148,9 +167,83 @@
 
 
 
+### (3) C++标准定义的宏
+
+C++标准定义了下面一些宏[^7]，如下
+
+| 宏            | 作用                                    | 说明 |
+| ------------- | --------------------------------------- | ---- |
+| `__cplusplus` |                                         |      |
+| `__FILE__`    |                                         |      |
+| `__LINE__`    |                                         |      |
+| `__DATE__`    | 当前文件被编译的日期，例如"May 26 2022" |      |
+| `__TIME__`    | 当前文件被编译的时间，例如"16:55:29"    |      |
 
 
-### (3) 其他宏
+
+### (4) GCC编译器的预定义宏
+
+GCC编译器的预定义宏，可以参考这篇官方文档[^8]
+
+
+
+说明
+
+> 可以使用下面命令来输出GCC支持的预定义宏[^10]，如下
+>
+> ```shell
+> $ gcc -x c /dev/null -dM -E
+> ```
+>
+> 
+
+
+
+### (5) Clang编译器的预定义宏
+
+Clang编译器的预定义宏，可以参考这篇官方文档[^9]
+
+这里列举一些常用的宏，如下
+
+| 宏   | 作用 | 说明 |
+| ---- | ---- | ---- |
+|      |      |      |
+|      |      |      |
+|      |      |      |
+|      |      |      |
+|      |      |      |
+
+
+
+可以使用下面的命令来输出Clang支持的预定义宏[^10]，如下
+
+```shell
+$ xcrun clang -x c /dev/null -dM -E
+```
+
+
+
+#### a. 标记宏为Deprecated
+
+使用`#pragma clang deprecated`可以标记宏为Deprecated，在使用处会产生一个警告。
+
+举个例子[^9]，如下
+
+```objective-c
+#define MY_MIN(x, y) x < y ? x : y
+#pragma clang deprecated(MY_MIN, "use std::min instead")
+
+- (void)test_clang_deprecated {
+    int min = MY_MIN(1, 2); // Warning: Macro 'MY_MIN' has been marked as deprecated: use std::min instead
+    NSLog(@"min:%d", min);
+}
+```
+
+
+
+
+
+### (6) 其他宏
 
 | 宏                        | 作用                                                       | 说明 |
 | ------------------------- | ---------------------------------------------------------- | ---- |
@@ -167,21 +260,7 @@
 
 
 
-## 4、宏的identifier
-
-宏的identifier可以有特殊字符前缀，`$`、`_`等
-
-
-
-
-
-// TODO
-
-https://stackoverflow.com/questions/17281901/ignoring-an-undefined-symbol-in-a-dynamic-library-from-xcode
-
-
-
-## 5、Clang Module导致头文件条件编译无效的问题
+## 4、Clang Module导致头文件条件编译无效的问题
 
 当编译的target开启Clang Module（CLANG_ENABLE_MODULES=YES），可能会导致依赖库的头文件中条件编译无效。
 
@@ -284,6 +363,9 @@ xxx.h
 [^4]:https://stackoverflow.com/a/22945846
 
 [^5]:https://en.cppreference.com/w/c/language/function_definition#func
-
-
+[^6]:https://en.cppreference.com/w/c/preprocessor/replace
+[^7]:https://en.cppreference.com/w/cpp/preprocessor/replace
+[^8]:https://gcc.gnu.org/onlinedocs/cpp/Predefined-Macros.html
+[^9]:https://clang.llvm.org/docs/LanguageExtensions.html#builtin-macros
+[^10]:https://blog.kowalczyk.info/article/j/guide-to-predefined-macros-in-c-compilers-gcc-clang-msvc-etc..html
 
