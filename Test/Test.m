@@ -93,6 +93,10 @@ void PrintString(const char* message, int size, int style)
     NSLog(@"%s", __FILE_NAME__);
 }
 
+- (void)test___func__ {
+    NSLog(@"%s", __func__);
+}
+
 #pragma mark -
 
 - (void)test_sel {

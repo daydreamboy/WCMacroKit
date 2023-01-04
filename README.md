@@ -2,29 +2,23 @@
 
 [TOC]
 
-## 1、关于`__attribute__`
+## 1、关于宏
 
-`__attribute__`用于指示编译器执行某种编译规则，这篇[文章](https://blog.sunnyxx.com/2016/05/14/clang-attributes/)介绍比较清楚。基本格式，如下
+宏在预处理器阶段中做展开，进行代码替换。
 
-```objective-c
-__attribute__((XXX))
-```
+宏有下面几个来源
 
-
-
-常用attribute，如下
-
-| 名称                                           | 作用               |
-| ---------------------------------------------- | ------------------ |
-| `__attribute__((objc_subclassing_restricted))` | 限制该类不能被继承 |
+* 编译器内置的宏，例如`__GNUC__`
+* 用户指定编译选项定义的宏，例如Xcode中在Debug scheme下面，默认配置了DEBUG宏
+* 语言标准定义的宏，例如C99、C++11定义一些标准的宏
+* 系统库定义的宏
+* 用户代码定义的宏
 
 
 
 
 
-
-
-## 2、系统常用宏
+## 2、iOS系统常用宏
 
 
 
@@ -35,9 +29,17 @@ __attribute__((XXX))
 
 
 
+系统提供的宏
+
+| 宏                | 作用 | 说明 |
+| ----------------- | ---- | ---- |
+| CGFLOAT_IS_DOUBLE |      |      |
 
 
-### （1）NS_DESIGNATED_INITIALIZER
+
+
+
+### (1) NS_DESIGNATED_INITIALIZER
 
 ​       `NS_DESIGNATED_INITIALIZER`宏用于标记初始化方法为designated initializer方法。定义和使用designated initializer方法，需要满足下面三个规则[^1]
 
@@ -73,11 +75,11 @@ __attribute__((XXX))
 
 
 
-### （2）NSAssert
+### (2) NSAssert
 
 
 
-### （3）__IPHONE_OS_VERSION_MIN_REQUIRED
+### (3) __IPHONE_OS_VERSION_MIN_REQUIRED
 
 `__IPHONE_OS_VERSION_MIN_REQUIRED`宏对应iOS Deployment Target的版本号。
 
@@ -91,7 +93,7 @@ __attribute__((XXX))
 
 
 
-### （4）__IPHONE_XX_Y
+### (4) __IPHONE_XX_Y
 
 ​        `__IPHONE_XX_Y`定义在Availability.h中，主版本号不同的iOS系统版本，该文件定义的宏不同，例如在iOS 11 SDK中定义了`__IPHONE_11_0`等，而iOS 10 SDK没有定义该宏。如果代码需要向下编译兼容，则需要使用`__IPHONE_11_0`。
 
@@ -113,27 +115,53 @@ __attribute__((XXX))
 
 
 
-## 3、不常用宏
 
-编译器提供的宏
+
+## 3、常用宏
+
+### (1) C语言定义的宏
+
+| 宏         | 作用                                    | 说明 |
+| ---------- | --------------------------------------- | ---- |
+| `__FILE__` |                                         |      |
+| `__LINE__` |                                         |      |
+| `__DATE__` | 当前文件被编译的日期，例如"May 26 2022" |      |
+| `__TIME__` | 当前文件被编译的时间，例如"16:55:29"    |      |
+
+
+
+### (2) C语言预定义的变量
+
+#### a. `__func__`
+
+`__func__`是C99定义的静态变量，表示当前函数名。它不是一个宏，但可以当成宏使用。
+
+官方文档描述[^5]，如下
+
+> Within every *function-body*, the special predefined variable __func__ with block scope and static storage duration is available, as if defined immediately after the opening brace by
+>
+> ```
+> static const char __func__[] = "function name";
+> ```
+>
+> This special identifier is sometimes used in combination with the [predefined macro constants](dfile:///Users/wesley_chen/Library/Application Support/Dash/DocSets/C/C.docset/Contents/Resources/Documents/en.cppreference.com/w/c/preprocessor/replace.html) __FILE__ and __LINE__, for example, by [assert](dfile:///Users/wesley_chen/Library/Application Support/Dash/DocSets/C/C.docset/Contents/Resources/Documents/en.cppreference.com/w/c/error/assert.html).
+
+
+
+
+
+### (3) 其他宏
 
 | 宏                        | 作用                                                       | 说明 |
 | ------------------------- | ---------------------------------------------------------- | ---- |
-| `__DATE__`                | 当前文件被编译的日期，例如"May 26 2022"                    |      |
-| `__TIME__`                | 当前文件被编译的时间，例如"16:55:29"                       |      |
 | `__TIMESTAMP__`           | 当前文件被编译的时间和日期，例如"Sat May 30 16:55:10 2020" |      |
 | `__COUNTER__`             | 在当前文件中，`__COUNTER__`宏被按照编译顺序替换为0、1、2等 |      |
 | `__BASE_FILE__`           | 当前文件的绝对路径                                         |      |
 | `__FILE_NAME__`[^2]       | 当前文件的文件名包括后缀                                   |      |
 | `__PRETTY_FUNCTION__`[^3] | 当前方法                                                   |      |
-
-
-
-系统提供的宏
-
-| 宏                | 作用 | 说明 |
-| ----------------- | ---- | ---- |
-| CGFLOAT_IS_DOUBLE |      |      |
+|                           |                                                            |      |
+|                           |                                                            |      |
+|                           |                                                            |      |
 
 
 
@@ -254,6 +282,8 @@ xxx.h
 [^3]:https://roadfiresoftware.com/2013/12/logging-class-and-method-names-in-objective-c/
 
 [^4]:https://stackoverflow.com/a/22945846
+
+[^5]:https://en.cppreference.com/w/c/language/function_definition#func
 
 
 
