@@ -183,7 +183,12 @@ C++标准定义了下面一些宏[^7]，如下
 
 ### (4) GCC编译器的预定义宏
 
-GCC编译器的预定义宏，可以参考这篇官方文档[^8]
+GCC编译器的预定义宏，可以参考这篇官方文档[^8]可以分为4类，如下
+
+* [Standard Predefined Macros](https://gcc.gnu.org/onlinedocs/cpp/Standard-Predefined-Macros.html#Standard-Predefined-Macros)
+* [Common Predefined Macros](https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html#Common-Predefined-Macros)
+* [System-specific Predefined Macros](https://gcc.gnu.org/onlinedocs/cpp/System-specific-Predefined-Macros.html#System-specific-Predefined-Macros)
+* [C++ Named Operators](https://gcc.gnu.org/onlinedocs/cpp/C_002b_002b-Named-Operators.html#C_002b_002b-Named-Operators)
 
 
 
@@ -199,19 +204,96 @@ GCC编译器的预定义宏，可以参考这篇官方文档[^8]
 
 
 
-### (5) Clang编译器的预定义宏
+#### a. Standard Predefined Macros
+
+这里列举一些常用的宏[^11]，如下
+
+| 宏            | 作用 | 说明 |
+| ------------- | ---- | ---- |
+| `__FILE__`    |      |      |
+| `__LINE__`    |      |      |
+| `__DATE__`    |      |      |
+| `__TIME__`    |      |      |
+| `__cplusplus` |      |      |
+| `__OBJC__`    |      |      |
+
+
+
+#### b. Common Predefined Macros
+
+这里列举一些常用的宏[^12]，如下
+
+| 宏            | 作用                                                       | 说明 |
+| ------------- | ---------------------------------------------------------- | ---- |
+| `__COUNTER__` | 在当前文件中，`__COUNTER__`宏被按照编译顺序替换为0、1、2等 |      |
+| `__GNUC__`    |                                                            |      |
+
+
+
+
+
+### (5) GCC预定义的变量
+
+#### a. `__PRETTY_FUNCTION__`[^3]
+
+官方文档描述[^13]，如下
+
+> In C, `__PRETTY_FUNCTION__` is yet another name for `__func__`, except that at file scope (or, in C++, namespace scope), it evaluates to the string `"top level"`. In addition, in C++, `__PRETTY_FUNCTION__` contains the signature of the function as well as its bare name. 
+
+
+
+举个例子，如下
+
+```c
+extern "C" int printf (const char *, ...);
+
+class a {
+ public:
+  void sub (int i)
+    {
+      printf ("__FUNCTION__ = %s\n", __FUNCTION__);
+      printf ("__PRETTY_FUNCTION__ = %s\n", __PRETTY_FUNCTION__);
+    }
+};
+
+int
+main (void)
+{
+  a ax;
+  ax.sub (0);
+  return 0;
+}
+```
+
+
+
+#### b. `__FUNCTION__`
+
+官方文档描述[^13]，如下
+
+> `__FUNCTION__` is another name for `__func__`, provided for backward compatibility with old versions of GCC.
+>
+> The identifier `__func__` is implicitly declared by the translator as if, immediately following the opening brace of each function definition, the declaration
+>
+> ```
+> static const char __func__[] = "function-name";
+> ```
+
+
+
+### (6) Clang编译器的预定义宏
 
 Clang编译器的预定义宏，可以参考这篇官方文档[^9]
 
 这里列举一些常用的宏，如下
 
-| 宏   | 作用 | 说明 |
-| ---- | ---- | ---- |
-|      |      |      |
-|      |      |      |
-|      |      |      |
-|      |      |      |
-|      |      |      |
+| 宏                  | 作用                                                       | 说明 |
+| ------------------- | ---------------------------------------------------------- | ---- |
+| `__BASE_FILE__`     | 当前文件的绝对路径                                         |      |
+| `__FILE_NAME__`     | 当前文件的文件名包括后缀[^2]                               |      |
+| `__TIMESTAMP__`     | 当前文件被编译的时间和日期，例如"Sat May 30 16:55:10 2020" |      |
+| `__clang__`         |                                                            |      |
+| `__clang_version__` |                                                            |      |
 
 
 
@@ -238,23 +320,6 @@ $ xcrun clang -x c /dev/null -dM -E
     NSLog(@"min:%d", min);
 }
 ```
-
-
-
-
-
-### (6) 其他宏
-
-| 宏                        | 作用                                                       | 说明 |
-| ------------------------- | ---------------------------------------------------------- | ---- |
-| `__TIMESTAMP__`           | 当前文件被编译的时间和日期，例如"Sat May 30 16:55:10 2020" |      |
-| `__COUNTER__`             | 在当前文件中，`__COUNTER__`宏被按照编译顺序替换为0、1、2等 |      |
-| `__BASE_FILE__`           | 当前文件的绝对路径                                         |      |
-| `__FILE_NAME__`[^2]       | 当前文件的文件名包括后缀                                   |      |
-| `__PRETTY_FUNCTION__`[^3] | 当前方法                                                   |      |
-|                           |                                                            |      |
-|                           |                                                            |      |
-|                           |                                                            |      |
 
 
 
@@ -368,4 +433,8 @@ xxx.h
 [^8]:https://gcc.gnu.org/onlinedocs/cpp/Predefined-Macros.html
 [^9]:https://clang.llvm.org/docs/LanguageExtensions.html#builtin-macros
 [^10]:https://blog.kowalczyk.info/article/j/guide-to-predefined-macros-in-c-compilers-gcc-clang-msvc-etc..html
+
+[^11]:https://gcc.gnu.org/onlinedocs/cpp/Standard-Predefined-Macros.html#Standard-Predefined-Macros
+[^12]:https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html#Common-Predefined-Macros
+[^13]:https://gcc.gnu.org/onlinedocs/gcc/Function-Names.html
 
