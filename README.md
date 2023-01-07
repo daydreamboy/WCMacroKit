@@ -142,8 +142,8 @@ C标准定义了下面一些宏[^6]，如下
 
 | 宏         | 作用                                    | 说明 |
 | ---------- | --------------------------------------- | ---- |
-| `__FILE__` |                                         |      |
-| `__LINE__` |                                         |      |
+| `__FILE__` | 文件路径                                |      |
+| `__LINE__` | 行号                                    |      |
 | `__DATE__` | 当前文件被编译的日期，例如"May 26 2022" |      |
 | `__TIME__` | 当前文件被编译的时间，例如"16:55:29"    |      |
 
@@ -171,13 +171,13 @@ C标准定义了下面一些宏[^6]，如下
 
 C++标准定义了下面一些宏[^7]，如下
 
-| 宏            | 作用                                    | 说明 |
-| ------------- | --------------------------------------- | ---- |
-| `__cplusplus` |                                         |      |
-| `__FILE__`    |                                         |      |
-| `__LINE__`    |                                         |      |
-| `__DATE__`    | 当前文件被编译的日期，例如"May 26 2022" |      |
-| `__TIME__`    | 当前文件被编译的时间，例如"16:55:29"    |      |
+| 宏            | 作用                                                         | 说明 |
+| ------------- | ------------------------------------------------------------ | ---- |
+| `__cplusplus` | 如果是C++编译，则该宏有定义。值是C++版本号，例如199711L、201103L |      |
+| `__FILE__`    | 文件路径                                                     |      |
+| `__LINE__`    | 行号                                                         |      |
+| `__DATE__`    | 当前文件被编译的日期，例如"May 26 2022"                      |      |
+| `__TIME__`    | 当前文件被编译的时间，例如"16:55:29"                         |      |
 
 
 
@@ -208,14 +208,15 @@ GCC编译器的预定义宏，可以参考这篇官方文档[^8]可以分为4类
 
 这里列举一些常用的宏[^11]，如下
 
-| 宏            | 作用 | 说明 |
-| ------------- | ---- | ---- |
-| `__FILE__`    |      |      |
-| `__LINE__`    |      |      |
-| `__DATE__`    |      |      |
-| `__TIME__`    |      |      |
-| `__cplusplus` |      |      |
-| `__OBJC__`    |      |      |
+| 宏            | 作用                                   | 说明 |
+| ------------- | -------------------------------------- | ---- |
+| `__FILE__`    | 当前文件的路径                         |      |
+| `__LINE__`    | 当前文件中的行号                       |      |
+| `__DATE__`    | 日期                                   |      |
+| `__TIME__`    | 时间                                   |      |
+| `__STDC__`    | 如果是ISO标准C，则值是1                |      |
+| `__cplusplus` | 如果是使用C++编译器编译，则该宏有定义  |      |
+| `__OBJC__`    | 如果支持Objective-C编译，则该宏的值是1 |      |
 
 
 
@@ -223,12 +224,63 @@ GCC编译器的预定义宏，可以参考这篇官方文档[^8]可以分为4类
 
 这里列举一些常用的宏[^12]，如下
 
-| 宏            | 作用                                                       | 说明 |
-| ------------- | ---------------------------------------------------------- | ---- |
-| `__COUNTER__` | 在当前文件中，`__COUNTER__`宏被按照编译顺序替换为0、1、2等 |      |
-| `__GNUC__`    |                                                            |      |
+| 宏                    | 作用                                                       | 说明 |
+| --------------------- | ---------------------------------------------------------- | ---- |
+| `__COUNTER__`         | 在当前文件中，`__COUNTER__`宏被按照编译顺序替换为0、1、2等 |      |
+| `__GNUC__`            | GNU编译器的主版本号                                        |      |
+| `__GNUC_MINOR__`      | GNU编译器的次版本号                                        |      |
+| `__GNUC_PATCHLEVEL__` | GNU编译器的补丁版本号                                      |      |
+| `__BASE_FILE__`       | 当前文件路径。C字符串                                      |      |
+| `__FILE_NAME__`       | 当前文件名。C字符串                                        |      |
 
 
+
+举个例子，如下
+
+```c
+/* Test for GCC > 3.2.0 */
+#if __GNUC__ > 3 || \
+    (__GNUC__ == 3 && (__GNUC_MINOR__ > 2 || \
+                       (__GNUC_MINOR__ == 2 && \
+                        __GNUC_PATCHLEVEL__ > 0))
+
+#define GCC_VERSION (__GNUC__ * 10000 \
+                     + __GNUC_MINOR__ * 100 \
+                     + __GNUC_PATCHLEVEL__)
+…
+/* Test for GCC > 3.2.0 */
+#if GCC_VERSION > 30200
+```
+
+
+
+#### c. System-specific Predefined Macros
+
+参考官方文档[^14]
+
+
+
+#### d. C++ Named Operators
+
+C++ Named Operators是不能用于定义宏，它们是
+
+| Named Operator | Punctuator |
+| -------------- | ---------- |
+| `and`          | `&&`       |
+| `and_eq`       | `&=`       |
+| `bitand`       | `&`        |
+| `bitor`        | `|`        |
+| `compl`        | `~`        |
+| `not`          | `!`        |
+| `not_eq`       | `!=`       |
+| `or`           | `||`       |
+| `or_eq`        | `|=`       |
+| `xor`          | `^`        |
+| `xor_eq`       | `^=`       |
+
+参考官方文档[^15]，如下
+
+> In C++, there are eleven keywords which are simply alternate spellings of operators normally written with punctuation. These keywords are treated as such even in the preprocessor. They function as operators in ‘#if’, and they cannot be defined as macros or poisoned.
 
 
 
@@ -236,7 +288,29 @@ GCC编译器的预定义宏，可以参考这篇官方文档[^8]可以分为4类
 
 #### a. `__PRETTY_FUNCTION__`[^3]
 
-官方文档描述[^13]，如下
+`__PRETTY_FUNCTION__`是GCC预定义的变量，并不是一个宏。
+
+举个例子，将下面的代码，在Xcode选择Preprocess
+
+```objective-c
+- (void)test___PRETTY_FUNCTION__ {
+    printf ("__PRETTY_FUNCTION__ = %s\n", __PRETTY_FUNCTION__);
+}
+```
+
+得到预处理的文件内容，如下
+
+```objective-c
+- (void)test___PRETTY_FUNCTION__ {
+    printf ("__PRETTY_FUNCTION__ = %s\n", __PRETTY_FUNCTION__);
+}
+```
+
+`__PRETTY_FUNCTION__`并没有做替换。实际上，它是函数内的静态变量。
+
+
+
+官方文档对`__PRETTY_FUNCTION__`描述[^13]，如下
 
 > In C, `__PRETTY_FUNCTION__` is yet another name for `__func__`, except that at file scope (or, in C++, namespace scope), it evaluates to the string `"top level"`. In addition, in C++, `__PRETTY_FUNCTION__` contains the signature of the function as well as its bare name. 
 
@@ -269,7 +343,9 @@ main (void)
 
 #### b. `__FUNCTION__`
 
-官方文档描述[^13]，如下
+`__FUNCTION__`也是GCC预定义的变量，并不是一个宏。它和`__func__`是等价的，为了兼容老版本的GCC而存在。
+
+官方文档对`__FUNCTION__`的描述[^13]，如下
 
 > `__FUNCTION__` is another name for `__func__`, provided for backward compatibility with old versions of GCC.
 >
@@ -290,10 +366,11 @@ Clang编译器的预定义宏，可以参考这篇官方文档[^9]
 | 宏                  | 作用                                                       | 说明 |
 | ------------------- | ---------------------------------------------------------- | ---- |
 | `__BASE_FILE__`     | 当前文件的绝对路径                                         |      |
+| `__COUNTER__`       | 在当前文件中，`__COUNTER__`宏被按照编译顺序替换为0、1、2等 |      |
 | `__FILE_NAME__`     | 当前文件的文件名包括后缀[^2]                               |      |
 | `__TIMESTAMP__`     | 当前文件被编译的时间和日期，例如"Sat May 30 16:55:10 2020" |      |
-| `__clang__`         |                                                            |      |
-| `__clang_version__` |                                                            |      |
+| `__clang__`         | 是否用Clang编译                                            |      |
+| `__clang_version__` | Clang的版本号，例如"14.0.0 (clang-1400.0.29.202)"          |      |
 
 
 
@@ -323,9 +400,126 @@ $ xcrun clang -x c /dev/null -dM -E
 
 
 
+## 4、测试宏
+
+参考这篇文章[^10]，可以按照下面维度来测试宏，用于区分
+
+* 区分不同OS平台
+* 区分不同编译器
+* 检查编译器版本
+* 检查处理器架构
 
 
-## 4、Clang Module导致头文件条件编译无效的问题
+
+### (1) 区分不同OS平台
+
+```
+Linux and Linux-derived           __linux__
+Android                           __ANDROID__ (implies __linux__)
+Linux (non-Android)               __linux__ && !__ANDROID__
+Darwin (Mac OS X and iOS)         __APPLE__
+Akaros (http://akaros.org)        __ros__
+Windows                           _WIN32
+Windows 64 bit                    _WIN64 (implies _WIN32)
+NaCL                              __native_client__
+AsmJS                             __asmjs__
+Fuschia                           __Fuchsia__
+```
+
+
+
+### (2) 区分不同编译器
+
+```
+Visual Studio       _MSC_VER
+gcc                 __GNUC__
+clang               __clang__
+emscripten          __EMSCRIPTEN__ (for asm.js and webassembly)
+MinGW 32            __MINGW32__
+MinGW-w64 32bit     __MINGW32__
+MinGW-w64 64bit     __MINGW64__
+```
+
+
+
+
+
+### (3) 检查编译器版本
+
+#### a. GCC版本
+
+```c
+#if defined(__GNUC__) && (__GNUC___ > 5 || (__GNUC__ == 5 && __GNUC_MINOR__ >= 1))
+// this is gcc 5.1 or greater
+#endif
+```
+
+
+
+#### b. Clang版本
+
+使用宏`__clang_major__`, `__clang_minor__`, `__clang_patchlevel__`
+
+
+
+#### c. Visual Studio
+
+使用宏`_MSC_VER` and `_MSC_FULL_VER`
+
+```
+VS                        _MSC_VER   _MSC_FULL_VER
+1                         800
+3                         900
+4                         1000
+4                         1020
+5                         1100
+6                         1200
+6 SP6                     1200    12008804
+7                         1300    13009466
+7.1 (2003)                1310    13103077
+8 (2005)                  1400    140050727
+9 (2008)                  1500    150021022
+9 SP1                     1500    150030729
+10 (2010)                 1600    160030319
+10 (2010) SP1             1600    160040219
+11 (2012)                 1700    170050727
+12 (2013)                 1800    180021005
+14 (2015)                 1900    190023026
+14 (2015 Update 1)        1900    190023506
+14 (2015 Update 2)        1900    190023918
+14 (2015 Update 3)        1900    190024210
+15 (2017 Update 1 & 2)    1910    191025017
+15 (2017 Update 3 & 4)    1911
+15 (2017 Update 5)        1912
+```
+
+
+
+#### d. MinGW
+
+MinGW (aka MinGW32) and MinGW-w64 32bit: `__MINGW32_MAJOR_VERSION` and `__MINGW32_MINOR_VERSION`
+
+MinGW-w64 64bit: `__MINGW64_VERSION_MAJOR` and `__MINGW64_VERSION_MINOR`
+
+
+
+### (4) 检查处理器架构
+
+#### a. GCC
+
+- `__i386__`
+- `__x86_64__`
+- `__arm__`. If defined, you can further check:
+  - `__ARM_ARCH_5T__`
+  - `__ARM_ARCH_7A__`
+- `__powerpc64__`
+- `__aarch64__`
+
+
+
+
+
+## 5、Clang Module导致头文件条件编译无效的问题
 
 当编译的target开启Clang Module（CLANG_ENABLE_MODULES=YES），可能会导致依赖库的头文件中条件编译无效。
 
@@ -437,4 +631,7 @@ xxx.h
 [^11]:https://gcc.gnu.org/onlinedocs/cpp/Standard-Predefined-Macros.html#Standard-Predefined-Macros
 [^12]:https://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html#Common-Predefined-Macros
 [^13]:https://gcc.gnu.org/onlinedocs/gcc/Function-Names.html
+
+[^14]:https://gcc.gnu.org/onlinedocs/cpp/System-specific-Predefined-Macros.html#System-specific-Predefined-Macros
+[^15]:https://gcc.gnu.org/onlinedocs/cpp/C_002b_002b-Named-Operators.html#C_002b_002b-Named-Operators
 

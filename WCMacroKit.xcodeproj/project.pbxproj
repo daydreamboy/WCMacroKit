@@ -20,6 +20,7 @@
 		4F17240A231BD16F00483D53 /* WCMacroAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F172407231BD03500483D53 /* WCMacroAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F19C24024C0471D00A9F1C0 /* Test_MacroAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F19C23F24C0471D00A9F1C0 /* Test_MacroAttributedString.m */; };
 		4F1A055D24BF2A7700DBE662 /* WCMacroAttributedString.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F1A055C24BF2A4E00DBE662 /* WCMacroAttributedString.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F20EBAB29697A6E0029B8B9 /* Test_GCCMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F20EBAA29697A6E0029B8B9 /* Test_GCCMacro.m */; };
 		4F273C5F28003DA1006A9221 /* WCMacroError.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F273C5E28003DA1006A9221 /* WCMacroError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F273C6128003F4A006A9221 /* Test_MacroError.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F273C6028003F4A006A9221 /* Test_MacroError.m */; };
 		4F2BC6B3248253AD00175CEE /* Test_MacroLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BC6B2248253AD00175CEE /* Test_MacroLog.m */; };
@@ -132,6 +133,7 @@
 		4F172408231BD10E00483D53 /* Test_MacroAttribute.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroAttribute.m; sourceTree = "<group>"; };
 		4F19C23F24C0471D00A9F1C0 /* Test_MacroAttributedString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroAttributedString.m; sourceTree = "<group>"; };
 		4F1A055C24BF2A4E00DBE662 /* WCMacroAttributedString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroAttributedString.h; sourceTree = "<group>"; };
+		4F20EBAA29697A6E0029B8B9 /* Test_GCCMacro.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_GCCMacro.m; sourceTree = "<group>"; };
 		4F273C5E28003DA1006A9221 /* WCMacroError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroError.h; sourceTree = "<group>"; };
 		4F273C6028003F4A006A9221 /* Test_MacroError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroError.m; sourceTree = "<group>"; };
 		4F2BC6B2248253AD00175CEE /* Test_MacroLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroLog.m; sourceTree = "<group>"; };
@@ -282,10 +284,11 @@
 		2BE400E21D73273200A48174 /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				4FA356CD29554DF5008378EB /* MacroLogPrefixTest.h */,
 				4FB51DF6263FFB8C00EF75CF /* Dummy */,
+				4FA356CD29554DF5008378EB /* MacroLogPrefixTest.h */,
 				2BE400E31D73273200A48174 /* Test.m */,
 				4F2EB0B829659BE600692CF7 /* Test_ClangMacro.m */,
+				4F20EBAA29697A6E0029B8B9 /* Test_GCCMacro.m */,
 				4FC4E03424EE329A0011EE1F /* Test_MacroAssert.m */,
 				4F172408231BD10E00483D53 /* Test_MacroAttribute.m */,
 				4F19C23F24C0471D00A9F1C0 /* Test_MacroAttributedString.m */,
@@ -558,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F20EBAB29697A6E0029B8B9 /* Test_GCCMacro.m in Sources */,
 				4FC4E03524EE329A0011EE1F /* Test_MacroAssert.m in Sources */,
 				4F273C6128003F4A006A9221 /* Test_MacroError.m in Sources */,
 				4F50AE31240E9CDE00FB7FE8 /* Test_MacroBlock.m in Sources */,
