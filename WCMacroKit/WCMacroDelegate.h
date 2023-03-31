@@ -44,7 +44,7 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
             returnValue = (__bridge id)tempReturnValue; \
@@ -65,8 +65,8 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
-            [invocation setArgument:(void *)(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
             returnValue = (__bridge id)tempReturnValue; \
@@ -247,7 +247,7 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
             returnValue = tempReturnValue; \
@@ -268,8 +268,8 @@
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = delegate; \
             invocation.selector = sel; \
-            [invocation setArgument:(void *)(void *)&param1 atIndex:2]; \
-            [invocation setArgument:(void *)(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
             returnValue = tempReturnValue; \
