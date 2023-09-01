@@ -705,13 +705,13 @@ _Pragma("clang diagnostic pop") \
  *  @return the value at index. If nil, when index out of bound
  */
 #ifndef ARR_SAFE_GET
-#define ARR_SAFE_GET(array, index)                      \
-    ({                                                      \
-        id __value = nil;                                   \
+#define ARR_SAFE_GET(array, index) \
+    ({ \
+        id __value = nil; \
         if ([array isKindOfClass:[NSArray class]] && 0 <= index && index < [(NSArray *)array count]) { \
-            __value = [(NSArray *)array objectAtIndex:index];          \
-        }                                                   \
-        __value;                                            \
+            __value = [(NSArray *)array objectAtIndex:index]; \
+        } \
+        __value; \
     })
 #endif /* ARR_SAFE_GET */
 
