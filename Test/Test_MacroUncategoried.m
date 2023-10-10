@@ -61,4 +61,8 @@
     XCTAssertTrue(output.size.width == 200 && output.size.height == 100);
 }
 
+- (void)test_TIMESTAMP_FOR_CURRENT_FILE {
+    NSLog(@"current file timestamp: %@", TIMESTAMP_FOR_CURRENT_FILE);
+}
+
 @end

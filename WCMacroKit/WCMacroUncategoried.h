@@ -314,6 +314,18 @@ do { \
 
 #define TIME_UNIX_TIMESTAMP ([NSString stringWithFormat:@"%f", [[NSDate date] timeIntervalSince1970]])
 
+/**
+ Get current file modification timestamp
+ */
+#define TIMESTAMP_FOR_CURRENT_FILE ({ \
+    NSString *timestamp = nil; \
+    const char *cString = __TIMESTAMP__; \
+    if (cString != NULL) { \
+        timestamp = [[NSString alloc] initWithUTF8String:cString]; \
+    } \
+    timestamp; \
+})
+
 #pragma mark - Dispatch Time
 
 #define DISPATCH_TIME_IN_SEC(seconds) (dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * NSEC_PER_SEC)))
