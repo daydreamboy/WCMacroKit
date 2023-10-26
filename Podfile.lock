@@ -1,0 +1,16 @@
+PODS:
+  - WCMacroConfig (0.0.1)
+
+DEPENDENCIES:
+  - WCMacroConfig (from `./WCMacroConfig/WCMacroConfig.podspec`)
+
+EXTERNAL SOURCES:
+  WCMacroConfig:
+    :path: "./WCMacroConfig/WCMacroConfig.podspec"
+
+SPEC CHECKSUMS:
+  WCMacroConfig: a67e114af2e21eebda13b3cbe00422d8342e4b2f
+
+PODFILE CHECKSUM: 8a8a5cb12f6c1b11c524239eb899552ed9e8249b
+
+COCOAPODS: 1.11.3

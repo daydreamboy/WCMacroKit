@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		026C0C1D4193B095F503078C /* libPods-WCMacroKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1C37B795C2791FBEEEF619 /* libPods-WCMacroKit.a */; };
 		2B44B1791D952BB100B23550 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B44B1781D952BB100B23550 /* RootViewController.m */; };
 		2BC5661B1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BC5661A1D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.m */; };
 		2BE400CA1D73272500A48174 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE400C91D73272500A48174 /* main.m */; };
@@ -72,6 +73,7 @@
 		4FC7823D269C73F0001A8A3D /* ExternalConstantImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FC7823C269C73F0001A8A3D /* ExternalConstantImplementation.m */; };
 		4FF35E58269805380050F3A0 /* ExternalFunctionImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FF35E57269805380050F3A0 /* ExternalFunctionImplementation.m */; };
 		4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */; };
+		8C9652C234596AD72AC30949 /* libPods-AppTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E240A99029B3BD08F20C2A3 /* libPods-AppTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0787CC9E40DD8F08E42120B2 /* Pods-AppTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTest.release.xcconfig"; path = "Target Support Files/Pods-AppTest/Pods-AppTest.release.xcconfig"; sourceTree = "<group>"; };
 		2B44B1771D952BB100B23550 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		2B44B1781D952BB100B23550 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		2BC566191D9545BC000A49EE /* Test_SYNTHESIZE_ASSOCIATED_XXX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test_SYNTHESIZE_ASSOCIATED_XXX.h; sourceTree = "<group>"; };
@@ -126,6 +129,8 @@
 		2BE400F11D732F6500A48174 /* WCMacroBlock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroBlock.h; sourceTree = "<group>"; };
 		2BE400F21D732F7300A48174 /* WCMacroDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroDelegate.h; sourceTree = "<group>"; };
 		2BE400F31D7330B500A48174 /* WCMacroAssert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroAssert.h; sourceTree = "<group>"; };
+		2E240A99029B3BD08F20C2A3 /* libPods-AppTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B0E1E8730E9CA0C8C488CD3 /* Pods-WCMacroKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCMacroKit.release.xcconfig"; path = "Target Support Files/Pods-WCMacroKit/Pods-WCMacroKit.release.xcconfig"; sourceTree = "<group>"; };
 		4F03AEBA208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m; sourceTree = "<group>"; };
 		4F0FDE2124791FBA0079ADF8 /* WCMacroThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroThread.h; sourceTree = "<group>"; };
 		4F13DCF624C9948C00CD5DE9 /* Test_MacroColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroColor.m; sourceTree = "<group>"; };
@@ -187,6 +192,9 @@
 		4FF35E56269805380050F3A0 /* ExternalFunctionImplementation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExternalFunctionImplementation.h; sourceTree = "<group>"; };
 		4FF35E57269805380050F3A0 /* ExternalFunctionImplementation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExternalFunctionImplementation.m; sourceTree = "<group>"; };
 		4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroCompatibility.m; sourceTree = "<group>"; };
+		68AB5CB56DFA59C2AEB8F409 /* Pods-AppTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppTest.debug.xcconfig"; path = "Target Support Files/Pods-AppTest/Pods-AppTest.debug.xcconfig"; sourceTree = "<group>"; };
+		7E1C37B795C2791FBEEEF619 /* libPods-WCMacroKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WCMacroKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBFF3A3A3CA44CE8917F36BC /* Pods-WCMacroKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCMacroKit.debug.xcconfig"; path = "Target Support Files/Pods-WCMacroKit/Pods-WCMacroKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F6D7DAE2233A561006639A1 /* WCMacroKit.framework in Frameworks */,
+				8C9652C234596AD72AC30949 /* libPods-AppTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				026C0C1D4193B095F503078C /* libPods-WCMacroKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +254,7 @@
 				2BE400E21D73273200A48174 /* Test */,
 				2BE400C61D73272500A48174 /* Products */,
 				4F6D7DAD2233A561006639A1 /* Frameworks */,
+				6AE76BDF78986A7B418027D7 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -350,6 +361,8 @@
 		4F6D7DAD2233A561006639A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E240A99029B3BD08F20C2A3 /* libPods-AppTest.a */,
+				7E1C37B795C2791FBEEEF619 /* libPods-WCMacroKit.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -373,6 +386,18 @@
 				4FC7823C269C73F0001A8A3D /* ExternalConstantImplementation.m */,
 			);
 			path = Dummy;
+			sourceTree = "<group>";
+		};
+		6AE76BDF78986A7B418027D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				68AB5CB56DFA59C2AEB8F409 /* Pods-AppTest.debug.xcconfig */,
+				0787CC9E40DD8F08E42120B2 /* Pods-AppTest.release.xcconfig */,
+				BBFF3A3A3CA44CE8917F36BC /* Pods-WCMacroKit.debug.xcconfig */,
+				3B0E1E8730E9CA0C8C488CD3 /* Pods-WCMacroKit.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,6 +440,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2BE400DA1D73272500A48174 /* Build configuration list for PBXNativeTarget "AppTest" */;
 			buildPhases = (
+				4AC9F13D1BC526B40B8DF811 /* [CP] Check Pods Manifest.lock */,
 				2BE400C11D73272500A48174 /* Sources */,
 				2BE400C21D73272500A48174 /* Frameworks */,
 				2BE400C31D73272500A48174 /* Resources */,
@@ -452,6 +478,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4F7D8E8D21086D0E00145B00 /* Build configuration list for PBXNativeTarget "WCMacroKit" */;
 			buildPhases = (
+				BBE5A3CC5EFFC2004B381DE4 /* [CP] Check Pods Manifest.lock */,
 				4F7D8E8121086D0E00145B00 /* Sources */,
 				4F7D8E8221086D0E00145B00 /* Frameworks */,
 				4F7D8E8321086D0E00145B00 /* Headers */,
@@ -538,6 +565,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4AC9F13D1BC526B40B8DF811 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBE5A3CC5EFFC2004B381DE4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WCMacroKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2BE400C11D73272500A48174 /* Sources */ = {
@@ -698,6 +772,7 @@
 		};
 		2BE400DB1D73272500A48174 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 68AB5CB56DFA59C2AEB8F409 /* Pods-AppTest.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -750,6 +825,7 @@
 		};
 		2BE400DC1D73272500A48174 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0787CC9E40DD8F08E42120B2 /* Pods-AppTest.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -892,6 +968,7 @@
 		};
 		4F7D8E8B21086D0E00145B00 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBFF3A3A3CA44CE8917F36BC /* Pods-WCMacroKit.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -965,6 +1042,7 @@
 		};
 		4F7D8E8C21086D0E00145B00 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B0E1E8730E9CA0C8C488CD3 /* Pods-WCMacroKit.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
