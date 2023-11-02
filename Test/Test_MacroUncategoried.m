@@ -65,4 +65,44 @@
     NSLog(@"current file timestamp: %@", TIMESTAMP_FOR_CURRENT_FILE);
 }
 
+- (void)test_CHECK_VALUE_suite {
+    // Case 1
+    CHECK_VALUE_BEGIN(NSString *, link1, @"this is initial value")
+    CHECK_VALUE_END
+
+    XCTAssertEqualObjects(link1, @"this is initial value");
+
+    // Case 2
+    NSDictionary *dict2 = @{
+        @"value": @"1",
+    };
+    CHECK_VALUE_BEGIN(NSString *, link2, @"this is initial value")
+    CHECK_VALUE_CASE(dict2[@"value"], STR_IF_NOT_EMPTY(tempValue_))
+    CHECK_VALUE_END
+
+    XCTAssertEqualObjects(link2, @"1");
+    
+    // Case 3
+    NSDictionary *dict3 = @{
+        @"value1": @"",
+        @"value2": @"2",
+    };
+    CHECK_VALUE_BEGIN(NSString *, link3, @"this is initial value")
+    CHECK_VALUE_CASE(dict3[@"value1"], STR_IF_NOT_EMPTY(tempValue_))
+    CHECK_VALUE_CASE(dict3[@"value2"], STR_IF_NOT_EMPTY(tempValue_))
+    CHECK_VALUE_END
+
+    XCTAssertEqualObjects(link3, @"2");
+    
+    // Case 4
+    NSDictionary *dict4 = @{
+        @"value": @"1",
+    };
+    CHECK_VALUE_BEGIN(NSString *, link4, nil)
+    CHECK_VALUE_CASE(dict4[@"value"], STR_IF_NOT_EMPTY(tempValue_))
+    CHECK_VALUE_END
+
+    XCTAssertEqualObjects(link4, @"1");
+}
+
 @end

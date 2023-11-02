@@ -358,6 +358,40 @@ do { \
 #define SWIZZLE_CLASS_END \
 @end
 
+#pragma mark - Check Value
+
+/**
+ The begin of BEGIN/END pair
+ 
+ @param type_ the variable type
+ @param outputVar_ the variable for output
+ @param initialValue_ the initial value for output variable
+ */
+#define CHECK_VALUE_BEGIN(type_, outputVar_, initialValue_) \
+type_ outputVar_ = ({ \
+type_ resultVar_ = (initialValue_); \
+do { \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wunused-variable\"") \
+    type_ tempValue_ = nil; \
+_Pragma("clang diagnostic pop") \
+
+/**
+ @param expression_ the expression to assign variable
+ @param condition_ the condition for checking if the expression should assign variable
+ */
+#define CHECK_VALUE_CASE(expression_, condition_) \
+tempValue_ = (expression_); \
+if ((condition_)) { resultVar_ = tempValue_; break; } \
+
+/**
+ The end of BEGIN/END pair
+ */
+#define CHECK_VALUE_END \
+} while (NO); \
+resultVar_; \
+});
+
 #pragma mark - NSError
 
 #define ERROR_MAKE(domain_, code_, reason_) ([NSError errorWithDomain:[(domain_) isKindOfClass:[NSString class]] ? (domain_) : @"<empty domain>" code:(code_) userInfo:@{ NSLocalizedFailureReasonErrorKey: [(reason_) isKindOfClass:[NSString class]] ? (reason_) : @"<empty reason>" }])
