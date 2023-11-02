@@ -549,8 +549,11 @@
     NSDictionary *dict;
     
     // Case 1
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wunused-value"
     DICT_M_PAIRS(dict0,
     )
+#pragma GCC diagnostic pop
     dict = dict0;
     XCTAssertTrue(dict.count == 0);
     
