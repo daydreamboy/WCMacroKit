@@ -203,7 +203,10 @@ do { \
             dismissCompletion; \
         }]; \
         [alert addAction:cancelAction]; \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil]; \
+_Pragma("clang diagnostic pop") \
     } \
 } while (0)
 
@@ -218,7 +221,10 @@ do { \
             dismissCompletion; \
         }]; \
         [alert addAction:cancelAction]; \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil]; \
+_Pragma("clang diagnostic pop") \
     } \
     else { \
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:(title) message:(msg) delegate:nil cancelButtonTitle:(cancel) otherButtonTitles:nil]; \
@@ -253,7 +259,10 @@ do { \
             cancelCompletion; \
         }]; \
         [alert addAction:cancelAction]; \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil]; \
+_Pragma("clang diagnostic pop") \
     } \
 } while (0)
 
@@ -281,7 +290,10 @@ do { \
             localTextField = textField; \
             localTextField.placeholder = _placeholder; \
         }]; \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
         [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil]; \
+_Pragma("clang diagnostic pop") \
     } \
 } while (0)
 
