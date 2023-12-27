@@ -132,6 +132,12 @@
 #define IOS8_SDK_OR_LATER_AVAILABLE 0
 #endif
 
+#pragma mark - Check Xcode compiled
+
+#define XCODE15_OR_LATER_COMPILED __IPHONE_OS_VERSION_MAX_ALLOWED >= 170000
+#define XCODE14_OR_LATER_COMPILED __IPHONE_OS_VERSION_MAX_ALLOWED >= 160000
+#define XCODE13_OR_LATER_COMPILED __IPHONE_OS_VERSION_MAX_ALLOWED >= 150000
+
 #pragma mark - Counterpart of Swift clause
 
 /**

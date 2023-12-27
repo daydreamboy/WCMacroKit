@@ -14,14 +14,6 @@
 
 @implementation Test_MacroCompatibility
 
-- (void)setUp {
-    NSLog(@"\n");
-}
-
-- (void)tearDown {
-    NSLog(@"\n");
-}
-
 - (void)test_iflet {
     iflet(NSString *value, [self returnNil]) {
         NSString *newValue = [NSString stringWithFormat:@"%@", value];
@@ -73,6 +65,14 @@
     else {
         NSLog(@"value is nil");
     }
+}
+
+- (void)test_XCODE15_OR_LATER_COMPILED {
+#if XCODE15_OR_LATER_COMPILED
+    NSLog(@"This code is compiled with Xcode15 or later");
+#else
+    NSLog(@"This code is NOT compiled with Xcode15 or later");
+#endif
 }
 
 #pragma mark - Dummy Methods
