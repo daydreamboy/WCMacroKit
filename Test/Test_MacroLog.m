@@ -50,14 +50,21 @@
     char c = 'A';
     double d = 8.0;
     const float f = 3.375;
-    char s[] = "Hello,world";
     int i = 10;
+    long l = 1000L;
+    long long ll = 1000LL;
+    char s[] = "Hello,world";
     
-    WCDumpValue(i);
+    unsigned int ui = 20;
+    
     WCDumpValue(c);
-    WCDumpValue(s);
     WCDumpValue(d);
     WCDumpValue(f);
+    WCDumpValue(i);
+    WCDumpValue(l);
+    WCDumpValue(ll);
+    WCDumpValue(s);
+    WCDumpValue(ui);
 }
 
 - (void)test_WCDumpClassByName {

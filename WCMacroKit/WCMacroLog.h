@@ -130,17 +130,27 @@ static const char* wc_string_from_value(const void* value, const char* type) {
     if (strcmp(type, "int") == 0) {
         snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%d", *(const int*)value);
     }
+    else if (strcmp(type, "char") == 0) {
+        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%c", *(const char*)value);
+    }
+    else if (strcmp(type, "char *") == 0) {
+        strncpy(buffer, (char *)value, STRINGIFY_BUFFER_SIZE - 1);
+        buffer[STRINGIFY_BUFFER_SIZE - 1] = '\0';
+    }
     else if (strcmp(type, "double") == 0) {
         snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%f", *(const double*)value);
     }
     else if (strcmp(type, "float") == 0) {
         snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%f", *(const float*)value);
     }
-    else if (strcmp(type, "char") == 0) {
-        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%c", *(const char*)value);
+    else if (strcmp(type, "long") == 0) {
+        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%ld", *(const long*)value);
     }
-    else if (strcmp(type, "char *") == 0) {
-        strncpy(buffer, (char *)value, STRINGIFY_BUFFER_SIZE - 1);
+    else if (strcmp(type, "long long") == 0) {
+        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%lld", *(const long long*)value);
+    }
+    else {
+        strncpy(buffer, "<unknown>", STRINGIFY_BUFFER_SIZE - 1);
         buffer[STRINGIFY_BUFFER_SIZE - 1] = '\0';
     }
 
