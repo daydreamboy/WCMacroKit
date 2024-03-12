@@ -9,6 +9,11 @@
 #ifndef WCMacroLog_h
 #define WCMacroLog_h
 
+#include <stdio.h>
+#include <string.h>
+
+#import <objc/runtime.h>
+
 // Log Suite
 
 // DEBUG_LOG
@@ -79,18 +84,92 @@
 #pragma mark - WCDump
 
 /**
- Dump YES or NO using fprintf
+ Dump YES or NO
 
- @param o the boolean.
+ @param o the boolean value
+ 
+ @note using fprintf to dump, not use NSLog
  */
 #define WCDumpBool(o) fprintf(stderr, "%s:%d: `%s`=`%s`\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, #o, (o) ? "YES" : "NO")
 
 /**
- Dump object using fprintf
+ Dump Objective-C object
 
- @param o the object
+ @param o the object value
+ 
+ @note using fprintf to dump, not use NSLog
  */
-#define WCDumpObject(o) fprintf(stderr, "%s:%d: `%s`=`%s`\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, #o, ([o debugDescription].UTF8String))
+#define WCDumpObject(o_) fprintf(stderr, "%s:%d: `%s`=`%s` (%p:%s)\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, #o_, ([o_ debugDescription].UTF8String), o_, NSStringFromClass([o_ class]).UTF8String)
+
+/**
+ Dump class by name
+ 
+ @param name_ the C string for class name
+ 
+ @header #import <objc/runtime.h>
+ */
+#define WCDumpClassByName(name_) fprintf(stderr, "%s:%d: `%s`=`%p` (class)\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, (name_), objc_getClass(name_))
+
+/**
+ Dump meta class by name
+ 
+ @param name_ the C string for class name
+ 
+ @header #import <objc/runtime.h>
+ */
+#define WCDumpMetaClassByName(name_) fprintf(stderr, "%s:%d: `%s`=`%p` (metaClass)\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, (name_), objc_getMetaClass(name_))
+
+#pragma mark > WCDumpValue
+
+static const char* wc_string_from_value(const void* value, const char* type) {
+#define STRINGIFY_BUFFER_SIZE 1024
+    
+    static char buffer[STRINGIFY_BUFFER_SIZE];
+    memset(buffer, 0, STRINGIFY_BUFFER_SIZE);
+
+    if (strcmp(type, "int") == 0) {
+        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%d", *(const int*)value);
+    }
+    else if (strcmp(type, "double") == 0) {
+        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%f", *(const double*)value);
+    }
+    else if (strcmp(type, "float") == 0) {
+        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%f", *(const float*)value);
+    }
+    else if (strcmp(type, "char") == 0) {
+        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%c", *(const char*)value);
+    }
+    else if (strcmp(type, "char *") == 0) {
+        strncpy(buffer, (char *)value, STRINGIFY_BUFFER_SIZE - 1);
+        buffer[STRINGIFY_BUFFER_SIZE - 1] = '\0';
+    }
+
+    return buffer;
+    
+#undef STRINGIFY_BUFFER_SIZE
+}
+
+/**
+ Get primitive type of C value
+ 
+ @note this macro used on C11+
+ */
+#define WCGetValueType(v_) \
+_Generic((v_), \
+char: "char", \
+char *: "char *", \
+double: "double", \
+float: "float",  \
+int: "int",  \
+long: "long",  \
+long long: "long long",  \
+long double: "long double", \
+default: "unknown"  \
+)\
+
+// C11+
+#define WCDumpValue(v_) fprintf(stderr, "%s:%d: `%s`=`%s` (%s)\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, #v_, wc_string_from_value(&v_, WCGetValueType(v_)), WCGetValueType(v_))
+
 
 #pragma mark - WCLog
 

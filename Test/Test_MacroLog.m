@@ -18,14 +18,6 @@
 
 @implementation Test_MacroLog
 
-- (void)setUp {
-    NSLog(@"\n");
-}
-
-- (void)tearDown {
-    NSLog(@"\n");
-}
-
 #pragma mark - WCDumpXXX
 
 - (void)test_WCDumpBool {
@@ -52,6 +44,28 @@
     
     NSString *emptyStr= @"";
     WCDumpObject(emptyStr);
+}
+
+- (void)test_WCDumpValue {
+    char c = 'A';
+    double d = 8.0;
+    const float f = 3.375;
+    char s[] = "Hello,world";
+    int i = 10;
+    
+    WCDumpValue(i);
+    WCDumpValue(c);
+    WCDumpValue(s);
+    WCDumpValue(d);
+    WCDumpValue(f);
+}
+
+- (void)test_WCDumpClassByName {
+    WCDumpClassByName("Test_MacroLog");
+}
+
+- (void)test_WCDumpMetaClassByName {
+    WCDumpMetaClassByName("Test_MacroLog");
 }
 
 - (void)test_WCLog {
