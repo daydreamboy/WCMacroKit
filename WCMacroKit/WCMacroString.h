@@ -54,7 +54,10 @@
  */
 #define STR_OF_LITERAL(literal_) __STRINGFY(literal_)
 
-#define STR_SAFE(str) ([(str) isKindOfClass:[NSString class]] ? (str) : @"")
+#define STR_SAFE(str) ({ \
+    id str_ = (str); \
+    [str_ isKindOfClass:[NSString class]] ? str_ : @""; \
+})
 
 /**
  Get a char string which length = 1

@@ -15,14 +15,6 @@
 
 @implementation Test_MacroString
 
-- (void)setUp {
-    NSLog(@"\n");
-}
-
-- (void)tearDown {
-    NSLog(@"\n");
-}
-
 - (void)test_STR_IF_EMPTY {
     
     NSString *nilString;
@@ -80,6 +72,24 @@
     NSLog(@"enum type: %@", AMPlayerStateReadable.ready);
     NSLog(@"enum type: %@", Localization.ginger);
     NSLog(@"enum type: %@", Localization.daffodil);
+}
+
+- (void)test_STR_SAFE {
+    // Case1
+    NSDictionary *dict = @{
+        @"key": STR_SAFE([self maybeReturnNil]),
+    };
+    XCTAssertEqualObjects(dict[@"key"], @"");
+    
+    // Case2
+    NSArray *arr = @[ STR_SAFE([self maybeReturnNil]) ];
+    XCTAssertEqualObjects(arr[0], @"");
+}
+
+#pragma mark -
+
+- (nullable id)maybeReturnNil {
+    return nil;
 }
 
 @end
