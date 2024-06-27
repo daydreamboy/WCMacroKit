@@ -35,6 +35,7 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 #import <WCMacroKit/WCMacroUILayout.h>
 #import <WCMacroKit/WCMacroUncategoried.h>
 #import <WCMacroKit/WCMacroVersion.h>
+#import <WCMacroKit/WCMacroWarning.h>
 #import <WCMacroKit/WCCallerTool.h>
 
 #elif __has_include("WCMacroKit.h")
@@ -59,6 +60,7 @@ FOUNDATION_EXPORT const unsigned char WCMacroKitVersionString[];
 #import "WCMacroUILayout.h"
 #import "WCMacroUncategoried.h"
 #import "WCMacroVersion.h"
+#import "WCMacroWarning.h"
 #import "WCCallerTool.h"
 
 #endif
