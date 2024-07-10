@@ -89,10 +89,16 @@
 
 #pragma mark > String checking
 // Is a string and not empty
-#define STR_IF_NOT_EMPTY(str)    ([(str) isKindOfClass:[NSString class]] && [(NSString *)(str) length])
+#define STR_IF_NOT_EMPTY(str) ({ \
+    id __str__ = (str); \
+    [__str__ isKindOfClass:[NSString class]] && [(NSString *)__str__ length]; \
+})
 
 // Is a string and empty
-#define STR_IF_EMPTY(str)        ([(str) isKindOfClass:[NSString class]] && [(NSString *)(str) length] == 0)
+#define STR_IF_EMPTY(str) ({ \
+    id __str__ = (str); \
+    [(__str__) isKindOfClass:[NSString class]] && [(NSString *)(__str__) length] == 0; \
+})
 
 // Is a string and empty after trim
 #define STR_TRIM_IF_EMPTY(str)   ([(str) isKindOfClass:[NSString class]] && [[(NSString *)(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0)

@@ -172,6 +172,42 @@ static type __static_##getterName; \
 #define NAV_BAR_H               (CGRectGetHeight(self.navigationController.navigationBar.frame))
 
 #pragma mark > Show Alert
+
+/**
+ Show a simple alert with tips
+
+ @param title the title string
+ @param msg the message string
+ @param cancel the title of Cancel button
+ @param dismissCompletion the callback when Cancel button tapped
+ 
+ @code
+ 
+ SHOW_ALERT(@"下载json文件出错", ([NSString stringWithFormat:@"%@", error]), @"确定", { self.ignoreScanCallback = NO; });
+ SHOW_ALERT(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", self.ignoreScanCallback = NO;);
+ SHOW_ALERT(@"扫码出错", ([NSString stringWithFormat:@"请检查格式，%@", URL]), @"确定", nil);
+ 
+ @endcode
+ 
+ @discussion This macro not always works (e.g. navController present vc A, and A show alert will not show)
+ and only for debugging. Use WCAlertTool instead.
+ */
+#define SHOW_ALERT(title, msg, cancel, dismissCompletion) \
+\
+do { \
+    if ([UIAlertController class]) { \
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:(title) message:(msg) preferredStyle:UIAlertControllerStyleAlert]; \
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:(cancel) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) { \
+            dismissCompletion; \
+        }]; \
+        [alert addAction:cancelAction]; \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil]; \
+_Pragma("clang diagnostic pop") \
+    } \
+} while (0)
+
 // show alert
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
@@ -194,7 +230,7 @@ static type __static_##getterName; \
  @discussion This macro not always works (e.g. navController present vc A, and A show alert will not show)
  and only for debugging. Use WCAlertTool instead.
  */
-#define SHOW_ALERT(title, msg, cancel, dismissCompletion) \
+#define SHOW_ALERT_DEPRECATED(title, msg, cancel, dismissCompletion) \
 \
 do { \
     if ([UIAlertController class]) { \
