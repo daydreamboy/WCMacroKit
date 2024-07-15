@@ -602,4 +602,15 @@
     XCTAssertTrue(dict.count == 15);
 }
 
+- (void)test_TYPE_CAST {
+    NSMutableDictionary *dictM = [NSMutableDictionary dictionary];
+    NSDictionary *dict = dictM;
+    
+    NSMutableDictionary *expect1 = TYPE_CAST(dict, NSMutableDictionary);
+    XCTAssertTrue([expect1 isKindOfClass:[NSMutableDictionary class]]);
+    
+    NSMutableDictionary *expect2 = TYPE_CAST([dict copy], NSMutableDictionary);
+    XCTAssertNil(expect2);
+}
+
 @end

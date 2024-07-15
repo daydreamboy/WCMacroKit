@@ -861,4 +861,19 @@ else { \
 __returnValue; \
 });
 
+#pragma mark - Safe Type Cast
+
+/**
+ Safe convert type for an object
+ 
+ @param object_ the object
+ @param class_ the Class type
+ 
+ @return If can't convert type, return nil
+ */
+#define TYPE_CAST(object_, class_) ({ \
+    id __object__ = (object_); \
+    [__object__ isKindOfClass:[class_ class]] ? (class_ *)__object__ : nil; \
+})
+
 #endif /* WCMacroSafeValue_h */
