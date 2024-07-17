@@ -876,4 +876,62 @@ __returnValue; \
     [__object__ isKindOfClass:[class_ class]] ? (class_ *)__object__ : nil; \
 })
 
+#pragma mark - Safe Execute Expression
+
+/**
+ Wrap expression with try-catch
+ 
+ @param ... the expression
+ @return The id type object. If exception happened, return nil
+ 
+ @example
+ `SAFE_EXC_EXP([[UUIDs valueForKeyPath:@"self.UUIDString"] componentsJoinedByString:@","]);`
+ */
+#ifndef SAFE_EXC_EXP
+#define SAFE_EXC_EXP(...) ({ \
+    id internalRetVal_ = nil; \
+    @try { \
+        internalRetVal_ = __VA_ARGS__; \
+    } \
+    @catch (NSException *e) {} \
+    internalRetVal_; \
+});
+#endif /* SAFE_EXC_EXP */
+
+#ifndef SAFE_EXC_EXP_WITH_EXCP
+#define SAFE_EXC_EXP_WITH_EXCP(outException_, ...) ({ \
+    id internalRetVal_ = nil; \
+    @try { \
+        internalRetVal_ = __VA_ARGS__; \
+    } \
+    @catch (NSException *__e__) { \
+        outException_ = __e__; \
+    } \
+    internalRetVal_; \
+});
+#endif /* SAFE_EXC_EXP */
+
+#pragma mark - Safe Execute Code
+
+
+#ifndef SAFE_EXC_CODE
+#define SAFE_EXC_CODE(...) \
+    @try { \
+        __VA_ARGS__; \
+    } \
+    @catch (NSException *e) {}
+#endif /* SAFE_EXC_CODE */
+
+
+#ifndef SAFE_EXC_CODE_WITH_EXCP
+#define SAFE_EXC_CODE_WITH_EXCP(...) \
+    @try { \
+        __VA_ARGS__; \
+    } \
+    @catch (NSException *__e__) { \
+        outException_ = __e__; \
+    }
+#endif /* SAFE_EXC_CODE_WITH_EXCP */
+
+
 #endif /* WCMacroSafeValue_h */

@@ -14,14 +14,6 @@
 
 @implementation Test_MacroSafeValue
 
-- (void)setUp {
-    NSLog(@"\n");
-}
-
-- (void)tearDown {
-    NSLog(@"\n");
-}
-
 - (void)test_doubleValueOfJSONValue {
     id JSONValue;
     double output;
@@ -611,6 +603,38 @@
     
     NSMutableDictionary *expect2 = TYPE_CAST([dict copy], NSMutableDictionary);
     XCTAssertNil(expect2);
+}
+
+- (void)test_SAFE_EXC_EXP {
+    id output;
+    
+    NSArray<NSError *> *errors = @[
+        [NSError errorWithDomain:@"" code:1 userInfo:nil],
+        [NSError errorWithDomain:@"" code:2 userInfo:nil],
+        [NSError errorWithDomain:@"" code:3 userInfo:nil],
+        [NSError errorWithDomain:@"" code:4 userInfo:nil],
+    ];
+    
+    output = SAFE_EXC_EXP([errors valueForKeyPath:@"self.code"]);
+    NSArray *expected1 = @[ @1, @2, @3, @4 ];
+    XCTAssertEqualObjects(output, expected1);
+}
+
+- (void)test_SAFE_EXC_EXP_WITH_EXCP {
+    id output;
+    NSException *e;
+    
+    NSArray<NSError *> *errors = @[
+        [NSError errorWithDomain:@"" code:1 userInfo:nil],
+        [NSError errorWithDomain:@"" code:2 userInfo:nil],
+        [NSError errorWithDomain:@"" code:3 userInfo:nil],
+        (id)[NSNumber numberWithInteger:4],
+    ];
+    
+    e = nil;
+    output = SAFE_EXC_EXP_WITH_EXCP(e, [errors valueForKeyPath:@"self.code"]);
+    XCTAssertNil(output);
+    XCTAssertNotNil(e);
 }
 
 @end
