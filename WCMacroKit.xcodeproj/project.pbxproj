@@ -25,6 +25,8 @@
 		4F20EBAB29697A6E0029B8B9 /* Test_GCCMacro.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F20EBAA29697A6E0029B8B9 /* Test_GCCMacro.m */; };
 		4F273C5F28003DA1006A9221 /* WCMacroError.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F273C5E28003DA1006A9221 /* WCMacroError.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F273C6128003F4A006A9221 /* Test_MacroError.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F273C6028003F4A006A9221 /* Test_MacroError.m */; };
+		4F29C6D52C7EF97000B9EBA0 /* WCMacroTime.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F29C6D42C7EF94200B9EBA0 /* WCMacroTime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F29C6D72C7EF9D100B9EBA0 /* Test_MacroTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F29C6D62C7EF9D100B9EBA0 /* Test_MacroTime.m */; };
 		4F2BC6B3248253AD00175CEE /* Test_MacroLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BC6B2248253AD00175CEE /* Test_MacroLog.m */; };
 		4F2BC6B5248253F900175CEE /* Test_MacroString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BC6B4248253F900175CEE /* Test_MacroString.m */; };
 		4F2BC6B72482548900175CEE /* Test_MacroDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F2BC6B62482548900175CEE /* Test_MacroDelegate.m */; };
@@ -143,6 +145,8 @@
 		4F20EBAA29697A6E0029B8B9 /* Test_GCCMacro.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_GCCMacro.m; sourceTree = "<group>"; };
 		4F273C5E28003DA1006A9221 /* WCMacroError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroError.h; sourceTree = "<group>"; };
 		4F273C6028003F4A006A9221 /* Test_MacroError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroError.m; sourceTree = "<group>"; };
+		4F29C6D42C7EF94200B9EBA0 /* WCMacroTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroTime.h; sourceTree = "<group>"; };
+		4F29C6D62C7EF9D100B9EBA0 /* Test_MacroTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroTime.m; sourceTree = "<group>"; };
 		4F2BC6B2248253AD00175CEE /* Test_MacroLog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroLog.m; sourceTree = "<group>"; };
 		4F2BC6B4248253F900175CEE /* Test_MacroString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroString.m; sourceTree = "<group>"; };
 		4F2BC6B62482548900175CEE /* Test_MacroDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroDelegate.m; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 				4F5CA92122A009A100F55313 /* Test_MacroSafeValue.m */,
 				4F2BC6B4248253F900175CEE /* Test_MacroString.m */,
 				4F4F055C229566CF002BD87A /* Test_MacroSynthesize.m */,
+				4F29C6D62C7EF9D100B9EBA0 /* Test_MacroTime.m */,
 				4F6D7DB52233B389006639A1 /* Test_MacroTool.m */,
 				4F2BC6B82482556000175CEE /* Test_MacroUncategoried.m */,
 				4FAEBCF1269FCB6B00050229 /* Test_MacroUILayout.m */,
@@ -349,6 +354,7 @@
 				4F6D7DAF2233A877006639A1 /* WCMacroString.h */,
 				4F4F055A22955091002BD87A /* WCMacroSynthesize.h */,
 				4F0FDE2124791FBA0079ADF8 /* WCMacroThread.h */,
+				4F29C6D42C7EF94200B9EBA0 /* WCMacroTime.h */,
 				4F6D7DB32233B1D7006639A1 /* WCMacroTool.h */,
 				4F6D7DA72233A49F006639A1 /* WCMacroToolBackend.h */,
 				4F6D7DA82233A49F006639A1 /* WCMacroToolBackend.m */,
@@ -425,6 +431,7 @@
 				4F6D7DB22233ACC2006639A1 /* WCMacroSafeValue.h in Headers */,
 				4F61540325E7EFC40033E082 /* WCMacroBreakpoint.h in Headers */,
 				4F7D8E9221086EE300145B00 /* WCMacroVersion.h in Headers */,
+				4F29C6D52C7EF97000B9EBA0 /* WCMacroTime.h in Headers */,
 				4F7D8E9321086EE300145B00 /* WCMacroLog.h in Headers */,
 				4F4F055B229550E8002BD87A /* WCMacroSynthesize.h in Headers */,
 				4F7D8E9421086EE300145B00 /* WCMacroBlock.h in Headers */,
@@ -656,6 +663,7 @@
 				4FAEBCF2269FCB6B00050229 /* Test_MacroUILayout.m in Sources */,
 				4F5CA92222A009A100F55313 /* Test_MacroSafeValue.m in Sources */,
 				4FFF460C2404D3E6007D2737 /* Test_MacroCompatibility.m in Sources */,
+				4F29C6D72C7EF9D100B9EBA0 /* Test_MacroTime.m in Sources */,
 				4F2EB0B929659BE600692CF7 /* Test_ClangMacro.m in Sources */,
 				4F4F055D229566CF002BD87A /* Test_MacroSynthesize.m in Sources */,
 				4F2BC6B3248253AD00175CEE /* Test_MacroLog.m in Sources */,
