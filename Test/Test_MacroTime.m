@@ -20,6 +20,11 @@
 
 - (void)test_BUILD_TIME_FOR_CURRENT_FILE {
     NSLog(@"current file build time: %@", BUILD_TIME_FOR_CURRENT_FILE);
+    NSLog(@"current file build time: %@", [self buildTime]);
+}
+
+- (NSString *)buildTime {
+    return BUILD_TIME_FOR_CURRENT_FILE;
 }
 
 @end
