@@ -32,21 +32,23 @@
 #   define MODULE_NAME_STR @""
 #endif
 
-#ifndef __FILE_NAME__
-#define __FILE_NAME__      ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1)
+// @header #include <string.h>
+// @see https://stackoverflow.com/questions/8487986/file-macro-shows-full-path
+#ifndef __WC_FILE_NAME__
+#define __WC_FILE_NAME__      ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1)
 #endif
 
 // XLog format: [<log level>][<module name>] <method name>(<filename.m>:<line number>) <log message here...>
 
-#   define ALog(fmt, ...) { NSLog((@"[Alert]%@ %@(%@:%@) " fmt), MODULE_NAME_STR, @(__PRETTY_FUNCTION__), @(__FILE_NAME__), @(__LINE__),  ## __VA_ARGS__); }
-#   define CLog(fmt, ...) { NSLog((@"[Critical]%@ %@(%@:%@) " fmt), MODULE_NAME_STR, @(__PRETTY_FUNCTION__), @(__FILE_NAME__), @(__LINE__), ## __VA_ARGS__); }
-#   define ELog(fmt, ...) { NSLog((@"[Error]%@ %@(%@:%@) " fmt), MODULE_NAME_STR, @(__PRETTY_FUNCTION__), @(__FILE_NAME__), @(__LINE__), ## __VA_ARGS__); }
+#   define ALog(fmt, ...) { NSLog((@"[Alert]%@ %@(%@:%@) " fmt), MODULE_NAME_STR, @(__PRETTY_FUNCTION__), @(__WC_FILE_NAME__), @(__LINE__),  ## __VA_ARGS__); }
+#   define CLog(fmt, ...) { NSLog((@"[Critical]%@ %@(%@:%@) " fmt), MODULE_NAME_STR, @(__PRETTY_FUNCTION__), @(__WC_FILE_NAME__), @(__LINE__), ## __VA_ARGS__); }
+#   define ELog(fmt, ...) { NSLog((@"[Error]%@ %@(%@:%@) " fmt), MODULE_NAME_STR, @(__PRETTY_FUNCTION__), @(__WC_FILE_NAME__), @(__LINE__), ## __VA_ARGS__); }
 #   define WLog(fmt, ...) { NSLog((@"[Warning]%@ " fmt), MODULE_NAME_STR,  ## __VA_ARGS__); }
 
 #ifdef DEBUG
 #   define NLog(fmt, ...) { NSLog((@"[Notice]%@ " fmt), MODULE_NAME_STR, ## __VA_ARGS__); }
 #   define ILog(fmt, ...) { NSLog((@"[Info]%@ " fmt), MODULE_NAME_STR, ## __VA_ARGS__); }
-#   define DLog(fmt, ...) { NSLog((@"[Debug]%@ %@(%@:%@) " fmt), MODULE_NAME_STR, @(__PRETTY_FUNCTION__), @(__FILE_NAME__), @(__LINE__), ## __VA_ARGS__); }
+#   define DLog(fmt, ...) { NSLog((@"[Debug]%@ %@(%@:%@) " fmt), MODULE_NAME_STR, @(__PRETTY_FUNCTION__), @(__WC_FILE_NAME__), @(__LINE__), ## __VA_ARGS__); }
 #else
 #   define NLog(fmt, ...)
 #   define ILog(fmt, ...)
@@ -90,7 +92,7 @@
  
  @note using fprintf to dump, not use NSLog
  */
-#define WCDumpBool(o) fprintf(stderr, "%s:%d: `%s`=`%s`\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, #o, (o) ? "YES" : "NO")
+#define WCDumpBool(o) fprintf(stderr, "%s:%d: `%s`=`%s`\n", __WC_FILE_NAME__, (int)__LINE__, #o, (o) ? "YES" : "NO")
 
 /**
  Dump Objective-C object
@@ -99,7 +101,7 @@
  
  @note using fprintf to dump, not use NSLog
  */
-#define WCDumpObject(o_) fprintf(stderr, "%s:%d: `%s`=`%s` (%p:%s)\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, #o_, ([o_ debugDescription].UTF8String), o_, NSStringFromClass([o_ class]).UTF8String)
+#define WCDumpObject(o_) fprintf(stderr, "%s:%d: `%s`=`%s` (%p:%s)\n", __WC_FILE_NAME__, (int)__LINE__, #o_, ([o_ debugDescription].UTF8String), o_, NSStringFromClass([o_ class]).UTF8String)
 
 /**
  Dump class by name
@@ -108,7 +110,7 @@
  
  @header #import <objc/runtime.h>
  */
-#define WCDumpClassByName(name_) fprintf(stderr, "%s:%d: `%s`=`%p` (class)\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, (name_), objc_getClass(name_))
+#define WCDumpClassByName(name_) fprintf(stderr, "%s:%d: `%s`=`%p` (class)\n", __WC_FILE_NAME__, (int)__LINE__, (name_), objc_getClass(name_))
 
 /**
  Dump meta class by name
@@ -117,7 +119,7 @@
  
  @header #import <objc/runtime.h>
  */
-#define WCDumpMetaClassByName(name_) fprintf(stderr, "%s:%d: `%s`=`%p` (metaClass)\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, (name_), objc_getMetaClass(name_))
+#define WCDumpMetaClassByName(name_) fprintf(stderr, "%s:%d: `%s`=`%p` (metaClass)\n", __WC_FILE_NAME__, (int)__LINE__, (name_), objc_getMetaClass(name_))
 
 #pragma mark > WCDumpValue
 
@@ -178,18 +180,18 @@ default: "unknown"  \
 )\
 
 // C11+
-#define WCDumpValue(v_) fprintf(stderr, "%s:%d: `%s`=`%s` (%s)\n", ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1), (int)__LINE__, #v_, wc_string_from_value(&v_, WCGetValueType(v_)), WCGetValueType(v_))
+#define WCDumpValue(v_) fprintf(stderr, "%s:%d: `%s`=`%s` (%s)\n", __WC_FILE_NAME__, (int)__LINE__, #v_, wc_string_from_value(&v_, WCGetValueType(v_)), WCGetValueType(v_))
 
 
 #pragma mark - WCLog
 
-#define WCLogObject(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__FILE_NAME__), @(__LINE__), #o, (o))
-#define WCLogBool(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__FILE_NAME__), @(__LINE__), #o, (o) ? @"YES" : @"NO")
+#define WCLogObject(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__WC_FILE_NAME__), @(__LINE__), #o, (o))
+#define WCLogBool(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__WC_FILE_NAME__), @(__LINE__), #o, (o) ? @"YES" : @"NO")
 
 
 // WCLog
 #if DEBUG_LOG
-#   define WCLog(fmt, ...) { NSLog((fmt), ## __VA_ARGS__); }
+#   define WCLog(fmt, ...) { NSLog((@"[%s:%d] " fmt), __WC_FILE_NAME__, __LINE__, ## __VA_ARGS__); }
 #else
 #   define WCLog(fmt, ...)
 #endif
@@ -208,6 +210,6 @@ default: "unknown"  \
  
  WCLog(@"log something");
  */
-#define WCLogPrefix(fmt, ...) { NSLog((WCLogModule fmt), ## __VA_ARGS__); }
+#define WCLogPrefix(fmt, ...) { NSLog((@"[%s:%d]" WCLogModule fmt), __WC_FILE_NAME__, __LINE__, ## __VA_ARGS__); }
 
 #endif /* WCMacroLog_h */
