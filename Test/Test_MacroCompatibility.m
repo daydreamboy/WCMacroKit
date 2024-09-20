@@ -68,10 +68,20 @@
 }
 
 - (void)test_XCODE15_OR_LATER_COMPILED {
+    NSLog(@"__IPHONE_OS_VERSION_MAX_ALLOWED = %@", @(__IPHONE_OS_VERSION_MAX_ALLOWED));
 #if XCODE15_OR_LATER_COMPILED
     NSLog(@"This code is compiled with Xcode15 or later");
 #else
     NSLog(@"This code is NOT compiled with Xcode15 or later");
+#endif
+}
+
+- (void)test_XCODE16_OR_LATER_COMPILED {
+    NSLog(@"__IPHONE_OS_VERSION_MAX_ALLOWED = %@", @(__IPHONE_OS_VERSION_MAX_ALLOWED));
+#if XCODE16_OR_LATER_COMPILED
+    NSLog(@"This code is compiled with Xcode16 or later");
+#else
+    NSLog(@"This code is NOT compiled with Xcode16 or later");
 #endif
 }
 
