@@ -248,7 +248,7 @@ _Pragma("clang diagnostic pop") \
 
 #else // __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
-#define SHOW_ALERT(title, msg, cancel, dismissCompletion) \
+#define SHOW_ALERT_DEPRECATED(title, msg, cancel, dismissCompletion) \
 \
 do { \
     if ([UIAlertController class]) { \
@@ -270,6 +270,23 @@ _Pragma("clang diagnostic pop") \
 
 #endif // __IPHONE_OS_VERSION_MIN_REQUIRED >= 80000
 
+/*
+ @example
+ 
+ void (^action1)(void) = ^{
+     view.titleLabel.text = @"One";
+ };
+ 
+ void (^action2)(void) = ^{
+     view.titleLabel.text = @"Twoooo";
+ };
+ 
+ void (^action3)(void) = ^{
+     view.titleLabel.text = @"Three";
+ };
+ 
+ SHOW_ALERT3(@"Choose your option", @"select one", @"One", @"Two", @"Three", @"Cancel", action1(), action2(), action3(), nil);
+ */
 #define SHOW_ALERT3(title, msg, option1, option2, option3, cancel, option1Completion, option2Completion, option3Completion, cancelCompletion) \
 \
 do { \
