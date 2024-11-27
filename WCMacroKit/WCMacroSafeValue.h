@@ -309,7 +309,7 @@ _Pragma("clang diagnostic pop") \
     do {                                                               \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
-        if ([mutableDictionary isKindOfClass:[NSMutableDictionary class]] && dictionary) { \
+        if ([mutableDictionary isKindOfClass:[NSMutableDictionary class]] && [dictionary isKindOfClass:[NSDictionary class]]) { \
             [mutableDictionary addEntriesFromDictionary:dictionary];   \
         }                                                              \
 _Pragma("clang diagnostic pop") \
