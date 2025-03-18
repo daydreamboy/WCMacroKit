@@ -876,7 +876,7 @@ __returnValue; \
     [__object__ isKindOfClass:[class_ class]] ? (class_ *)__object__ : nil; \
 })
 
-#pragma mark - Safe Execute Expression
+#pragma mark - Safe Execute Expression (with Return Value)
 
 /**
  Wrap expression with try-catch
@@ -911,7 +911,7 @@ __returnValue; \
 });
 #endif /* SAFE_EXC_EXP */
 
-#pragma mark - Safe Execute Code
+#pragma mark - Safe Execute Code (without Return Value)
 
 
 #ifndef SAFE_EXC_CODE
@@ -924,7 +924,7 @@ __returnValue; \
 
 
 #ifndef SAFE_EXC_CODE_WITH_EXCP
-#define SAFE_EXC_CODE_WITH_EXCP(...) \
+#define SAFE_EXC_CODE_WITH_EXCP(outException_, ...) \
     @try { \
         __VA_ARGS__; \
     } \
