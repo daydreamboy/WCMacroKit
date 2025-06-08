@@ -742,7 +742,9 @@ _Pragma("clang diagnostic pop") \
  }
  @endcode
  */
+#ifndef ARR_IF_NOT_EMPTY
 #define ARR_IF_NOT_EMPTY(arr)    ([(arr) isKindOfClass:[NSArray class]] && [(NSArray *)(arr) count])
+#endif
 
 /**
  Is an array and empty

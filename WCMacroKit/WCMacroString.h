@@ -89,10 +89,12 @@
 
 #pragma mark > String checking
 // Is a string and not empty
+#ifndef STR_IF_NOT_EMPTY
 #define STR_IF_NOT_EMPTY(str) ({ \
     id __str__ = (str); \
     [__str__ isKindOfClass:[NSString class]] && [(NSString *)__str__ length]; \
 })
+#endif
 
 // Is a string and empty
 #define STR_IF_EMPTY(str) ({ \
