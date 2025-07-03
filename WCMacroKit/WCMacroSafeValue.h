@@ -793,7 +793,12 @@ toClassName *toObject = ({ \
 
  @param data NSData to expected
  */
-#define DATA_IF_NOT_EMPTY(data)    ([(data) isKindOfClass:[NSData class]] && [(NSData *)(data) length])
+#ifndef DATA_IF_NOT_EMPTY
+#define DATA_IF_NOT_EMPTY(data) ({ \
+    id __data__ = (data); \
+    [__data__ isKindOfClass:[NSData class]] && [(NSData *)__data__ length]; \
+})
+#endif // DATA_IF_NOT_EMPTY
 
 #pragma mark - NSURL
 
@@ -840,10 +845,10 @@ toClassName *toObject = ({ \
  @param ptr the pointer
  @param value the value which ptr points to
  */
-#define PTR_SAFE_SET(ptr, value) \
+#define PTR_SAFE_SET(ptr, ...) \
 do { \
     if (ptr) { \
-        *ptr = value; \
+        *ptr = __VA_ARGS__; \
     } \
 } while (0)
 
