@@ -243,6 +243,17 @@ typedef NSArray * KeyValuePairType;
  */
 #define ValueOfPair(pair)           (KeyValuePairValidate(pair) ? ([pair lastObject] == [NSNull null] ? nil : [pair lastObject]) : nil)
 
+
+#pragma mark - Tuple Suite
+
+typedef NSArray * TupleType;
+
+#define TupleMake(...)    @[ __VA_ARGS__ ]
+
+#define TupleValidate(object_)  ([(object_) isKindOfClass:[NSArray class]])
+
+#define TupleGetItemAtIndex(tuple_, index_) (TupleValidate(tuple_) && 0 <= (index_) && (index_) < (tuple_).length ? (tuple_)[(index_)] : nil)
+
 #pragma mark - Safe float comparison
 
 /**
