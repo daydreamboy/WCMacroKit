@@ -86,6 +86,25 @@
     XCTAssertEqualObjects(arr[0], @"");
 }
 
+- (void)test_STR_BASE64_ENCODE {
+    NSString *output;
+    
+    output = STR_BASE64_ENCODE(@"Hello");
+    NSLog(@"output: %@", output);
+    XCTAssertEqualObjects(output, @"SGVsbG8=");
+}
+
+- (void)test_STR_BASE64_DECODE {
+    NSString *output;
+    
+    output = STR_BASE64_ENCODE(@"Hello");
+    NSLog(@"output: %@", output);
+    XCTAssertEqualObjects(output, @"SGVsbG8=");
+    
+    output = STR_BASE64_DECODE(output)
+    XCTAssertEqualObjects(output, @"Hello");
+}
+
 #pragma mark -
 
 - (nullable id)maybeReturnNil {

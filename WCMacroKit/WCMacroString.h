@@ -8,10 +8,7 @@
 #ifndef WCMacroString_h
 #define WCMacroString_h
 
-// String
-#pragma mark - String
-
-#pragma mark > String conversion
+#pragma mark - String Conversion
 
 // BOOL to string
 #define STR_OF_BOOL(yesOrNo)     ((yesOrNo) ? @"YES" : @"NO")
@@ -42,9 +39,9 @@
  @param filePath the file path relative to [[NSBundle mainBundle] bundlePath]
  @return the content string of the file path
  */
-#define STR_OF_FILE(filePath)   ([NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:(filePath)] encoding:NSUTF8StringEncoding error:nil])
+#define STR_OF_FILE_CONTENT(filePath)   ([NSString stringWithContentsOfFile:[[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:(filePath)] encoding:NSUTF8StringEncoding error:nil])
 
-/// Private: for STR_OF_LITERAL macro
+/// Private: for `STR_OF_LITERAL` macro
 #define __STRINGFY(a) @#a
 /**
  Get a literal string from literal text
@@ -78,7 +75,51 @@
     retVal__; \
 });
 
-#pragma mark > String modidication
+#pragma mark > String Base64 Encode/Decode
+
+/**
+ base64 encode
+ 
+ @param str_ the string to encode
+ 
+ @return the encoded string. Return nil if any error occurred
+ 
+ @note the code from +[WCStringTool base64EncodedStringWithString:options:]
+ */
+#define STR_BASE64_ENCODE(str_) ({ \
+    id __str__ = (str_); \
+    NSString *__retVal__; \
+    if ([__str__ isKindOfClass:[NSString class]] && [__str__ length]) { \
+        NSData *data = [[__str__ dataUsingEncoding:NSUTF8StringEncoding] base64EncodedDataWithOptions:kNilOptions]; \
+        if (data.length > 0) { \
+            __retVal__  = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]; \
+        } \
+    } \
+    __retVal__; \
+});
+
+/**
+ base64 decode
+ 
+ @param str_ the string to decode
+ 
+ @return the decoded string. Return nil if any error occurred
+ 
+ @note the code from +[WCStringTool base64DecodedStringWithString:]
+ */
+#define STR_BASE64_DECODE(str_) ({ \
+    id __str__ = (str_); \
+    NSString *__retVal__; \
+    if ([__str__ isKindOfClass:[NSString class]] && [__str__ length]) { \
+        NSData *data = [[NSData alloc] initWithBase64EncodedString:__str__ options:NSDataBase64DecodingIgnoreUnknownCharacters]; \
+        if (data.length > 0) { \
+            __retVal__  = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]; \
+        } \
+    } \
+    __retVal__; \
+});
+
+#pragma mark - String Modification
 
 // Catenate two strings
 #define STR_CATENATE(str1, str2) ([[NSString alloc] initWithFormat:@"%@%@", str1, str2])
@@ -87,7 +128,7 @@
 // Trim a string
 #define STR_TRIM(str) ([(str) isKindOfClass:[NSString class]] ? [(NSString *)(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] : nil)
 
-#pragma mark > String checking
+#pragma mark - String Empty Check
 // Is a string and not empty
 #ifndef STR_IF_NOT_EMPTY
 #define STR_IF_NOT_EMPTY(str) ({ \
@@ -108,7 +149,7 @@
 // Is a string and not empty after trim
 #define STR_TRIM_IF_NOT_EMPTY(str)   ([(str) isKindOfClass:[NSString class]] && [[(NSString *)(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length])
 
-#pragma mark > String size calculation
+#pragma mark - String Size Calculation
 
 // calculate size of single line string
 // @see MBProgressHUD
@@ -152,7 +193,7 @@
                                            context:nil].size                                \
                       : CGSizeZero;
 
-#pragma mark - String enum
+#pragma mark - String Enum
 
 /**
  Declare the enum type and enum values
@@ -641,13 +682,15 @@ const struct enumType_##Struct_ enumType_ = \
 
 #pragma mark - Pretty String
 
+#pragma mark > Byte Size
+
 /**
  Get pretty size for memory bytes, which 1024 byte = 1 KB
  
  @param memoryBytes__ the bytes for memory
  @return the pretty size string
  */
-#define STR_PRETTY_SIZE_M(memoryBytes__) ([NSByteCountFormatter stringFromByteCount:(long long)(memoryBytes__) countStyle:NSByteCountFormatterCountStyleBinary])
+#define STR_PRETTY_BYTE_SIZE_M(memoryBytes__) ([NSByteCountFormatter stringFromByteCount:(long long)(memoryBytes__) countStyle:NSByteCountFormatterCountStyleBinary])
 
 /**
  Get pretty size for memory bytes, which 1000 byte = 1 KB
@@ -655,6 +698,6 @@ const struct enumType_##Struct_ enumType_ = \
  @param fileBytes__ the bytes for file
  @return the pretty size string
  */
-#define STR_PRETTY_SIZE_F(fileBytes__) ([NSByteCountFormatter stringFromByteCount:(long long)(fileBytes__) countStyle:NSByteCountFormatterCountStyleDecimal];)
+#define STR_PRETTY_BYTE_SIZE_F(fileBytes__) ([NSByteCountFormatter stringFromByteCount:(long long)(fileBytes__) countStyle:NSByteCountFormatterCountStyleDecimal];)
 
 #endif /* WCMacroString_h */
