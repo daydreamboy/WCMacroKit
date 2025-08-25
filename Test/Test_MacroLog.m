@@ -98,10 +98,10 @@
     DLog(@"%@", @"test Debug");
     
     __unused NSError *errorNil;
-    LogError(errorNil); // Will not print
+    LogError(@"%@", errorNil); // Will not print
     
     __unused NSError *error = [NSError errorWithDomain:@"domain" code:-1 userInfo:@{ NSLocalizedDescriptionKey: @"CAUTION! An error occurred." }];
-    LogError(error); // Will print
+    LogError(@"%@", error); // Will print
 }
 
 - (void)test_ALog {
