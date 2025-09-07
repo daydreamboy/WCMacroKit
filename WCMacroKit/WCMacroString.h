@@ -121,8 +121,9 @@
 
 #pragma mark - String Modification
 
-// Catenate two strings
-#define STR_CATENATE(str1, str2) ([[NSString alloc] initWithFormat:@"%@%@", str1, str2])
+// Catenate multiple strings
+#define STR_CATENATE(...) ([@[__VA_ARGS__] componentsJoinedByString:@""])
+
 // Short formated string
 #define STR_FORMAT(format, ...) ([[NSString alloc] initWithFormat:format, __VA_ARGS__])
 // Trim a string
