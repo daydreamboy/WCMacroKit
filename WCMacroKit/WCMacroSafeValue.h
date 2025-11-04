@@ -254,6 +254,14 @@ typedef NSArray * TupleType;
 
 #define TupleGetItemAtIndex(tuple_, index_) (TupleValidate(tuple_) && 0 <= (index_) && (index_) < (tuple_).length ? (tuple_)[(index_)] : nil)
 
+/**
+ The tuple only for two elements
+ 
+ @param key_ the key part
+ @param ... the value part
+ */
+#define Tuple2Make(key_, ...)    @[ key_, __VA_ARGS__ ]
+
 #pragma mark - Safe float comparison
 
 /**
