@@ -521,6 +521,92 @@
     } while (0)
 #endif /* DELEGATE_SAFE_PERFORM2 */
 
+#pragma mark - Class method caller
+
+/**
+ Call class method
+ 
+ @param `classString_` the class string
+ @param `selString_` the selector string
+ */
+#ifndef CLASS_SAFE_CALL
+#define CLASS_SAFE_CALL(classString_, selString_) \
+    do { \
+        Class clz = NSClassFromString(classString_); \
+        SEL sel = NSSelectorFromString(selString_); \
+        if ([clz respondsToSelector:sel]) { \
+            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = clz; \
+            invocation.selector = sel; \
+            [invocation invoke]; \
+        } \
+    } while (0)
+#endif /* CLASS_SAFE_CALL */
+
+/**
+ Call class method with one parameter
+ 
+ @param `classString_` the class string
+ @param `selString_` the selector string
+ @param `arg1_` the id parameter
+ */
+#ifndef CLASS_SAFE_CALL1
+#define CLASS_SAFE_CALL1(classString_, selString_, arg1_) \
+    do { \
+        Class clz = NSClassFromString(classString_); \
+        SEL sel = NSSelectorFromString(selString_); \
+        if ([clz respondsToSelector:sel]) { \
+            typeof(arg1_) param1 = arg1_; \
+            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = clz; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation invoke]; \
+        } \
+    } while (0)
+#endif /* CLASS_SAFE_CALL1 */
+
+#pragma mark - Instance method caller
+
+#ifndef INSTANCE_SAFE_CALL
+#define INSTANCE_SAFE_CALL(instance_, selString_) \
+    do { \
+        SEL sel = NSSelectorFromString(selString_); \
+        if ([instance_ respondsToSelector:sel]) { \
+            NSMethodSignature *methodSignature = [(NSObject *)instance_ methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = instance_; \
+            invocation.selector = sel; \
+            [invocation invoke]; \
+        } \
+    } while (0)
+#endif /* INSTANCE_SAFE_CALL */
+
+/**
+ Call instance method with one parameter
+ 
+ @param `instance_` the instance
+ @param `selString_` the selector string
+ @param `arg1_` the id parameter
+ */
+#ifndef INSTANCE_SAFE_CALL1
+#define INSTANCE_SAFE_CALL1(instance_, selString_, arg1_) \
+    do { \
+        SEL sel = NSSelectorFromString(selString_); \
+        if ([instance_ respondsToSelector:sel]) { \
+            typeof(arg1_) param1 = arg1_; \
+            NSMethodSignature *methodSignature = [(NSObject *)instance_ methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = instance_; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation invoke]; \
+        } \
+    } while (0)
+#endif /* INSTANCE_SAFE_CALL1 */
+
 #pragma mark - Dummy Protocol
 
 #define WCDummyProtocol(name) \

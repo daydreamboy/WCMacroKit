@@ -122,6 +122,15 @@ iOS系统提供的宏
 
 
 
+### (5) NS_STRING_ENUM (字符串枚举类型)
+
+举个例子，如下
+
+```objective-c
+/// A category defines a broad set of behaviors for a session.
+typedef NSString *AVAudioSessionCategory NS_STRING_ENUM;
+```
+
 
 
 
@@ -572,7 +581,7 @@ xxx.h
   }
   ```
 
-  如果用到WCLog宏的源文件很多，可以做一个wrapper header文件，将上面重定义宏的代码，放到这个wrapper heade。例如
+  如果用到WCLog宏的源文件很多，可以做一个wrapper header文件，将上面重定义宏的代码，放到这个wrapper header。例如
 
   ```objective-c
   // wrapper.h
