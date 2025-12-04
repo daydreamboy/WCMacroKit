@@ -56,7 +56,7 @@ typedef NS_ENUM(NSUInteger, SomeState) {
     id returnValue;
     
     // Case 1: normal
-    returnValue = DELEGATE_SAFE_CALL1_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithProtocol:"), @protocol(SomeServiceInterface));
+    returnValue = INSTANCE_SAFE_CALL1_WITH_RETURN(self, @"testMethodWithProtocol:", @protocol(SomeServiceInterface));
     if ([returnValue isKindOfClass:[SomeServiceImp class]]) {
         SomeServiceImp *imp = (SomeServiceImp *)returnValue;
         [imp hello];
@@ -67,23 +67,25 @@ typedef NS_ENUM(NSUInteger, SomeState) {
     NSString *returnValue;
     
     // Case 1: normal
-    returnValue = DELEGATE_SAFE_CALL3_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithArg1:arg2:arg3:"), @"A", @"B", @"C");
+    returnValue = INSTANCE_SAFE_CALL3_WITH_RETURN(self, @"testMethodWithArg1:arg2:arg3:", @"A", @"B", @"C");
     NSLog(@"returnValue: %@", returnValue);
 
     // Case 2: nil as parameter
-    returnValue = DELEGATE_SAFE_CALL3_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithArg1:arg2:arg3:"), @"A", nil, @"C");
+    returnValue = INSTANCE_SAFE_CALL3_WITH_RETURN(self, @"testMethodWithArg1:arg2:arg3:", @"A", nil, @"C");
     NSLog(@"returnValue: %@", returnValue);
 
     // Case 3: none existed method
-    returnValue = DELEGATE_SAFE_CALL3_WITH_RETURN(self, NSSelectorFromString(@"noneExistedMethodWithArg1:arg2:arg3:"), @"A", @"B", @"C");
+    returnValue = INSTANCE_SAFE_CALL3_WITH_RETURN(self, @"noneExistedMethodWithArg1:arg2:arg3:", @"A", @"B", @"C");
     NSLog(@"returnValue: %@", returnValue);
 }
 
 - (void)test_DELEGATE_SAFE_CALL4_WITH_RETURN {
     NSString *returnValue;
+    
+//    typeof(NSInteger) param = 100;
 
     // Case 4: basic type parameter
-    returnValue = DELEGATE_SAFE_CALL4_WITH_RETURN(self, NSSelectorFromString(@"testMethodWithBOOL:integer:cgFloat:enumType:"), YES, 100, 3.14, SomeStateSuccess);
+    returnValue = INSTANCE_SAFE_CALL4_WITH_RETURN(self, @"testMethodWithBOOL:integer:cgFloat:enumType:", YES, (NSInteger)100, 3.14, SomeStateSuccess);
     NSLog(@"returnValue: %@", returnValue);
 }
 
@@ -92,13 +94,16 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 - (void)test_DELEGATE_SAFE_CALL1 {
     // Case 7: float as parameter
     // Note: float type must append `f`, e.g 4.0 should be 4.0f
-//    DELEGATE_SAFE_CALL1(self, NSSelectorFromString(@"testFloatWithArg1:"), 4.0f);
-//
-//    CGSize size = CGSizeMake(100, 200);
-//    DELEGATE_SAFE_CALL1(self, NSSelectorFromString(@"setSize:"), size);
-//
-//    BOOL a = YES;
-    DELEGATE_SAFE_CALL1(self, NSSelectorFromString(@"setFloat:"), 0);
+    INSTANCE_SAFE_CALL1(self, @"testFloatWithArg1:", 4.0f);
+    INSTANCE_SAFE_CALL1(self, @"testFloatWithArg1:", (float)4.0);
+
+    CGSize size = CGSizeMake(100, 200);
+    INSTANCE_SAFE_CALL1(self, @"setSize:", size);
+    INSTANCE_SAFE_CALL1(self, @"setSize:", (CGSize)size);
+
+    // Error: type error
+    //INSTANCE_SAFE_CALL1(self, @"setFloat:", 0);
+    INSTANCE_SAFE_CALL1(self, @"setFloat:", (CGFloat)0);
 }
 
 - (void)setFloat:(CGFloat)f {
@@ -106,20 +111,20 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 }
 
 - (void)test_DELEGATE_SAFE_CALL2 {
-    DELEGATE_SAFE_CALL2(self, @selector(delegateMethodWithSender:YESBoolValue:), self, @(YES));
+    INSTANCE_SAFE_CALL2(self, @"testMethodWithSender:YESBoolValue:", self, @(YES));
 }
 
 - (void)test_DELEGATE_SAFE_CALL3 {
     // Case 5: without return value
-    DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:"), @"A", @"B", @"C");
+    INSTANCE_SAFE_CALL3(self, @"testNoReturnMethodWithArg1:arg2:arg3:", @"A", @"B", @"C");
 
-    DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:"), nil, nil, nil);
+    INSTANCE_SAFE_CALL3(self, @"testNoReturnMethodWithArg1:arg2:arg3:", nil, nil, nil);
 
-    DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testNoReturnMethodWithArg1:arg2:arg3:"), nil, nil, nil);
+    INSTANCE_SAFE_CALL3(self, @"testNoReturnMethodWithArg1:arg2:arg3:", nil, nil, nil);
     
     // Case 6: weak self as parameter
     __weak typeof(self) weak_self = self;
-    DELEGATE_SAFE_CALL3(self, NSSelectorFromString(@"testWeakSelfAsParameter:p2:p3:"), weak_self, nil, nil);
+    INSTANCE_SAFE_CALL3(self, @"testWeakSelfAsParameter:p2:p3:", weak_self, nil, nil);
 }
 
 #pragma mark - Plain Code
@@ -240,7 +245,7 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 
 #pragma mark > without return values
 
-- (void)delegateMethodWithSender:(id)sender YESBoolValue:(NSNumber *)yesOrNo {
+- (void)testMethodWithSender:(id)sender YESBoolValue:(NSNumber *)yesOrNo {
     XCTAssert(sender == self);
     XCTAssert([yesOrNo boolValue] == YES);
 }

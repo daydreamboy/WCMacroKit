@@ -22,35 +22,35 @@
     [super tearDown];
 }
 
-- (void)test_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE {    
+- (void)test_INSTANCE_SAFE_CALL_WITH_RETURN_PRIMITIVE {    
     
-    BOOL returnYES = DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, NSSelectorFromString(@"returnYES"), BOOL, NO);
+    BOOL returnYES = INSTANCE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, @"returnYES", BOOL, NO);
     XCTAssertTrue(returnYES);
     
-    int returnInt = DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, NSSelectorFromString(@"returnInt"), int, 0);
+    int returnInt = INSTANCE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, @"returnInt", int, 0);
     XCTAssert(returnInt == 1);
     
-    double returnDouble = DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, NSSelectorFromString(@"returnDouble"), double, 0);
+    double returnDouble = INSTANCE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, @"returnDouble", double, 0);
     XCTAssert(returnDouble == 3.14);
     
-    CGFloat returnCGFloat = DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, NSSelectorFromString(@"returnCGFloat"), CGFloat, 0);
+    CGFloat returnCGFloat = INSTANCE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, @"returnCGFloat", CGFloat, 0);
     XCTAssert(returnCGFloat == 3.15f);
     
-    int returnDefaultInt = DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, NSSelectorFromString(@"returnInt2"), int, 0);
+    int returnDefaultInt = INSTANCE_SAFE_CALL_WITH_RETURN_PRIMITIVE(self, @"returnInt2", int, 0);
     XCTAssert(returnDefaultInt == 0);
 }
 
-- (void)test_DELEGATE_SAFE_CALL1_WITH_RETURN_PRIMITIVE {
-    BOOL returnWithBoolString = DELEGATE_SAFE_CALL1_WITH_RETURN_PRIMITIVE(self, NSSelectorFromString(@"returnWithBoolString:"), BOOL, NO, @"true");
+- (void)test_INSTANCE_SAFE_CALL1_WITH_RETURN_PRIMITIVE {
+    BOOL returnWithBoolString = INSTANCE_SAFE_CALL1_WITH_RETURN_PRIMITIVE(self, @"returnWithBoolString:", BOOL, NO, @"true");
     XCTAssertTrue(returnWithBoolString);
     
-    int returnWithIntString = DELEGATE_SAFE_CALL1_WITH_RETURN_PRIMITIVE(self, NSSelectorFromString(@"returnWithIntString:"), int, 0, @"1");
+    int returnWithIntString = INSTANCE_SAFE_CALL1_WITH_RETURN_PRIMITIVE(self, @"returnWithIntString:", int, 0, @"1");
     XCTAssert(returnWithIntString == 1);
     
-    int returnWithNilString = DELEGATE_SAFE_CALL1_WITH_RETURN_PRIMITIVE(self, NSSelectorFromString(@"returnWithNilString:"), int, 0, nil);
+    int returnWithNilString = INSTANCE_SAFE_CALL1_WITH_RETURN_PRIMITIVE(self, @"returnWithNilString:", int, 0, nil);
     XCTAssert(returnWithNilString == -1);
     
-    double returnWithDoubleString = DELEGATE_SAFE_CALL1_WITH_RETURN_PRIMITIVE(self, NSSelectorFromString(@"returnWithDoubleString:"), double, 0, @"3.14");
+    double returnWithDoubleString = INSTANCE_SAFE_CALL1_WITH_RETURN_PRIMITIVE(self, @"returnWithDoubleString:", double, 0, @"3.14");
     XCTAssert(returnWithDoubleString == 3.14);
 }
 
