@@ -118,7 +118,7 @@
         Class clz = NSClassFromString(classString_); \
         SEL sel = NSSelectorFromString(selString_); \
         if ([clz respondsToSelector:sel]) { \
-            typeof(arg1) param1 = arg1_; \
+            typeof(arg1_) param1 = arg1_; \
             void *tempReturnValue = nil; \
             NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
