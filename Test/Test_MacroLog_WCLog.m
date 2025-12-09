@@ -18,8 +18,8 @@
     NSString *message = @"message"      @", a.k.a msg";
     
     NSLog(@"[ApolloSDK] " @"log: %@", message);
-    WCLog(@"log: %@", message);
-    WCLog(@"This is a log");
+    WCDebugLog(@"log: %@", message);
+    WCDebugLog(@"This is a log");
 }
 
 @end

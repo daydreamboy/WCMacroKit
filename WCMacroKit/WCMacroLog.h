@@ -14,7 +14,16 @@
 
 #import <objc/runtime.h>
 
-// Log Suite
+
+#pragma mark - Private
+
+// @header #include <string.h>
+// @see https://stackoverflow.com/questions/8487986/file-macro-shows-full-path
+#ifndef __WC_FILE_NAME__
+#define __WC_FILE_NAME__      ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1)
+#endif
+
+#pragma mark - Log Suite (Alert/Critical/Error/Info/Warning/Notice/Debug)
 
 // DEBUG_LOG
 #ifndef DEBUG_LOG
@@ -30,12 +39,6 @@
 #   define MODULE_NAME_STR [NSString stringWithFormat:@"[%@]", MODULE_NAME]
 #else
 #   define MODULE_NAME_STR @""
-#endif
-
-// @header #include <string.h>
-// @see https://stackoverflow.com/questions/8487986/file-macro-shows-full-path
-#ifndef __WC_FILE_NAME__
-#define __WC_FILE_NAME__      ((strrchr(__FILE__, '/') ? : __FILE__ - 1) + 1)
 #endif
 
 // XLog format: [<log level>][<module name>] <method name>(<filename.m>:<line number>) <log message here...>
@@ -82,117 +85,13 @@
 
 #endif /* if DEBUG_LOG */
 
-#pragma mark - WCDump
+#pragma mark - Log for Debug Local Code
 
-/**
- Dump YES or NO
-
- @param o the boolean value
- 
- @note using fprintf to dump, not use NSLog
- */
-#define WCDumpBool(o) fprintf(stderr, "%s:%d: `%s`=`%s`\n", __WC_FILE_NAME__, (int)__LINE__, #o, (o) ? "YES" : "NO")
-
-/**
- Dump Objective-C object
-
- @param o the object value
- 
- @note using fprintf to dump, not use NSLog
- */
-#define WCDumpObject(o_) fprintf(stderr, "%s:%d: `%s`=`%s` (%p:%s)\n", __WC_FILE_NAME__, (int)__LINE__, #o_, ([o_ debugDescription].UTF8String), o_, NSStringFromClass([o_ class]).UTF8String)
-
-/**
- Dump class by name
- 
- @param name_ the C string for class name
- 
- @header #import <objc/runtime.h>
- */
-#define WCDumpClassByName(name_) fprintf(stderr, "%s:%d: `%s`=`%p` (class)\n", __WC_FILE_NAME__, (int)__LINE__, (name_), objc_getClass(name_))
-
-/**
- Dump meta class by name
- 
- @param name_ the C string for class name
- 
- @header #import <objc/runtime.h>
- */
-#define WCDumpMetaClassByName(name_) fprintf(stderr, "%s:%d: `%s`=`%p` (metaClass)\n", __WC_FILE_NAME__, (int)__LINE__, (name_), objc_getMetaClass(name_))
-
-#pragma mark > WCDumpValue
-
-static const char* wc_string_from_value(const void* value, const char* type) {
-#define STRINGIFY_BUFFER_SIZE 1024
-    
-    static char buffer[STRINGIFY_BUFFER_SIZE];
-    memset(buffer, 0, STRINGIFY_BUFFER_SIZE);
-
-    if (strcmp(type, "int") == 0) {
-        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%d", *(const int*)value);
-    }
-    else if (strcmp(type, "char") == 0) {
-        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%c", *(const char*)value);
-    }
-    else if (strcmp(type, "char *") == 0) {
-        strncpy(buffer, (char *)value, STRINGIFY_BUFFER_SIZE - 1);
-        buffer[STRINGIFY_BUFFER_SIZE - 1] = '\0';
-    }
-    else if (strcmp(type, "double") == 0) {
-        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%f", *(const double*)value);
-    }
-    else if (strcmp(type, "float") == 0) {
-        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%f", *(const float*)value);
-    }
-    else if (strcmp(type, "long") == 0) {
-        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%ld", *(const long*)value);
-    }
-    else if (strcmp(type, "long long") == 0) {
-        snprintf(buffer, STRINGIFY_BUFFER_SIZE, "%lld", *(const long long*)value);
-    }
-    else {
-        strncpy(buffer, "<unknown>", STRINGIFY_BUFFER_SIZE - 1);
-        buffer[STRINGIFY_BUFFER_SIZE - 1] = '\0';
-    }
-
-    return buffer;
-    
-#undef STRINGIFY_BUFFER_SIZE
-}
-
-/**
- Get primitive type of C value
- 
- @note this macro used on C11+
- */
-#define WCGetValueType(v_) \
-_Generic((v_), \
-char: "char", \
-char *: "char *", \
-double: "double", \
-float: "float",  \
-int: "int",  \
-long: "long",  \
-long long: "long long",  \
-long double: "long double", \
-default: "unknown"  \
-)\
-
-// C11+
-#define WCDumpValue(v_) fprintf(stderr, "%s:%d: `%s`=`%s` (%s)\n", __WC_FILE_NAME__, (int)__LINE__, #v_, wc_string_from_value(&v_, WCGetValueType(v_)), WCGetValueType(v_))
-
-
-#pragma mark - WCLog
-
-#define WCLogObject(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__WC_FILE_NAME__), @(__LINE__), #o, (o))
-#define WCLogBool(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__WC_FILE_NAME__), @(__LINE__), #o, (o) ? @"YES" : @"NO")
-
-
-// WCLog
-#if DEBUG_LOG
-#   define WCLog(fmt, ...) { NSLog((@"[%s:%d] " fmt), __WC_FILE_NAME__, __LINE__, ## __VA_ARGS__); }
+// WCDebugLog
+#if DEBUG
+#   define WCDebugLog(fmt, ...) { NSLog((@"%s:%d: " fmt), __WC_FILE_NAME__, __LINE__, ## __VA_ARGS__); }
 #else
-#   define WCLog(fmt, ...)
+#   define WCDebugLog(fmt, ...)
 #endif
 
 /**
@@ -204,11 +103,16 @@ default: "unknown"  \
  @example
  #import <WCMacroKit/WCMacroKit.h>
  #define WCLogModule @"[YourModuleName] "
- #undef WCLog
- #define WCLog WCLogPrefix
+ #undef WCDebugLog
+ #define WCDebugLog WCDebugLogPrefix
  
- WCLog(@"log something");
+ WCDebugLog(@"log something");
  */
-#define WCLogPrefix(fmt, ...) { NSLog((@"[%s:%d]" WCLogModule fmt), __WC_FILE_NAME__, __LINE__, ## __VA_ARGS__); }
+#define WCDebugLogPrefix(fmt, ...) { NSLog((@"%s:%d: " WCLogModule fmt), __WC_FILE_NAME__, __LINE__, ## __VA_ARGS__); }
+
+#pragma mark - Log for Dump Object (Deprecated)
+
+#define WCLogObject(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__WC_FILE_NAME__), @(__LINE__), #o, (o))
+#define WCLogBool(o)  NSLog(@"%@:%@: `%s`=`%@`", @(__WC_FILE_NAME__), @(__LINE__), #o, (o) ? @"YES" : @"NO")
 
 #endif /* WCMacroLog_h */

@@ -40,6 +40,8 @@
 		4F50AE31240E9CDE00FB7FE8 /* Test_MacroBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F50AE30240E9CDE00FB7FE8 /* Test_MacroBlock.m */; };
 		4F51372A231D444F00A17F9A /* WCMacroDollarSign.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F513729231D444F00A17F9A /* WCMacroDollarSign.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F5CA92222A009A100F55313 /* Test_MacroSafeValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5CA92122A009A100F55313 /* Test_MacroSafeValue.m */; };
+		4F5D58052EE7B9760076E6B1 /* WCMacroDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F5D58042EE7B9760076E6B1 /* WCMacroDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F5D58072EE7BB050076E6B1 /* Test_MacroDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D58062EE7BB050076E6B1 /* Test_MacroDebug.m */; };
 		4F5D928E1FEA502B005F137D /* Test_WCCallerTool_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F5D928D1FEA502B005F137D /* Test_WCCallerTool_ViewController.m */; };
 		4F61540325E7EFC40033E082 /* WCMacroBreakpoint.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F61540225E7EFB30033E082 /* WCMacroBreakpoint.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F61540B25E7F0170033E082 /* Test_MacroBreakpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F61540A25E7F0160033E082 /* Test_MacroBreakpoint.m */; };
@@ -160,6 +162,8 @@
 		4F50AE30240E9CDE00FB7FE8 /* Test_MacroBlock.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroBlock.m; sourceTree = "<group>"; };
 		4F513729231D444F00A17F9A /* WCMacroDollarSign.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroDollarSign.h; sourceTree = "<group>"; };
 		4F5CA92122A009A100F55313 /* Test_MacroSafeValue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroSafeValue.m; sourceTree = "<group>"; };
+		4F5D58042EE7B9760076E6B1 /* WCMacroDebug.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroDebug.h; sourceTree = "<group>"; };
+		4F5D58062EE7BB050076E6B1 /* Test_MacroDebug.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroDebug.m; sourceTree = "<group>"; };
 		4F5D92891FEA4F06005F137D /* WCCallerTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCCallerTool.h; sourceTree = "<group>"; };
 		4F5D928A1FEA4F06005F137D /* WCCallerTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WCCallerTool.m; sourceTree = "<group>"; };
 		4F5D928C1FEA502B005F137D /* Test_WCCallerTool_ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_WCCallerTool_ViewController.h; sourceTree = "<group>"; };
@@ -184,7 +188,7 @@
 		4F7D8E8921086D0E00145B00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F7D8E9921087C5500145B00 /* WCMacroUncategoried.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroUncategoried.h; sourceTree = "<group>"; };
 		4F9A2E6A251DED4000349719 /* WCMacroUILayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroUILayout.h; sourceTree = "<group>"; };
-		4FA356CD29554DF5008378EB /* MacroLogPrefixTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroLogPrefixTest.h; sourceTree = "<group>"; };
+		4FA356CD29554DF5008378EB /* WCLogPrefix_XXXModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCLogPrefix_XXXModule.h; sourceTree = "<group>"; };
 		4FAEBCF1269FCB6B00050229 /* Test_MacroUILayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroUILayout.m; sourceTree = "<group>"; };
 		4FB43AD1200CE24500D5D92D /* Test_STR_OF_JSONViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test_STR_OF_JSONViewController.h; sourceTree = "<group>"; };
 		4FB43AD2200CE24500D5D92D /* Test_STR_OF_JSONViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_STR_OF_JSONViewController.m; sourceTree = "<group>"; };
@@ -302,7 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				4FB51DF6263FFB8C00EF75CF /* Dummy */,
-				4FA356CD29554DF5008378EB /* MacroLogPrefixTest.h */,
+				4FA356CD29554DF5008378EB /* WCLogPrefix_XXXModule.h */,
 				2BE400E31D73273200A48174 /* Test.m */,
 				4F2EB0B829659BE600692CF7 /* Test_ClangMacro.m */,
 				4F20EBAA29697A6E0029B8B9 /* Test_GCCMacro.m */,
@@ -314,6 +318,7 @@
 				4F77D9E32411347500BC2BA2 /* Test_MacroCode.m */,
 				4F13DCF624C9948C00CD5DE9 /* Test_MacroColor.m */,
 				4FFF460B2404D3E6007D2737 /* Test_MacroCompatibility.m */,
+				4F5D58062EE7BB050076E6B1 /* Test_MacroDebug.m */,
 				4F2BC6B62482548900175CEE /* Test_MacroDelegate.m */,
 				4F273C6028003F4A006A9221 /* Test_MacroError.m */,
 				4F2BC6B2248253AD00175CEE /* Test_MacroLog.m */,
@@ -345,6 +350,7 @@
 				4F77D9E12411330500BC2BA2 /* WCMacroCode.h */,
 				2BE400EE1D732D2D00A48174 /* WCMacroColor.h */,
 				4F33FD131FBC0D6C00DE9852 /* WCMacroCompatibility.h */,
+				4F5D58042EE7B9760076E6B1 /* WCMacroDebug.h */,
 				2BE400F21D732F7300A48174 /* WCMacroDelegate.h */,
 				4F513729231D444F00A17F9A /* WCMacroDollarSign.h */,
 				4F273C5E28003DA1006A9221 /* WCMacroError.h */,
@@ -438,6 +444,7 @@
 				4F9A2E6B251DED4000349719 /* WCMacroUILayout.h in Headers */,
 				4F7D8E9521086EE300145B00 /* WCMacroDelegate.h in Headers */,
 				4F17240A231BD16F00483D53 /* WCMacroAttribute.h in Headers */,
+				4F5D58052EE7B9760076E6B1 /* WCMacroDebug.h in Headers */,
 				4F1A055D24BF2A7700DBE662 /* WCMacroAttributedString.h in Headers */,
 				4F6D7DA92233A49F006639A1 /* WCMacroToolBackend.h in Headers */,
 				4F7D8E9621086EE300145B00 /* WCMacroAssert.h in Headers */,
@@ -673,6 +680,7 @@
 				4FB51DF9263FFBA400EF75CF /* StringEnum.m in Sources */,
 				4F2BC6B92482556000175CEE /* Test_MacroUncategoried.m in Sources */,
 				4F13DCF724C9948C00CD5DE9 /* Test_MacroColor.m in Sources */,
+				4F5D58072EE7BB050076E6B1 /* Test_MacroDebug.m in Sources */,
 				4F6D7DB62233B389006639A1 /* Test_MacroTool.m in Sources */,
 				4F172409231BD10E00483D53 /* Test_MacroAttribute.m in Sources */,
 				4FC7823D269C73F0001A8A3D /* ExternalConstantImplementation.m in Sources */,

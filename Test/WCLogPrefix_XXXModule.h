@@ -10,8 +10,8 @@
 
 #import <WCMacroKit/WCMacroKit.h>
 
-#define WCLogModule @"[TestTarget] "
-#undef WCLog
-#define WCLog WCLogPrefix
+#define WCLogModule @"[TestTarget]"
+#undef WCDebugLog
+#define WCDebugLog WCDebugLogPrefix
 
 #endif /* MacroLogPrefixTest_h */

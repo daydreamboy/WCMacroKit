@@ -9,7 +9,7 @@
 // Note: no need import umbrella header,
 // just import the wrapper header instead
 //#import <WCMacroKit/WCMacroKit.h>
-#import "MacroLogPrefixTest.h"
+#import "WCLogPrefix_XXXModule.h"
 
 @interface Test_MacroLog_WCLogPrefix : XCTestCase
 
@@ -17,12 +17,12 @@
 
 @implementation Test_MacroLog_WCLogPrefix
 
-- (void)test_WCLog {
+- (void)test_WCLogPrefix {
     NSString *message = @"message"      @", a.k.a msg";
     
     NSLog(@"[ApolloSDK] " @"log: %@", message);
-    WCLog(@"log: %@", message);
-    WCLog(@"This is a log");
+    WCDebugLog(@"<print a log>|log:%@|", message);
+    WCDebugLog(@"<This is a log>");
 }
 
 @end

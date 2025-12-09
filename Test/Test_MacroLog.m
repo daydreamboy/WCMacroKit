@@ -18,69 +18,12 @@
 
 @implementation Test_MacroLog
 
-#pragma mark - WCDumpXXX
-
-- (void)test_WCDumpBool {
-    WCDumpBool(YES);
-    WCDumpBool(NO);
-    
-    BOOL boolValue = YES;
-    WCDumpBool(boolValue);
-    boolValue = NO;
-    WCDumpBool(boolValue);
-    
-    WCDumpBool([self class] == [super class]);
-}
-
-- (void)test_WCDumpObject {
-    WCDumpObject([self class]);
-    WCDumpObject([super class]);
-    WCDumpObject([self superclass]);
-    
-    WCDumpObject(@"");
-    
-    id nilValue = nil;
-    WCDumpObject(nilValue);
-    
-    NSString *emptyStr= @"";
-    WCDumpObject(emptyStr);
-}
-
-- (void)test_WCDumpValue {
-    char c = 'A';
-    double d = 8.0;
-    const float f = 3.375;
-    int i = 10;
-    long l = 1000L;
-    long long ll = 1000LL;
-    char s[] = "Hello,world";
-    
-    unsigned int ui = 20;
-    
-    WCDumpValue(c);
-    WCDumpValue(d);
-    WCDumpValue(f);
-    WCDumpValue(i);
-    WCDumpValue(l);
-    WCDumpValue(ll);
-    WCDumpValue(s);
-    WCDumpValue(ui);
-}
-
-- (void)test_WCDumpClassByName {
-    WCDumpClassByName("Test_MacroLog");
-}
-
-- (void)test_WCDumpMetaClassByName {
-    WCDumpMetaClassByName("Test_MacroLog");
-}
-
-- (void)test_WCLog {
+- (void)test_WCDebugLog {
     NSString *message = @"message"      @", a.k.a msg";
     
     NSLog(@"[ApolloSDK] " @"log: %@", message);
-    WCLog(@"log: %@", message);
-    WCLog(@"This is a log");
+    WCDebugLog(@"log:`%@`", message);
+    WCDebugLog(@"This is a log");
 }
 
 - (void)test_XLog {
