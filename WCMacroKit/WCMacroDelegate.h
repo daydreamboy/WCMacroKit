@@ -53,12 +53,12 @@
 #ifndef CLASS_SAFE_CALL
 #define CLASS_SAFE_CALL(classString_, selString_) \
     do { \
-        Class clz = NSClassFromString(classString_); \
+        Class target = NSClassFromString(classString_); \
         SEL sel = NSSelectorFromString(selString_); \
-        if ([clz respondsToSelector:sel]) { \
+        if ([target respondsToSelector:sel]) { \
             NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
-            invocation.target = clz; \
+            invocation.target = target; \
             invocation.selector = sel; \
             [invocation invoke]; \
         } \
@@ -75,13 +75,13 @@
 #ifndef CLASS_SAFE_CALL1
 #define CLASS_SAFE_CALL1(classString_, selString_, arg1_) \
     do { \
-        Class clz = NSClassFromString(classString_); \
+        Class target = NSClassFromString(classString_); \
         SEL sel = NSSelectorFromString(selString_); \
-        if ([clz respondsToSelector:sel]) { \
+        if ([target respondsToSelector:sel]) { \
             typeof(arg1_) param1 = arg1_; \
             NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
-            invocation.target = clz; \
+            invocation.target = target; \
             invocation.selector = sel; \
             [invocation setArgument:(void *)&param1 atIndex:2]; \
             [invocation invoke]; \
@@ -95,13 +95,13 @@
 #define CLASS_SAFE_CALL_WITH_RETURN(classString_, selString_) \
     ({ \
         id returnValue = nil; \
-        Class clz = NSClassFromString(classString_); \
+        Class target = NSClassFromString(classString_); \
         SEL sel = NSSelectorFromString(selString_); \
-        if ([clz respondsToSelector:sel]) { \
+        if ([target respondsToSelector:sel]) { \
             void *tempReturnValue = nil; \
             NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
-            invocation.target = clz; \
+            invocation.target = target; \
             invocation.selector = sel; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
@@ -115,14 +115,14 @@
 #define CLASS_SAFE_CALL1_WITH_RETURN(classString_, selString_, arg1_) \
     ({ \
         id returnValue = nil; \
-        Class clz = NSClassFromString(classString_); \
+        Class target = NSClassFromString(classString_); \
         SEL sel = NSSelectorFromString(selString_); \
-        if ([clz respondsToSelector:sel]) { \
+        if ([target respondsToSelector:sel]) { \
             typeof(arg1_) param1 = arg1_; \
             void *tempReturnValue = nil; \
             NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
-            invocation.target = clz; \
+            invocation.target = target; \
             invocation.selector = sel; \
             [invocation setArgument:(void *)&param1 atIndex:2]; \
             [invocation invoke]; \
@@ -133,19 +133,69 @@
     })
 #endif /* CLASS_SAFE_CALL1_WITH_RETURN */
 
+#ifndef CLASS_SAFE_CALL2_WITH_RETURN
+#define CLASS_SAFE_CALL2_WITH_RETURN(classString_, selString_, arg1_, arg2_) \
+    ({ \
+        id returnValue = nil; \
+        Class target = NSClassFromString(classString_); \
+        SEL sel = NSSelectorFromString(selString_); \
+        if ([target respondsToSelector:sel]) { \
+            typeof(arg1_) param1 = arg1_; \
+            typeof(arg2_) param2 = arg2_; \
+            void *tempReturnValue = nil; \
+            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = target; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = (__bridge id)tempReturnValue; \
+        } \
+        returnValue; \
+    })
+#endif /* CLASS_SAFE_CALL2_WITH_RETURN */
+
+#ifndef CLASS_SAFE_CALL3_WITH_RETURN
+#define CLASS_SAFE_CALL3_WITH_RETURN(classString_, selString_, arg1_, arg2_, arg3_) \
+    ({ \
+        id returnValue = nil; \
+        Class target = NSClassFromString(classString_); \
+        SEL sel = NSSelectorFromString(selString_); \
+        if ([target respondsToSelector:sel]) { \
+            typeof(arg1_) param1 = arg1_; \
+            typeof(arg2_) param2 = arg2_; \
+            typeof(arg3_) param3 = arg3_; \
+            void *tempReturnValue = nil; \
+            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = target; \
+            invocation.selector = sel; \
+            [invocation setArgument:(void *)&param1 atIndex:2]; \
+            [invocation setArgument:(void *)&param2 atIndex:3]; \
+            [invocation setArgument:(void *)&param3 atIndex:4]; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = (__bridge id)tempReturnValue; \
+        } \
+        returnValue; \
+    })
+#endif /* CLASS_SAFE_CALL3_WITH_RETURN */
+
 #pragma mark > With return primitive type
 
 #ifndef CLASS_SAFE_CALL_WITH_RETURN_PRIMITIVE
 #define CLASS_SAFE_CALL_WITH_RETURN_PRIMITIVE(classString_, selString_, ret_type_, default_ret_val_) \
     ({ \
         ret_type_ returnValue = default_ret_val_; \
-        Class clz = NSClassFromString(classString_); \
+        Class target = NSClassFromString(classString_); \
         SEL sel = NSSelectorFromString(selString_); \
-        if ([clz respondsToSelector:sel]) { \
+        if ([target respondsToSelector:sel]) { \
             ret_type tempReturnValue = default_ret_val_; \
             NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
-            invocation.target = clz; \
+            invocation.target = target; \
             invocation.selector = sel; \
             [invocation invoke]; \
             [invocation getReturnValue:&tempReturnValue]; \
@@ -159,14 +209,14 @@
 #define CLASS_SAFE_CALL1_WITH_RETURN_PRIMITIVE(classString_, selString_, ret_type_, default_ret_val_, arg1_) \
     ({ \
         ret_type_ returnValue = default_ret_val_; \
-        Class clz = NSClassFromString(classString_); \
+        Class target = NSClassFromString(classString_); \
         SEL sel = NSSelectorFromString(selString_); \
         if ([target respondsToSelector:sel]) { \
             typeof(arg1_) param1 = arg1_; \
             ret_type_ tempReturnValue = default_ret_val_; \
             NSMethodSignature *methodSignature = [clz methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
-            invocation.target = clz; \
+            invocation.target = target; \
             invocation.selector = sel; \
             [invocation setArgument:(void *)&param1 atIndex:2]; \
             [invocation invoke]; \
