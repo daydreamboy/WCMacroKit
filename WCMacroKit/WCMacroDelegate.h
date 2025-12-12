@@ -56,7 +56,7 @@
         Class target = NSClassFromString(classString_); \
         SEL sel = NSSelectorFromString(selString_); \
         if ([target respondsToSelector:sel]) { \
-            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = target; \
             invocation.selector = sel; \
@@ -79,7 +79,7 @@
         SEL sel = NSSelectorFromString(selString_); \
         if ([target respondsToSelector:sel]) { \
             typeof(arg1_) param1 = arg1_; \
-            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = target; \
             invocation.selector = sel; \
@@ -99,7 +99,7 @@
         SEL sel = NSSelectorFromString(selString_); \
         if ([target respondsToSelector:sel]) { \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = target; \
             invocation.selector = sel; \
@@ -120,7 +120,7 @@
         if ([target respondsToSelector:sel]) { \
             typeof(arg1_) param1 = arg1_; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = target; \
             invocation.selector = sel; \
@@ -143,7 +143,7 @@
             typeof(arg1_) param1 = arg1_; \
             typeof(arg2_) param2 = arg2_; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = target; \
             invocation.selector = sel; \
@@ -168,7 +168,7 @@
             typeof(arg2_) param2 = arg2_; \
             typeof(arg3_) param3 = arg3_; \
             void *tempReturnValue = nil; \
-            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = target; \
             invocation.selector = sel; \
@@ -193,7 +193,7 @@
         SEL sel = NSSelectorFromString(selString_); \
         if ([target respondsToSelector:sel]) { \
             ret_type tempReturnValue = default_ret_val_; \
-            NSMethodSignature *methodSignature = [(NSObject *)clz methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = target; \
             invocation.selector = sel; \
@@ -214,7 +214,7 @@
         if ([target respondsToSelector:sel]) { \
             typeof(arg1_) param1 = arg1_; \
             ret_type_ tempReturnValue = default_ret_val_; \
-            NSMethodSignature *methodSignature = [clz methodSignatureForSelector:sel]; \
+            NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = target; \
             invocation.selector = sel; \

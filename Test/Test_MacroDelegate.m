@@ -34,6 +34,9 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 - (void)hello {
     NSLog(@"%@: %@", self, @"hello");
 }
++ (void)hello {
+    NSLog(@"%@: %@", self, @"hello");
+}
 @end
 
 @interface Test_MacroDelegate : XCTestCase <UITextFieldDelegateProtocol>
@@ -42,12 +45,8 @@ typedef NS_ENUM(NSUInteger, SomeState) {
 
 @implementation Test_MacroDelegate
 
-- (void)setUp {
-    NSLog(@"\n");
-}
-
-- (void)tearDown {
-    NSLog(@"\n");
+- (void)test_CLASS_SAFE_CALL {
+    CLASS_SAFE_CALL(@"SomeServiceImp", @"hello");
 }
 
 #pragma mark > With Return
