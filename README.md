@@ -43,6 +43,7 @@ iOS系统提供的宏
 | 宏                | 作用                              |
 | ----------------- | --------------------------------- |
 | CGFLOAT_IS_DOUBLE |                                   |
+| NS_INLINE         |                                   |
 | NS_REQUIRES_SUPER | 标记某个方法需要调用super方法[^4] |
 | NS_UNAVAILABLE    |                                   |
 
