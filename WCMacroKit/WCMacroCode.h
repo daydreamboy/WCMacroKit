@@ -39,23 +39,21 @@ static inline void s_debug_function(void (^block)(void)) {
     }
 }
 #else
+// nothing here
 #endif
 
 #if DEBUG
-#define CODE_RUN_IN_DEBUG \
-s_debug_function
+#define CODE_RUN_IN_DEBUG s_debug_function
+
 #else
 
-#define CODE_RUN_IN_DEBUG_EXPANDED_1(counter_) \
-__unused void (^block_internal_##counter_)(void) =
+#define __CODE_RUN_IN_DEBUG_EXPANDED(counter_) __unused void (^__block_internal_##counter_)(void) =
 
 // @see https://stackoverflow.com/questions/12690639/counter-in-variable-name
-#define CODE_RUN_IN_DEBUG_1(x) \
-CODE_RUN_IN_DEBUG_EXPANDED_1(x)
+#define __CODE_RUN_IN_DEBUG(x) __CODE_RUN_IN_DEBUG_EXPANDED(x)
 
-#define CODE_RUN_IN_DEBUG \
-CODE_RUN_IN_DEBUG_1(__COUNTER__)
-#endif
+#define CODE_RUN_IN_DEBUG __CODE_RUN_IN_DEBUG(__COUNTER__)
+#endif // DEBUG
 
 #pragma mark - Custom Method Prefix
 
@@ -141,5 +139,19 @@ if ((condition_)) { resultVar_ = tempValue_; break; } \
 } while (NO); \
 resultVar_; \
 });
+
+#pragma mark - Make Dummy Class
+
+#define _MAKE_UNIQUE_TABLE_CELL(unuqueID_) unuqueID_ ## _ ## TableCell
+/**
+ @example
+ #define LocalDummyCell MAKE_UNIQUE_TABLE_CELL(AutoFitTableCell_CompressedIssue_ViewController)
+ 
+ @interface LocalDummyCell : UITableViewCell
+ ...
+ @end
+ */
+#define MAKE_UNIQUE_TABLE_CELL(unuqueID_) _MAKE_UNIQUE_TABLE_CELL(unuqueID_)
+
 
 #endif /* WCMacroCode_h */
