@@ -82,7 +82,7 @@ integer; \
  
  @discussion This method gets value from NSString or NSNumber unstrictly. Otherwise, get the defaultValue
  */
-#define stringValueOfJSONValueWithDefault(JSONValue, defaultValue)   ([(JSONValue) isKindOfClass:[NSString class]] ? (JSONValue) : ([(JSONValue) isKindOfClass:[NSNumber class]]) ? [(NSNumber *)(JSONValue) stringValue] : (defaultValue))
+#define stringValueOfJSONValueWithDefault(JSONValue, defaultValue)   ([(JSONValue) isKindOfClass:[NSString class]] ? ((NSString *)JSONValue) : ([(JSONValue) isKindOfClass:[NSNumber class]]) ? [(NSNumber *)(JSONValue) stringValue] : (defaultValue))
 
 /**
  Get double value from JSON value (NSString/NSNumber)
