@@ -697,8 +697,8 @@ _Pragma("clang diagnostic pop") \
             id __value__ = array_; \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
-            if ([mutableArray_ isKindOfClass:[NSMutableArray class]] && __value__) { \
-                [(NSMutableArray *)mutableArray_ addObjectsFromArray:__value__]; \
+            if ([mutableArray_ isKindOfClass:[NSMutableArray class]] && [array_ isKindOfClass:[NSArray class]]) { \
+                [(NSMutableArray *)mutableArray_ addObjectsFromArray:(NSArray *)__value__]; \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
