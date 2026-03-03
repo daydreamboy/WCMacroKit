@@ -643,7 +643,10 @@ DICT_M_PAIRS_1(dict_, __VA_ARGS__), \
  }
  @endcode
  */
-#define DICT_IF_NOT_EMPTY(dict)    ([(dict) isKindOfClass:[NSDictionary class]] && [(NSDictionary *)(dict) count])
+#define DICT_IF_NOT_EMPTY(dict) ({ \
+    id __dict__ = (dict); \
+    [__dict__ isKindOfClass:[NSDictionary class]] && [(NSDictionary *)__dict__ count]; \
+})
 
 /**
  Is a dict and empty
@@ -657,7 +660,10 @@ DICT_M_PAIRS_1(dict_, __VA_ARGS__), \
  }
  @endcode
  */
-#define DICT_IF_EMPTY(dict)    ([(dict) isKindOfClass:[NSDictionary class]] && [(NSDictionary *)(dict) count] == 0)
+#define DICT_IF_EMPTY(dict) ({ \
+    id __dict__ = (dict); \
+    ([__dict__ isKindOfClass:[NSDictionary class]] && [(NSDictionary *)__dict__ count] == 0); \
+})
 
 #pragma mark - NSArray
 
@@ -762,7 +768,10 @@ _Pragma("clang diagnostic pop") \
  @endcode
  */
 #ifndef ARR_IF_NOT_EMPTY
-#define ARR_IF_NOT_EMPTY(arr)    ([(arr) isKindOfClass:[NSArray class]] && [(NSArray *)(arr) count])
+#define ARR_IF_NOT_EMPTY(arr) ({ \
+    id __arr__ = (arr); \
+    [__arr__ isKindOfClass:[NSArray class]] && [(NSArray *)__arr__ count] \
+})
 #endif
 
 /**
@@ -777,7 +786,10 @@ _Pragma("clang diagnostic pop") \
  }
  @endcode
  */
-#define ARR_IF_EMPTY(arr)    ([(arr) isKindOfClass:[NSArray class]] && [(NSArray *)(arr) count] == 0)
+#define ARR_IF_EMPTY(arr) ({ \
+    id __arr__ = (arr); \
+    [__arr__ isKindOfClass:[NSArray class]] && [(NSArray *)__arr__ count] == 0; \
+})
 
 #pragma mark - NSObject
 

@@ -145,10 +145,16 @@
 })
 
 // Is a string and empty after trim
-#define STR_TRIM_IF_EMPTY(str)   ([(str) isKindOfClass:[NSString class]] && [[(NSString *)(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0)
+#define STR_TRIM_IF_EMPTY(str) ({ \
+    id __str__ = (str); \
+    [__str__ isKindOfClass:[NSString class]] && [[(NSString *)__str__ stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length] == 0; \
+})
 
 // Is a string and not empty after trim
-#define STR_TRIM_IF_NOT_EMPTY(str)   ([(str) isKindOfClass:[NSString class]] && [[(NSString *)(str) stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length])
+#define STR_TRIM_IF_NOT_EMPTY(str) ({ \
+    id __str__ = (str); \
+    [__str__ isKindOfClass:[NSString class]] && [[(NSString *)__str__ stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] length]; \
+})
 
 #pragma mark - String Size Calculation
 
