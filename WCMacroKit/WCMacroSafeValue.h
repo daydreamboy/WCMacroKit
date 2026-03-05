@@ -297,12 +297,25 @@ typedef NSArray * TupleType;
 #ifndef DICT_SAFE_GET
 #define DICT_SAFE_GET(dictionary, key, valueClassType) \
 ({ \
-    _Pragma("clang diagnostic push") \
-    _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
-    NSClassFromString(@#valueClassType) ? \
-    (([(dictionary) isKindOfClass:[NSDictionary class]] && (key) && dictionary[(key)] && [dictionary[(key)] isKindOfClass:NSClassFromString(@#valueClassType)]) ? dictionary[(key)] : nil) : \
-    (([(dictionary) isKindOfClass:[NSDictionary class]] && (key) && dictionary[(key)]) ? dictionary[(key)] : nil); \
-    _Pragma("clang diagnostic pop") \
+    id __value__ = nil; \
+    NSDictionary *__dictionary__ = (NSDictionary *)dictionary; \
+    id<NSCopying> __key__ = (id<NSCopying>)key; \
+    NSString *__classString__ = @#valueClassType; \
+    Class __valueClass__ = NSClassFromString(__classString__); \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
+    if ([__dictionary__ isKindOfClass:[NSDictionary class]] && __key__ && dictionary[__key__]) { \
+        if (__valueClass__) { \
+            if ([dictionary[__key__] isKindOfClass:__valueClass__]) { \
+                __value__ = dictionary[__key__]; \
+            } \
+        } \
+        else { \
+            __value__ = dictionary[__key__]; \
+        } \
+    } \
+    __value__; \
+_Pragma("clang diagnostic pop") \
 })
 
 #endif /* DICT_SAFE_GET */
@@ -312,12 +325,15 @@ typedef NSArray * TupleType;
  */
 #ifndef DICT_M_SAFE_SET
 #define DICT_M_SAFE_SET(mutableDictionary, key, value) \
-    do {                                                       \
+    do { \
+        NSMutableDictionary *__mutableDictionary__ = (NSMutableDictionary *)mutableDictionary; \
+        id<NSCopying> __key__ = (id<NSCopying>)key; \
+        id __value__ = value; \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
-        if ([mutableDictionary isKindOfClass:[NSMutableDictionary class]] && key && value) { \
-            [mutableDictionary setObject:value forKey:key];    \
-        }                                                      \
+        if ([__mutableDictionary__ isKindOfClass:[NSMutableDictionary class]] && __key__ && __value__) { \
+            [__mutableDictionary__ setObject:__value__ forKey:__key__]; \
+        } \
 _Pragma("clang diagnostic pop") \
     } while (0)
 
@@ -325,12 +341,14 @@ _Pragma("clang diagnostic pop") \
 
 #ifndef DICT_M_SAFE_ADD_ENTRIES
 #define DICT_M_SAFE_ADD_ENTRIES(mutableDictionary, dictionary) \
-    do {                                                               \
+    do { \
+        NSMutableDictionary *__mutableDictionary__ = (NSMutableDictionary *)mutableDictionary; \
+        NSDictionary *__dictionary__ = (NSDictionary *)dictionary; \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
-        if ([mutableDictionary isKindOfClass:[NSMutableDictionary class]] && [dictionary isKindOfClass:[NSDictionary class]]) { \
-            [mutableDictionary addEntriesFromDictionary:dictionary];   \
-        }                                                              \
+        if ([__mutableDictionary__ isKindOfClass:[NSMutableDictionary class]] && [__dictionary__ isKindOfClass:[NSDictionary class]]) { \
+            [__mutableDictionary__ addEntriesFromDictionary:__dictionary__]; \
+        } \
 _Pragma("clang diagnostic pop") \
     } while (0)
 
@@ -687,24 +705,26 @@ DICT_M_PAIRS_1(dict_, __VA_ARGS__), \
 #ifndef ARR_M_SAFE_ADD
 #define ARR_M_SAFE_ADD(mutableArray, value) \
     do { \
+            NSMutableArray *__mutableArray__ = (NSMutableArray *)mutableArray; \
             id __value__ = value; \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
-            if ([mutableArray isKindOfClass:[NSMutableArray class]] && __value__) { \
-                [(NSMutableArray *)mutableArray addObject:__value__]; \
+            if ([__mutableArray__ isKindOfClass:[NSMutableArray class]] && __value__) { \
+                [(NSMutableArray *)__mutableArray__ addObject:__value__]; \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
 #endif /* ARR_M_SAFE_ADD */
 
 #ifndef ARR_M_SAFE_ADD_ENTRIES
-#define ARR_M_SAFE_ADD_ENTRIES(mutableArray_, array_) \
+#define ARR_M_SAFE_ADD_ENTRIES(mutableArray, array) \
     do { \
-            id __value__ = array_; \
+            NSMutableArray *__mutableArray__ = (NSMutableArray *)mutableArray; \
+            id __value__ = array; \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
-            if ([mutableArray_ isKindOfClass:[NSMutableArray class]] && [array_ isKindOfClass:[NSArray class]]) { \
-                [(NSMutableArray *)mutableArray_ addObjectsFromArray:(NSArray *)__value__]; \
+            if ([__mutableArray__ isKindOfClass:[NSMutableArray class]] && [__value__ isKindOfClass:[NSArray class]]) { \
+                [(NSMutableArray *)__mutableArray__ addObjectsFromArray:(NSArray *)__value__]; \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
@@ -713,10 +733,12 @@ _Pragma("clang diagnostic pop") \
 #ifndef ARR_M_SAFE_REMOVE
 #define ARR_M_SAFE_REMOVE(mutableArray, index) \
     do { \
+            NSMutableArray *__mutableArray__ = (NSMutableArray *)mutableArray; \
+            NSUInteger __index__ = (NSUInteger)index; \
 _Pragma("clang diagnostic push") \
 _Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
-            if ([mutableArray isKindOfClass:[NSMutableArray class]] && 0 <= index && index < [(NSMutableArray *)mutableArray count]) { \
-                [(NSMutableArray *)mutableArray removeObjectAtIndex:index]; \
+            if ([__mutableArray__ isKindOfClass:[NSMutableArray class]] && 0 <= __index__ && __index__ < [(NSMutableArray *)__mutableArray__ count]) { \
+                [(NSMutableArray *)__mutableArray__ removeObjectAtIndex:__index__]; \
             } \
 _Pragma("clang diagnostic pop") \
     } while (0)
@@ -733,11 +755,16 @@ _Pragma("clang diagnostic pop") \
 #ifndef ARR_SAFE_GET
 #define ARR_SAFE_GET(array, index) \
     ({ \
-        id __value = nil; \
-        if ([array isKindOfClass:[NSArray class]] && 0 <= index && index < [(NSArray *)array count]) { \
-            __value = [(NSArray *)array objectAtIndex:index]; \
+        NSArray *__array__ = (NSArray *)array; \
+        NSUInteger __index__ = (NSUInteger)index; \
+        id __value__ = nil; \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wobjc-literal-conversion\"") \
+        if ([__array__ isKindOfClass:[NSArray class]] && 0 <= __index__ && __index__ < [(NSArray *)__array__ count]) { \
+__value__ = [(NSArray *)__array__ objectAtIndex:__index__]; \
         } \
-        __value; \
+_Pragma("clang diagnostic pop") \
+        __value__; \
     })
 #endif /* ARR_SAFE_GET */
 
@@ -947,7 +974,7 @@ __returnValue; \
     } \
     internalRetVal_; \
 });
-#endif /* SAFE_EXC_EXP */
+#endif /* SAFE_EXC_EXP_WITH_EXCP */
 
 #pragma mark - Safe Execute Code (without Return Value)
 

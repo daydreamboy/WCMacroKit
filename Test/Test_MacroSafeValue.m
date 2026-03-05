@@ -485,6 +485,10 @@
     XCTAssertNotNil(value);
     XCTAssertTrue([value isKindOfClass:[NSDate class]]);
     
+    value = DICT_SAFE_GET(dict, @"key", NSDate);
+    XCTAssertNotNil(value);
+    XCTAssertTrue([value isKindOfClass:[NSDate class]]);
+    
     // Case 4
     dict = @{
              @"key": @"date"
