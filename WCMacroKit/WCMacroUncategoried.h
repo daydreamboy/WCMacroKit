@@ -350,6 +350,24 @@ _Pragma("clang diagnostic pop") \
     } \
 } while (0)
 
+#pragma mark > Show Toast
+
+#define SHOW_TOAST(msg) \
+\
+do { \
+    if ([UIAlertController class]) { \
+        UIAlertController *toastAlert = [UIAlertController alertControllerWithTitle:nil message:[NSString stringWithFormat:@"⏳%@", msg] preferredStyle:UIAlertControllerStyleAlert]; \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:toastAlert animated:YES completion:^{ \
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ \
+                [toastAlert dismissViewControllerAnimated:YES completion:nil]; \
+            }); \
+        }]; \
+_Pragma("clang diagnostic pop") \
+    } \
+} while (0)
+
 #pragma mark - CoreFoundation
 
 #pragma mark > Toll-free Bridge

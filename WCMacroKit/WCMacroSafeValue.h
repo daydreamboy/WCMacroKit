@@ -797,7 +797,7 @@ _Pragma("clang diagnostic pop") \
 #ifndef ARR_IF_NOT_EMPTY
 #define ARR_IF_NOT_EMPTY(arr) ({ \
     id __arr__ = (arr); \
-    [__arr__ isKindOfClass:[NSArray class]] && [(NSArray *)__arr__ count] \
+    [__arr__ isKindOfClass:[NSArray class]] && [(NSArray *)__arr__ count]; \
 })
 #endif
 
