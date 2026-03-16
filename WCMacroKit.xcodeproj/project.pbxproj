@@ -16,6 +16,7 @@
 		2BE400D81D73272500A48174 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BE400D61D73272500A48174 /* LaunchScreen.storyboard */; };
 		2BE400E41D73273200A48174 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BE400E31D73273200A48174 /* Test.m */; };
 		4F03AEBB208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F03AEBA208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m */; };
+		4F043CF92F68067200B97382 /* WCMacroRuntimeCall.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F043CF82F68067200B97382 /* WCMacroRuntimeCall.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F0BF21A2C2D08810021683A /* WCMacroWarning.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F0BF2182C2D07E40021683A /* WCMacroWarning.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4F13DCF724C9948C00CD5DE9 /* Test_MacroColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F13DCF624C9948C00CD5DE9 /* Test_MacroColor.m */; };
 		4F172409231BD10E00483D53 /* Test_MacroAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F172408231BD10E00483D53 /* Test_MacroAttribute.m */; };
@@ -137,6 +138,7 @@
 		2E240A99029B3BD08F20C2A3 /* libPods-AppTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B0E1E8730E9CA0C8C488CD3 /* Pods-WCMacroKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WCMacroKit.release.xcconfig"; path = "Target Support Files/Pods-WCMacroKit/Pods-WCMacroKit.release.xcconfig"; sourceTree = "<group>"; };
 		4F03AEBA208E310500186DE1 /* Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_DelegateCaller_DELEGATE_SAFE_CALL_WITH_RETURN_PRIMITIVE.m; sourceTree = "<group>"; };
+		4F043CF82F68067200B97382 /* WCMacroRuntimeCall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroRuntimeCall.h; sourceTree = "<group>"; };
 		4F0BF2182C2D07E40021683A /* WCMacroWarning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroWarning.h; sourceTree = "<group>"; };
 		4F0FDE2124791FBA0079ADF8 /* WCMacroThread.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WCMacroThread.h; sourceTree = "<group>"; };
 		4F13DCF624C9948C00CD5DE9 /* Test_MacroColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test_MacroColor.m; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				4F273C5E28003DA1006A9221 /* WCMacroError.h */,
 				2BE400EC1D73276A00A48174 /* WCMacroKit.h */,
 				2BE400F01D732E4B00A48174 /* WCMacroLog.h */,
+				4F043CF82F68067200B97382 /* WCMacroRuntimeCall.h */,
 				4F6D7DB12233ACC2006639A1 /* WCMacroSafeValue.h */,
 				4F6D7DAF2233A877006639A1 /* WCMacroString.h */,
 				4F4F055A22955091002BD87A /* WCMacroSynthesize.h */,
@@ -452,6 +455,7 @@
 				4F6D7DB02233A877006639A1 /* WCMacroString.h in Headers */,
 				4F7D8E9721086EE300145B00 /* WCMacroCompatibility.h in Headers */,
 				4F7D8E9821086EE300145B00 /* WCCallerTool.h in Headers */,
+				4F043CF92F68067200B97382 /* WCMacroRuntimeCall.h in Headers */,
 				4F2BC6BA2482567200175CEE /* WCMacroThread.h in Headers */,
 				4F7D8E9A21087C5500145B00 /* WCMacroUncategoried.h in Headers */,
 				4F51372A231D444F00A17F9A /* WCMacroDollarSign.h in Headers */,
