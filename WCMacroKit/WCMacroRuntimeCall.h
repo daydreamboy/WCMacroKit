@@ -160,7 +160,7 @@
         Class target = NSClassFromString(classString_); \
         SEL sel = NSSelectorFromString(selString_); \
         if ([target respondsToSelector:sel]) { \
-            ret_type tempReturnValue = default_ret_val_; \
+            ret_type_ tempReturnValue = default_ret_val_; \
             NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
             NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
             invocation.target = target; \
@@ -385,6 +385,26 @@
 #endif /* INSTANCE_SAFE_CALL7 */
 
 #pragma mark > With return object type
+
+#ifndef INSTANCE_SAFE_CALL_WITH_RETURN
+#define INSTANCE_SAFE_CALL_WITH_RETURN(instance_, selString_) \
+    ({ \
+        NSObject *target = (NSObject *)(instance_); \
+        id returnValue = nil; \
+        SEL sel = NSSelectorFromString(selString_); \
+        if ([target respondsToSelector:sel]) { \
+            void *tempReturnValue = nil; \
+            NSMethodSignature *methodSignature = [target methodSignatureForSelector:sel]; \
+            NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:methodSignature]; \
+            invocation.target = target; \
+            invocation.selector = sel; \
+            [invocation invoke]; \
+            [invocation getReturnValue:&tempReturnValue]; \
+            returnValue = (__bridge id)tempReturnValue; \
+        } \
+        returnValue; \
+    })
+#endif /* INSTANCE_SAFE_CALL_WITH_RETURN */
 
 #ifndef INSTANCE_SAFE_CALL1_WITH_RETURN
 #define INSTANCE_SAFE_CALL1_WITH_RETURN(instance_, selString_, arg1_) \
