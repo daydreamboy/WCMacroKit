@@ -107,6 +107,11 @@
 #define IOS18_OR_LATER          ([[[UIDevice currentDevice] systemVersion] compare:@"18.0" options:NSNumericSearch] != NSOrderedAscending)
 #endif
 
+// >= `26.0`
+#ifndef IOS26_OR_LATER
+#define IOS26_OR_LATER          ([[[UIDevice currentDevice] systemVersion] compare:@"26.0" options:NSNumericSearch] != NSOrderedAscending)
+#endif
+
 // >= `X`, e.g. >= `15.4`
 /**
  X expected as a number, e.g. 13, 15.4, ...
