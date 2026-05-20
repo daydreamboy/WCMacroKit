@@ -275,6 +275,11 @@ typedef NSArray * TupleType;
 
 #pragma mark - NSDictionary
 
+#define DICT_SAFE(dict) ({ \
+    id dict_ = (dict); \
+    [dict_ isKindOfClass:[NSDictionary class]] ? dict_ : @{}; \
+})
+
 /**
  NSDictionary safe get value
 
