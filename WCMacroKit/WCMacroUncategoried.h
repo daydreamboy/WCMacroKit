@@ -277,6 +277,39 @@ _Pragma("clang diagnostic pop") \
      view.titleLabel.text = @"One";
  };
  
+ SHOW_ALERT_WITH_ACTION1(@"Choose your option", @"select one", @"One", @"Cancel", action1(), nil);
+ */
+#ifndef SHOW_ALERT_WITH_ACTION1
+#define SHOW_ALERT_WITH_ACTION1(title, msg, option1, cancel, option1Completion, cancelCompletion) \
+\
+do { \
+    if ([UIAlertController class]) { \
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:(title) message:(msg) preferredStyle:UIAlertControllerStyleAlert]; \
+        \
+        UIAlertAction *option1Action = [UIAlertAction actionWithTitle:(option1) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) { \
+            option1Completion; \
+        }]; \
+        [alert addAction:option1Action]; \
+        \
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:(cancel) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) { \
+            cancelCompletion; \
+        }]; \
+        [alert addAction:cancelAction]; \
+_Pragma("clang diagnostic push") \
+_Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
+        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil]; \
+_Pragma("clang diagnostic pop") \
+    } \
+} while (0)
+#endif // SHOW_ALERT_WITH_ACTION1
+
+/*
+ @example
+ 
+ void (^action1)(void) = ^{
+     view.titleLabel.text = @"One";
+ };
+ 
  void (^action2)(void) = ^{
      view.titleLabel.text = @"Twoooo";
  };
@@ -285,9 +318,10 @@ _Pragma("clang diagnostic pop") \
      view.titleLabel.text = @"Three";
  };
  
- SHOW_ALERT3(@"Choose your option", @"select one", @"One", @"Two", @"Three", @"Cancel", action1(), action2(), action3(), nil);
+ SHOW_ALERT_WITH_ACTION3(@"Choose your option", @"select one", @"One", @"Two", @"Three", @"Cancel", action1(), action2(), action3(), nil);
  */
-#define SHOW_ALERT3(title, msg, option1, option2, option3, cancel, option1Completion, option2Completion, option3Completion, cancelCompletion) \
+#ifndef SHOW_ALERT_WITH_ACTION3
+#define SHOW_ALERT_WITH_ACTION3(title, msg, option1, option2, option3, cancel, option1Completion, option2Completion, option3Completion, cancelCompletion) \
 \
 do { \
     if ([UIAlertController class]) { \
@@ -318,6 +352,7 @@ _Pragma("clang diagnostic ignored \"-Wdeprecated-declarations\"") \
 _Pragma("clang diagnostic pop") \
     } \
 } while (0)
+#endif // SHOW_ALERT_WITH_ACTION3
 
 /**
  Show alert with a text field
